@@ -465,4 +465,47 @@
 
     <string name="measure">测量</string>
 
+
+    <!-- M1卡 -->
+    <string name="m1_title">M1卡功能演示Demo</string>
+    <string name="m1_card_type">卡片类型：</string>
+    <string name="m1_pwd_type">密码类型：</string>
+    <string name="m1_card_name">卡号：</string>
+    <string name="m1_show_card">显示卡号</string>
+    <string name="m1_pwda">密码A：</string>
+    <string name="m1_hint_tips12">请写入12个0-9，A-F，a-f之间的字符</string>
+    <string name="m1_pwdb">密码B：</string>
+    <string name="m1_block_num">块号：</string>
+    <string name="m1_write_block">写块数据：</string>
+    <string name="m1_hint_tips32">请写入32个0-9，A-F，a-f之间的字符</string>
+    <string name="m1_new_pwd">新密码：</string>
+    <string name="m1_read_block">读块数据：</string>
+    <string name="m1_necessary_done">必要操作功能</string>
+    <string name="m1_get_card">获取卡号</string>
+    <string name="m1_send_pwd">发送密码</string>
+    <string name="m1_valid_pwd">认证密码</string>
+    <string name="m1_io">I/O操作功能</string>
+    <string name="m1_write_numblock">写入指定块数据</string>
+    <string name="m1_update_numblock">修改指定块密码</string>
+    <string name="m1_update_numsector">修改指定扇区密码</string>
+    <string name="m1_get_numblock">获取指定块数据</string>
+    <string name="m1_str_get_success">获取卡号成功</string>
+    <string name="m1_str_update_pwd_success">修改密码成功</string>
+    <string name="m1_str_update_pwd_failure">修改密码失败</string>
+    <string name="m1_str_block_not_empty">块号不能为空</string>
+    <string name="m1_str_all_not_empty">密码A、密码B或写入数据不能为空</string>
+    <string name="m1_str_all_not_validate">密码A、密码B或写入数据不合法</string>
+    <string name="m1_str_not_empty">密码A、密码B不能为空</string>
+    <string name="m1_no_card_with_data">未寻到卡,有返回数据</string>
+    <string name="m1_no_card_without_data">未寻到卡,无返回数据，超时！！</string>
+    <string name="m1_find_card_exception">可能是串口打开失败或其他异常</string>
+    <string name="m1_writing_success">写卡成功</string>
+    <string name="m1_writing_fail">写卡失败</string>
+    <string name="m1_reading_success">读卡成功</string>
+    <string name="m1_reading_fail">读卡失败</string>
+    <string name="m1_getcard_wait">正在获取卡号，请稍后...</string>
+    <string name="m1_writing_wait">正在写卡，请稍后...</string>
+    <string name="m1_reading_wait">正在读卡，请稍后...</string>
+    <string name="m1_updatepwding_wait">正在修改密码，请稍后...</string>
+
 </resources>

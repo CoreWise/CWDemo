@@ -4,6 +4,7 @@
 
 
     <!--条码权限-->
+    <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
 
@@ -53,6 +54,9 @@
         <activity android:name=".R2000UHF.UHF2000Activity"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".m1.NFCM1Activity"
+
+            />
 
     </application>
 

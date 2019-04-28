@@ -41,6 +41,7 @@ import com.cw.demo.fingerprint.byd_big.FingerBYDBigActivity;
 import com.cw.demo.fingerprint.byd_small.FingerBYDSmallActivity;
 import com.cw.demo.hxuhf.HXUHFActivity;
 import com.cw.demo.idcard.IDCardActivity;
+import com.cw.demo.m1.NFCM1Activity;
 import com.cw.r2000uhfsdk.R2000UHFAPI;
 
 import java.util.ArrayList;
@@ -189,10 +190,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 startActivity(new Intent(this, FingerBYDSmallActivity.class));
                 break;
             case 6:
-                //startActivity(new Intent(this, NFCActivity.class));//NFC
+                //startActivity(new Intent(this, NFCM1Activity.class));//NFC
                 break;
             case 7:
-                //startActivity(new Intent(this, ISOActivity.class));//ISO
+                //M1 RFID
+                startActivity(new Intent(this, NFCM1Activity.class));
                 break;
 
              case 8:

@@ -1,0 +1,350 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/rl_layout01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/card_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/m1_card_type"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_card_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/pwd_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/m1_pwd_type"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_pwd_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_layout02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_layout01"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/card_num"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/m1_card_name"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/ed_card_num"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@+id/card_num"
+                android:background="#f5deb3"
+                android:editable="false"
+                android:hint="@string/m1_show_card"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_layout03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_layout02"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pwd_a"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/m1_pwda"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/ed_pwd_a"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@+id/pwd_a"
+                android:background="#f5deb3"
+                android:hint="@string/m1_hint_tips12"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_layout04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_layout03"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pwd_b"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/m1_pwdb"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/ed_pwd_b"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@+id/pwd_b"
+                android:background="#f5deb3"
+                android:hint="@string/m1_hint_tips12"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_layout05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_layout04"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/block_num"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/m1_block_num"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/ed_block_num"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@+id/block_num"
+                android:background="#f5deb3"
+                android:inputType="number"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_layout06"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_layout05"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/write_block"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/m1_write_block"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/ed_write_block"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@+id/write_block"
+                android:background="#f5deb3"
+                android:hint="@string/m1_hint_tips32"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_layout26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_layout06"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/write_newpassword"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/m1_new_pwd"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/ed_write_pwd"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@+id/write_newpassword"
+                android:background="#f5deb3"
+                android:hint="@string/m1_hint_tips12"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_layout07"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_layout26"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/read_block"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/m1_read_block"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/ed_read_block"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@+id/read_block"
+                android:background="#f5deb3"
+                android:editable="false"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_layout08"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_layout07"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/llayout_01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_getCardNum"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m1_get_card"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/btn_sendCardPwd"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:text="@string/m1_send_pwd"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/btn_validatePwd"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:text="@string/m1_valid_pwd"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llayout_02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llayout_01"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_write"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m1_write_numblock"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/btn_update"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m1_update_numblock"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/btn_read"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m1_get_numblock"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tips"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_layout08"
+            android:gravity="center"
+            android:text=""
+            android:textColor="#ff0000"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</ScrollView>
