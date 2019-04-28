@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <q.rorbin.verticaltablayout.VerticalTabLayout
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:background="@android:color/darker_gray"
+            app:tabIndicatorColor="@android:color/black"
+            app:tabSelectedTextColor="#444"
+            app:tabTextColor="#fff"
+            android:layout_marginBottom="53dp"
+            app:tab_mode="fixed"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/log_list"
+            android:layout_below="@id/tab"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:flipInterval="30"
+            android:persistentDrawingCache="animation"/>
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

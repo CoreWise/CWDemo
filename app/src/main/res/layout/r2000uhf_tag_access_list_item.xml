@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal"
+	android:background="#FFF2F2F2" >  
+    
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#BBBBBB" />
+    
+	<TextView
+	    android:id="@+id/id_text"
+		android:layout_width="20sp"
+		android:layout_height="wrap_content"
+		android:padding="2sp"
+		android:textSize="10sp"
+		android:textColor="#ff333333"
+		android:gravity="center"
+		android:singleLine="true"
+		android:text="ID" />
+	
+	<View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#BBBBBB" />
+	
+	<TextView
+	    android:id="@+id/pc_text"
+		android:layout_width="40sp"
+		android:layout_height="wrap_content"
+		android:padding="2sp"
+		android:textSize="10sp"
+		android:textColor="#ff333333"
+		android:gravity="center"
+		android:singleLine="true"
+		android:text="PC" />
+
+	<View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#BBBBBB" />
+	
+	<TextView
+	    android:id="@+id/crc_text"
+		android:layout_width="40sp"
+		android:layout_height="wrap_content"
+		android:padding="2sp"
+		android:textSize="10sp"
+		android:textColor="#ff333333"
+		android:gravity="center"
+		android:singleLine="true"
+		android:text="CRC" />
+
+	<View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#BBBBBB" />
+	
+	<TextView
+	    android:id="@+id/epc_text"
+		android:layout_width="180sp"
+		android:layout_height="wrap_content"
+		android:padding="2sp"
+		android:textSize="10sp"
+		android:textColor="#ff333333"
+		android:gravity="center"
+		android:singleLine="true"
+		android:text="EPC" />
+
+	<View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#BBBBBB" />
+	
+	<TextView
+	    android:id="@+id/data_text"
+		android:layout_width="200sp"
+		android:layout_height="wrap_content"
+		android:padding="2sp"
+		android:textSize="10sp"
+		android:textColor="#ff333333"
+		android:gravity="center"
+		android:singleLine="true"
+		android:text="@string/r2000_access_list_data" />
+
+	<View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#BBBBBB" />
+					
+	<TextView
+	    android:id="@+id/data_len_text"
+		android:layout_width="50sp"
+		android:layout_height="wrap_content"
+		android:padding="2sp"
+		android:textSize="10sp"
+		android:textColor="#ff333333"
+		android:gravity="center"
+		android:singleLine="true"
+		android:text="@string/r2000_access_list_data_len" />
+
+	<View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#BBBBBB" />
+					
+	<TextView
+	    android:id="@+id/antenna_text"
+		android:layout_width="50sp"
+		android:layout_height="wrap_content"
+		android:padding="2sp"
+		android:textSize="10sp"
+		android:textColor="#ff333333"
+		android:gravity="center"
+		android:singleLine="true"
+		android:text="@string/r2000_list_antenna_port" />
+
+	<View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#BBBBBB" />
+	
+	<TextView
+	    android:id="@+id/times_text"
+		android:layout_width="50sp"
+		android:layout_height="wrap_content"
+		android:padding="2sp"
+		android:textSize="10sp"
+		android:textColor="#ff333333"
+		android:gravity="center"
+		android:singleLine="true"
+		android:text="@string/r2000_access_list_times" />
+	
+	<View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#BBBBBB" />
+    
+</LinearLayout>

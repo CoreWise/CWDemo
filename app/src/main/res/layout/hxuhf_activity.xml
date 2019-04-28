@@ -1,0 +1,166 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#6B9A00"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:background="#6B9A00"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/txt_borad_bg"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+
+            <TextView
+                android:id="@+id/txt_open"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:text="@string/hxuhf_open"
+                android:textAllCaps="false"
+                android:textSize="15sp" />
+
+            <ToggleButton
+                android:id="@+id/togBtn_open"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/hxuhf_btn_toggle_bg"
+                android:disabledAlpha="?android:attr/disabledAlpha"
+                android:textOff=""
+                android:textOn="" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/txt_borad_bg">
+
+            <TextView
+                android:id="@+id/txt_inv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:text="@string/hxuhf_search_tag"
+                android:textAllCaps="false"
+
+                android:textSize="15sp" />
+
+            <ToggleButton
+                android:id="@+id/togBtn_inv"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/hxuhf_btn_toggle_bg"
+                android:clickable="false"
+                android:disabledAlpha="?android:attr/disabledAlpha"
+                android:textOff=""
+                android:textOn="" />
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/bt_singleSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hxuhf_singlesearch"
+                android:textAllCaps="false"
+
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/bt_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/hxuhf_setting"
+                android:textAllCaps="false"
+
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="@string/hxuhf_txt_count"
+                android:textColor="#ffffff"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/txtTimes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="@string/hxuhf_txt_count"
+                android:textColor="#ffffff"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/setting_params"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="@string/hxuhf_setting"
+                android:textAllCaps="false"
+                android:textSize="15sp"
+
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="3px"
+            android:layout_marginBottom="10dp"
+            android:background="#ffffff"></FrameLayout>
+
+        <fragment
+            android:id="@+id/fragment_taglist"
+            android:name="com.cw.demo.hxuhf.TaglistFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_read_write"
+        android:layout_width="0px"
+        android:layout_height="fill_parent"
+        android:layout_weight="2"
+        android:background="#9CCF00"
+        android:orientation="vertical">
+
+        <fragment
+            android:id="@+id/tag_operation_fragment"
+            android:name="com.cw.demo.hxuhf.TagOperFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+</LinearLayout>

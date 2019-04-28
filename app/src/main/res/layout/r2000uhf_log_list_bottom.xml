@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/log_linearLayout"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="#EEEEEE"
+	android:paddingTop="5sp"
+	android:orientation="vertical" >
+
+	<TableLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:paddingLeft="1.0dip"
+		android:shrinkColumns="0"
+		android:stretchColumns="0" >
+
+		<TableRow
+			android:id="@+id/table_row_log"
+			android:layout_width="fill_parent"
+			android:layout_marginLeft="2.0dip"
+			android:layout_marginRight="2.0dip"
+			android:background="@drawable/table_item_top_selector"
+			android:paddingBottom="5.0dip"
+			android:paddingTop="5.0dip"
+			android:clickable="true" >
+			
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical" >
+
+				<TextView
+				    android:id="@+id/list_text_info"
+					android:layout_width="wrap_content"
+					android:layout_height="fill_parent"
+					android:gravity="center_vertical"
+					android:includeFontPadding="false"
+					android:paddingLeft="17.0dip"
+					android:text="@string/open_caption"
+					android:textColor="#ff222222"
+					android:textSize="16.0sp" />
+
+				<TextView
+				    android:id="@+id/list_text_help"
+				    android:layout_width="wrap_content"
+				    android:layout_height="fill_parent"
+				    android:gravity="center_vertical"
+				    android:includeFontPadding="false"
+				    android:paddingTop="4.0dip"
+				    android:paddingLeft="15.0dip"
+				    android:text=""
+				    android:textColor="#ff777777"
+				    android:textSize="12.0sp" />
+    			</LinearLayout>
+
+			<ImageView
+			    android:id="@+id/image_prompt"
+				android:layout_width="wrap_content"
+			    android:layout_height="fill_parent"
+			    android:layout_gravity="right"
+			    android:gravity="center_vertical"
+			    android:paddingRight="15.0dip"
+			    android:paddingBottom="5.0dip"
+				android:paddingTop="5.0dip"
+				android:src="@drawable/up" />
+		</TableRow>
+
+	</TableLayout>
+
+	<ListView 
+        android:id="@+id/log_list_view"
+        android:layout_width="fill_parent"
+        android:layout_height="200sp"
+        android:drawSelectorOnTop="false"
+        android:scrollbars="vertical"
+        android:paddingLeft="5.0sp"
+        android:paddingTop="5.0sp"
+        android:paddingRight="5.0sp"
+		android:paddingBottom="5.0sp"
+		android:listSelector="@android:color/transparent"
+		android:scrollingCache="false"
+		android:transcriptMode="alwaysScroll"
+        android:divider="@null" />
+</LinearLayout>

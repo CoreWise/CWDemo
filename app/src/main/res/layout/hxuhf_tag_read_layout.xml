@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="12dp"
+    android:paddingLeft="8sp"
+    android:paddingRight="12dp"
+    android:paddingTop="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="@string/hxuhf_txt_tag_tit"
+            android:textAllCaps="false"
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txtReadEpc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N/A"
+            android:textAllCaps="false"
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:text="@string/hxuhf_txt_read_eare"
+                android:textAllCaps="false"
+
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+
+            <Spinner
+                android:id="@+id/spinnerArea"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/myunmberinputSpinner_length"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/hxuhf_txt_accesspwd"
+                android:textAllCaps="false"
+
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/editAccesspwd"
+                android:layout_width="120dip"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/textView5"
+                android:digits="1234567890abcdefABCDEF"
+                android:inputType="textCapCharacters"
+                android:maxLength="8"
+                android:text="@string/hxuhf_txt_pwdzero"
+                android:textAllCaps="false"
+
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="@string/hxuhf_txt_offset"
+            android:textAllCaps="false"
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+
+        <com.cw.demo.hxuhf.MyunmberinputSpinner
+            android:id="@+id/myunmberinputSpinner_offset"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView3" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/myunmberinputSpinner_offset"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/hxuhf_txt_length"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+
+        <com.cw.demo.hxuhf.MyunmberinputSpinner
+            android:id="@+id/myunmberinputSpinner_length"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView4" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/txtReadResult"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/txt_borad_bg"
+            android:hint="@string/hxuhf_hint_write_read"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textAllCaps="false"
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/buttonRead"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/btn_bg"
+            android:text="@string/hxuhf_read"
+            android:textAllCaps="false"
+
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/txtWarnning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ff0000" />
+    </FrameLayout>
+
+</LinearLayout>

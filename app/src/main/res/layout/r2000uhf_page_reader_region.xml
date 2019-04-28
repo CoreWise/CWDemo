@@ -1,0 +1,450 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+    android:orientation="vertical">
+
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:gravity="center_vertical"
+                android:paddingLeft="4.0dip"
+                android:text="@string/setting_region"
+                android:textColor="#ff222222"
+                android:textSize="16.0sp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="5.0dip"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip"
+                android:paddingTop="5.0dip">
+
+                <RadioGroup
+                    android:id="@+id/group_region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/set_region_default"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button_selector"
+                        android:checked="true"
+                        android:paddingBottom="5sp"
+                        android:paddingTop="5sp"
+                        android:text="@string/region_default"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+
+                    <RadioButton
+                        android:id="@+id/set_region_custom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20sp"
+                        android:button="@drawable/radio_button_selector"
+                        android:paddingBottom="5sp"
+                        android:paddingTop="5sp"
+                        android:text="@string/region_custom"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#ff555555"
+                android:paddingLeft="5.0sp"
+                android:paddingRight="5.0sp" />
+
+            <LinearLayout
+                android:id="@+id/layout_region_default"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="5.0dip"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip"
+                android:paddingTop="20.0dip">
+
+                <RadioGroup
+                    android:id="@+id/group_region_default_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/set_region_fcc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button_selector"
+                        android:checked="true"
+                        android:paddingBottom="5sp"
+                        android:paddingTop="5sp"
+                        android:text="FCC"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+
+                    <RadioButton
+                        android:id="@+id/set_region_etsi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20sp"
+                        android:button="@drawable/radio_button_selector"
+                        android:paddingBottom="5sp"
+                        android:paddingTop="5sp"
+                        android:text="ETSI"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+
+                    <RadioButton
+                        android:id="@+id/set_region_chn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20sp"
+                        android:button="@drawable/radio_button_selector"
+                        android:paddingBottom="5sp"
+                        android:paddingTop="5sp"
+                        android:text="CHN"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+                </RadioGroup>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5.0sp"
+                    android:paddingLeft="5.0sp"
+                    android:paddingRight="5.0sp"
+                    android:paddingTop="5.0sp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/freq_start"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+
+                    <TableLayout
+                        android:layout_width="150sp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5.0sp"
+                        android:paddingRight="5.0sp"
+                        android:shrinkColumns="0"
+                        android:stretchColumns="0">
+
+                        <TableRow
+                            android:id="@+id/table_row_spiner_freq_start"
+                            android:layout_width="fill_parent"
+                            android:background="@drawable/table_item_press_selector"
+                            android:clickable="true"
+                            android:paddingBottom="5.0dip"
+                            android:paddingTop="5.0dip">
+
+                            <TextView
+                                android:id="@+id/freq_start_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:includeFontPadding="false"
+                                android:paddingBottom="2.0sp"
+                                android:paddingLeft="10.0sp"
+                                android:paddingTop="2.0sp"
+                                android:textColor="#ff222222"
+                                android:textSize="16.0sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_gravity="right"
+                                android:gravity="center_vertical"
+                                android:src="@drawable/down" />
+                        </TableRow>
+                    </TableLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4.0dip"
+                        android:text="MHz"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5.0sp"
+                    android:paddingLeft="5.0sp"
+                    android:paddingRight="5.0sp"
+                    android:paddingTop="5.0sp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/freq_end"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+
+                    <TableLayout
+                        android:layout_width="150sp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5.0sp"
+                        android:paddingRight="5.0sp"
+                        android:shrinkColumns="0"
+                        android:stretchColumns="0">
+
+                        <TableRow
+                            android:id="@+id/table_row_spiner_freq_end"
+                            android:layout_width="fill_parent"
+                            android:background="@drawable/table_item_press_selector"
+                            android:clickable="true"
+                            android:paddingBottom="5.0dip"
+                            android:paddingTop="5.0dip">
+
+                            <TextView
+                                android:id="@+id/freq_end_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:includeFontPadding="false"
+                                android:paddingBottom="2.0sp"
+                                android:paddingLeft="10.0sp"
+                                android:paddingTop="2.0sp"
+                                android:textColor="#ff222222"
+                                android:textSize="16.0sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_gravity="right"
+                                android:gravity="center_vertical"
+                                android:src="@drawable/down" />
+                        </TableRow>
+                    </TableLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4.0dip"
+                        android:text="MHz"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_region_custom"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="5.0dip"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip"
+                android:paddingTop="20.0dip"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5.0sp"
+                        android:layout_marginLeft="5.0sp"
+                        android:layout_marginRight="5.0sp"
+                        android:layout_marginTop="5.0sp"
+                        android:clickable="true"
+                        android:text="@string/freq_start"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+
+                    <EditText
+                        android:id="@+id/set_freq_start_text"
+                        android:layout_width="100sp"
+                        android:layout_height="30sp"
+                        android:background="@drawable/editbox_background"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5.0sp"
+                        android:layout_marginLeft="5.0sp"
+                        android:layout_marginRight="5.0sp"
+                        android:layout_marginTop="5.0sp"
+                        android:clickable="true"
+                        android:text="KHz"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5.0sp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5.0sp"
+                        android:layout_marginLeft="5.0sp"
+                        android:layout_marginRight="5.0sp"
+                        android:layout_marginTop="5.0sp"
+                        android:clickable="true"
+                        android:text="@string/freq_interval"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+
+                    <EditText
+                        android:id="@+id/set_freq_interval_text"
+                        android:layout_width="100sp"
+                        android:layout_height="30sp"
+                        android:background="@drawable/editbox_background"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5.0sp"
+                        android:layout_marginLeft="5.0sp"
+                        android:layout_marginRight="5.0sp"
+                        android:layout_marginTop="5.0sp"
+                        android:clickable="true"
+                        android:text="KHz"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5.0sp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5.0sp"
+                        android:layout_marginLeft="5.0sp"
+                        android:layout_marginRight="5.0sp"
+                        android:layout_marginTop="5.0sp"
+                        android:clickable="true"
+                        android:text="@string/freq_nums"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+
+                    <EditText
+                        android:id="@+id/set_freq_nums_text"
+                        android:layout_width="100sp"
+                        android:layout_height="30sp"
+                        android:background="@drawable/editbox_background"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5.0sp"
+                        android:layout_marginLeft="5.0sp"
+                        android:layout_marginRight="5.0sp"
+                        android:layout_marginTop="5.0sp"
+                        android:clickable="true"
+                        android:text="@string/freq_unit"
+                        android:textColor="#ff222222"
+                        android:textSize="16.0sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/get"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5.0sp"
+                    android:layout_marginLeft="20.0sp"
+                    android:layout_marginRight="20.0sp"
+                    android:layout_marginTop="20.0sp"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/button_selector"
+                    android:clickable="true"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="10.0sp"
+                    android:paddingTop="10.0sp"
+                    android:text="@string/get"
+                    android:textColor="#ff222222"
+                    android:textSize="16.0sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/set"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5.0sp"
+                    android:layout_marginLeft="20.0sp"
+                    android:layout_marginRight="20.0sp"
+                    android:layout_marginTop="20.0sp"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/button_selector"
+                    android:clickable="true"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="10.0sp"
+                    android:paddingTop="10.0sp"
+                    android:text="@string/set"
+                    android:textColor="#ff222222"
+                    android:textSize="16.0sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+</RelativeLayout>
+

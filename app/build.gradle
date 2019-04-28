@@ -1,0 +1,95 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.cw.demo"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        //versionName "1.0"
+        versionName "CoreWiseDemo V1.0"    //每次发布新版本需要去掉_debug
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //配置自定义打包名称
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+
+            def fileName = "${defaultConfig.versionName + "_" + buildType.name}.apk"
+            outputFileName = fileName
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'   // aar目录
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.android.support:design:26.1.0'
+    compile 'com.lovedise:permissiongen:0.0.6'
+    implementation 'org.litepal.android:java:3.0.0'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    compile 'q.rorbin:VerticalTabLayout:1.2.5'
+
+
+    //扫码开发包
+    //Barcode SDK
+    compile(name: 'barcode_sdk_20190424', ext: 'aar')
+
+    //串口开发包
+    //SerialPort SDK
+    compile(name: 'serialport_sdk_20190428', ext: 'aar')
+
+    //身份证开发包,需要依赖串口开发包
+    //IDcard SDK,need SerialPort SDK
+    compile(name: 'idcard_sdk_20190424', ext: 'aar')
+
+    //BYD大指纹开发包(新固件开发包)
+    //BYD Big FingerPrint SDK
+    compile(name: 'finger_byd_big_sdk_20190424', ext: 'aar')
+
+    //BYD小指纹开发包
+    //BYD Small FingerPrint SDK
+    compile(name: 'finger_byd_small_sdk_20190425', ext: 'aar')
+
+    //HX超高频开发包,需要依赖串口开发包
+    //HX UHF SDK,need SerialPort SDK
+    compile(name: 'hxuhf_sdk_20190425', ext: 'aar')
+
+    //北斗开发包,需要依赖串口开发包
+    //BeiDou SDK,need SerialPort SDK
+    compile(name: 'beidou_sdk_20190426', ext: 'aar')
+
+    //R2000超高频开发包,需要依赖串口开发包
+    //R2000 UHF SDK
+    compile(name: 'r2000uhf_sdk_20190426', ext: 'aar')
+
+}

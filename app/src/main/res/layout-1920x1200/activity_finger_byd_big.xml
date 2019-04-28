@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="BYD_BIG_FingerPrint"
+        android:textColor="#ff0000"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+
+    <ImageView
+        android:id="@+id/image_1"
+        android:layout_width="152dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/finger"></ImageView>
+
+    <TextView
+        android:id="@+id/edtv1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:gravity="center_horizontal"
+        android:hint="欢迎使用"
+        android:singleLine="true"
+        android:textColor="#0000ff"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:id="@+id/L0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/btn_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FP_Version"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_begin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FP_Begin"
+
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_auth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FP_ISVAuth"
+
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_devversion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FP_DevVersion"
+
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_getfpbmp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FP_GetBmp"
+
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_feature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FP_FeatureExtract"
+
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_match"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FP_FeatureMatch"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FP_FeatureSearch"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FP_End"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+</LinearLayout>
+

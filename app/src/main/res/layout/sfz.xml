@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="180dp"
+    android:background="@drawable/sfz_bg" >
+
+    <TextView
+        android:id="@+id/sfz_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="56dp"
+        android:layout_y="18dp"
+        android:text="XXXXXX"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/sfz_mouth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="92dp"
+        android:layout_y="60dp"
+        android:text="XX"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/sfz_sex"
+        android:layout_width="32dp"
+        android:layout_height="wrap_content"
+        android:layout_x="56dp"
+        android:layout_y="39dp"
+        android:text="XX"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/sfz_nation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="122dp"
+        android:layout_y="39dp"
+        android:text="XX"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/sfz_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="117dp"
+        android:layout_y="60dp"
+        android:text="XX"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/sfz_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="97dp"
+        android:layout_y="140dp"
+        android:text="XXXXXXXXXXXXXXXXXXXXXX"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/sfz_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="46dp"
+        android:layout_y="60dp"
+        android:text="XXXX"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/sfz_address"
+        android:layout_width="160dp"
+        android:layout_height="62dp"
+        android:layout_x="55dp"
+        android:layout_y="85dp"
+        android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        android:textColor="#000000" />
+
+    <ImageView
+        android:id="@+id/sfz_photo"
+        android:layout_width="102px"
+        android:layout_height="126px"
+        android:layout_x="213dp"
+        android:layout_y="20dp" />
+
+</AbsoluteLayout>
