@@ -14,6 +14,7 @@
         <item>BYD小指纹</item>
         <item>M1卡(RFID)</item>
         <item>M1卡(NFC)</item>
+        <item>ISO 15693</item>
         <item>北斗</item>
     </string-array>
 
@@ -24,6 +25,9 @@
 
     <string name="general_open_serial_fail">打开串口失败！</string>
     <string name="general_open_serial_success">打开串口成功！</string>
+
+    <string name="general_write_success">写入成功！</string>
+    <string name="general_write_fail">写入失败！</string>
 
     <!--串口字符串资源-->
 
@@ -121,8 +125,8 @@
     <string name="hxuhf_read_success">读取成功！</string>
     <string name="hxuhf_read_fail">读取失败！</string>
     <string name="hxuhf_length_zero">数据长度不能为0！</string>
-    <string name="hxuhf_write_success">写入成功！</string>
-    <string name="hxuhf_write_fail">写入失败！</string>
+    <!--<string name="hxuhf_write_success">写入成功！</string>-->
+    <!--<string name="hxuhf_write_fail">写入失败！</string>-->
     <string name="hxuhf_length_not_right">写入数据长度不对！</string>
 
     <string-array name="hxuhf_dbm">
@@ -557,5 +561,13 @@
     <string name="m1_writing_wait">正在写卡，请稍后...</string>
     <string name="m1_reading_wait">正在读卡，请稍后...</string>
     <string name="m1_updatepwding_wait">正在修改密码，请稍后...</string>
+
+    <!-- NfcV 15693 -->
+    <string name="nfc_15693_error">当前设备不支持NFC功能</string>
+    <string name="nfc_15693_error_not_open">NFC功能未打开，请先开启后重试！</string>
+    <string name="nfc_15693_error_no_block">写入区块不存在</string>
+    <string name="nfc_15693_error_max">写入数据长度大于空间容量,最大长度为</string>
+
+
 
 </resources>

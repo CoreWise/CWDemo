@@ -34,6 +34,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 
+import com.cw.demo.ISO_15693.ISOActivity;
 import com.cw.demo.R2000UHF.UHF2000Activity;
 import com.cw.demo.barcode.BarCodeActivity;
 import com.cw.demo.beidou.BeiDouActivity;
@@ -130,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 R.drawable.icon_fingerprint,
                 R.drawable.icon_m1,
                 R.drawable.icon_m1,
+                R.drawable.icon_m1,
                 R.drawable.beidou};
 
         /*icons = new int[]{R.drawable.beidou, R.drawable.m1, R.drawable.icon_barcode, R.drawable.ic, R.drawable.sfz,
@@ -207,6 +209,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 break;
 
             case 9:
+                //M1 RFID
+                startActivity(new Intent(this, ISOActivity.class));
+                break;
+            case 10:
                 //北斗
                 startActivity(new Intent(this, BeiDouActivity.class));
                 break;
