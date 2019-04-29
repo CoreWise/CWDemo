@@ -93,10 +93,10 @@ public class TagWriteFragment extends Fragment {
             String data = writeTag(arguments);
             if (!TextUtils.isEmpty(writeData) && data.equals("00")) {
 
-                Toast.makeText(getActivity(),getResources().getString(R.string.hxuhf_write_success) , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),getResources().getString(R.string.general_write_success) , Toast.LENGTH_SHORT).show();
             } else {
 
-                Toast.makeText(getActivity(),getResources().getString(R.string.hxuhf_write_fail) , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),getResources().getString(R.string.general_write_fail) , Toast.LENGTH_SHORT).show();
 
             }
         } else {
