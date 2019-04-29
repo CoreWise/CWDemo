@@ -39,6 +39,7 @@ import com.cw.demo.barcode.BarCodeActivity;
 import com.cw.demo.beidou.BeiDouActivity;
 import com.cw.demo.fingerprint.byd_big.FingerBYDBigActivity;
 import com.cw.demo.fingerprint.byd_small.FingerBYDSmallActivity;
+import com.cw.demo.fingerprint.shengyuan.FingerprintActivity;
 import com.cw.demo.hxuhf.HXUHFActivity;
 import com.cw.demo.idcard.IDCardActivity;
 import com.cw.demo.m1.NFCM1Activity;
@@ -126,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 R.drawable.icon_hx,
                 R.drawable.icon_fingerprint,
                 R.drawable.icon_fingerprint,
+                R.drawable.icon_fingerprint,
                 R.drawable.icon_m1,
                 R.drawable.icon_m1,
                 R.drawable.beidou};
@@ -174,31 +176,38 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 startActivity(new Intent(this, HXUHFActivity.class));
                 break;
 
-             case 3:
+            case 3:
                 //R2000超高频
                 startActivity(new Intent(this, UHF2000Activity.class));
                 break;
+
             case 4:
+
+                //SY指纹
+                startActivity(new Intent(this, FingerprintActivity.class));
+
+                break;
+            case 5:
 
                 //比亚迪大指纹
                 startActivity(new Intent(this, FingerBYDBigActivity.class));
 
                 break;
 
-            case 5:
+            case 6:
                 //比亚迪小指纹
                 startActivity(new Intent(this, FingerBYDSmallActivity.class));
                 break;
-            case 6:
+            case 7:
                 //startActivity(new Intent(this, NFCM1Activity.class));//NFC
                 break;
-            case 7:
+            case 8:
                 //M1 RFID
                 startActivity(new Intent(this, NFCM1Activity.class));
                 break;
 
-             case 8:
-                 //北斗
+            case 9:
+                //北斗
                 startActivity(new Intent(this, BeiDouActivity.class));
                 break;
             default:

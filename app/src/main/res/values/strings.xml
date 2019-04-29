@@ -9,6 +9,7 @@
         <item>身份证</item>
         <item>HX超高频</item>
         <item>R2000超高频</item>
+        <item>SY大指纹</item>
         <item>BYD大指纹(新)</item>
         <item>BYD小指纹</item>
         <item>M1卡(RFID)</item>
@@ -157,6 +158,55 @@
         <item>29.5</item>
         <item>30.0</item>
         <item>30.5</item>
+    </string-array>
+
+
+    <!-- FingerprintActivity -->
+    <string name="fp_register_fingerprint">注册指纹</string>
+    <string name="fp_validate_fingerprint">验证指纹</string>
+    <string name="fp_noID">请输入ID</string>
+    <string name="fp_calibration_success">校准成功</string>
+    <string name="fp_calibration_fail">校准失败</string>
+    <string name="fp_clear_flash_success">清空指纹库成功</string>
+    <string name="fp_clear_flash_fail">清空指纹库失败</string>
+    <string name="fp_first_register">请先注册指纹！</string>
+    <string name="fp_print_finger">请按指纹！</string>
+    <string name="back">back</string>
+    <string name="fp_clear_flash">清空指纹库</string>
+    <string name="fp_calibration">校准</string>
+    <string name="fp_import_finger">导入</string>
+    <string name="fp_save_model">保存模板</string>
+
+    <string name="fp_print_finger_again">请再次按指纹！</string>
+    <string name="fp_processing">指纹采集成功，正在上传处理...</string>
+    <string name="fp_generate_char_fail">生成特征值失败！</string>
+    <string name="fp_reg_model_success">合成模板成功！</string>
+    <string name="fp_reg_model_fail">合成模板失败！</string>
+    <string name="fp_register_success">注册成功！</string>
+    <string name="fp_register_fail">注册失败！</string>
+    <string name="fp_verifying_wait">正在验证，请稍后...</string>
+    <string name="fp_down_char_fail">验证失败</string>
+    <string name="fp_verifying_through">验证通过</string>
+    <string name="fp_verifying_fail">验证失败</string>
+    <string name="fp_up_image_success">上传指纹图像成功</string>
+    <string name="fp_up_image_fail">上传指纹图像失败</string>
+    <string name="fp_clear_model">清除模板</string>
+    <string name="fp_id_model">ID:</string>
+    <string name="fp_clear_model_success">清除模板成功</string>
+    <string name="fp_clear_model_fail">清除模板失败</string>
+    <string name="fp_enter_id">请输入ID</string>
+    <string name="fp_register3">注册</string>
+    <string name="fp_down_store">下载存储</string>
+    <string name="fp_validate3">验证</string>
+    <string name="fp_down_store_success">下载存储成功</string>
+    <string name="fp_down_store_fail">下载存储失败</string>
+    <string name="fp_search_success">搜索成功</string>
+    <string name="fp_search_fail">搜索失败</string>
+    <string name="fp_down_store_null">模板不能为空</string>
+    <string name="fp_compares">比较</string>
+    <string-array name="fingerprint_size">
+        <item>小指纹</item>
+        <item>大指纹</item>
     </string-array>
 
 
