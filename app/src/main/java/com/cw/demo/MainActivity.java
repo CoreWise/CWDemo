@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 R.drawable.icon_fingerprint,
                 R.drawable.icon_m1,
                 R.drawable.icon_m1,
-                R.drawable.icon_m1,
+                R.drawable.rfid15693,
                 R.drawable.beidou};
 
         /*icons = new int[]{R.drawable.beidou, R.drawable.m1, R.drawable.icon_barcode, R.drawable.ic, R.drawable.sfz,
