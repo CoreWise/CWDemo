@@ -106,6 +106,7 @@ public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCod
 
 
 
+
         unbinder = ButterKnife.bind(this, rootView);
         barCodeActivity = (BarCodeActivity) getActivity();
 
