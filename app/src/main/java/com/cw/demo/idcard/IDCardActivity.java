@@ -234,6 +234,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
 
         mediaPlayer = MediaPlayer.create(this, R.raw.ok);
         asyncParseSFZ = new AsyncParseSFZ(getMainLooper(), this);
+
         asyncParseSFZ.setOnReadSFZListener(new AsyncParseSFZ.OnReadSFZListener() {
 
             @Override
@@ -514,16 +515,21 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
     protected void onResume() {
         super.onResume();
         Log.i(TAG, "-------" + getLocalClassName());
-        if (!SerialPortManager.getInstance().isOpen() && !SerialPortManager.getInstance().openSerialPort(CoreWise.type.sfz)) {
+        /*if (!SerialPortManager.getInstance().isOpen() && !SerialPortManager.getInstance().openSerialPort(CoreWise.type.sfz)) {
             Toast.makeText(getApplicationContext(), R.string.serialport_open_fail, Toast.LENGTH_SHORT).show();
-        }
+        }*/
+        asyncParseSFZ.openIDCardSerialPort();
         //SwitchUtil.getInstance().openUSB();
+
+
+
     }
 
     @Override
     protected void onPause() {
         Log.e(TAG, "-------onPause------");
-        SerialPortManager.getInstance().closeSerialPort();
+        //SerialPortManager.getInstance().closeSerialPort();
+        asyncParseSFZ.closeIDCardSerialPort();
         //关闭职位模块，省电
         //asyncParseSFZ.closeFingerDevice(IDCardActivity.this, mScanner);
         mHandler.removeCallbacksAndMessages(null);
