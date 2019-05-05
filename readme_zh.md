@@ -1,7 +1,9 @@
 
-[中文说明]()
+[中文说明](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/readme_zh.md)
 
-[English Doc]()
+
+[English Doc](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/readme_en.md)
+
 
 ---
 ## 中文说明
