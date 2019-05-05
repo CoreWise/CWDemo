@@ -78,7 +78,7 @@ dependencies {
 
     //SY指纹开发包,需要依赖串口开发包
 
-    //SY Big FingerPrint SDK
+    //SY FingerPrint SDK
     compile(name: 'finger_sy_sdk_20190429', ext: 'aar')
 
     //BYD大指纹开发包(新固件开发包)
