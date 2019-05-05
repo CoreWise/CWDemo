@@ -553,7 +553,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         if (soundPool != null) {
             soundPool.release();
         }
-        Log.i("whw", "IDCardActivity onDestroy");
+        Log.i(TAG, "IDCardActivity onDestroy");
         mHandler.removeCallbacks(task);
 
         super.onDestroy();
