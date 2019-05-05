@@ -1,0 +1,210 @@
+### 1. 身份证开发包说明
+
+   1.1 支持读中国大陆的二代身份证和三带身份证;
+
+   1.2 身份证功能占用了/dev/ttyHSL1串口，波特率115200,需要依赖[串口开发包](https://coding.net/u/CoreWise/p/SDK/git);
+
+   1.3 身份证开发包兼容机器请查看: [身份证开发包兼容机器说明](https://coding.net/u/CoreWise/p/SDK/git)
+
+   1.4 [身份证开发包下载地址](https://coding.net/u/CoreWise/p/SDK/git)
+
+### 2. 二次开发说明
+
+
+#### 2.1 Android Studio工程配置说明
+
+- 1.添加开发包aar到项目libs目录下
+
+- 2.配置Moudle的build.gradle,参考如下:
+
+
+```
+...
+ android {
+     ...
+     defaultConfig {
+         ...
+         targetSdkVersion 22 //身份证功能必须降22，其他无所谓
+         ...
+     }
+     ...
+ }
+ //2.必须2
+ repositories {
+     flatDir {
+         dirs 'libs'   // aar目录
+     }
+ }
+
+ dependencies {
+     ...
+    //串口开发包
+    //SerialPort SDK
+    compile(name: 'serialport_sdk_20190429', ext: 'aar')
+
+    //身份证开发包,需要依赖串口开发包
+    //IDcard SDK,need SerialPort SDK
+    compile(name: 'idcard_sdk_20190429', ext: 'aar')
+
+ }
+```
+
+
+#### 2.2  接口说明
+
+
+**身份证类: AsyncParseSFZ**
+
+
+| API接口 | 接口说明 |
+| :----- | :---- |
+| AsyncParseSFZ(getMainLooper(), Context) | 构造函数 |
+| openIDCardSerialPort() | 打开身份证串口 |
+| closeIDCardSerialPort() | 关闭身份证串口 |
+| readSFZ() | 读身份证 |
+| setOnReadSFZListener(OnReadSFZListener) | 读身份证结果监听回调 |
+
+
+
+
+**具体说明:**
+
+- AsyncParseSFZ()
+
+  身份证异步类
+
+- openIDCardSerialPort()
+
+  打开身份证串口，在读卡前一定要调用该方法
+
+- readSFZ()
+
+  读身份证
+
+- setOnReadSFZListener(OnReadSFZListener)
+
+  读身份证结果监听回调
+
+- closeIDCardSerialPort()
+
+  关闭身份证串口
+
+
+**监听回调接口说明:**
+
+```
+//该读卡回调接口需要在合适的地方调用        asyncParseSFZ.readSFZ();
+asyncParseSFZ.setOnReadSFZListener(new AsyncParseSFZ.OnReadSFZListener() {
+     @Override
+     public void onReadSuccess(ParseSFZAPI.People people) {
+            //读卡成功，People类请看下方说明
+     }
+     @Override
+     public void onReadFail(int confirmationCode) {
+	//读卡失败,错误码请看下方
+     }
+});
+
+ ```
+
+
+
+**People类说明**
+
+| People类字段 | 字段说明 |
+| :----- | :---- |
+| peopleName | 姓名 |
+| peopleSex | 性别 |
+| peopleNation | 民族 |
+| peopleBirthday | 出生日期 |
+| peopleAddress | 住址 |
+| peopleIDCode | 身份证号 |
+| department | 签发机关 |
+| startDate | 有效期限：开始 |
+| endDate | 有效期限：结束 |
+| photo | 照片，byte[] |
+| model | 指纹，byte[] |
+
+
+
+
+**错误码说明:**
+
+| 错误码 | 错误码说明 |
+| :----- | :---- |
+| 2 | 未寻到卡,有返回数据 |
+| 3 |未寻到卡,无返回数据，超时！！(串口无数据)  |
+| 4 | 可能是串口打开失败或其他异常 |
+| 5 | 此二代证没有指纹数据 |
+| 6 | 未寻到卡,有返回数据(80) |
+| 7 | 未寻到卡,有返回数据(41) |
+| 12 | 未寻到卡,有返回数据(其他错误) |
+| 13 | 未寻到卡,有返回数据(数据接收不完整) |
+
+
+
+
+
+#### 2.3 接口调用流程
+
+
+
+![身份证API调用基本流程](https://i.loli.net/2019/05/05/5cce4fe49414c.png)
+  
+
+
+
+#### 2.4 接口调用案例
+
+
+```java
+
+
+import com.cw.demo.utils.BaseUtils;
+import com.cw.demo.R;
+import com.cw.idcardsdk.AsyncParseSFZ;
+import com.cw.idcardsdk.ParseSFZAPI;
+import com.cw.serialportsdk.CoreWise;
+import com.cw.serialportsdk.utils.DataUtils;
+
+import android_serialport_api.SerialPortManager;
+
+public class IDCardActivity extends AppCompatActivity {
+
+    @SuppressLint("WrongConstant")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+  
+       	//1.第一步：实例化
+        asyncParseSFZ = new AsyncParseSFZ(getMainLooper(), this);
+		//2.第二步：设置读卡监听回调接口,
+        //该读卡回调接口需要在合适的地方调用        asyncParseSFZ.readSFZ();  
+        asyncParseSFZ.setOnReadSFZListener(new AsyncParseSFZ.OnReadSFZListener() {
+            @Override
+            public void onReadSuccess(ParseSFZAPI.People people) {
+                 //读卡成功
+            }
+            @Override
+            public void onReadFail(int confirmationCode) {
+				//读卡失败
+            }
+        });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //2.打开身份证串口
+        asyncParseSFZ.openIDCardSerialPort();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //最后一步：关闭身份证串口
+        asyncParseSFZ.closeIDCardSerialPort(); 
+    }
+}
+
+
+```
+
