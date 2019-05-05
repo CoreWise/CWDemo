@@ -30,7 +30,7 @@
 - [15693 NFC]()
 
 
-[附SDK下载页面地址](https://git.coding.net/CoreWise/SDK.git)
+[附中文SDK下载页面地址](https://git.coding.net/CoreWise/SDK.git)
 
 下载该源码说明,点击页面右上角下载按钮，如下图右上角所示:
 
