@@ -12,22 +12,22 @@
 
 
 
-The project source code is Demo source code!
+This project source code is Demo source code! Source code sdk_doc for secondary development of Chinese and English documents!
 
 
-Features include (Click on the corresponding function to view the secondary development documentation):
+Features include :
 
-- [BarCode]()
-- [IDCard]()
-- [BYD Big FingerPrint]()
-- [BYD Small FingerPrint]()
-- [SY FingerPrint]()
-- [HX UHF]()
-- [R2000 UHF]()
-- [BeiDou]()
-- [M1 RFID]()
-- [M1 NFC]()
-- [15693 NFC]()
+- BarCode
+- IDCard
+- BYD Big FingerPrint
+- BYD Small FingerPrint
+- SY FingerPrint
+- HX UHF
+- R2000 UHF
+- BeiDou
+- M1 RFID
+- M1 NFC
+- 15693 NFC
 
 
 [With English SDK Download Page Address](https://git.coding.net/CoreWise/SDK.git)
