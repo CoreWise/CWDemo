@@ -110,7 +110,7 @@
     <string name="hxuhf_txt_ok">确定</string>
     <string name="hxuhf_txt_cancel">取消</string>
     <string name="hxuhf_txt_pwdzero">00000000</string>
-    <string name="hxuhf_hint_write_read">偏移地址是指从你要读写的区域的位置开始，这个长度是距离区域0点计数的，1个长度等于两个字节或四个十六进制数字。</string>
+    <string name="hxuhf_hint_write_read">偏移地址是指从你要读写的区域的位置开始，这个长度是距离区域0点计数的，1个长度等于两个字节或四个十六进制数字。\n此文本只支持16位，1数据长度 = 4个16进制数字</string>
     <string name="hxuhf_power">功率：</string>
     <string name="hxuhf_write">写入</string>
     <string name="hxuhf_read">读取</string>

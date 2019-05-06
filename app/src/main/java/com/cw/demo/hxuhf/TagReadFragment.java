@@ -12,10 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cw.demo.R;
-import com.cw.demo.utils.Bytes;
 import com.cw.hxuhfsdk.UHFHXAPI;
 import com.cw.serialportsdk.utils.DataUtils;
 
@@ -95,21 +93,17 @@ public class TagReadFragment extends Fragment {
         Log.i(TAG, "ap:" + ap + "------epcLength:" + epcLength + "------epc:" + epc + "------mb:" + mb + "----------sa:" + sa + "-------dl:" + dl);
 
         if (Integer.parseInt(unmpLength.getSelectedItem().toString()) == 0) {
-            Toast.makeText(getActivity(),getResources().getString(R.string.hxuhf_length_zero) , Toast.LENGTH_SHORT).show();
+            DataUtils.showToast(getActivity(), getResources().getString(R.string.hxuhf_length_zero));
         } else {
-            byte[][] bytes = {DataUtils.hexStringTobyte(ap),
-                    DataUtils.short2byte(epcLength),
-                    DataUtils.hexStringTobyte(epc), new byte[]{mb},
-                    DataUtils.short2byte(sa), DataUtils.short2byte(dl)};
-            byte[] arguments = Bytes.concat(bytes);
+
+            byte[] arguments = ((HXUHFActivity) getActivity()).api.arguments(ap, epcLength, epc, mb, sa, dl);
 
             String data = readTag(arguments);
             txtResult.setText(data);
             if (!TextUtils.isEmpty(data)) {
-                Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(),getResources().getString(R.string.hxuhf_read_success) , Toast.LENGTH_SHORT).show();
+                DataUtils.showToast(getActivity(), getResources().getString(R.string.hxuhf_read_success));
             } else {
-                Toast.makeText(getActivity(), getResources().getString(R.string.hxuhf_read_fail), Toast.LENGTH_SHORT).show();
+                DataUtils.showToast(getActivity(), getResources().getString(R.string.hxuhf_read_fail));
             }
         }
     }

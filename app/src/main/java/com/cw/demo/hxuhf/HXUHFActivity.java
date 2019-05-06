@@ -344,7 +344,7 @@ public class HXUHFActivity extends BaseUHFActivity {
         @Override
         public void run() {
 
-            api.startAutoRead2A(0x22, new byte[]{0x00, 0x01}, new UHFHXAPI.AutoRead() {
+            api.startAutoRead2A(new UHFHXAPI.AutoRead() {
 
                 @Override
                 public void timeout() {

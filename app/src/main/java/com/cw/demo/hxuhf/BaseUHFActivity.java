@@ -61,11 +61,6 @@ public abstract class BaseUHFActivity extends AppCompatActivity {
         pool = Executors.newSingleThreadExecutor();
         mediaPlayer = MediaPlayer.create(this, R.raw.ok);
         super.onResume();
-//        if (!SerialPortManager.getInstance().openSerialPort(CoreWise.type.uhf)) {
-//            Toast.makeText(this, R.string.general_open_serial_fail, Toast.LENGTH_SHORT).show();
-//        } else {
-//            Toast.makeText(this, R.string.general_open_serial_success, Toast.LENGTH_SHORT).show();
-//        }
 
         mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
             @Override

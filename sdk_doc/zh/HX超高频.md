@@ -228,5 +228,99 @@ graph TD;
 
 ```
 
+### 2.4 接口调用案例
+
+请按步骤实现方法。
+
+```
+    protected ExecutorService pool;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.hxuhf_activity);
+        
+        api = new UHFHXAPI();//步骤:1
+        
+        //超高频可控开关，可按需求默认打开
+        view.onClick( .. api.open();//步骤:3)
+        
+        //点击盘点操作,可按需求换成其他操作
+        view.onClick( .. pool.execute(task);//步骤:4)
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        pool = Executors.newSingleThreadExecutor();//步骤:2
+        api.openHXUHFSerialPort();
+    }
+
+    @Override
+    protected void onPause() {
+        api.close();//步骤:5
+        api.closeHXUHFSerialPort();//步骤:6
+        pool.shutdown();
+        pool = null;
+        super.onPause();
+    }
+    
+    //循环盘点操作
+     private Runnable task = new Runnable() {
+    
+            @Override
+            public void run() {
+    
+                api.startAutoRead2A(new UHFHXAPI.AutoRead() {
+    
+                    @Override
+                    public void timeout() {
+                        Log.i("zzdstartAutoRead", "timeout");
+                    }
+    
+    
+                    @Override
+                    public void start() {
+                        //load = soundPool.load(getApplicationContext(), R.raw.ok, 1);
+                        Log.i("zzdstartAutoRead", "start");
+                        startTime = System.currentTimeMillis();
+                    }
+    
+    
+                    @Override
+                    public void processing(byte[] data) {
+                        String epc = DataUtils.toHexString(data).substring(4);
+                        long l = System.currentTimeMillis() - startTime;
+                        readTime.put(epc, l);
+                        hMsg.obtainMessage(MSG_SHOW_EPC_INFO, epc).sendToTarget();
+                        Log.i("zzdstartAutoRead", "data=" + epc + "    time=" + l);
+                    }
+    
+                    @Override
+                    public void end() {
+                        Log.i("zzdstartAutoRead", "end");
+                        Log.i("zzdstartAutoRead", "isStop=" + isStop);
+                        Log.e("zzdstartAutoRead", "===================================================================================");
+                        if (!isStop) {
+                            pool.execute(task);
+                        } else {
+                            hMsg.sendEmptyMessage(INVENTORY_OVER);
+                        }
+                    }
+    
+                });
+            }
+        };
+
+```
+
 ## 3、开发问题汇总
 
+1、问：demo标签读取为什么读不了？
+
+答：需要先开启超高频模块，搜索到标签，**再选择标签**，标签读取显示出标签id说明获取成功。
+选择需要读取区域、访问密码（默认 0000 0000），偏移地址，**数据长度**,点击读取。***标签写入同理***
+
+2、问：demo写入标签为什么一直显示输入长度不对？
+
+答：写入长度需要先选择数据长度，例如：长度为2，就需要输入 0001 0011，**1长度 = 4个16位数字**，当前demo只支持16位输入

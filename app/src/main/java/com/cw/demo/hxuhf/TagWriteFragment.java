@@ -11,10 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cw.demo.R;
-import com.cw.demo.utils.Bytes;
 import com.cw.hxuhfsdk.UHFHXAPI;
 import com.cw.serialportsdk.utils.DataUtils;
 
@@ -84,24 +82,29 @@ public class TagWriteFragment extends Fragment {
         short sa = Short.parseShort(unmpOffset.getSelectedItem().toString());
         short dl = Short.parseShort(unmpLength.getSelectedItem().toString());
         String writeData = editInput.getText().toString();
+
+//        int judgeNumberOrString = DataUtils.judgeNumberOrString(writeData);
+//        if (judgeNumberOrString == 0) {
+//
+//        } else if (judgeNumberOrString == 1) {
+//
+//        } else if (judgeNumberOrString == 2) {
+//
+//        } else {
+//
+//        }
+
         if (!TextUtils.isEmpty(writeData) && writeData.length() / 4 == dl) {
-            byte[] arguments = Bytes.concat(new byte[][]{DataUtils.hexStringTobyte(ap),
-                    DataUtils.short2byte(epcLength),
-                    DataUtils.hexStringTobyte(epc), new byte[]{mb},
-                    DataUtils.short2byte(sa), DataUtils.short2byte(dl),
-                    DataUtils.hexStringTobyte(writeData)});
+
+            byte[] arguments = ((HXUHFActivity) getActivity()).api.writeArguments(ap, epcLength, epc, mb, sa, dl, writeData);
             String data = writeTag(arguments);
             if (!TextUtils.isEmpty(writeData) && data.equals("00")) {
-
-                Toast.makeText(getActivity(),getResources().getString(R.string.general_write_success) , Toast.LENGTH_SHORT).show();
+                DataUtils.showToast(getActivity(), getResources().getString(R.string.general_write_success));
             } else {
-
-                Toast.makeText(getActivity(),getResources().getString(R.string.general_write_fail) , Toast.LENGTH_SHORT).show();
-
+                DataUtils.showToast(getActivity(), getResources().getString(R.string.general_write_fail));
             }
         } else {
-
-            Toast.makeText(getActivity(),getResources().getString(R.string.hxuhf_length_not_right) , Toast.LENGTH_SHORT).show();
+            DataUtils.showToast(getActivity(), getResources().getString(R.string.hxuhf_length_not_right));
         }
     }
 
