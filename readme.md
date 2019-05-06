@@ -1,11 +1,12 @@
 
 
-[中文说明](#user-content-中文说明) | [English Doc](#user-content-en)
+[中文说明](#user-content-zh) | [English Doc](#user-content-en)
 
 
 ---
 
-## 中文说明
+<h3 id="user-content-zh">中文说明</h3>
+
 
 该项目源码为Demo源码! 源码中sdk_doc为二次开发中英文文档
 
