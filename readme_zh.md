@@ -1,9 +1,10 @@
 
 
-[中文说明](#user-content-中文说明) | [EnglishDoc](#user-content-EnglishDoc)
+[中文说明](#user-content-中文说明) | [English Doc](#user-content-EnglishDoc)
 
 
 ---
+
 ## 中文说明
 
 该项目源码为Demo源码! 源码中sdk_doc为二次开发中英文文档
@@ -33,8 +34,8 @@
 
 ----
 
-## EnglishDoc
 
+## EnglishDoc
 
 This project source code is Demo source code! Source code sdk_doc for secondary development of Chinese and English documents!
 
