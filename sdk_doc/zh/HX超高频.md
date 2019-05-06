@@ -216,7 +216,7 @@
 ```graph
 
 graph TD;
-    A[UHFHXAPI api = new UHFHXAPI()]-->B[api.openHXUHFSerialPort()];
+    A[UHFHXAPI api = new UHFHXAPI]-->B[api.openHXUHFSerialPort];
     B-->C[api.open];
     C-->D[api.startAutoRead2C];
     C-->E[......];
