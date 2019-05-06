@@ -279,8 +279,8 @@ graph TD;
 
 graph TD;
     start[Start]-->A[等待指纹录入]
-    A-->B{搜索：msyUsbKey.SySearch == PS_OK}
-    B--Yes-->C[搜索成功，返回指纹id]
+    A-->B{搜索:msyUsbKey.SySearch == PS_OK}
+    B--Yes-->C[搜索成功,返回指纹id]
     B--No-->D[搜索指纹失败]
     C-->End
 ```
