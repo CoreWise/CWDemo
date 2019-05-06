@@ -1,6 +1,6 @@
 
 
-[中文说明](#user-content-中文说明) | [English Doc](#user-content-EnglishDoc)
+[中文说明](#user-content-中文说明) | [EnglishDoc](#user-content-EnglishDoc)
 
 
 ---
