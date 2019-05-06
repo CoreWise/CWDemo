@@ -1,10 +1,12 @@
 
 [中文说明](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/readme_zh.md)  | [English Doc](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/readme_en.md)
 
-<a href="#zh">中文说明</a> | <a href="#en">English Doc</a>
+
+
+[中文说明](#user-content-中文说明) | [English Doc](#user-content-English Doc)
 
 ---
-## <a name="zh">中文说明</a>
+## 中文说明
 
 该项目源码为Demo源码! 源码中sdk_doc为二次开发中英文文档
 
@@ -32,7 +34,7 @@
 
 ----
 
-## <a name="en">English Doc</a>
+## English Doc
 
 
 This project source code is Demo source code! Source code sdk_doc for secondary development of Chinese and English documents!
