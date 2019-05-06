@@ -248,7 +248,8 @@ OnUSBFingerListener回调接口说明:
 ```graph
 
 graph TD;
-    start[Start]-->A{USBFingerManager.getInstance.openUSB}
+    start[Start]-->AA[USBFingerManager.getInstance.setDelayMs]
+    AA-->A{USBFingerManager.getInstance.openUSB}
     A--Success-->B[ID_Fpr mLiveScan = new ID_Fpr];
     A--Failure-->C[Error Check Machine];
     B-->E[mLiveScan.LIVESCAN_Init]
