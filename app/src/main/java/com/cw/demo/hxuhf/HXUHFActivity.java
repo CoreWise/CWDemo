@@ -392,6 +392,7 @@ public class HXUHFActivity extends BaseUHFActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        api.openHXUHFSerialPort();
         isOnPause = false;
     }
 
@@ -410,6 +411,7 @@ public class HXUHFActivity extends BaseUHFActivity {
         if (buttonConnect.isChecked()) {
             buttonConnect.setChecked(false);
         }
+        api.closeHXUHFSerialPort();
         super.onPause();
     }
 
