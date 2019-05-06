@@ -251,7 +251,7 @@ graph TD;
     start[Start]-->A{USBFingerManager.getInstance.openUSB}
     A--Success-->B[ID_Fpr mLiveScan = new ID_Fpr];
     A--Failure-->C[Error];
-    B-->E[mLiveScan.LIVESCAN_Init()]
+    B-->E[mLiveScan.LIVESCAN_Init]
 
 ```
 
