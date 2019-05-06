@@ -1,10 +1,12 @@
-### 1. 开发包说明
+# BYD大指纹
+
+### 1. BYD大指纹开发包说明
 
    1.1 支持BYD大指纹模块;
 
    1.2 BYD大指纹功能占用了机器唯一的USB口
 
-   1.3 BYD大指纹开发包兼容机器请查看: [身份证开发包兼容机器说明](https://coding.net/u/CoreWise/p/SDK/git)
+   1.3 BYD大指纹开发包兼容机器请查看: [BYD大指纹开发包兼容机器说明](https://coding.net/u/CoreWise/p/SDK/git)
 
    1.4 [BYD大指纹开发包下载地址](https://coding.net/u/CoreWise/p/SDK/git)
 
