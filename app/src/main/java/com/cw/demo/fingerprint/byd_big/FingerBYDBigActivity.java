@@ -247,6 +247,7 @@ public class FingerBYDBigActivity extends Activity implements OnClickListener {
         int iRet = ID_Fpr.LIVESCAN_SUCCESS;
 
         SendMesg("Place Your Finger");
+
         new Thread() {
             int iRet = 0;
             byte[] bScore = new byte[1];

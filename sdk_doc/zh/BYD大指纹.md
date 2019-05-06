@@ -248,10 +248,10 @@ OnUSBFingerListener回调接口说明:
 ```graph
 
 graph TD;
-    A[USBFingerManager.getInstance.openUSB]-->B{onOpenUSBFingerSuccess};
-    B--Yes-->C[api.readSFZ];
-    B--No-->D[api.setOnReadSFZListener];
-    C-->E[api.closeIDCardSerialPort];
+    start[Start]-->A{USBFingerManager.getInstance.openUSB}
+    A--Success-->B[ID_Fpr mLiveScan = new ID_Fpr];
+    A--Failure-->C[Error];
+    B-->E[mLiveScan.LIVESCAN_Init()]
 
 ```
 
