@@ -243,11 +243,53 @@ OnUSBFingerListener回调接口说明:
 
 #### 2.4 接口调用流程
 
-采集指纹图像
+- 打开并初始化指纹模块
 
-1:1比对
+```graph
 
-1:N比对
+graph TD;
+    A[USBFingerManager.getInstance.openUSB]-->B{onOpenUSBFingerSuccess};
+    B--Yes-->C[api.readSFZ];
+    B--No-->D[api.setOnReadSFZListener];
+    C-->E[api.closeIDCardSerialPort];
+
+```
+
+- 采集指纹图像
+
+```graph
+
+graph TD;
+    A[AsyncParse]-->B[api.openIDCardSerialPort];
+    B-->C[api.readSFZ];
+    B-->D[api.setOnReadSFZListener];
+    C-->E[api.closeIDCardSerialPort];
+
+```
+
+- 1:1比对
+
+```graph
+
+graph TD;
+    A[AsyncParseSFZ api=new AsyncParseSFZ]-->B[api.openIDCardSerialPort];
+    B-->C[api.readSFZ];
+    B-->D[api.setOnReadSFZListener];
+    C-->E[api.closeIDCardSerialPort];
+
+```
+
+- 1:N比对
+
+```graph
+
+graph TD;
+    A[AsyncParseSFZ api=new AsyncParseSFZ]-->B[api.openIDCardSerialPort];
+    B-->C[api.readSFZ];
+    B-->D[api.setOnReadSFZListener];
+    C-->E[api.closeIDCardSerialPort];
+
+```
 
 #### 2.5 接口调用案例
 
