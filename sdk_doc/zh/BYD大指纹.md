@@ -298,8 +298,8 @@ graph TD;
     F--No-->S
     H-->I{mLiveScan.LIVESCAN_FeatureMatch}
     I--Yes-->J[Success]
-    I--No-->J[Failure]
-    I-->End 
+    I--No-->K[Failure]
+    K-->End 
     J-->End
 ```
 
