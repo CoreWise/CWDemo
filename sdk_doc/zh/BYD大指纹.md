@@ -273,7 +273,7 @@ graph TD;
 ```graph
 
 graph TD;
-    Start-->A[mLiveScan.LIVESCAN_GetFPBmpData]
+    S[Start]-->A[mLiveScan.LIVESCAN_GetFPBmpData]
     A-->B[mLiveScan.LIVESCAN_GetFPRawData]
     B-->D[mLiveScan.LIVESCAN_FPRawDataToBmp]
     D-->E[mLiveScan.LIVESCAN_GetQualityScore]
