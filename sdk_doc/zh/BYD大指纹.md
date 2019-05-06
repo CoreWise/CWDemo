@@ -309,10 +309,18 @@ graph TD;
 ```graph
 
 graph TD;
-    A[AsyncParseSFZ api=new AsyncParseSFZ]-->B[api.openIDCardSerialPort];
-    B-->C[api.readSFZ];
-    B-->D[api.setOnReadSFZListener];
-    C-->E[api.closeIDCardSerialPort];
+    S[Start]-->A[mLiveScan.LIVESCAN_GetFPBmpData]
+    A-->B[mLiveScan.LIVESCAN_GetFPRawData]
+    B-->D[mLiveScan.LIVESCAN_FPRawDataToBmp]
+    D-->E[mLiveScan.LIVESCAN_GetQualityScore]
+    E-->F{bScore >= THRESHOLD}
+    F--Yes-->H[mLiveScan.LIVESCAN_FeatureExtract]
+    F--No-->S
+    H-->I{mLiveScan.LIVESCAN_FeatureSearch}
+    I--Yes-->J[Success]
+    I--No-->K[Failure]
+    K-->End 
+    J-->End
 
 ```
 
