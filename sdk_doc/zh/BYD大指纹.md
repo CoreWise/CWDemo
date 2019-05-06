@@ -275,9 +275,9 @@ graph TD;
 graph TD;
     Start-->A[mLiveScan.LIVESCAN_GetFPBmpData]
     A-->B[mLiveScan.LIVESCAN_GetFPRawData]
-    C-->D[mLiveScan.LIVESCAN_FPRawDataToBmp]
+    B-->D[mLiveScan.LIVESCAN_FPRawDataToBmp]
     D-->E[mLiveScan.LIVESCAN_GetQualityScore]
-    E-->F{bScore >= ID_Fpr.LIVESCAN_IMAGE_SCORE_THRESHOLD}
+    E-->F{bScore >= THRESHOLD}
     F--Yes-->H[mLiveScan.LIVESCAN_FeatureExtract]
     F--No-->S
     H-->End
