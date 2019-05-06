@@ -264,11 +264,11 @@ graph TD;
 
 graph TD;
     start[Start]-->A[等待指纹录入]
-    A-->B[录入：msyUsbKey.SyEnroll]
-    B-->C{第一次录入?}
+    A-->B[录入:msyUsbKey.SyEnroll]
+    B-->C{第一次录入}
     C--Yes-->A
     C--No-->D{msyUsbKey.SyEnroll == PS_OK}
-    D--Yes-->E[上传特征：msyUsbKey.SyUpChar]
+    D--Yes-->E[上传特征:msyUsbKey.SyUpChar]
     D--No-->F[指纹采集失败]
     E-->End
     
