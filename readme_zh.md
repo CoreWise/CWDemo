@@ -1,9 +1,7 @@
 
-[中文说明](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/readme_zh.md)  | [English Doc](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/readme_en.md)
-
-
 
 [中文说明](#user-content-中文说明) | [English Doc](#user-content-EnglishDoc)
+
 
 ---
 ## 中文说明
@@ -31,6 +29,7 @@
 
 
 
+----
 
 ----
 
