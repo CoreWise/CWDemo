@@ -1,6 +1,6 @@
 
 
-[中文说明](#user-content-中文说明) | [English Doc](#user-content-EnglishDoc)
+[中文说明](#user-content-中文说明) | [English Doc](#user-content-englishdoc)
 
 
 ---
@@ -35,7 +35,7 @@
 ----
 
 
-## EnglishDoc
+## englishdoc
 
 This project source code is Demo source code! Source code sdk_doc for secondary development of Chinese and English documents!
 
