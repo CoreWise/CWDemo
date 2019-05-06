@@ -1,19 +1,11 @@
 
-[中文说明](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/readme_zh.md)
-
-
-[English Doc](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/readme_en.md)
-
+[中文说明](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/readme_zh.md) | [English Doc](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/readme_en.md)
 
 ---
 
-
 ## English Doc
 
-
-
 This project source code is Demo source code! Source code sdk_doc for secondary development of Chinese and English documents!
-
 
 Features include :
 
@@ -29,9 +21,7 @@ Features include :
 - M1 NFC
 - 15693 NFC
 
-
 #### [With English SDK Download Page Address](https://git.coding.net/CoreWise/SDK.git)
-
 
 Download the source code description and click the download button in the upper right corner of the page, as shown in the upper right corner of the image below:
 
