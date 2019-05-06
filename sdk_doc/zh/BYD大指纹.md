@@ -261,22 +261,26 @@ graph TD;
 ```graph
 
 graph TD;
-    A[AsyncParse]-->B[api.openIDCardSerialPort];
-    B-->C[api.readSFZ];
-    B-->D[api.setOnReadSFZListener];
-    C-->E[api.closeIDCardSerialPort];
+    start[Start]-->A[mLiveScan.LIVESCAN_GetFPBmpData]
 
 ```
 
-- 1:1比对
+
+
+
+- 采集指纹
 
 ```graph
 
 graph TD;
-    A[AsyncParseSFZ api=new AsyncParseSFZ]-->B[api.openIDCardSerialPort];
-    B-->C[api.readSFZ];
-    B-->D[api.setOnReadSFZListener];
-    C-->E[api.closeIDCardSerialPort];
+    start[Start]-->A[mLiveScan.LIVESCAN_GetFPBmpData]
+    A-->B[mLiveScan.LIVESCAN_GetFPRawData]
+    C-->D[mLiveScan.LIVESCAN_FPRawDataToBmp]
+    D-->E[mLiveScan.LIVESCAN_GetQualityScore]
+    E-->F{bScore >= ID_Fpr.LIVESCAN_IMAGE_SCORE_THRESHOLD}
+    F--Yes-->H[mLiveScan.LIVESCAN_FeatureExtract]
+    F--No-->start
+    H-->end[End]
 
 ```
 
