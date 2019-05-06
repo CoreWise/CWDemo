@@ -273,14 +273,14 @@ graph TD;
 ```graph
 
 graph TD;
-    start[Start]-->A[mLiveScan.LIVESCAN_GetFPBmpData]
+    S[Start]-->A[mLiveScan.LIVESCAN_GetFPBmpData]
     A-->B[mLiveScan.LIVESCAN_GetFPRawData]
     C-->D[mLiveScan.LIVESCAN_FPRawDataToBmp]
     D-->E[mLiveScan.LIVESCAN_GetQualityScore]
     E-->F{bScore >= ID_Fpr.LIVESCAN_IMAGE_SCORE_THRESHOLD}
     F--Yes-->H[mLiveScan.LIVESCAN_FeatureExtract]
-    F--No-->start
-    H-->end[End]
+    F--No-->S
+    H-->E[End]
 
 ```
 
