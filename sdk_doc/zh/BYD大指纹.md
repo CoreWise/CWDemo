@@ -284,6 +284,26 @@ graph TD;
 
 ```
 
+- 1:1比对
+
+```graph
+
+graph TD;
+    S[Start]-->A[mLiveScan.LIVESCAN_GetFPBmpData]
+    A-->B[mLiveScan.LIVESCAN_GetFPRawData]
+    B-->D[mLiveScan.LIVESCAN_FPRawDataToBmp]
+    D-->E[mLiveScan.LIVESCAN_GetQualityScore]
+    E-->F{bScore >= THRESHOLD}
+    F--Yes-->H[mLiveScan.LIVESCAN_FeatureExtract]
+    F--No-->S
+    H-->I{mLiveScan.LIVESCAN_FeatureMatch}
+    I--Yes-->J[Success]
+    I--No-->J[Failure]
+    I-->End 
+    J-->End
+```
+
+
 - 1:N比对
 
 ```graph
