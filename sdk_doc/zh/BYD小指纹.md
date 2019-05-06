@@ -246,6 +246,7 @@ OnUSBFingerListener回调接口说明:
 ### 2.4 接口调用流程
 
 - #### 打开并初始化指纹模块
+
 ```graph
 
 graph TD;
