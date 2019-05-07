@@ -41,14 +41,13 @@ import com.cw.demo.barcode.BarCodeActivity;
 import com.cw.demo.beidou.BeiDouActivity;
 import com.cw.demo.fingerprint.byd_big.FingerBYDBigActivity;
 import com.cw.demo.fingerprint.byd_small.FingerBYDSmallActivity;
-import com.cw.demo.fingerprint.shengyuan.FingerprintActivity;
+import com.cw.demo.fingerprint.sy.FingerprintActivity;
 import com.cw.demo.hxuhf.HXUHFActivity;
 import com.cw.demo.idcard.IDCardActivity;
 import com.cw.demo.idcard_nfclocal.IDCard_NFC_Local_DemoActivity;
 import com.cw.demo.m1.NFCM1Activity;
 import com.cw.demo.ui.FriendDialog;
 import com.cw.demo.utils.BaseUtils;
-import com.cw.r2000uhfsdk.R2000UHFAPI;
 
 import java.util.ArrayList;
 import java.util.Collections;

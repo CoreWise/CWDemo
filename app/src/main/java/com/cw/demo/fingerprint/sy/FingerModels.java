@@ -1,4 +1,4 @@
-package com.cw.demo.fingerprint.shengyuan;
+package com.cw.demo.fingerprint.sy;
 
 import org.litepal.crud.DataSupport;
 

@@ -1,4 +1,4 @@
-package com.cw.demo.fingerprint.shengyuan;
+package com.cw.demo.fingerprint.sy;
 
 import android.os.Bundle;
 import android.os.HandlerThread;
@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.WindowManager;
 
-
-import com.cw.demo.MyApplication;
 
 import android_serialport_api.SerialPortManager;
 
