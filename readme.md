@@ -8,11 +8,13 @@
 <h3 id="user-content-zh">中文说明</h3>
 
 
-该项目源码为Demo源码! 源码中sdk_doc为二次开发中英文文档
+该项目源码为Demo源码! 中英文文档源码在源代码根目录的sdk_doc目录下,开发包在源代码CoreWiseDemo/app/libs/目录下
+
 
 功能包括:
 - 条码
-- 身份证
+- 身份证(RFID)
+- 本地身份证(NFC)
 - BYD大指纹
 - BYD小指纹
 - SY指纹
@@ -25,10 +27,29 @@
 
 #### [附中文SDK下载页面地址](https://coding.net/u/CoreWise/p/SDK/git/blob/master/ReadMe.md)
 
-下载该源码说明,点击页面右上角下载按钮，如下图右上角所示:
 
-![下载方式](https://i.loli.net/2019/05/05/5cce430445736.png)
 
+
+#### SDK说明
+
+
+| 功能            | sdk目前支持的机型                                          | sdk名字                                                      |                           开发文档                           |
+| :-------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------: |
+| 条码            | u1,u3,u8,CFON640,A370                                      | [barcode_sdk_*.aar](<https://coding.net/u/CoreWise/p/SDK/git/raw/master/barcode_sdk_20190429.aar>) | [在线查看](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/zh/条码.md) |
+| 身份证          | u3,u8,CFON640,A370,新A370                                  | [idcard_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/idcard_sdk_20190429.aar) | [直达](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/zh/身份证.md) |
+| SY指纹          | CFON640,A370                                               | [finger_sy_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/finger_sy_sdk_20190429.aar) | [直达](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/zh/SY指纹.md) |
+| BYD大指纹       | u3,u8                                                      | [finger_byd_big_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/finger_byd_big_sdk_20190429.aar) | [直达](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/zh/BYD大指纹.md) |
+| BYD小指纹       | u3,u8                                                      | [finger_byd_small_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/finger_byd_small_sdk_20190429.aar) | [直达](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/zh/BYD小指纹.md) |
+| FBI指纹         | u3,u8                                                      | 暂无                                                         | [直达](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/zh/FBI指纹.md) |
+| HX超高频        | u3,CFON640,A370                                            | [hxuhf_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/hxuhf_sdk_20190429.aar) | [直达](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/zh/HX超高频.md) |
+| R2000超高频     | u8                                                         | [r2000uhf_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/r2000uhf_sdk_20190429.aar) | [直达](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/zh/R2000超高频.md) |
+| 串口SDK         | 需要串口的功能需要添加该sdk,如HX超高频,身份证,北斗,M1 RFID | [serialport_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/serialport_sdk_20190429.aar) |                                                              |
+| 北斗SDK         | u8                                                         | [beidou_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/beidou_sdk_20190429.aar) | [直达](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/zh/北斗.md) |
+| M1 RFID SDK     | u3,CFON640                                                 | [m1rfid_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/m1rfid_sdk_20190429.aar) | [直达](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/zh/M1RFID.md) |
+| M1 NFC          | 该功能调用Android标准M1接口，无SDK，有调用标准接口Demo     | 无                                                           |                                                              |
+| 15693 NFC       | 该功能调用Android标准15693接口，无SDK，有调用标准接口Demo  | 无                                                           |                                                              |
+| NFC读本地身份证 | A370                                                       | [nfc-local-idcard-sdk-*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/nfc-local-idcard-sdk-20190401.aar) | [直达](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/zh/条码.md) |
+| NFC读网络身份证 | 带NFC机器或者CR30S设备                                     | [net-idcard-sdk-*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/net-idcard-sdk-20190401.aar) | [直达](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/zh/条码.md) |
 
 
 ----
@@ -38,12 +59,12 @@
 <h3 id="user-content-en">English Doc</h3>
 
 
-This project source code is Demo source code! Source code sdk_doc for secondary development of Chinese and English documents!
-
+The source code of the project is Demo source! The Chinese and English document source code is in the sdk_doc directory of the source code root directory, and the development package is in the source code CoreWiseDemo/app/libs/ directory.
 Features include :
 
 - BarCode
-- IDCard
+- IDCard(RFID)
+- Local IDCard(NFC)
 - BYD Big FingerPrint
 - BYD Small FingerPrint
 - SY FingerPrint
@@ -54,9 +75,26 @@ Features include :
 - M1 NFC
 - 15693 NFC
 
-#### [With English SDK Download Page Address](https://coding.net/u/CoreWise/p/SDK/git/blob/master/ReadMe.md)
-
-Download the source code description and click the download button in the upper right corner of the page, as shown in the upper right corner of the image below:
 
 
-![下载方式](https://i.loli.net/2019/05/05/5cce430445736.png)
+#### SDK Description
+
+
+
+| Functions             | Models currently supported by sdk                            | SDK Name                                                     |                           SDK Doc                            |
+| :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------: |
+| BarCode               | u1,u3,u8,CFON640,A370                                        | [barcode_sdk_*.aar](<https://coding.net/u/CoreWise/p/SDK/git/raw/master/barcode_sdk_20190429.aar>) | [Direct](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/en/BarCode.md) |
+| IDCard                | u3,u8,CFON640,A370,New A370                                  | [idcard_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/idcard_sdk_20190429.aar) | [Direct](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/en/IDCard.md) |
+| SY FingerPrint        | CFON640,A370                                                 | [finger_sy_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/finger_sy_sdk_20190429.aar) | [Direct](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/en/SY FingerPrint.md) |
+| BYD Big FingerPrint   | u3,u8                                                        | [finger_byd_big_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/finger_byd_big_sdk_20190429.aar) | [Direct](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/en/BYD Big FingerPrint.md) |
+| BYD Small FingerPrint | u3,u8                                                        | [finger_byd_small_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/finger_byd_small_sdk_20190429.aar) | [Direct](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/en/BYD Small FingerPrint.md) |
+| FBI FingerPrint       | u3,u8                                                        | No                                                           |                                                              |
+| HX UHF                | u3,CFON640,A370                                              | [hxuhf_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/hxuhf_sdk_20190429.aar) | [Direct](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/en/HXUHF.md) |
+| R2000 UHF             | u8                                                           | [r2000uhf_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/r2000uhf_sdk_20190429.aar) | [Direct](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/en/R2000UHF.md) |
+| SerialPort SDK        | Need to add the sdk function, such as HX UHF, ID card, Beidou, M1 RFID | [serialport_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/serialport_sdk_20190429.aar) |                                                              |
+| BeiDou SDK            | u8                                                           | [beidou_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/beidou_sdk_20190429.aar) | [Direct](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/en/BeiDou.md) |
+| M1 RFID SDK           | u3,CFON640                                                   | [m1rfid_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/m1rfid_sdk_20190429.aar) | [Direct](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/en/M1RFID.md) |
+| M1 NFC                | This function calls the Android standard M1 interface, no SDK, there is a call standard interface Demo | No                                                           |                                                              |
+| 15693 NFC             | This function calls the Android standard 15693 interface, no SDK, there is a call standard interface Demo | No                                                           |                                                              |
+| NFC Read Local IDCard | A370                                                         | [nfc-local-idcard-sdk-*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/nfc-local-idcard-sdk-20190401.aar) | [Direct](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/en/BarCode.md) |
+| NFC Read Net IDCard   | With NFC machine or CR30S device                             | [net-idcard-sdk-*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/net-idcard-sdk-20190401.aar) | [Direct](https://coding.net/u/CoreWise/p/CoreWiseDemo/git/blob/master/sdk_doc/en/BarCode.md) |
