@@ -86,6 +86,7 @@ public class FriendDialog extends Dialog implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_yes:
+                this.dismiss();
                 OnClickListener.OnClickPositive();
                 break;
 

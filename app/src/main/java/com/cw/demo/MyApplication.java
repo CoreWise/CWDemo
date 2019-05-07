@@ -2,9 +2,11 @@ package com.cw.demo;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
 import android.os.HandlerThread;
 import android.util.Log;
 
@@ -64,7 +66,7 @@ public class MyApplication extends LitePalApplication {
      * @param key
      * @param object
      */
-    public  void setParam(Context context, String key, Object object) {
+    public void setParam(Context context, String key, Object object) {
         String type = object.getClass().getSimpleName();
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
@@ -110,4 +112,24 @@ public class MyApplication extends LitePalApplication {
         return null;
     }
 
+
+    /**
+     * 是否横屏
+     * @return
+     */
+    public boolean isLandscape(Context context) {
+        //获取设置的配置信息
+        Configuration mConfiguration = context.getResources().getConfiguration();
+        int ori = mConfiguration.orientation;
+        //获取屏幕方向
+        if (ori == Configuration.ORIENTATION_LANDSCAPE) {
+            //横屏
+            return true;
+        } else if (ori == Configuration.ORIENTATION_PORTRAIT) {
+            //竖屏
+            return false;
+        }else {
+            return false;
+        }
+    }
 }

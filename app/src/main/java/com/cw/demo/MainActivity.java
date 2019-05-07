@@ -170,14 +170,23 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         Editor editor = mySharedPreferences.edit();
 
 
+        @SuppressLint("ResourceType") final FriendDialog mFriendDialog;
 
 
-        @SuppressLint("ResourceType") final FriendDialog mFriendDialog =
-                new FriendDialog(this,
-                        BaseUtils.dip2px(this, 120f),
-                        BaseUtils.dip2px(this, 200f),
-                        R.layout.dialog_friend,
-                        R.style.DialogTheme);
+        if (MyApplication.getApp().isLandscape(this)) {
+            mFriendDialog = new FriendDialog(this,
+                    BaseUtils.dip2px(this, 250f),
+                    BaseUtils.dip2px(this, 30f),
+                    R.layout.dialog_friend,
+                    R.style.DialogTheme);
+        } else {
+            mFriendDialog = new FriendDialog(this,
+                    BaseUtils.dip2px(this, 120f),
+                    BaseUtils.dip2px(this, 200f),
+                    R.layout.dialog_friend,
+                    R.style.DialogTheme);
+        }
+
 
         Intent intent = null;
 
