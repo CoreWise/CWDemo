@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cw.demo.R;
 import com.cw.hxuhfsdk.UHFHXAPI;
@@ -94,6 +95,7 @@ public class TagReadFragment extends Fragment {
 
         if (Integer.parseInt(unmpLength.getSelectedItem().toString()) == 0) {
             DataUtils.showToast(getActivity(), getResources().getString(R.string.hxuhf_length_zero));
+            //Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
         } else {
 
             byte[] arguments = ((HXUHFActivity) getActivity()).api.arguments(ap, epcLength, epc, mb, sa, dl);

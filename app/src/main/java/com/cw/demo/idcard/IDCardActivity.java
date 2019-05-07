@@ -522,7 +522,6 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         //SwitchUtil.getInstance().openUSB();
 
 
-
     }
 
     @Override
@@ -568,8 +567,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
     }
 
 
-
-  @Override
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -589,4 +587,5 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
             builder.show();
         }
         return super.onKeyDown(keyCode, event);
-    }}
+    }
+}

@@ -1,6 +1,7 @@
 package com.cw.demo;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -43,7 +44,10 @@ import com.cw.demo.fingerprint.byd_small.FingerBYDSmallActivity;
 import com.cw.demo.fingerprint.shengyuan.FingerprintActivity;
 import com.cw.demo.hxuhf.HXUHFActivity;
 import com.cw.demo.idcard.IDCardActivity;
+import com.cw.demo.idcard_nfclocal.IDCard_NFC_Local_DemoActivity;
 import com.cw.demo.m1.NFCM1Activity;
+import com.cw.demo.ui.FriendDialog;
+import com.cw.demo.utils.BaseUtils;
 import com.cw.r2000uhfsdk.R2000UHFAPI;
 
 import java.util.ArrayList;
@@ -65,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     private Button set;
     private Dialog dialog;
 
+    private String[] compatible;
     private String[] keys;
     private int[] icons;
 
@@ -124,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         icons = new int[]{
                 R.drawable.icon_barcode,
                 R.drawable.icon_idcard,
+                R.drawable.icon_idcard,
                 R.drawable.icon_hx,
                 R.drawable.icon_hx,
                 R.drawable.icon_fingerprint,
@@ -163,62 +169,112 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
         Editor editor = mySharedPreferences.edit();
 
+
+
+
+        @SuppressLint("ResourceType") final FriendDialog mFriendDialog =
+                new FriendDialog(this,
+                        BaseUtils.dip2px(this, 120f),
+                        BaseUtils.dip2px(this, 200f),
+                        R.layout.dialog_friend,
+                        R.style.DialogTheme);
+
+        Intent intent = null;
+
+
+        compatible = getResources().getStringArray(R.array.general_compatible);
+
+
         switch (position) {
             case 0:
                 //条码
-                startActivity(new Intent(this, BarCodeActivity.class));
+
+                intent = new Intent(this, BarCodeActivity.class);
+
                 break;
             case 1:
                 //身份证
-                startActivity(new Intent(this, IDCardActivity.class));
+                intent = new Intent(this, IDCardActivity.class);
+
 
                 break;
             case 2:
-                //HX超高频
-                startActivity(new Intent(this, HXUHFActivity.class));
-                break;
+                //NFC读本地身份证
+                intent = new Intent(this, IDCard_NFC_Local_DemoActivity.class);
 
+
+                break;
             case 3:
-                //R2000超高频
-                startActivity(new Intent(this, UHF2000Activity.class));
+                //HX超高频
+                intent = new Intent(this, HXUHFActivity.class);
+
                 break;
 
             case 4:
-
-                //SY指纹
-                startActivity(new Intent(this, FingerprintActivity.class));
+                //R2000超高频
+                intent = new Intent(this, UHF2000Activity.class);
 
                 break;
+
             case 5:
 
-                //比亚迪大指纹
-                startActivity(new Intent(this, FingerBYDBigActivity.class));
+                //SY指纹
+                intent = new Intent(this, FingerprintActivity.class);
+
 
                 break;
-
             case 6:
-                //比亚迪小指纹
-                startActivity(new Intent(this, FingerBYDSmallActivity.class));
+
+                //比亚迪大指纹
+                intent = new Intent(this, FingerBYDBigActivity.class);
+
+
                 break;
+
             case 7:
-                //startActivity(new Intent(this, NFCM1Activity.class));//NFC
+                //比亚迪小指纹
+                intent = new Intent(this, FingerBYDSmallActivity.class);
+
                 break;
             case 8:
-                //M1 RFID
-                startActivity(new Intent(this, NFCM1Activity.class));
-                break;
+                intent = new Intent(this, NFCM1Activity.class);
 
+                //startActivity(new Intent(this, NFCM1Activity.class));//NFC
+                break;
             case 9:
                 //M1 RFID
-                startActivity(new Intent(this, ISOActivity.class));
+                intent = new Intent(this, NFCM1Activity.class);
+
                 break;
+
             case 10:
+                //M1 RFID
+                intent = new Intent(this, ISOActivity.class);
+
+                break;
+            case 11:
                 //北斗
-                startActivity(new Intent(this, BeiDouActivity.class));
+                intent = new Intent(this, BeiDouActivity.class);
+
                 break;
             default:
                 break;
         }
+
+        mFriendDialog.setMessage(compatible[position]);
+        final Intent finalIntent = intent;
+        mFriendDialog.setOnClickListener(new FriendDialog.onClickListener() {
+            @Override
+            public void OnClickPositive() {
+                startActivity(finalIntent);
+            }
+
+            @Override
+            public void OnClickNegative() {
+                mFriendDialog.dismiss();
+            }
+        });
+        mFriendDialog.show();
     }
 
     private void setMenuValue() {
@@ -264,7 +320,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 new int[]{R.id.menu_icon, R.id.menu_name});
         gridview.setAdapter(menuAdapter);
     }
-
 
 
     @Override
@@ -419,7 +474,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
         }
     }
-
 
 
 }

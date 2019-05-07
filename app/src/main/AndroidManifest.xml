@@ -71,6 +71,15 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".fingerprint.shengyuan.FingerprintActivity" />
 
+
+        <activity android:name=".idcard_nfclocal.IDCard_NFC_Local_DemoActivity">
+
+             <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
+
+        </activity>
+
     </application>
 
 </manifest>
