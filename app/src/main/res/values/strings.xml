@@ -11,7 +11,7 @@
         <item>本地身份证(NFC)</item>
         <item>HX超高频</item>
         <item>R2000超高频</item>
-        <item>SY大指纹</item>
+        <item>SY指纹</item>
         <item>BYD大指纹(新)</item>
         <item>BYD小指纹</item>
         <item>M1卡(RFID)</item>
@@ -26,7 +26,7 @@
         <item>本地身份证(NFC)功能兼容机器如下:\n\n- A370</item>
         <item>HX超高频功能兼容机器如下:\n\n- CFON640\n- U3</item>
         <item>R2000超高频功能兼容机器如下:\n\n- U8</item>
-        <item>SY大指纹功能兼容机器如下:\n\n- CFON640</item>
+        <item>SY指纹功能兼容机器如下:\n\n- CFON640\n- A370</item>
         <item>BYD大指纹(新)功能兼容机器如下:\n\n- U3\n- U8</item>
         <item>BYD小指纹功能兼容机器如下:\n\n- U3\n- U8</item>
         <item>M1卡(RFID)功能兼容机器如下:\n\n- CFON640\n- U3</item>

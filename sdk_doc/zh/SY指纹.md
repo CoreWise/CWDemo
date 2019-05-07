@@ -1,4 +1,13 @@
 ### 1. SY指纹开发包说明
+ 1.1 支持SY指纹模块;
+
+ 1.2 SY指纹开发包兼容机器请查看: [开发包兼容机器说明](https://coding.net/u/CoreWise/p/SDK/git)
+
+ 1.3 [SY指纹开发包下载地址](https://coding.net/u/CoreWise/p/SDK/git)
+
+ 1.4 SY指纹需要依赖串口开发包，占用/dev/ttyHSL0,波特率:460800
+
+
 芯片内设有一个72K 字节的图像缓冲区与二个512 bytes(256 字)大小的特征文件缓冲区，名字分别称为：ImageBuffer，CharBuffer1，CharBuffer2。用户可以通过指令读写任意一个缓冲区。CharBuffer1 或CharBuffer2 既可以用于存放普通特征文件也可以用于存放模板特征文件。通过UART 口上传或下载图像时为了加快速度，只用到像素字节的高四位，即将两个像素合成一个字节传送。通过USB 口则是整8 位像素。指纹库容量根据挂接的FLASH 容量不同而改变，系统会自动判别。指纹模板按照序号存放，序号定义为：0—N-1（N 指指纹库容量）。用户只能根据序号访问指纹库内容。
 
 ### 2. 二次开发说明
@@ -30,6 +39,10 @@
 
  dependencies {
      ...
+     //串口开发包
+    //SerialPort SDK
+    compile(name: 'serialport_sdk_20190429', ext: 'aar')
+
     //SY指纹开发包,需要依赖串口开发包
     //SY FingerPrint SDK
     compile(name: 'finger_sy_sdk_20190429', ext: 'aar')

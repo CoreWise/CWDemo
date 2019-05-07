@@ -36,6 +36,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import android_serialport_api.SerialPortManager;
+
 public class FingerprintActivity extends BaseActivity implements OnClickListener {
     private static final String TAG = "CoreWiseFingerprintActivity";
 
@@ -446,6 +448,9 @@ public class FingerprintActivity extends BaseActivity implements OnClickListener
         super.onResume();
         initData2();
         Log.i(TAG, "onResume");
+        if (!SerialPortManager.getInstance().isOpen()) {
+            SerialPortManager.getInstance().openSerialPort();
+        }
     }
 
     @Override
@@ -454,6 +459,8 @@ public class FingerprintActivity extends BaseActivity implements OnClickListener
         cancleProgressDialog();
         asyncFingerprint.setStop(true);
         Log.i(TAG, "onPause");
+        SerialPortManager.getInstance().closeSerialPort();
+
     }
 
 
