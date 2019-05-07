@@ -38,10 +38,15 @@ android {
             outputFileName = fileName
         }
     }
-    packagingOptions {
 
 
-    }
+      lintOptions {
+          checkReleaseBuilds false
+
+          abortOnError false
+      }
+
+
 
 }
 

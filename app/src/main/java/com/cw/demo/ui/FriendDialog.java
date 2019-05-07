@@ -50,7 +50,7 @@ public class FriendDialog extends Dialog implements View.OnClickListener {
     }
 
 
-    public FriendDialog(@NonNull Context context, int width, int height, @IdRes int layout, int style) {
+    public FriendDialog(@NonNull Context context, int width, int height,  int layout, int style) {
         super(context);
         View view = getLayoutInflater().inflate(R.layout.dialog_friend, null);
 
