@@ -196,7 +196,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         switch (position) {
             case 0:
                 //条码
-
                 intent = new Intent(this, BarCodeActivity.class);
 
                 break;

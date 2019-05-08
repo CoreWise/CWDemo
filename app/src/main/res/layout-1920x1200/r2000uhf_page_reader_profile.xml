@@ -124,7 +124,7 @@
                 android:gravity="center_horizontal"
                 android:paddingBottom="10.0sp"
                 android:paddingTop="10.0sp"
-                android:text="@string/set"
+                android:text="@string/general_setting"
                 android:textColor="#ff222222"
                 android:textSize="16.0sp"
                 android:textStyle="bold" />

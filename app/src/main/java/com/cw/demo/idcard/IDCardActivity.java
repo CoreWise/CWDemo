@@ -516,7 +516,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         super.onResume();
         Log.i(TAG, "-------" + getLocalClassName());
         /*if (!SerialPortManager.getInstance().isOpen() && !SerialPortManager.getInstance().openSerialPort(CoreWise.type.sfz)) {
-            Toast.makeText(getApplicationContext(), R.string.serialport_open_fail, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.general_open_serial_fail, Toast.LENGTH_SHORT).show();
         }*/
         asyncParseSFZ.openIDCardSerialPort();
         //SwitchUtil.getInstance().openUSB();

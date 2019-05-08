@@ -45,12 +45,10 @@
 
     <string name="general_write_success">写入成功！</string>
     <string name="general_write_fail">写入失败！</string>
+    <string name="general_ok">确定</string>
+    <string name="general_cancel">取消</string>
 
-    <!--串口字符串资源-->
-
-    <string name="serialport_open_fail">打开串口失败！</string>
-    <string name="serialport_open_success">打开串口成功！</string>
-
+    <string name="general_setting">设置</string>
 
     <!--条码字符串资源 命名要求: barcode_+功能+英文-->
     <string name="barcode_scan">单扫</string>
@@ -65,7 +63,7 @@
     <string name="barcode_scanner_open">开启</string>
     <string name="barcode_scanner_close">关闭</string>
 
-    <string name="barcode_setting">设置</string>
+
     <string name="barcode_setting_interval">扫描间隔:</string>
     <string name="barcode_setting_outmode">输出模式</string>
     <string name="barcode_setting_endchar">结束字符</string>
@@ -110,7 +108,6 @@
     <!--HX超高频字符串资源 要求:hxuhf_+功能+英文-->
     <string name="hxuhf_open">开启模块</string>
     <string name="hxuhf_search_tag">搜索标签</string>
-    <string name="hxuhf_setting">设置</string>
     <string name="hxuhf_read_count">读取次数:</string>
     <string name="hxuhf_readtime">时间：</string>
     <string name="hxuhf_singlesearch">单次扫描</string>
@@ -124,8 +121,6 @@
     <string name="hxuhf_txt_read_eare">读取区域:</string>
     <string name="hxuhf_txt_write_eare">写入区域:</string>
     <string name="hxuhf_txt_count">0000</string>
-    <string name="hxuhf_txt_ok">确定</string>
-    <string name="hxuhf_txt_cancel">取消</string>
     <string name="hxuhf_txt_pwdzero">00000000</string>
     <string name="hxuhf_hint_write_read">偏移地址是指从你要读写的区域的位置开始，这个长度是距离区域0点计数的，1个长度等于两个字节或四个十六进制数字。\n此文本只支持16位，1数据长度 = 4个16进制数字</string>
     <string name="hxuhf_power">功率：</string>
@@ -309,7 +304,6 @@
     <string name="r2000_open_caption">操作记录(点击展开)</string>
     <string name="r2000_close_caption">操作记录(点击隐藏)</string>
 
-    <string name="uhf_setting">设置</string>
     <string name="uhf_tag_test">标签测试</string>
 
     <string name="r2000_uhf_support">暂不支持，敬请期待！</string>
@@ -324,14 +318,11 @@
 
     <string name="yes">是</string>
     <string name="no">否</string>
-    <string name="ok">确定</string>
-    <string name="cancel">取消</string>
     <string name="goon">继续</string>
     <string name="switchwifi">切换</string>
     <string name="alert_diag_title">提示</string>
     <string name="are_you_sure_to_exit">确认要退出吗？</string>
 
-    <string name="tab_title1">设置</string>
     <string name="tab_title2">标签测试</string>
     <string name="tab_title3">串口监控</string>
 
@@ -523,16 +514,10 @@
     <string name="access_list_data">"数据"</string>
     <string name="access_list_times">"操作次数"</string>
 
-    <string name="save">保存</string>
-    <string name="unsave">不保存</string>
+    <!--<string name="save">保存</string>-->
+    <!--<string name="unsave">不保存</string>-->
 
-    <string name="open">打开</string>
-    <string name="close">关闭</string>
-    <string name="set">设置</string>
     <string name="get">读取</string>
-    <string name="send">发送</string>
-    <string name="start_inventory">开始存盘</string>
-    <string name="stop_inventory">结束存盘</string>
 
     <string name="measure">测量</string>
 
@@ -584,7 +569,6 @@
     <string name="nfc_15693_error_not_open">NFC功能未打开，请先开启后重试！</string>
     <string name="nfc_15693_error_no_block">写入区块不存在</string>
     <string name="nfc_15693_error_max">写入数据长度大于空间容量,最大长度为</string>
-
 
 
 </resources>

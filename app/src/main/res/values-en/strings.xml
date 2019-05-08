@@ -6,18 +6,18 @@
     <string name="general_functions_settings">功能设置</string>
 
     <string-array name="general_functions">
-        <item>条码</item>
-        <item>身份证(RFID)</item>
-        <item>本地身份证(NFC)</item>
-        <item>HX超高频</item>
-        <item>R2000超高频</item>
-        <item>SY指纹</item>
-        <item>BYD大指纹(新)</item>
-        <item>BYD小指纹</item>
-        <item>M1卡(RFID)</item>
-        <item>M1卡(NFC)</item>
+        <item>BarCode</item>
+        <item>IDCard(RFID)</item>
+        <item>Local IDCard(NFC)</item>
+        <item>HX-UHF</item>
+        <item>R2000-UHF</item>
+        <item>SY Fingerprint</item>
+        <item>BYD Big Fingerprint(New)</item>
+        <item>BYD Small Fingerprint</item>
+        <item>M1Card(RFID)</item>
+        <item>M1Card(NFC)</item>
         <item>ISO 15693</item>
-        <item>北斗</item>
+        <item>BeiDou</item>
     </string-array>
 
     <string-array name="general_compatible">
@@ -35,109 +35,105 @@
         <item>北斗功能兼容机器如下:\n\n- U8</item>
     </string-array>
 
-    <string name="general_tips">温馨提示:</string>
-    <string name="general_exit">您确认退出？</string>
-    <string name="general_yes">确定</string>
-    <string name="general_no">取消</string>
+    <string name="general_tips">Tips:</string>
+    <string name="general_exit">Are you sure to exit？</string>
+    <string name="general_yes">Yes</string>
+    <string name="general_no">No</string>
 
-    <string name="general_open_serial_fail">打开串口失败！</string>
-    <string name="general_open_serial_success">打开串口成功！</string>
+    <string name="general_open_serial_fail">Open the serial port fails!</string>
+    <string name="general_open_serial_success">Open the serial port success!</string>
 
     <string name="general_write_success">写入成功！</string>
     <string name="general_write_fail">写入失败！</string>
+    <string name="general_ok">OK</string>
+    <string name="general_cancel">Cancle</string>
 
-    <!--串口字符串资源-->
-
-    <string name="serialport_open_fail">打开串口失败！</string>
-    <string name="serialport_open_success">打开串口成功！</string>
-
+    <string name="general_setting">设置</string>
 
     <!--条码字符串资源 命名要求: barcode_+功能+英文-->
-    <string name="barcode_scan">单扫</string>
-    <string name="barcode_scanning_open">连续扫码</string>
-    <string name="barcode_scanning_close">关闭连续</string>
-    <string name="barcode_scan_clear">清空</string>
-    <string name="barcode_scan_is_auto_clear">是否自清</string>
-    <string name="barcode_scan_all">总共: %1$s</string>
-    <string name="barcode_scan_success">成功: %1$s</string>
+    <string name="barcode_scan">Scan</string>
+    <string name="barcode_scanning_open">Scanning</string>
+    <string name="barcode_scanning_close">Stop</string>
+    <string name="barcode_scan_clear">Clear</string>
+    <string name="barcode_scan_is_auto_clear">Auto Clear:</string>
+    <string name="barcode_scan_all">All: %1$s</string>
+    <string name="barcode_scan_success">Success: %1$s</string>
 
-    <string name="barcode_scanner_status">扫描仪状态</string>
-    <string name="barcode_scanner_open">开启</string>
-    <string name="barcode_scanner_close">关闭</string>
+    <string name="barcode_scanner_status">Status</string>
+    <string name="barcode_scanner_open">On</string>
+    <string name="barcode_scanner_close">Off</string>
 
-    <string name="barcode_setting">设置</string>
-    <string name="barcode_setting_interval">扫描间隔:</string>
-    <string name="barcode_setting_outmode">输出模式</string>
-    <string name="barcode_setting_endchar">结束字符</string>
-    <string name="barcode_setting_prefix">前缀</string>
-    <string name="barcode_setting_suffix">后缀</string>
-    <string name="barcode_setting_effect">声音和震动</string>
-    <string name="barcode_setting_enable">禁用</string>
-    <string name="barcode_setting_disable">取消禁用</string>
-    <string name="barcode_setting_showtoast">是否打印吐司：</string>
+    <string name="barcode_setting_interval">Scan interval:</string>
+    <string name="barcode_setting_outmode">OutPut Mode</string>
+    <string name="barcode_setting_endchar">EndChar</string>
+    <string name="barcode_setting_prefix">Prefix</string>
+    <string name="barcode_setting_suffix">Suffix</string>
+    <string name="barcode_setting_effect">Sound and Vibrator</string>
+    <string name="barcode_setting_enable">Enable</string>
+    <string name="barcode_setting_disable">Disable</string>
+    <string name="barcode_setting_showtoast">Whether to print Toast：</string>
 
 
     <string-array name="barcode_setting_endchar">
-        <item>回车</item>
-        <item>换行</item>
-        <item>空格</item>
+        <item>Enter</item>
+        <item>New Line</item>
+        <item>Space</item>
         <item>Tab</item>
-        <item>无</item>
+        <item>None</item>
 
     </string-array>
 
     <string-array name="barcode_setting_effect">
-        <item>无</item>
-        <item>只有震动</item>
-        <item>只有声音</item>
-        <item>震动及声音</item>
+        <item>None</item>
+        <item>Vibrator</item>
+        <item>Sound</item>
+        <item>Vibrator And Sound</item>
     </string-array>
 
     <string-array name="barcode_setting_output_mode">
-        <item>直接显示</item>
-        <item>模拟按键</item>
-        <item>复制到系统剪切板</item>
+        <item>Direct Display</item>
+        <item>Key Emulation</item>
+        <item>Copy To System ClipBoard</item>
     </string-array>
 
 
     <!--身份证字符串资源 要求:idcard_+功能+英文-->
-    <string name="idcard_read">读取身份证</string>
-    <string name="idcard_reading">连续读取</string>
-    <string name="idcard_reading_stop">停止</string>
-    <string name="idcard_clear">清空</string>
+    <string name="idcard_read">Read IDCard</string>
+    <string name="idcard_reading">Reading</string>
+    <string name="idcard_reading_stop">Stop</string>
+    <string name="idcard_clear">Clear</string>
 
 
     <!--HX超高频字符串资源 要求:hxuhf_+功能+英文-->
-    <string name="hxuhf_open">开启模块</string>
-    <string name="hxuhf_search_tag">搜索标签</string>
-    <string name="hxuhf_setting">设置</string>
-    <string name="hxuhf_read_count">读取次数:</string>
-    <string name="hxuhf_readtime">时间：</string>
-    <string name="hxuhf_singlesearch">单次扫描</string>
-    <string name="hxuhf_txt_offset">偏移地址:</string>
-    <string name="hxuhf_txt_length">数据长度:</string>
-    <string name="hxuhf_txt_accesspwd">访问密码:</string>
-    <string name="hxuhf_txt_timeout">超时设置:</string>
-    <string name="hxuhf_tab_read">标签读取</string>
-    <string name="hxuhf_tab_write">标签写入</string>
-    <string name="hxuhf_txt_tag_tit">选中标签:</string>
-    <string name="hxuhf_txt_read_eare">读取区域:</string>
-    <string name="hxuhf_txt_write_eare">写入区域:</string>
+    <string name="hxuhf_open">Open</string>
+    <string name="hxuhf_search_tag">Inventory</string>
+    <string name="hxuhf_setting">Setting</string>
+    <string name="hxuhf_read_count">count:</string>
+    <string name="hxuhf_readtime">time：</string>
+    <string name="hxuhf_singlesearch">Single</string>
+    <string name="hxuhf_txt_offset">Offset:</string>
+    <string name="hxuhf_txt_length">Length:</string>
+    <string name="hxuhf_txt_accesspwd">Password:</string>
+    <string name="hxuhf_txt_timeout">timeout:</string>
+    <string name="hxuhf_tab_read">Tag read</string>
+    <string name="hxuhf_tab_write">Tag write</string>
+    <string name="hxuhf_txt_tag_tit">Selected tag:</string>
+    <string name="hxuhf_txt_read_eare">Read area:</string>
+    <string name="hxuhf_txt_write_eare">Write area:</string>
     <string name="hxuhf_txt_count">0000</string>
-    <string name="hxuhf_txt_ok">确定</string>
-    <string name="hxuhf_txt_cancel">取消</string>
+
     <string name="hxuhf_txt_pwdzero">00000000</string>
     <string name="hxuhf_hint_write_read">偏移地址是指从你要读写的区域的位置开始，这个长度是距离区域0点计数的，1个长度等于两个字节或四个十六进制数字。\n此文本只支持16位，1数据长度 = 4个16进制数字</string>
-    <string name="hxuhf_power">功率：</string>
-    <string name="hxuhf_write">写入</string>
-    <string name="hxuhf_read">读取</string>
+    <string name="hxuhf_power">Power:</string>
+    <string name="hxuhf_write">Write</string>
+    <string name="hxuhf_read">Read</string>
     <string name="hxuhf_txt_null">N/A</string>
     <string name="hxuhf_info_connect_success">连接成功</string>
     <string name="hxuhf_info_connect_fail">连接失败</string>
-    <string name="hxuhf_inventory_over">盘点结束</string>
+    <string name="hxuhf_inventory_over">Inventory over</string>
     <string name="hxuhf_read_timeout">读取超时！</string>
-    <string name="hxuhf_connect_to_device">连接设备</string>
-    <string name="hxuhf_connecting_to_device">正在连接设备，请稍后.</string>
+    <string name="hxuhf_connect_to_device">Connect device</string>
+    <string name="hxuhf_connecting_to_device">Connecting device,please wait...</string>
     <string name="hxuhf_txt_singleScanSetting">单次扫描设置</string>
     <string name="hxuhf_read_success">读取成功！</string>
     <string name="hxuhf_read_fail">读取失败！</string>
@@ -309,7 +305,6 @@
     <string name="r2000_open_caption">操作记录(点击展开)</string>
     <string name="r2000_close_caption">操作记录(点击隐藏)</string>
 
-    <string name="uhf_setting">设置</string>
     <string name="uhf_tag_test">标签测试</string>
 
     <string name="r2000_uhf_support">暂不支持，敬请期待！</string>
@@ -324,14 +319,11 @@
 
     <string name="yes">是</string>
     <string name="no">否</string>
-    <string name="ok">确定</string>
-    <string name="cancel">取消</string>
     <string name="goon">继续</string>
     <string name="switchwifi">切换</string>
     <string name="alert_diag_title">提示</string>
     <string name="are_you_sure_to_exit">确认要退出吗？</string>
 
-    <string name="tab_title1">设置</string>
     <string name="tab_title2">标签测试</string>
     <string name="tab_title3">串口监控</string>
 
@@ -523,16 +515,8 @@
     <string name="access_list_data">"数据"</string>
     <string name="access_list_times">"操作次数"</string>
 
-    <string name="save">保存</string>
-    <string name="unsave">不保存</string>
 
-    <string name="open">打开</string>
-    <string name="close">关闭</string>
-    <string name="set">设置</string>
     <string name="get">读取</string>
-    <string name="send">发送</string>
-    <string name="start_inventory">开始存盘</string>
-    <string name="stop_inventory">结束存盘</string>
 
     <string name="measure">测量</string>
 
