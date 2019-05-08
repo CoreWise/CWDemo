@@ -4,7 +4,9 @@
 
 ---
 
-[Demo APK下载]()
+
+[Demo APK下载](https://github.com/CoreWise/CoreWiseDemo/releases)
+
 
 ---
 

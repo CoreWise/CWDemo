@@ -17,7 +17,7 @@ android {
         targetSdkVersion 22 //身份证功能必须降22，其他无所谓
         versionCode 1
         //versionName "1.0"
-        versionName "CoreWiseDemo V1.1"    //每次发布新版本需要去掉_debug
+        versionName "CoreWiseDemo V1.0"    //每次发布新版本需要去掉_debug
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         //multiDexEnabled true
