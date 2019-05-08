@@ -15,7 +15,7 @@
 <h3 id="user-content-zh">中文说明</h3>
 
 
-该项目源码为Demo源码! 中英文文档源码在源代码根目录的sdk_doc目录下,开发包在源代码CoreWiseDemo/app/libs/目录下
+该项目源码为Demo源码! 中英文文档源码在源代码根目录的sdk_doc目录下，开发包在源代码CoreWiseDemo/app/libs/目录下
 
 
 功能包括:
