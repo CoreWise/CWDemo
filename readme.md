@@ -7,6 +7,8 @@
 
 [Demo APK下载](https://github.com/CoreWise/CoreWiseDemo/releases)
 
+![Demo演示](https://i.loli.net/2019/05/08/5cd243747a2c8.gif)
+
 
 ---
 
