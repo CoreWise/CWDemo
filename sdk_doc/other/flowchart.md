@@ -198,3 +198,16 @@ cond(yes)->e
 cond(no)->op
 
 ```
+
+![条码.png](https://i.loli.net/2019/05/08/5cd24de928418.png)
+![身份证.png](https://i.loli.net/2019/05/08/5cd24de928430.png)
+![smallfingersousuo.png](https://i.loli.net/2019/05/08/5cd24de93aaa4.png)
+![HXUHF.png](https://i.loli.net/2019/05/08/5cd24de943c73.png)
+![北斗.png](https://i.loli.net/2019/05/08/5cd24de943ca2.png)
+![smallfinger.png](https://i.loli.net/2019/05/08/5cd24de9568f8.png)
+![smallfingerluru.png](https://i.loli.net/2019/05/08/5cd24de95695e.png)
+![bigfinger1n.png](https://i.loli.net/2019/05/08/5cd24e0a9c803.png)
+![bigfingerimage.png](https://i.loli.net/2019/05/08/5cd24e0aa5a02.png)
+![bigfinger11.png](https://i.loli.net/2019/05/08/5cd24e0ac2ecb.png)
+![bigfingerusb.png](https://i.loli.net/2019/05/08/5cd24e0add367.png)
+![bigfingerluru.png](https://i.loli.net/2019/05/08/5cd24e0ae5f66.png)

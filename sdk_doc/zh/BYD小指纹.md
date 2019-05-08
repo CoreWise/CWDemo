@@ -247,43 +247,18 @@ OnUSBFingerListener回调接口说明:
 
 - #### 打开并初始化指纹模块
 
-```graph
+![smallfinger.png](https://i.loli.net/2019/05/08/5cd24de9568f8.png)
 
-graph TD;
-    start[Start]-->AA[USBFingerManager.getInstance.setDelayMs]
-    AA-->A{USBFingerManager.getInstance.openUSB}
-    A--Success-->B[SyOTG_Key msyUsbKey = new SyOTG_Key];
-    A--Failure-->C[Error Check Machine];
-    B-->E[msyUsbKey.SyOpen]
-
-```
 
 - #### 采集指纹
 
-```graph
+![smallfingerluru.png](https://i.loli.net/2019/05/08/5cd24de95695e.png)
 
-graph TD;
-    start[Start]-->A[等待指纹录入]
-    A-->B[录入:msyUsbKey.SyEnroll]
-    B-->C{第一次录入}
-    C--Yes-->A
-    C--No-->D{msyUsbKey.SyEnroll == PS_OK}
-    D--Yes-->E[上传特征:msyUsbKey.SyUpChar]
-    D--No-->F[指纹采集失败]
-    E-->End
-    
-```
+
 - #### 搜索指纹
 
-```graph
+![smallfingersousuo.png](https://i.loli.net/2019/05/08/5cd24de93aaa4.png)
 
-graph TD;
-    start[Start]-->A[等待指纹录入]
-    A-->B{搜索:msyUsbKey.SySearch == PS_OK}
-    B--Yes-->C[搜索成功,返回指纹id]
-    B--No-->D[搜索指纹失败]
-    C-->End
-```
 
 #### 2.5 接口调用案例
 

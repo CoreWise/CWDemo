@@ -247,84 +247,31 @@ OnUSBFingerListener回调接口说明:
 
 - ##### 打开并初始化指纹模块
 
-```graph
+![bigfingerusb.png](https://i.loli.net/2019/05/08/5cd24e0add367.png)
 
-graph TD;
-    start[Start]-->AA[USBFingerManager.getInstance.setDelayMs]
-    AA-->A{USBFingerManager.getInstance.openUSB}
-    A--Success-->B[ID_Fpr mLiveScan = new ID_Fpr];
-    A--Failure-->C[Error Check Machine];
-    B-->E[mLiveScan.LIVESCAN_Init]
-
-```
 
 - ##### 采集指纹图像
 
-```graph
+![bigfingerimage.png](https://i.loli.net/2019/05/08/5cd24e0aa5a02.png)
 
-graph TD;
-    start[Start]-->A[mLiveScan.LIVESCAN_GetFPBmpData]
-
-```
 
 
 
 
 - ##### 采集指纹
 
-```graph
-
-graph TD;
-    S[Start]-->A[mLiveScan.LIVESCAN_GetFPBmpData]
-    A-->B[mLiveScan.LIVESCAN_GetFPRawData]
-    B-->D[mLiveScan.LIVESCAN_FPRawDataToBmp]
-    D-->E[mLiveScan.LIVESCAN_GetQualityScore]
-    E-->F{bScore >= THRESHOLD}
-    F--Yes-->H[mLiveScan.LIVESCAN_FeatureExtract]
-    F--No-->S
-    H-->End
-
-```
+![bigfingerluru.png](https://i.loli.net/2019/05/08/5cd24e0ae5f66.png)
 
 - ##### 1:1比对
 
-```graph
+![bigfinger11.png](https://i.loli.net/2019/05/08/5cd24e0ac2ecb.png)
 
-graph TD;
-    S[Start]-->A[mLiveScan.LIVESCAN_GetFPBmpData]
-    A-->B[mLiveScan.LIVESCAN_GetFPRawData]
-    B-->D[mLiveScan.LIVESCAN_FPRawDataToBmp]
-    D-->E[mLiveScan.LIVESCAN_GetQualityScore]
-    E-->F{bScore >= THRESHOLD}
-    F--Yes-->H[mLiveScan.LIVESCAN_FeatureExtract]
-    F--No-->S
-    H-->I{mLiveScan.LIVESCAN_FeatureMatch}
-    I--Yes-->J[Success]
-    I--No-->K[Failure]
-    K-->End 
-    J-->End
-```
 
 
 - ##### 1:N比对
 
-```graph
+![bigfinger1n.png](https://i.loli.net/2019/05/08/5cd24e0a9c803.png)
 
-graph TD;
-    S[Start]-->A[mLiveScan.LIVESCAN_GetFPBmpData]
-    A-->B[mLiveScan.LIVESCAN_GetFPRawData]
-    B-->D[mLiveScan.LIVESCAN_FPRawDataToBmp]
-    D-->E[mLiveScan.LIVESCAN_GetQualityScore]
-    E-->F{bScore >= THRESHOLD}
-    F--Yes-->H[mLiveScan.LIVESCAN_FeatureExtract]
-    F--No-->S
-    H-->I{mLiveScan.LIVESCAN_FeatureSearch}
-    I--Yes-->J[Success]
-    I--No-->K[Failure]
-    K-->End 
-    J-->End
-
-```
 
 #### 2.5 接口调用案例
 

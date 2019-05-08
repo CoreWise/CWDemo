@@ -213,20 +213,8 @@
 
 ### 2.3 接口调用流程
 
-```graph
+![HXUHF.png](https://i.loli.net/2019/05/08/5cd24de943c73.png)
 
-graph TD;
-    A[UHFHXAPI api = new UHFHXAPI]-->B[api.openHXUHFSerialPort];
-    B-->C[api.open];
-    C-->D[api.startAutoRead2C];
-    C-->E[......];
-    C-->F[api.startAutoRead2A];
-    D-->G[api.close]
-    E-->G
-    F-->G
-    G-->H[api.closeHXUHFSerialPort]
-
-```
 
 ### 2.4 接口调用案例
 
