@@ -36,6 +36,7 @@
 
 #### SDK说明
 
+**温馨提示**:  本开发文档均采用MarkDown文件格式，AndroidStudio预览可安装markdown插件
 
 | 功能            | sdk目前支持的机型                                          | sdk名字                                                      |                           开发文档                           |
 | :-------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------: |
@@ -84,6 +85,7 @@ Features include :
 #### SDK Description
 
 
+**Tips** This development document uses the MarkDown file format, and the AndroidStudio preview can be installed with the markdown plugin.
 
 | Functions             | Models currently supported by sdk                            | SDK Name                                                     |                           SDK Doc                            |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------: |
