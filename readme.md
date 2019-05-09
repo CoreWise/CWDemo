@@ -85,7 +85,7 @@ Features include :
 #### SDK Description
 
 
-**Tips** This development document uses the MarkDown file format, and the AndroidStudio preview can be installed with the markdown plugin.
+**Tips:** This development document uses the MarkDown file format, and the AndroidStudio preview can be installed with the markdown plugin.
 
 | Functions             | Models currently supported by sdk                            | SDK Name                                                     |                           SDK Doc                            |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------: |
