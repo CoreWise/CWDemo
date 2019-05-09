@@ -101,7 +101,7 @@
 					android:paddingBottom="10.0sp"
 					android:gravity="center_horizontal"
 					android:background="@drawable/button_selector"
-					android:text="@string/set"
+					android:text="@string/general_setting"
 					android:textColor="#ff222222"
 					android:textStyle="bold"
 					android:textSize="16.0sp"

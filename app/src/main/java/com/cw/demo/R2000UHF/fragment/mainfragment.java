@@ -76,7 +76,7 @@ public class mainfragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void initView() {
-        mTabTitles = new String[]{getString(R.string.uhf_tag_test), getString(R.string.uhf_setting)};
+        mTabTitles = new String[]{getString(R.string.uhf_tag_test), getString(R.string.general_setting)};
         //tab.setTabMode(TabLayout.MODE_FIXED);
         listViews = new ArrayList<>();
         listViews.add(new TagTestFragment());

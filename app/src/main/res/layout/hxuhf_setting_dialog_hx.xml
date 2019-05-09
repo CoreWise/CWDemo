@@ -150,7 +150,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="@string/hxuhf_txt_cancel"
+            android:text="@string/general_cancel"
             android:textAllCaps="false" />
 
         <Button
@@ -158,7 +158,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="@string/hxuhf_txt_ok"
+            android:text="@string/general_ok"
             android:textAllCaps="false" />
     </LinearLayout>
 

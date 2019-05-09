@@ -64,7 +64,7 @@ public class BarCodeActivity extends AppCompatActivity {
     private void initView() {
 
         mTabTitles[0] = getString(R.string.barcode_scan);
-        mTabTitles[1] = getString(R.string.barcode_setting);
+        mTabTitles[1] = getString(R.string.general_setting);
         tab.setTabMode(TabLayout.MODE_FIXED);
         mFragmentArrays[0] = ScannerFragment.newInstance();
         mFragmentArrays[1] = ScannerFragment.newInstance();
