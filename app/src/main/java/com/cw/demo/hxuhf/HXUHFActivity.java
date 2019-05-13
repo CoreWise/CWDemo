@@ -345,12 +345,10 @@ public class HXUHFActivity extends BaseUHFActivity {
         public void run() {
 
             api.startAutoRead2A(new UHFHXAPI.AutoRead() {
-
                 @Override
                 public void timeout() {
                     Log.i("zzdstartAutoRead", "timeout");
                 }
-
 
                 @Override
                 public void start() {
@@ -362,13 +360,11 @@ public class HXUHFActivity extends BaseUHFActivity {
 
                 @Override
                 public void processing(byte[] data) {
-
                     String epc = DataUtils.toHexString(data).substring(4);
                     long l = System.currentTimeMillis() - startTime;
                     readTime.put(epc, l);
                     hMsg.obtainMessage(MSG_SHOW_EPC_INFO, epc).sendToTarget();
                     Log.i("zzdstartAutoRead", "data=" + epc + "    time=" + l);
-
                 }
 
                 @Override
@@ -376,8 +372,6 @@ public class HXUHFActivity extends BaseUHFActivity {
                     Log.i("zzdstartAutoRead", "end");
                     Log.i("zzdstartAutoRead", "isStop=" + isStop);
                     Log.e("zzdstartAutoRead", "===================================================================================");
-
-
                     if (!isStop) {
                         pool.execute(task);
                     } else {
