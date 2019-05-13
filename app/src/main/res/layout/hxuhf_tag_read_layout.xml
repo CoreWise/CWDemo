@@ -165,7 +165,7 @@
             android:id="@+id/txtReadResult"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/txt_borad_bg"
+            android:background="@drawable/hxuhf_txt_borad_bg"
             android:hint="@string/hxuhf_hint_write_read"
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"

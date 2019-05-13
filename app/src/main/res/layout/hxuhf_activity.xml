@@ -19,7 +19,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/txt_borad_bg"
+            android:background="@drawable/hxuhf_txt_borad_bg"
             android:paddingLeft="12dp"
             android:paddingRight="12dp">
 
@@ -47,7 +47,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/txt_borad_bg">
+            android:background="@drawable/hxuhf_txt_borad_bg">
 
             <TextView
                 android:id="@+id/txt_inv"

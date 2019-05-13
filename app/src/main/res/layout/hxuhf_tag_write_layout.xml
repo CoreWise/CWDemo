@@ -163,7 +163,7 @@
             android:id="@+id/editInputInfo"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@drawable/txt_borad_bg"
+            android:background="@drawable/hxuhf_txt_borad_bg"
             android:digits="1234567890abcdefABCDEF"
             android:gravity="left|top"
             android:hint="@string/hxuhf_hint_write_read"
