@@ -27,7 +27,7 @@
 
   网络adb调试推荐Android Studio安装Android Wifi ADB插件;
 
-### Android Studio工程配置说明
+### AndroidStudio工程配置说明
 
 - 1.添加开发包aar到项目libs目录下
 
@@ -253,7 +253,7 @@ OnUSBFingerListener回调接口说明:
 #define PS_HANGOVER_UNREMOVE 		    0x17
 ```
 
-### 2.4 接口调用流程
+### 接口调用流程
 
 - #### 打开并初始化指纹模块
 
