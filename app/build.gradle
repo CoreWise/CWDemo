@@ -84,7 +84,7 @@ dependencies {
     //串口开发包
 
     //SerialPort SDK
-    compile(name: 'serialport_sdk_20190507', ext: 'aar')
+    compile(name: 'serialport_sdk_20190514', ext: 'aar')
 
     //身份证开发包,需要依赖串口开发包
     //IDcard SDK,need SerialPort SDK

@@ -176,7 +176,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         Log.e(TAG, "screenWidth_pix=" + dm.widthPixels + "; screenHeight_pix=" + dm.heightPixels);
 
 
-        Hasfinger = !(dm.widthPixels == CoreWise.scrren.screen_5_width && dm.heightPixels == CoreWise.scrren.screen_5_height);
+        //Hasfinger = !(dm.widthPixels == CoreWise.scrren.screen_5_width && dm.heightPixels == CoreWise.scrren.screen_5_height);
 
         View sfz = findViewById(R.id.sfz);
 

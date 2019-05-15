@@ -5,6 +5,11 @@
 
     <string name="general_functions_settings">功能设置</string>
 
+    <string name="general_check_version">固件版本</string>
+    <string name="general_strApkVersion">Apk版本：</string>
+    <string name="general_strStmVersion">Stm32版本：</string>
+
+
     <string-array name="general_functions">
         <item>条码</item>
         <item>身份证(RFID)</item>

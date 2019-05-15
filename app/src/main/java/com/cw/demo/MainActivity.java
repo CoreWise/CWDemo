@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     private static final String TAG = "CoreWise" + "MainActivity";
 
     private GridView gridview;
-    private Button set;
+    private Button set,firmware;
     private Dialog dialog;
 
     private String[] compatible;
@@ -103,6 +103,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         tvVersion = findViewById(R.id.tv_version);
 
         gridview = findViewById(R.id.gridview);
+
+        firmware=findViewById(R.id.firmware);
+
+        firmware.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,GetVersionActivity.class));
+            }
+        });
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

@@ -1,6 +1,16 @@
 # BYD小指纹
 
-## 1. BYD小指纹开发包说明
+
+* [1.BYD小指纹开发包说明](#BYD小指纹开发包说明)
+* [2.二次开发说明](#二次开发说明)
+  * [2.1 AndroidStudio工程配置说明](#AndroidStudio工程配置说明)
+  * [2.2 AndroidManifest.xml配置说明](#AndroidManifest配置说明)
+  * [2.3 接口说明](#接口说明)
+  * [2.4 接口调用流程](#接口调用流程)
+  * [2.5 接口调用案例](#接口调用案例)
+* [3.开发问题汇总](#开发问题汇总)
+
+## BYD小指纹开发包说明
 
   1.1 支持BYD小指纹模块
   
@@ -10,14 +20,14 @@
   
   1.4 [BYD小指纹开发包下载地址](https://coding.net/u/CoreWise/p/SDK/git)
 
-## 2. 二次开发说明
+## 二次开发说明
 
   由于本机器的高通CPU只支持一个USB口,所以在使用BYD小指纹模块时，需要先调用USB管理类将USB切换到指纹模组,此时USB正常情况下不能用来充电、数据线通信等操作。
   在这样的情况下，USB数据线调试不能使用，建议网络adb调试;
 
   网络adb调试推荐Android Studio安装Android Wifi ADB插件;
 
-### 2.1 Android Studio工程配置说明
+### Android Studio工程配置说明
 
 - 1.添加开发包aar到项目libs目录下
 
@@ -52,7 +62,7 @@
 
 ```
 
-### 2.2 AndroidManifest.xml配置说明
+### AndroidManifest配置说明
 
 ```xml
 
@@ -61,7 +71,7 @@
 
 ```
 
-### 2.3  接口说明
+### 接口说明
 
 **USB管理类**
 
@@ -260,6 +270,10 @@ OnUSBFingerListener回调接口说明:
 ![smallfingersousuo.png](https://i.loli.net/2019/05/08/5cd24de93aaa4.png)
 
 
-#### 2.5 接口调用案例
+#### 接口调用案例
 
 参考Demo源码,FingerBYDSmallActivity.java
+
+
+## 开发问题汇总
+

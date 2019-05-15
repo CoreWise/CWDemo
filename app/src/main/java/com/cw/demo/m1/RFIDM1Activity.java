@@ -312,6 +312,7 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
 
 
                 builder.setTitle("危险操作！");
+
                 builder.setMessage("更改密码操作,请记录相应块号、扇区以及密码");
 
                 builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -335,7 +336,6 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
                     //reader.updatePwd(block, mKeyType, NUM, keyA, keyB, data);
                     builder.show();
 
-
                 } else {
 
                     Toast.makeText(this, R.string.m1_str_all_not_validate, Toast.LENGTH_SHORT).show();
@@ -344,7 +344,6 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
             default:
                 break;
         }
-
     }
 
     private void showProgressDialog(int resId) {
