@@ -164,7 +164,7 @@ Specific Instructions
 
 - public void getSettings()
     ```
-    获取扫码机系统设置 Getting  Scanner System Settings
+     Getting  Scanner System Settings
     ```
 
 - public void setSettings(int PowerOnOff, int OutputMode, int TerminalChar, String Prefix, String Suffix, int Volume, int PlayoneMode)
