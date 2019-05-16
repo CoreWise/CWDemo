@@ -1,6 +1,18 @@
 # HX UHF
 
-## 1、SDK Instruction
+* [1.SDK Instruction](#SDKInstruction)
+* [2.二次开发说明](#二次开发说明)
+  * [2.1 AndroidStudio工程配置说明](#AndroidStudio工程配置说明)
+  * [2.2 AndroidManifest.xml配置说明](#AndroidManifest配置说明)
+  * [2.3 接口说明](#接口说明)
+  * [2.4 接口调用流程](#接口调用流程)
+  * [2.5 接口调用案例](#接口调用案例)
+* [3.二次开发问题汇总](#二次开发问题汇总)
+
+
+<a name="二次开发说明"></a>
+
+## SDK Instruction
 
  1.1 Support B class,C Class etc. Normal label ;
  
