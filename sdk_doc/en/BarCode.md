@@ -1,4 +1,17 @@
-### 1. Instructions for Bar code scanning SDK
+# BarCode Function
+
+
+* [1.Pruduct Function SDK Instruction](#111)
+* [2.Secondary Development Instruction](#112)
+  * [2.1 Android Studio Programme Configuration Description](#113)
+  * [2.2 AndroidManifest Configuration description](#114)
+  * [2.3 Interface Instruction](#115)
+  * [2.4 Interface call process](#116)
+  * [2.5 Interface Call Case](#117)
+* [3.Summary of Secondary Development Problems](#118)
+
+<a name="111"></a>
+### 1. Instructions for Bar Code scanning SDK
 
    1.1 Support 1D and 2D Bar code scanner;
 
@@ -9,11 +22,12 @@
    1.4 [Download address of Bar code scanning SDK](https://github.com/CoreWise/CoreWiseDemo#user-content-zh)
 
    1.5 **Specially illustrate:**
+
        The Zebra SE4710 barcode scanning dock used in the U1 model and HoneyWell N6603 barcode scanning dock used in the U8 model are both ** image barcode scanning modules **, which means that the hardware interface is the camera interface,
        In other words, at present in the secondary development does not support the opening of both the camera and ** image barcode scanning module **,
        We can adopt time-sharing multiplexing method for secondary development, that is, **call API to close the scanning dock before opening the camera, delay for a period of time, and then open the camera;
+       exit camera, delay, and then open the scanning dock **! The process is as follows:
 
-exit camera, delay, and then open the scanning dock **! The process is as follows:
    ```
 
    - call API to close the scanning dock before opening the camera
@@ -24,7 +38,7 @@ exit camera, delay, and then open the scanning dock **! The process is as follow
    - open the scanning dock
    ```
 
-
+<a name="112"></a>
 ### 2.  Second Development Instruction
 
 Important Note: To develop barcode function, it is necessary to install corresponding machine ** scanner settings **!! Please check whether the machine has installed the scanner settings, if not, please download via this address .
@@ -42,6 +56,7 @@ U1 4710 Scanner settings are preset in the system
 [U8 **scanner settings** download](https://coding.net/u/CoreWise/p/SDK/git/raw/master/6603ScannerSettingRelease20190423.apk)
 
 
+<a name="113"></a>
 #### 2.1  Android Studio Programme Configuration Description:
 
 - 1.Add development kit aar to libs 
@@ -76,6 +91,7 @@ U1 4710 Scanner settings are preset in the system
  }
 ```
 
+<a name="114"></a>
 #### 2.2 AndroidManifest.xml Configuration description
 
 ```
@@ -89,7 +105,7 @@ U1 4710 Scanner settings are preset in the system
 
 
 
-
+<a name="115"></a>
 #### 2.3  Interface Insturction
 
 **Barcode Class: SoftDecodingAPI**
@@ -173,7 +189,7 @@ Specific Instructions
     ```
 
 
-
+<a name="116"></a>
 #### 2.4 Interface call process
 
 
@@ -183,7 +199,7 @@ Specific Instructions
 
 
 
-
+<a name="117"></a>
 #### 2.5  Interface Call Case
 
 ```java
@@ -245,3 +261,6 @@ public class ScannerActivity extends Activity implements SoftDecodingAPI.IBarCod
     }
 }
 ```
+
+<a name="118"></a>
+### Summary of Secondary Development Problems
