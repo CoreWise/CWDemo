@@ -9,31 +9,23 @@
   * [2.5 接口调用案例](#接口调用案例)
 * [3.二次开发问题汇总](#二次开发问题汇总)
 
-## NFC读本地身份证配置方法
 
+### NFC读本地身份证开发包说明
+   1.1 支持读中国大陆的二代身份证和三带身份证;
 
+   1.2 身份证开发包兼容机器请查看: [NFC读本地身份证开发包兼容机器说明](https://github.com/CoreWise/CWDemo#user-content-zh)
 
-#### 1.配置AndroidManifest.xml
+   1.3 [NFC读本地身份证开发包下载地址](https://github.com/CoreWise/CWDemo#user-content-zh)
 
-```
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+### 二次开发说明
 
-    <uses-permission android:name="android.permission.NFC" />
-
-    <uses-feature
-        android:name="android.hardware.nfc"
-        android:required="true" />
-
-```
-
-
-#### 2.配置build
+#### AndroidStudio工程配置说明
 
 2.1 在Project视图下，在moudle/libs/下添加aar开发包
 
 2.2 配置moudle build文件
-```
+
+```java
 
 android {
     defaultConfig {
@@ -62,10 +54,41 @@ dependencies {
 
 ```
 
+#### AndroidManifest配置说明
 
-#### 3. app二次开发
+```xml
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-建议activity继承NFCReadLocalIDCardActivity基类，实现以下抽象方法即可,如下图
+    <uses-permission android:name="android.permission.NFC" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
+```
+
+#### 接口说明
+
+**API类: 名字**
+
+
+| API接口 | 接口说明 |
+| :----- | :---- |
+| NFCReadLocalIDCardActivity | Activity需要继承的基类 |
+|onReadIDCardStart()|NFC识别到卡回调|
+|onReadIDCardSuccess(PeopleBean peopleBean, long l)|读卡成功，peopleBean:身份证信息bean，l:读卡时间|
+|onReadIDCardFailure(String s)|读卡失败，s:错误信息|
+|onReadIDCardUID(byte[] bytes)|身份证卡号（UID），字节数据|
+
+
+#### 接口调用流程
+
+建议activity继承NFCReadLocalIDCardActivity基类，实现以下抽象方法即可,如下接口调用案例
+
+#### 接口调用案例
+
+
 
 ```
 
@@ -98,5 +121,5 @@ dependencies {
 
 ```
 
+### 二次开发问题汇总
 
-#### 二次开发问题汇总

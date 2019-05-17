@@ -16,9 +16,9 @@
 
  1.1 Support B class,C Class etc. Normal label ;
  
- 1.2 HX UHF SDK Compatible Machines Please Check: [SDK Compatible Machines Instruction (https://coding.net/u/CoreWise/p/SDK/git)
+ 1.2 HX UHF SDK Compatible Machines Please Check: [SDK Compatible Machines Instruction](https://github.com/CoreWise/CWDemo#user-content-en)
 
- 1.3 [HX SDK download website](https://coding.net/u/CoreWise/p/SDK/git)
+ 1.3 [HX SDK download website](https://github.com/CoreWise/CWDemo#user-content-en)
  
  1.4 HX UHF needs to rely on serial port development kit
  

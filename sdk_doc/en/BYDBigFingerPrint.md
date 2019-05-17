@@ -6,9 +6,9 @@
 
    1.2 BYD Big Fingerprint function occupies the only USB port of the machine
 
-   1.3 BYD Big fingerprint development kit compatible machine, please check :[BYD Big fingerprint development kit compatible machine description](https://coding.net/u/CoreWise/p/SDK/git)
+   1.3 BYD Big fingerprint development kit compatible machine, please check :[BYD Big fingerprint development kit compatible machine description](https://github.com/CoreWise/CWDemo#user-content-en)
 
-   1.4 [BYD Big fingerprint development kit download website](https://coding.net/u/CoreWise/p/SDK/git)
+   1.4 [BYD Big fingerprint development kit download website](https://github.com/CoreWise/CWDemo#user-content-en)
 
 ### 2. Secondary Development Instruction
 

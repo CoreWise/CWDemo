@@ -15,9 +15,9 @@
 
  1.1 支持B类、C类等常用标签;
  
- 1.2 HX超高频开发包兼容机器请查看: [开发包兼容机器说明](https://coding.net/u/CoreWise/p/SDK/git)
+ 1.2 HX超高频开发包兼容机器请查看: [开发包兼容机器说明](https://github.com/CoreWise/CWDemo#user-content-zh)
 
- 1.3 [HX超高频开发包下载地址](https://coding.net/u/CoreWise/p/SDK/git)
+ 1.3 [HX超高频开发包下载地址](https://github.com/CoreWise/CWDemo#user-content-zh)
  
  1.4 HX超高频需要依赖串口开发包
  

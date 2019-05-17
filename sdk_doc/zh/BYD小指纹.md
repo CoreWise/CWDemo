@@ -16,9 +16,9 @@
   
   1.2 BYD小指纹功能占用了机器唯一的USB口
   
-  1.3 BYD小指纹开发包兼容机器请查看: [BYD小指纹开发包兼容机器说明](https://coding.net/u/CoreWise/p/SDK/git)
+  1.3 BYD小指纹开发包兼容机器请查看: [BYD小指纹开发包兼容机器说明](https://github.com/CoreWise/CWDemo#user-content-zh)
   
-  1.4 [BYD小指纹开发包下载地址](https://coding.net/u/CoreWise/p/SDK/git)
+  1.4 [BYD小指纹开发包下载地址](https://github.com/CoreWise/CWDemo#user-content-zh)
 
 ## 二次开发说明
 

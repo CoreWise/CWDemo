@@ -17,9 +17,9 @@
 
    1.2 To develop Bar code scanner function, it is necessary to install the **Scan Settings** of the corresponding model device!! Please first to check whether the device has installed the Scan Settings, if not, please go to the below download address to download and install it in the device;
 
-   1.3 Which device models Bar code scanning SDK is compatible with, you can check: [Instructions for compatible device model of Bar code scanning SDK](https://github.com/CoreWise/CoreWiseDemo#user-content-zh)
+   1.3 Which device models Bar code scanning SDK is compatible with, you can check: [Instructions for compatible device model of Bar code scanning SDK](https://github.com/CoreWise/CoreWiseDemo#user-content-en)
 
-   1.4 [Download address of Bar code scanning SDK](https://github.com/CoreWise/CoreWiseDemo#user-content-zh)
+   1.4 [Download address of Bar code scanning SDK](https://github.com/CoreWise/CWDemo#user-content-en)
 
    1.5 **Specially illustrate:**
 
@@ -45,15 +45,15 @@ Important Note: To develop barcode function, it is necessary to install correspo
 
 
 
-[U1 1D **scanner settings ** Download](https://coding.net/u/CoreWise/p/SDK/git/raw/master/U1-ue966ScannerSetting-release20190415.apk)
+[U1 1D **scanner settings ** Download](https://coding.net/u/CoreWise/p/SDK/git/raw/master/apk/u1-ue966ScannerSetting-release20190415.apk)
 
-[U1 2D **scanner settings** download](https://coding.net/u/CoreWise/p/SDK/git/raw/master/U1-3680ScannerSetting-release20190415.apk)
+[U1 2D **scanner settings** download](https://coding.net/u/CoreWise/p/SDK/git/raw/master/apk/u1-3680ScannerSetting-release20190415.apk)
 
 U1 4710 Scanner settings are preset in the system
 
-[U3 **scanner settings** download](https://coding.net/u/CoreWise/p/SDK/git/raw/master/u3-ScannerSetting-release20190428.apk)
+[U3 **scanner settings** download](https://coding.net/u/CoreWise/p/SDK/git/raw/master/apk/u3-ScannerSetting-release20190428.apk)
 
-[U8 **scanner settings** download](https://coding.net/u/CoreWise/p/SDK/git/raw/master/6603ScannerSettingRelease20190423.apk)
+[U8 **scanner settings** download](https://coding.net/u/CoreWise/p/SDK/git/raw/master/apk/u8-6603ScannerSettingRelease20190423.apk)
 
 
 <a name="113"></a>

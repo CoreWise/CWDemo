@@ -13,9 +13,9 @@
 ### SY指纹开发包说明
  1.1 支持SY指纹模块;
 
- 1.2 SY指纹开发包兼容机器请查看: [开发包兼容机器说明](https://coding.net/u/CoreWise/p/SDK/git)
+ 1.2 SY指纹开发包兼容机器请查看: [开发包兼容机器说明](https://github.com/CoreWise/CWDemo#user-content-zh)
 
- 1.3 [SY指纹开发包下载地址](https://coding.net/u/CoreWise/p/SDK/git)
+ 1.3 [SY指纹开发包下载地址](https://github.com/CoreWise/CWDemo#user-content-zh)
 
  1.4 SY指纹需要依赖串口开发包，占用/dev/ttyHSL0,波特率:460800
 
