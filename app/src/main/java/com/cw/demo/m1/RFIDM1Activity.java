@@ -66,8 +66,6 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
         builder = new AlertDialog.Builder(this);
 
         reader.openM1RFIDSerialPort(cw.getDeviceModel());
-
-
     }
 
     private void initView() {
@@ -202,12 +200,6 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
     public void onClick(View v) {
         boolean isExit = false;
 
-        if (!SerialPortManager.getInstance().isOpen()
-                && !SerialPortManager.getInstance().openSerialPort()) {
-
-            Toast.makeText(this, R.string.general_open_serial_fail, Toast.LENGTH_SHORT).show();
-            isExit = true;
-        }
         if (isExit) {
             return;
         }
