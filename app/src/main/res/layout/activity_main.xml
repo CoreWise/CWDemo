@@ -31,14 +31,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="@string/general_functions_settings" />
+            android:text="@string/general_functions_settings"
+            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/firmware"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="@string/general_check_version" />
+            android:text="@string/general_check_version"
+
+            android:textAllCaps="false" />
 
     </LinearLayout>
 
@@ -47,6 +50,7 @@
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/tv_version"
         android:layout_below="@+id/ll_title"
         android:layout_margin="10dp"
         android:layout_marginTop="5dp"
@@ -54,8 +58,7 @@
         android:horizontalSpacing="10dp"
         android:numColumns="3"
         android:scrollbars="vertical"
-        android:stretchMode="columnWidth"
-        android:layout_above="@id/tv_version"/>
+        android:stretchMode="columnWidth" />
 
     <TextView
         android:id="@+id/tv_version"
@@ -65,7 +68,6 @@
         android:layout_alignParentRight="true"
         android:layout_margin="5dp"
         android:textColor="@android:color/black" />
-
 
 
 </RelativeLayout>

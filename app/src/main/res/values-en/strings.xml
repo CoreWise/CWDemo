@@ -3,7 +3,7 @@
 
     <!--通用字符串资源  命名要求: general_+英文-->
 
-    <string name="general_functions_settings">功能设置</string>
+    <string name="general_functions_settings">Function</string>
 
     <string name="general_check_version">Firmware Version</string>
     <string name="general_strApkVersion">Apk Version：</string>
