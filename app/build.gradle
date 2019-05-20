@@ -103,7 +103,7 @@ dependencies {
     //PY超高频开发包,需要依赖串口开发包
 
     //HX UHF SDK,need SerialPort SDK
-    compile(name: 'hxuhf_sdk_20190520', ext: 'aar')
+    compile(name: 'phychips_uhf_sdk_20190520', ext: 'aar')
 
     //北斗开发包,需要依赖串口开发包
 
