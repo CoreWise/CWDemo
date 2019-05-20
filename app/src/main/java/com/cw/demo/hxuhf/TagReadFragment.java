@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cw.demo.R;
-import com.cw.hxuhfsdk.UHFHXAPI;
+import com.cw.phychipsuhfsdk.UHFHXAPI;
 import com.cw.serialportsdk.utils.DataUtils;
 
 public class TagReadFragment extends Fragment {
