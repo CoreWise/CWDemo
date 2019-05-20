@@ -26,7 +26,7 @@ import android.widget.ToggleButton;
 import com.cw.barcodesdk.SoftDecodingAPI;
 import com.cw.demo.MyApplication;
 import com.cw.demo.R;
-import com.cw.serialportsdk.CoreWise;
+import com.cw.serialportsdk.cw;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -241,13 +241,13 @@ public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCod
             }
         });
 
-        switch (CoreWise.getAndroidVersion()) {
-            case CoreWise.deviceSysVersion.O:
+        switch (cw.getAndroidVersion()) {
+            case cw.deviceSysVersion.O:
                 scan.setEnabled(true);
                 scanning.setEnabled(true);
                 end.setEnabled(true);
                 break;
-            case CoreWise.deviceSysVersion.U:
+            case cw.deviceSysVersion.U:
                 if (api.isScannerServiceRunning(getActivity())) {
 
                 } else {

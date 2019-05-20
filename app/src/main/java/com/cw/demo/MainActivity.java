@@ -35,17 +35,16 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 
-import com.cw.demo.ISO_15693.ISOActivity;
+import com.cw.demo.ISO_15693.NFCISO15693Activity;
 import com.cw.demo.R2000UHF.UHF2000Activity;
 import com.cw.demo.barcode.BarCodeActivity;
 import com.cw.demo.beidou.BeiDouActivity;
-import com.cw.demo.fingerprint.byd_big.FingerBYDBigActivity;
-import com.cw.demo.fingerprint.byd_small.FingerBYDSmallActivity;
-import com.cw.demo.fingerprint.sy.FingerprintActivity;
+import com.cw.demo.fingerprint.gaa.FpGAAActivity;
+import com.cw.demo.fingerprint.jra.FpJRAActivity;
 import com.cw.demo.hxuhf.HXUHFActivity;
 import com.cw.demo.idcard.IDCardActivity;
-import com.cw.demo.idcard_nfclocal.IDCard_NFC_Local_DemoActivity;
 import com.cw.demo.m1.NFCM1Activity;
+import com.cw.demo.m1.RFIDM1Activity;
 import com.cw.demo.ui.FriendDialog;
 import com.cw.demo.utils.BaseUtils;
 
@@ -65,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     private static final String TAG = "CoreWise" + "MainActivity";
 
     private GridView gridview;
-    private Button set,firmware;
+    private Button set, firmware;
     private Dialog dialog;
 
     private String[] compatible;
@@ -104,12 +103,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
         gridview = findViewById(R.id.gridview);
 
-        firmware=findViewById(R.id.firmware);
+        firmware = findViewById(R.id.firmware);
 
         firmware.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,GetVersionActivity.class));
+                startActivity(new Intent(MainActivity.this, GetVersionActivity.class));
             }
         });
 
@@ -136,16 +135,19 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
         icons = new int[]{
                 R.drawable.icon_barcode,
-                R.drawable.icon_idcard,
-                R.drawable.icon_idcard,
-                R.drawable.icon_hx,
-                R.drawable.icon_hx,
-                R.drawable.icon_fingerprint,
-                R.drawable.icon_fingerprint,
-                R.drawable.icon_fingerprint,
+
                 R.drawable.icon_m1,
+                R.drawable.icon_idcard,
+
                 R.drawable.icon_m1,
                 R.drawable.rfid15693,
+
+                R.drawable.icon_phy,
+                R.drawable.icon_r2000,
+
+                R.drawable.icon_fingerprint,
+                R.drawable.icon_fingerprint,
+
                 R.drawable.beidou};
 
         /*icons = new int[]{R.drawable.beidou, R.drawable.m1, R.drawable.icon_barcode, R.drawable.ic, R.drawable.sfz,
@@ -199,7 +201,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         Intent intent = null;
 
 
-        compatible = getResources().getStringArray(R.array.general_compatible);
 
 
         switch (position) {
@@ -209,66 +210,56 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
                 break;
             case 1:
+                //RFID M1
+                intent = new Intent(this, RFIDM1Activity.class);
+
+
+
+                break;
+            case 2:
                 //身份证
                 intent = new Intent(this, IDCardActivity.class);
 
 
                 break;
-            case 2:
-                //NFC读本地身份证
-                intent = new Intent(this, IDCard_NFC_Local_DemoActivity.class);
-
-
-                break;
             case 3:
-                //HX超高频
-                intent = new Intent(this, HXUHFActivity.class);
+                //NFC M1
+                intent = new Intent(this, NFCM1Activity.class);
 
                 break;
 
             case 4:
-                //R2000超高频
-                intent = new Intent(this, UHF2000Activity.class);
+                //NFC ISO15693
+                intent = new Intent(this, NFCISO15693Activity.class);
 
                 break;
 
             case 5:
 
-                //SY指纹
-                intent = new Intent(this, FingerprintActivity.class);
+                //PhyChips超高频
+                intent = new Intent(this, HXUHFActivity.class);
 
 
                 break;
             case 6:
 
-                //比亚迪大指纹
-                intent = new Intent(this, FingerBYDBigActivity.class);
+                //R2000超高频
+                intent = new Intent(this, UHF2000Activity.class);
 
 
                 break;
 
             case 7:
-                //比亚迪小指纹
-                intent = new Intent(this, FingerBYDSmallActivity.class);
+                //GAA指纹
+                intent = new Intent(this, FpGAAActivity.class);
 
                 break;
             case 8:
-                intent = new Intent(this, NFCM1Activity.class);
+                //JRA指纹
+                intent = new Intent(this, FpJRAActivity.class);
 
-                //startActivity(new Intent(this, NFCM1Activity.class));//NFC
                 break;
             case 9:
-                //M1 RFID
-                intent = new Intent(this, NFCM1Activity.class);
-
-                break;
-
-            case 10:
-                //M1 RFID
-                intent = new Intent(this, ISOActivity.class);
-
-                break;
-            case 11:
                 //北斗
                 intent = new Intent(this, BeiDouActivity.class);
 
@@ -277,8 +268,18 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 break;
         }
 
-        mFriendDialog.setMessage(compatible[position]);
+
+        startActivity(intent);
+
+
+       /*
+               compatible = getResources().getStringArray(R.array.general_compatible);
+
+       mFriendDialog.setMessage(compatible[position]);
         final Intent finalIntent = intent;
+
+
+
         mFriendDialog.setOnClickListener(new FriendDialog.onClickListener() {
             @Override
             public void OnClickPositive() {
@@ -290,7 +291,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 mFriendDialog.dismiss();
             }
         });
-        mFriendDialog.show();
+        //mFriendDialog.show();*/
     }
 
     private void setMenuValue() {

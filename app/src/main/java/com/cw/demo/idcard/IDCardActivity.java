@@ -10,10 +10,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
@@ -32,14 +34,13 @@ import com.cw.demo.utils.BaseUtils;
 import com.cw.demo.R;
 import com.cw.idcardsdk.AsyncParseSFZ;
 import com.cw.idcardsdk.ParseSFZAPI;
-import com.cw.serialportsdk.CoreWise;
+import com.cw.serialportsdk.cw;
 import com.cw.serialportsdk.utils.DataUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import android_serialport_api.SerialPortManager;
 import butterknife.ButterKnife;
 
 
@@ -52,7 +53,7 @@ import butterknife.ButterKnife;
  */
 public class IDCardActivity extends AppCompatActivity implements OnClickListener {
 
-    private static final String TAG = "CoreWiseIDCardActivity";
+    private static final String TAG = "CwIDCardActivity";
 
     private static final int UPDATEINFOS = 1222;
 
@@ -159,24 +160,6 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         initView();
         initData();
 
-
-        //5寸屏：720-1280  4.3寸屏：480-800
-
-        // 获取屏幕密度(方法1)
-        // 屏幕宽(像素，如：480px)
-        int screenWidth = getWindowManager().getDefaultDisplay().getWidth();
-        // 屏幕高（像素，如：800p）
-        int screenHeight = getWindowManager().getDefaultDisplay().getHeight();
-
-        Log.e(TAG, "screenWidth=" + screenWidth + "; screenHeight=" + screenHeight);
-
-        // 通过WindowManager获取
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        Log.e(TAG, "screenWidth_pix=" + dm.widthPixels + "; screenHeight_pix=" + dm.heightPixels);
-
-
-        //Hasfinger = !(dm.widthPixels == CoreWise.scrren.screen_5_width && dm.heightPixels == CoreWise.scrren.screen_5_height);
 
         View sfz = findViewById(R.id.sfz);
 
@@ -487,22 +470,6 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         //moduleView.setText("");
     }
 
-    private void showProgressDialog(String message) {
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(message);
-        if (!progressDialog.isShowing()) {
-            progressDialog.show();
-        }
-    }
-
-    private void cancleProgressDialog() {
-
-        if (progressDialog != null && progressDialog.isShowing()) {
-            progressDialog.cancel();
-            progressDialog = null;
-        }
-
-    }
 
     @Override
     protected void onStart() {
@@ -511,6 +478,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         isSequentialRead = false;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onResume() {
         super.onResume();
@@ -518,17 +486,18 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         /*if (!SerialPortManager.getInstance().isOpen() && !SerialPortManager.getInstance().openSerialPort(CoreWise.type.sfz)) {
             Toast.makeText(getApplicationContext(), R.string.general_open_serial_fail, Toast.LENGTH_SHORT).show();
         }*/
-        asyncParseSFZ.openIDCardSerialPort();
+        asyncParseSFZ.openIDCardSerialPort(cw.getDeviceModel());
         //SwitchUtil.getInstance().openUSB();
 
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onPause() {
         Log.e(TAG, "-------onPause------");
         //SerialPortManager.getInstance().closeSerialPort();
-        asyncParseSFZ.closeIDCardSerialPort();
+        asyncParseSFZ.closeIDCardSerialPort(cw.getDeviceModel());
         //关闭职位模块，省电
         //asyncParseSFZ.closeFingerDevice(IDCardActivity.this, mScanner);
         mHandler.removeCallbacksAndMessages(null);

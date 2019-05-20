@@ -25,8 +25,8 @@ import java.util.HashMap;
  * Created by 金宇凡 on 2019/3/11.
  * ISO 15693,基于NFC扫描
  */
-public class ISOActivity extends AppCompatActivity {
-    private String TAG = ISOActivity.class.getSimpleName();
+public class NFCISO15693Activity extends AppCompatActivity {
+    private String TAG = NFCISO15693Activity.class.getSimpleName();
     private RecyclerView mRecyclerView;
     private ISOAdapter mAdapter;
 
@@ -110,7 +110,7 @@ public class ISOActivity extends AppCompatActivity {
                         }
                         else
                         {
-                            Toast.makeText(ISOActivity.this,getString(R.string.general_write_fail),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(NFCISO15693Activity.this,getString(R.string.general_write_fail),Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

@@ -7,9 +7,11 @@ import android.app.ProgressDialog;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,6 +27,7 @@ import android.widget.Toast;
 import com.cw.demo.R;
 import com.cw.demo.utils.BaseUtils;
 import com.cw.hxuhfsdk.UHFHXAPI;
+import com.cw.serialportsdk.cw;
 import com.cw.serialportsdk.utils.DataUtils;
 
 import java.lang.ref.WeakReference;
@@ -33,6 +36,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HXUHFActivity extends BaseUHFActivity {
+
+    private String TAG = "CW" + BaseUHFActivity.class.getSimpleName();
+
 
     @BindView(R.id.ll_read_write)
     LinearLayout llReadWrite;
@@ -216,7 +222,8 @@ public class HXUHFActivity extends BaseUHFActivity {
                         @Override
                         public void run() {
                             Message closemsg = new Message();
-                            closemsg.obj = api.open();
+                            //closemsg.obj = api.open();
+                            closemsg.obj = api.openHXUHFSerialPort(cw.getDeviceModel());
                             closemsg.what = MSG_DISMISS_CONNECT_WAIT_SHOW;
                             hMsg.sendMessage(closemsg);
                         }
@@ -229,7 +236,8 @@ public class HXUHFActivity extends BaseUHFActivity {
 
                     buttonInv.setClickable(false);
                     if (!isOnPause) {
-                        api.close();
+                        //api.close();
+                        api.closeHXUHFSerialPort(cw.getDeviceModel());
                         setting.setEnabled(false);
                     }
                 }
@@ -268,8 +276,6 @@ public class HXUHFActivity extends BaseUHFActivity {
             }
         });
 
-       // Log.i("YYYYYYYYY", "--Model--" + DataUtils.bytesToHexString(api.getReaderInformation(0x00).data) + "--S/N--" + DataUtils.bytesToHexString(api.getReaderInformation(0x01).data) + "--Manufacturer--" + DataUtils.bytesToHexString(api.getReaderInformation(0x02).data) + "--Tag Type--" + DataUtils.bytesToHexString(api.getReaderInformation(0x04).data));
-
 
     }
 
@@ -278,7 +284,7 @@ public class HXUHFActivity extends BaseUHFActivity {
      *
      * @param flagID
      */
-    public static void ShowEPC(String flagID) {
+    public void ShowEPC(String flagID) {
         if (mediaPlayer == null) {
             return;
         }
@@ -301,7 +307,7 @@ public class HXUHFActivity extends BaseUHFActivity {
         } else {
             int num = number.get(flagID);
             number.put(flagID, ++num);
-            Log.i("whw", "flagID=" + flagID + "   num=" + num);
+            Log.i(TAG, "flagID=" + flagID + "   num=" + num);
         }
         objFragment.myadapter.notifyDataSetChanged();
         tagTimes++;
@@ -344,16 +350,16 @@ public class HXUHFActivity extends BaseUHFActivity {
         @Override
         public void run() {
 
-            api.startAutoRead2A(new UHFHXAPI.AutoRead() {
+            api.readEPC(new UHFHXAPI.AutoRead() {
                 @Override
                 public void timeout() {
-                    Log.i("zzdstartAutoRead", "timeout");
+                    Log.i(TAG, "timeout");
                 }
 
                 @Override
                 public void start() {
                     //load = soundPool.load(getApplicationContext(), R.raw.ok, 1);
-                    Log.i("zzdstartAutoRead", "start");
+                    Log.i(TAG, "start");
                     startTime = System.currentTimeMillis();
                 }
 
@@ -364,14 +370,14 @@ public class HXUHFActivity extends BaseUHFActivity {
                     long l = System.currentTimeMillis() - startTime;
                     readTime.put(epc, l);
                     hMsg.obtainMessage(MSG_SHOW_EPC_INFO, epc).sendToTarget();
-                    Log.i("zzdstartAutoRead", "data=" + epc + "    time=" + l);
+                    Log.i(TAG, "data=" + epc + "    time=" + l);
                 }
 
                 @Override
                 public void end() {
-                    Log.i("zzdstartAutoRead", "end");
-                    Log.i("zzdstartAutoRead", "isStop=" + isStop);
-                    Log.e("zzdstartAutoRead", "===================================================================================");
+                    Log.i(TAG, "end");
+                    Log.i(TAG, "isStop=" + isStop);
+                    Log.e(TAG, "===================================================================================");
                     if (!isStop) {
                         pool.execute(task);
                     } else {
@@ -380,18 +386,60 @@ public class HXUHFActivity extends BaseUHFActivity {
                 }
 
             });
+
+
+            //api.readEPC();
+
+            /*api.startAutoRead2A(new UHFHXAPI.AutoRead() {
+                @Override
+                public void timeout() {
+                    Log.i(TAG, "timeout");
+                }
+
+                @Override
+                public void start() {
+                    //load = soundPool.load(getApplicationContext(), R.raw.ok, 1);
+                    Log.i(TAG, "start");
+                    startTime = System.currentTimeMillis();
+                }
+
+
+                @Override
+                public void processing(byte[] data) {
+                    String epc = DataUtils.toHexString(data).substring(4);
+                    long l = System.currentTimeMillis() - startTime;
+                    readTime.put(epc, l);
+                    hMsg.obtainMessage(MSG_SHOW_EPC_INFO, epc).sendToTarget();
+                    Log.i(TAG, "data=" + epc + "    time=" + l);
+                }
+
+                @Override
+                public void end() {
+                    Log.i(TAG, "end");
+                    Log.i(TAG, "isStop=" + isStop);
+                    Log.e(TAG, "===================================================================================");
+                    if (!isStop) {
+                        pool.execute(task);
+                    } else {
+                        hMsg.sendEmptyMessage(INVENTORY_OVER);
+                    }
+                }
+
+            });*/
         }
     };
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onResume() {
         super.onResume();
-        api.openHXUHFSerialPort();
+        //api.openHXUHFSerialPort(cw.getDeviceModel());
         isOnPause = false;
     }
 
     private boolean isOnPause;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onPause() {
         soundPool.release();
@@ -405,10 +453,9 @@ public class HXUHFActivity extends BaseUHFActivity {
         if (buttonConnect.isChecked()) {
             buttonConnect.setChecked(false);
         }
-        api.closeHXUHFSerialPort();
+        //api.closeHXUHFSerialPort(cw.getDeviceModel());
         super.onPause();
     }
-
 
 
 }

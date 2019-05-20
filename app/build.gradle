@@ -17,9 +17,9 @@ android {
         targetSdkVersion 22 //身份证功能必须降22，其他无所谓
         versionCode 1
         //versionName "1.0"
-        //versionName "CoreWiseDemo V1.0"    //
 
-        versionName "CWDemo V1.0"    //由CoreWiseDemo--->CWDemo
+        versionName "DemoApp V1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         //multiDexEnabled true
@@ -79,39 +79,31 @@ dependencies {
     compile 'q.rorbin:VerticalTabLayout:1.2.5'
 
     //扫码开发包
-
     //Barcode SDK
     compile(name: 'barcode_sdk_20190429', ext: 'aar')
 
     //串口开发包
-
     //SerialPort SDK
-    compile(name: 'serialport_sdk_20190514', ext: 'aar')
+    compile(name: 'serialport_sdk_20190517', ext: 'aar')
 
     //身份证开发包,需要依赖串口开发包
     //IDcard SDK,need SerialPort SDK
-    compile(name: 'idcard_sdk_20190507', ext: 'aar')
+    compile(name: 'idcard_sdk_20190517', ext: 'aar')
 
-    //NFC读本地身份证开发包,需要依赖串口开发包
-    //NFCLocalIDcard SDK,need SerialPort SDK
-    compile(name: 'nfc_local_idcard_sdk_20190507', ext: 'aar')
 
-    //SY指纹开发包,需要依赖串口开发包
-    //SY FingerPrint SDK
-    compile(name: 'finger_sy_sdk_20190429', ext: 'aar')
 
-    //BYD大指纹开发包(新固件开发包)
-    //BYD Big FingerPrint SDK
-    compile(name: 'finger_byd_big_sdk_20190429', ext: 'aar')
+    //GAA大指纹开发包(新固件开发包)
+    //GAA FingerPrint SDK
+    compile(name: 'fp_gaa_sdk_20190520', ext: 'aar')
 
-    //BYD小指纹开发包
-    //BYD Small FingerPrint SDK
-    compile(name: 'finger_byd_small_sdk_20190429', ext: 'aar')
+    //JRA小指纹开发包
+    //JRA FingerPrint SDK
+    compile(name: 'fp_jra_sdk_20190520', ext: 'aar')
 
-    //HX超高频开发包,需要依赖串口开发包
+    //PY超高频开发包,需要依赖串口开发包
 
     //HX UHF SDK,need SerialPort SDK
-    compile(name: 'hxuhf_sdk_20190506', ext: 'aar')
+    compile(name: 'hxuhf_sdk_20190520', ext: 'aar')
 
     //北斗开发包,需要依赖串口开发包
 
@@ -124,8 +116,7 @@ dependencies {
     compile(name: 'r2000uhf_sdk_20190429', ext: 'aar')
 
     //M1 RFID开发包,需要依赖串口开发包
-
     //M1 RFID SDK
-    compile(name: 'm1rfid_sdk_20190429', ext: 'aar')
+    compile(name: 'm1rfid_sdk_20190517', ext: 'aar')
 
 }

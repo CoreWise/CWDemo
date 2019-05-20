@@ -40,7 +40,7 @@
 
 
         <activity
-            android:name=".fingerprint.byd_big.FingerBYDBigActivity"
+            android:name=".fingerprint.gaa.FpGAAActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"/>
 
@@ -53,11 +53,11 @@
 
 
         <activity
-            android:name=".fingerprint.byd_small.FingerBYDSmallActivity"
+            android:name=".fingerprint.jra.FpJRAActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
-            android:name=".ISO_15693.ISOActivity"
+            android:name=".ISO_15693.NFCISO15693Activity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
@@ -81,6 +81,8 @@
 
         </activity>
         <activity android:name=".GetVersionActivity" />
+        <activity android:name=".m1.RFIDM1Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
     </application>
 

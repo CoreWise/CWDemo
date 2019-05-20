@@ -14,7 +14,6 @@ import android.widget.ToggleButton;
 
 
 import com.cw.demo.R;
-import com.cw.serialportsdk.CoreWise;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +25,7 @@ import android_serialport_api.SerialPortManager;
 
 public abstract class BaseUHFActivity extends AppCompatActivity {
 
-    private String TAG = "CoreWise"+BaseUHFActivity.class.getSimpleName();
+    private String TAG = "CW"+BaseUHFActivity.class.getSimpleName();
 
     protected static final int MSG_SHOW_EPC_INFO = 1;
     protected static final int MSG_DISMISS_CONNECT_WAIT_SHOW = 2;
@@ -92,7 +91,6 @@ public abstract class BaseUHFActivity extends AppCompatActivity {
 
         pool.shutdown();
         pool = null;
-        SerialPortManager.getInstance().closeSerialPort();
         super.onPause();
 
     }

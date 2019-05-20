@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
-        android:text="BYD_BIG_FingerPrint"
+        android:text="GAA_FingerPrint"
         android:textColor="#ff0000"
         android:textSize="15sp"
         android:textStyle="bold" />

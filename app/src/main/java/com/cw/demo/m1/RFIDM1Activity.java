@@ -2,7 +2,9 @@ package com.cw.demo.m1;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -24,6 +26,7 @@ import com.cw.demo.MyApplication;
 import com.cw.demo.R;
 import com.cw.m1rfidsdk.AsyncM1Card;
 import com.cw.m1rfidsdk.M1CardAPI;
+import com.cw.serialportsdk.cw;
 
 import android_serialport_api.SerialPortManager;
 
@@ -61,6 +64,9 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
         initData();
 
         builder = new AlertDialog.Builder(this);
+
+        reader.openM1RFIDSerialPort(cw.getDeviceModel());
+
 
     }
 
@@ -360,16 +366,24 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onResume() {
         super.onResume();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onPause() {
         super.onPause();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        reader.closeM1RFIDSerialPort(cw.getDeviceModel());
+
+    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

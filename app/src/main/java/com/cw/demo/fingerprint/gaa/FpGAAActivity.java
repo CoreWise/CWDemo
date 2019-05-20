@@ -1,4 +1,4 @@
-package com.cw.demo.fingerprint.byd_big;
+package com.cw.demo.fingerprint.gaa;
 
 
 import android.Manifest;
@@ -24,16 +24,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cw.demo.R;
-import com.cw.fingerbydbigsdk.USBFingerManager;
+import com.cw.fpgaasdk.USBFingerManager;
 import com.fm.bio.ID_Fpr;
 
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-public class FingerBYDBigActivity extends Activity implements OnClickListener {
+public class FpGAAActivity extends Activity implements OnClickListener {
 
-    private static final String TAG = "CoreWiseFingerBYDBigActivity";
+    private static final String TAG = "CwFingerBYDBigActivity";
 
     private TextView msgView;
     private ImageView fpImageView;
@@ -120,7 +120,7 @@ public class FingerBYDBigActivity extends Activity implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_finger_byd_big);
+        setContentView(R.layout.activity_fp_gaa);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         initview();
@@ -135,9 +135,9 @@ public class FingerBYDBigActivity extends Activity implements OnClickListener {
             public void onOpenUSBFingerSuccess(String device) {
 
                 if (device.equals(USBFingerManager.BYD_BIG_DEVICE2)) {
-                    mLiveScan = new ID_Fpr(FingerBYDBigActivity.this, handler);
+                    mLiveScan = new ID_Fpr(FpGAAActivity.this, handler);
                 } else {
-                    Toast.makeText(FingerBYDBigActivity.this, "开发包和指纹模块不一致! 请联系商务", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FpGAAActivity.this, "开发包和指纹模块不一致! 请联系商务", Toast.LENGTH_SHORT).show();
                     btnsetEnabledALL(false);
                 }
             }
