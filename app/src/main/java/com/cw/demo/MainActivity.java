@@ -47,6 +47,8 @@ import com.cw.demo.m1.NFCM1Activity;
 import com.cw.demo.m1.RFIDM1Activity;
 import com.cw.demo.ui.FriendDialog;
 import com.cw.demo.utils.BaseUtils;
+import com.cw.demo.utils.UpdateAppHttpUtil;
+import com.vector.update_app.UpdateAppManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -95,6 +97,19 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 .permissions(
                         Manifest.permission.WRITE_SETTINGS)
                 .request();
+
+        String mUpdateUrl="https://raw.githubusercontent.com/CoreWise/CWDemo/master/version.json";
+        new UpdateAppManager
+                .Builder()
+                //当前Activity
+                .setActivity(this)
+                //更新地址
+                .setUpdateUrl(mUpdateUrl)
+                //实现httpManager接口的对象
+                .setHttpManager(new UpdateAppHttpUtil())
+                .build()
+                .update();
+
     }
 
     private void initView() {

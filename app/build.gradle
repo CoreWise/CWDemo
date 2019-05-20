@@ -73,6 +73,9 @@ dependencies {
 
 
     compile 'com.qianwen:update-app:3.5.2'
+    compile 'com.lzy.net:okgo:3.0.4'
+    compile 'com.qianwen:okhttp-utils:3.8.0'
+    compile 'com.lzy.net:okgo:3.0.4'
 
 
     compile 'com.lovedise:permissiongen:0.0.6'
