@@ -327,7 +327,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
         indexList.clear();
         for (String key : features.keySet()) {
-            Log.i("whw", key + "=" + features.get(key));
+            Log.i(TAG, key + "=" + features.get(key));
             if (features.get(key)) {
                 for (int i = 0; i < keys.length; i++) {
                     if (keys[i].equals(key)) {
