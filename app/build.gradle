@@ -17,8 +17,8 @@ android {
         minSdkVersion 15
         targetSdkVersion 22 //身份证功能必须降22，其他无所谓
 
-        versionCode 1
-        versionName "DemoApp_V1.2"
+        versionCode 0
+        versionName "DemoApp_V1.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
