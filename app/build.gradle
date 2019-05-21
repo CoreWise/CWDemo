@@ -9,6 +9,7 @@ def releaseTime() {
     return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
 }
 
+
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -17,7 +18,7 @@ android {
         targetSdkVersion 22 //身份证功能必须降22，其他无所谓
 
         versionCode 1
-        versionName "DemoApp_V1.1"
+        versionName "DemoApp_V1.2"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -26,6 +27,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            setVersionNameSuffix("_debug")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -42,12 +46,13 @@ android {
     }
 
 
-      lintOptions {
-          checkReleaseBuilds false
 
-          abortOnError false
-      }
 
+    lintOptions {
+        checkReleaseBuilds false
+
+        abortOnError false
+    }
 
 
 }
@@ -76,7 +81,6 @@ dependencies {
 
 
     compile 'com.lovedise:permissiongen:0.0.6'
-    implementation files('libs/litepal-1.3.2-src.jar')
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'q.rorbin:VerticalTabLayout:1.2.5'
@@ -91,9 +95,7 @@ dependencies {
 
     //身份证开发包,需要依赖串口开发包
     //IDcard SDK,need SerialPort SDK
-    compile(name: 'idcard_sdk_20190520', ext: 'aar')
-
-
+    compile(name: 'idcard_sdk_20190521', ext: 'aar')
 
     //GAA大指纹开发包(新固件开发包)
     //GAA FingerPrint SDK

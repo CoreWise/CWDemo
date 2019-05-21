@@ -16,15 +16,15 @@ import com.xuexiang.xupdate.XUpdate;
 import com.xuexiang.xupdate.entity.UpdateError;
 import com.xuexiang.xupdate.listener.OnUpdateFailureListener;
 import com.xuexiang.xupdate.utils.UpdateUtils;
+import android.app.Application;
 
-import org.litepal.LitePalApplication;
 
 import static com.xuexiang.xupdate.entity.UpdateError.ERROR.CHECK_NO_NEW_VERSION;
 
 /**
  * @author Administrator
  */
-public class MyApplication extends LitePalApplication {
+public class MyApplication extends Application {
 
     private static final String TAG ="CWMyApplication";
 
