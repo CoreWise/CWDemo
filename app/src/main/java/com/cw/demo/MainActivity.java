@@ -13,6 +13,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -107,8 +108,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 .setUpdateUrl(mUpdateUrl)
                 //实现httpManager接口的对象
                 .setHttpManager(new UpdateAppHttpUtil())
-                .setOnlyWifi()
-                .setTargetPath("/sdcard/")
+                .setTargetPath("/sdcard/DemoApp/")
                 .build()
                 .update();
 
