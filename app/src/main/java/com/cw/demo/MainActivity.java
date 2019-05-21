@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 .request();
 
         String mUpdateUrl="https://raw.githubusercontent.com/CoreWise/CWDemo/master/version.json";
+
         new UpdateAppManager
                 .Builder()
                 //当前Activity

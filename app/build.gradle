@@ -123,6 +123,6 @@ dependencies {
 
     //M1 RFID开发包,需要依赖串口开发包
     //M1 RFID SDK
-    compile(name: 'm1rfid_sdk_20190517', ext: 'aar')
+    compile(name: 'm1rfid_sdk_20190521', ext: 'aar')
 
 }
