@@ -1,9 +1,11 @@
 {
-  "update": "Yes",
-  "new_version": "V1.2",
-  "apk_file_url": "https://github.com/CoreWise/CWDemo/releases/download/V1.1/DemoApp_V1.1_release.apk",
-  "update_log": "1.更新App测试\r\n2.更新App测试\r\n3.更新App测试",
-  "target_size": "6.2M",
-  "new_md5":"",
-  "constraint": false
+  "Code": 0,
+  "Msg": "",
+  "UpdateStatus": 1,
+  "VersionCode": 3,
+  "VersionName": "1.0.2",
+  "ModifyContent": "1、优化api接口。\r\n2、添加使用demo演示。\r\n3、新增自定义更新服务API接口。\r\n4、优化更新提示界面。",
+  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.1/DemoApp_V1.1_release.apk",
+  "ApkSize": 6964,
+  "ApkMd5": ""
 }

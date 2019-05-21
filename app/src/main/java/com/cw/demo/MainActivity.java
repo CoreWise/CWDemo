@@ -13,7 +13,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -48,8 +47,8 @@ import com.cw.demo.m1.NFCM1Activity;
 import com.cw.demo.m1.RFIDM1Activity;
 import com.cw.demo.ui.FriendDialog;
 import com.cw.demo.utils.BaseUtils;
-import com.cw.demo.utils.UpdateAppHttpUtil;
-import com.vector.update_app.UpdateAppManager;
+
+import com.xuexiang.xupdate.XUpdate;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -99,9 +98,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                         Manifest.permission.WRITE_SETTINGS)
                 .request();
 
-        String mUpdateUrl="https://raw.githubusercontent.com/CoreWise/CWDemo/master/version.json";
+        String mUpdateUrl = "https://raw.githubusercontent.com/CoreWise/CWDemo/master/version.json";
 
-        new UpdateAppManager
+        /*new UpdateAppManager
                 .Builder()
                 //当前Activity
                 .setActivity(this)
@@ -111,6 +110,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 .setHttpManager(new UpdateAppHttpUtil())
                 .setTargetPath("/sdcard/DemoApp/")
                 .build()
+                .update();
+*/
+        XUpdate.newBuild(this)
+                .updateUrl(mUpdateUrl)
+                .apkCacheDir("/sdcard/DemoApp/")
                 .update();
 
     }
@@ -219,8 +223,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         Intent intent = null;
 
 
-
-
         switch (position) {
             case 0:
                 //条码
@@ -230,7 +232,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             case 1:
                 //RFID M1
                 intent = new Intent(this, RFIDM1Activity.class);
-
 
 
                 break;
