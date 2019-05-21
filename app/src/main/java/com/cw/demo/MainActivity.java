@@ -107,6 +107,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 .setUpdateUrl(mUpdateUrl)
                 //实现httpManager接口的对象
                 .setHttpManager(new UpdateAppHttpUtil())
+                .setOnlyWifi()
+                .setTargetPath("/sdcard/")
                 .build()
                 .update();
 
