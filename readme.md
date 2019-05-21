@@ -49,8 +49,8 @@
 | 串口SDK         | 需要串口的功能需要添加该sdk,如HX超高频,身份证,北斗,M1 RFID | [serialport_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/serialport_sdk_20190520.aar) |                                    None                          |
 | 北斗短报文SDK         | u8                                                         | [beidou_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/beidou_sdk_20190429.aar) | <a href="https://github.com/CoreWise/CoreWiseDemo/blob/master/sdk_doc/zh/北斗.md" target="_blank">查看</a> |
 | M1 RFID SDK     | u3,CFON640                                                 | [m1rfid_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/m1rfid_sdk_20190521.aar) | <a href="https://github.com/CoreWise/CoreWiseDemo/blob/master/sdk_doc/zh/M1RFID.md" target="_blank">查看</a> |
-| M1 NFC          | 该功能调用Android标准M1接口，无SDK，有调用标准接口Demo     | 无                                                           |                          None                                    |
-| ISO15693 NFC       | 该功能调用Android标准15693接口，无SDK，有调用标准接口Demo  | 无                                                           |                            None                                  |
+| M1 NFC          | 该功能调用Android标准M1接口，无SDK，有调用标准接口Demo     | 无                 |              None            |
+| ISO15693 NFC       | 该功能调用Android标准15693接口，无SDK，有调用标准接口Demo  | 无              |              None            |
 | NFC读网络身份证 | 带NFC机器或者CR30S设备                                     | [net-idcard-sdk-*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/net-idcard-sdk-20190401.aar) | <a href="https://github.com/CoreWise/CoreWiseDemo/blob/master/sdk_doc/zh/NFC读网络身份证.md" target="_blank">查看</a> |
 
 

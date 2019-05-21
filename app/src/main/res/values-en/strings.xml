@@ -5,9 +5,11 @@
 
     <string name="general_functions_settings">Function</string>
 
+    <string name="general_check_app_version">Demo Version</string>
+
     <string name="general_check_version">Firmware Version</string>
-    <string name="general_strApkVersion">Apk Version：</string>
-    <string name="general_strStmVersion">Stm32 Version：</string>
+    <string name="general_strApkVersion">Apk Version:</string>
+    <string name="general_strStmVersion">STM32 Version:</string>
 
     <string-array name="general_functions">
 
@@ -27,24 +29,23 @@
         <item>FP_JRA</item>
 
 
-
         <item>北斗短报文</item>
     </string-array>
 
-   <!-- <string-array name="general_compatible">
-        <item>条码功能兼容机器如下:\n\n- CFON640\n- A370\n- U1 One-dimensional code\n- U1 QR\n- U1_4710\n- U3\n- U8</item>
-        <item>身份证(RFID)功能兼容机器如下:\n\n- CFON640\n- A370\n- U3\n- U8</item>
-        <item>本地身份证(NFC)功能兼容机器如下:\n\n- A370</item>
-        <item>HX超高频功能兼容机器如下:\n\n- CFON640\n- U3</item>
-        <item>R2000超高频功能兼容机器如下:\n\n- U8</item>
-        <item>SY指纹功能兼容机器如下:\n\n- CFON640\n- A370</item>
-        <item>BYD大指纹(新)功能兼容机器如下:\n\n- U3\n- U8</item>
-        <item>BYD小指纹功能兼容机器如下:\n\n- U3\n- U8</item>
-        <item>M1卡(RFID)功能兼容机器如下:\n\n- CFON640\n- U3</item>
-        <item>M1卡(NFC)功能兼容机器如下:\n\n- 带NFC功能的机器</item>
-        <item>ISO 15693功能兼容机器如下:\n\n- 带NFC功能的机器</item>
-        <item>北斗功能兼容机器如下:\n\n- U8</item>
-    </string-array>-->
+    <!-- <string-array name="general_compatible">
+         <item>条码功能兼容机器如下:\n\n- CFON640\n- A370\n- U1 One-dimensional code\n- U1 QR\n- U1_4710\n- U3\n- U8</item>
+         <item>身份证(RFID)功能兼容机器如下:\n\n- CFON640\n- A370\n- U3\n- U8</item>
+         <item>本地身份证(NFC)功能兼容机器如下:\n\n- A370</item>
+         <item>HX超高频功能兼容机器如下:\n\n- CFON640\n- U3</item>
+         <item>R2000超高频功能兼容机器如下:\n\n- U8</item>
+         <item>SY指纹功能兼容机器如下:\n\n- CFON640\n- A370</item>
+         <item>BYD大指纹(新)功能兼容机器如下:\n\n- U3\n- U8</item>
+         <item>BYD小指纹功能兼容机器如下:\n\n- U3\n- U8</item>
+         <item>M1卡(RFID)功能兼容机器如下:\n\n- CFON640\n- U3</item>
+         <item>M1卡(NFC)功能兼容机器如下:\n\n- 带NFC功能的机器</item>
+         <item>ISO 15693功能兼容机器如下:\n\n- 带NFC功能的机器</item>
+         <item>北斗功能兼容机器如下:\n\n- U8</item>
+     </string-array>-->
 
     <string name="general_tips">Tips:</string>
     <string name="general_exit">Are you sure to exit？</string>
@@ -579,7 +580,6 @@
     <string name="nfc_15693_error_not_open">NFC功能未打开，请先开启后重试！</string>
     <string name="nfc_15693_error_no_block">写入区块不存在</string>
     <string name="nfc_15693_error_max">写入数据长度大于空间容量,最大长度为</string>
-
 
 
 </resources>

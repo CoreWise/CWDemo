@@ -7,8 +7,8 @@
 
     <string name="general_check_app_version">Demo版本</string>
     <string name="general_check_version">固件版本</string>
-    <string name="general_strApkVersion">Apk版本：</string>
-    <string name="general_strStmVersion">Stm32版本：</string>
+    <string name="general_strApkVersion">Apk版本：  </string>
+    <string name="general_strStmVersion">Stm32版本：  </string>
 
 
     <string-array name="general_functions">
