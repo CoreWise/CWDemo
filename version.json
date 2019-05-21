@@ -2,9 +2,9 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 3,
-  "VersionName": "1.0.2",
-  "ModifyContent": "1、优化api接口。\r\n2、添加使用demo演示。\r\n3、新增自定义更新服务API接口。\r\n4、优化更新提示界面。",
+  "VersionCode": 1,
+  "VersionName": "V1.1",
+  "ModifyContent": "1、添加DemoApp更新功能\r\n",
   "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.1/DemoApp_V1.1_release.apk",
   "ApkSize": 6964,
   "ApkMd5": ""
