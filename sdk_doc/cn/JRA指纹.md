@@ -1,7 +1,7 @@
-# BYD小指纹
+# JRA小指纹
 
 
-* [1.BYD小指纹开发包说明](#BYD小指纹开发包说明)
+* [1.JRA小指纹开发包说明](#JRA小指纹开发包说明)
 * [2.二次开发说明](#二次开发说明)
   * [2.1 AndroidStudio工程配置说明](#AndroidStudio工程配置说明)
   * [2.2 AndroidManifest.xml配置说明](#AndroidManifest配置说明)
@@ -10,19 +10,19 @@
   * [2.5 接口调用案例](#接口调用案例)
 * [3.二次开发问题汇总](#二次开发问题汇总)
 
-## BYD小指纹开发包说明
+## JRA小指纹开发包说明
 
-  1.1 支持BYD小指纹模块
+  1.1 支持JRA小指纹模块
   
-  1.2 BYD小指纹功能占用了机器唯一的USB口
+  1.2 JRA小指纹功能占用了机器唯一的USB口
   
-  1.3 BYD小指纹开发包兼容机器请查看: [BYD小指纹开发包兼容机器说明](https://github.com/CoreWise/CWDemo#user-content-zh)
+  1.3 JRA小指纹开发包兼容机器请查看: [JRA小指纹开发包兼容机器说明](https://github.com/CoreWise/CWDemo#user-content-zh)
   
-  1.4 [BYD小指纹开发包下载地址](https://github.com/CoreWise/CWDemo#user-content-zh)
+  1.4 [JRA小指纹开发包下载地址](https://github.com/CoreWise/CWDemo#user-content-zh)
 
 ## 二次开发说明
 
-  由于本机器的高通CPU只支持一个USB口,所以在使用BYD小指纹模块时，需要先调用USB管理类将USB切换到指纹模组,此时USB正常情况下不能用来充电、数据线通信等操作。
+  由于本机器的高通CPU只支持一个USB口,所以在使用JRA小指纹模块时，需要先调用USB管理类将USB切换到指纹模组,此时USB正常情况下不能用来充电、数据线通信等操作。
   在这样的情况下，USB数据线调试不能使用，建议网络adb调试;
 
   网络adb调试推荐Android Studio安装Android Wifi ADB插件;
@@ -54,9 +54,9 @@
 
  dependencies {
      ...
-    //BYD小指纹开发包(新固件开发包)
-    //BYD Small FingerPrint SDK
-    compile(name: 'finger_byd_small_sdk_20190429', ext: 'aar')
+    //JRA小指纹开发包(新固件开发包)
+    //JRA FingerPrint SDK
+    compile(name: 'fp_jra_sdk_20190429', ext: 'aar')
 
  }
 
@@ -96,7 +96,7 @@ OnUSBFingerListener回调接口说明:
 
 ---
 
-**BYD小指纹类**
+**JRA小指纹类**
 
 常量
 
@@ -108,7 +108,7 @@ OnUSBFingerListener回调接口说明:
 
 ```
 
-| BYD FingerPrint API接口 | 接口说明 |
+| JRA FingerPrint API接口 | 接口说明 |
 | :----- | :---- |
 | SyOTG_Key | 构造函数 |
 | SyOpen | 打开设备 |
@@ -272,7 +272,7 @@ OnUSBFingerListener回调接口说明:
 
 #### 接口调用案例
 
-参考Demo源码,FingerBYDSmallActivity.java
+参考Demo源码,FpJRAActivity.java
 
 
 #### 二次开发问题汇总
