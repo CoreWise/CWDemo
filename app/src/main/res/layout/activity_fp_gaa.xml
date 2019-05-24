@@ -1,134 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:text="GAA_FingerPrint"
-        android:textColor="#ff0000"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray" />
-
 
     <ImageView
         android:id="@+id/image_1"
         android:layout_width="100dp"
         android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:src="@drawable/finger"></ImageView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/edtv1"
+        android:layout_below="@+id/image_1"
+
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:fadeScrollbars="false"
+        android:scrollbars="vertical">
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_char"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </ScrollView>
+
 
     <TextView
         android:id="@+id/edtv1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/ll0"
         android:enabled="false"
         android:gravity="center_horizontal"
-        android:hint="欢迎使用"
+        android:hint="@string/fp_gaa_welcome"
         android:singleLine="true"
         android:textColor="#0000ff"
         android:textSize="15sp" />
 
     <LinearLayout
-        android:id="@+id/L0"
+        android:id="@+id/ll0"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         android:layout_marginBottom="10dp"
         android:orientation="vertical">
 
 
-        <Button
-            android:id="@+id/btn_version"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="FP_Version(版本)"
-            android:textAllCaps="false" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btn_begin"
+            <Button
+                android:id="@+id/btn_version"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/fp_gaa_version"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_begin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="FP_Begin"
+
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="FP_Begin(初始化指纹模块)"
+            android:orientation="horizontal">
 
-            android:textAllCaps="false" />
 
-        <Button
-            android:id="@+id/btn_auth"
+            <Button
+                android:id="@+id/btn_auth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/fp_gaa_isvauth"
+
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_devversion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/fp_gaa_devversion"
+
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="FP_ISVAuth"
+            android:orientation="horizontal">
 
-            android:textAllCaps="false" />
+            <Button
+                android:id="@+id/btn_getfpbmp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/fp_gaa_getbmp"
 
-        <Button
-            android:id="@+id/btn_devversion"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_feature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/fp_gaa_featureextract"
+
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="FP_DevVersion"
+            android:orientation="horizontal">
 
-            android:textAllCaps="false" />
 
-        <Button
-            android:id="@+id/btn_getfpbmp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="FP_GetBmp(采集指纹)"
+            <Button
+                android:id="@+id/btn_match"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/fp_gaa_featurematch"
+                android:textAllCaps="false" />
 
-            android:textAllCaps="false" />
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/fp_gaa_featuresearch"
+                android:textAllCaps="false" />
 
-        <Button
-            android:id="@+id/btn_feature"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="FP_FeatureExtract(提取特征值)"
 
-            android:textAllCaps="false" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_match"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="FP_FeatureMatch(1:1比对)"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/btn_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="FP_FeatureSearch(1:N比对)"
-            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/btn_end"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="FP_End(关闭指纹模块)"
+            android:text="@string/fp_gaa_end"
             android:textAllCaps="false" />
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
 

@@ -1,6 +1,7 @@
 package com.cw.demo.m1;
 
 import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
@@ -12,12 +13,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -203,7 +206,7 @@ public class NFCM1Activity extends AppCompatActivity {
 
 
     public String readBlock(Tag tag, int block) {
-        MifareClassic mfc = MifareClassic.get(tag);
+        mfc = MifareClassic.get(tag);
         for (String tech : tag.getTechList()) {
             Log.e(TAG, tech);
         }
@@ -245,7 +248,7 @@ public class NFCM1Activity extends AppCompatActivity {
 
 
     public boolean writeBlock(Tag tag, int block, String data) {
-        MifareClassic mfc = MifareClassic.get(tag);
+        mfc = MifareClassic.get(tag);
         for (String tech : tag.getTechList()) {
             Log.e(TAG, tech);
         }
@@ -297,6 +300,12 @@ public class NFCM1Activity extends AppCompatActivity {
     @OnClick(R.id.btn_write)
     public void onViewClicked() {
         tvData.setError(null);
+
+        if (mfc==null) {
+            Toast.makeText(NFCM1Activity.this, "mfc is null!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         String data = tvData.getText().toString();
         if (data.length() < 32) {
             Toast.makeText(this, "写入数据小于32", Toast.LENGTH_SHORT).show();
@@ -317,5 +326,28 @@ public class NFCM1Activity extends AppCompatActivity {
         }
 
     }
+
+        @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.general_tips);
+            builder.setMessage(R.string.general_exit);
+
+            //设置确定按钮
+            builder.setNegativeButton(R.string.general_yes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            //设置取消按钮
+            builder.setPositiveButton(R.string.general_no, null);
+            //显示提示框
+            builder.show();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }
 

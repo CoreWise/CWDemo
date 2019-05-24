@@ -32,21 +32,24 @@
 
     </string-array>
 
-   <!-- <string-array name="general_compatible">
-        <item>条码功能兼容机器如下:\n\n- CFON640\n- A370\n- U1 One-dimensional code\n- U1 QR\n- U1_4710\n- U3\n- U8</item>
-        <item>身份证(RFID)功能兼容机器如下:\n\n- CFON640\n- A370\n- U3\n- U8</item>
-        <item>本地身份证(NFC)功能兼容机器如下:\n\n- A370</item>
-        <item>HX超高频功能兼容机器如下:\n\n- CFON640\n- U3</item>
-        <item>R2000超高频功能兼容机器如下:\n\n- U8</item>
-        <item>SY指纹功能兼容机器如下:\n\n- CFON640\n- A370</item>
-        <item>BYD大指纹(新)功能兼容机器如下:\n\n- U3\n- U8</item>
-        <item>BYD小指纹功能兼容机器如下:\n\n- U3\n- U8</item>
-        <item>M1卡(RFID)功能兼容机器如下:\n\n- CFON640\n- U3\n- U8</item>
-        <item>M1卡(NFC)功能兼容机器如下:\n\n- 带NFC功能的机器</item>
-        <item>ISO 15693功能兼容机器如下:\n\n- 带NFC功能的机器</item>
-        <item>北斗功能兼容机器如下:\n\n- U8</item>
-    </string-array>-->
+    <!-- <string-array name="general_compatible">
+         <item>条码功能兼容机器如下:\n\n- CFON640\n- A370\n- U1 One-dimensional code\n- U1 QR\n- U1_4710\n- U3\n- U8</item>
+         <item>身份证(RFID)功能兼容机器如下:\n\n- CFON640\n- A370\n- U3\n- U8</item>
+         <item>本地身份证(NFC)功能兼容机器如下:\n\n- A370</item>
+         <item>HX超高频功能兼容机器如下:\n\n- CFON640\n- U3</item>
+         <item>R2000超高频功能兼容机器如下:\n\n- U8</item>
+         <item>SY指纹功能兼容机器如下:\n\n- CFON640\n- A370</item>
+         <item>BYD大指纹(新)功能兼容机器如下:\n\n- U3\n- U8</item>
+         <item>BYD小指纹功能兼容机器如下:\n\n- U3\n- U8</item>
+         <item>M1卡(RFID)功能兼容机器如下:\n\n- CFON640\n- U3\n- U8</item>
+         <item>M1卡(NFC)功能兼容机器如下:\n\n- 带NFC功能的机器</item>
+         <item>ISO 15693功能兼容机器如下:\n\n- 带NFC功能的机器</item>
+         <item>北斗功能兼容机器如下:\n\n- U8</item>
+     </string-array>-->
 
+    <string name="general_usb_fp_tips">1.该指纹功能底层采用USB HOST通信,进入该指纹演示Demo后,设备USB无法充电、无法通信\n\n2.退出再插拔下USB数据线才能正常使用USB充电、通信功能!\n\n3.开发者建议使用wifi adb调试开发指纹模块!</string>
+
+    <string name="general_dialog_tips">温馨提示</string>
     <string name="general_tips">温馨提示:</string>
     <string name="general_exit">您确认退出？</string>
     <string name="general_yes">确定</string>
@@ -59,8 +62,8 @@
     <string name="general_write_fail">写入失败！</string>
     <string name="general_ok">确定</string>
     <string name="general_cancel">取消</string>
+        <string name="general_setting">设置</string>
 
-    <string name="general_setting">设置</string>
 
     <!--条码字符串资源 命名要求: barcode_+功能+英文-->
     <string name="barcode_scan">单扫</string>
@@ -74,6 +77,8 @@
     <string name="barcode_scanner_status">扫描仪状态</string>
     <string name="barcode_scanner_open">开启</string>
     <string name="barcode_scanner_close">关闭</string>
+
+        <string name="barcode_setting">设置</string>
 
 
     <string name="barcode_setting_interval">扫描间隔:</string>
@@ -120,7 +125,7 @@
     <!--HX超高频字符串资源 要求:hxuhf_+功能+英文-->
     <string name="hxuhf_open">开启模块</string>
     <string name="hxuhf_search_tag">搜索标签</string>
-        <string name="hxuhf_setting">设置</string>
+    <string name="hxuhf_setting">设置</string>
 
     <string name="hxuhf_read_count">读取次数:</string>
     <string name="hxuhf_readtime">时间：</string>
@@ -191,7 +196,7 @@
     </string-array>
 
 
-    <!-- FingerprintActivity -->
+    <!-- SY FingerprintActivity -->
     <string name="fp_register_fingerprint">注册指纹</string>
     <string name="fp_validate_fingerprint">验证指纹</string>
     <string name="fp_noID">请输入ID</string>
@@ -284,7 +289,18 @@
     <string name="finger_public_fetch_feature_failure">提取特征值失败!</string>
     <string name="finger_public_fetch_feature_success">提取特征值成功!</string>
 
-    <string name="collect_end">End of collection!</string>
+
+    <string name="fp_gaa_welcome">欢迎使用</string>
+    <string name="fp_gaa_version">FP_Version</string>
+    <string name="fp_gaa_isvauth">FP_ISVAuth</string>
+    <string name="fp_gaa_devversion">FP_DevVersion</string>
+    <string name="fp_gaa_getbmp">FP_GetBmp</string>
+    <string name="fp_gaa_featureextract">FP_FeatureExtract</string>
+    <string name="fp_gaa_featurematch">FP_FeatureMatch</string>
+    <string name="fp_gaa_featuresearch">FP_FeatureSearch</string>
+    <string name="fp_gaa_end">FP_End</string>
+    <string name="fp_usb_init">指纹模块初始化中...</string>
+
 
     <!--R2000超高频字符串资源 要求:r2000_+功能+英文-->
 
@@ -583,6 +599,7 @@
     <string name="nfc_15693_error_not_open">NFC功能未打开，请先开启后重试！</string>
     <string name="nfc_15693_error_no_block">写入区块不存在</string>
     <string name="nfc_15693_error_max">写入数据长度大于空间容量,最大长度为</string>
+
 
 
 </resources>

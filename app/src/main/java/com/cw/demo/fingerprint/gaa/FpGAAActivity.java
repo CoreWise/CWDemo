@@ -4,6 +4,7 @@ package com.cw.demo.fingerprint.gaa;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -13,6 +14,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -23,7 +25,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cw.demo.MyApplication;
 import com.cw.demo.R;
+import com.cw.demo.fingerprint.jra.FpJRAActivity;
 import com.cw.fpgaasdk.USBFingerManager;
 import com.fm.bio.ID_Fpr;
 
@@ -33,7 +37,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class FpGAAActivity extends Activity implements OnClickListener {
 
-    private static final String TAG = "CwFingerBYDBigActivity";
+    private static final String TAG = "CwGAAActivity";
 
     private TextView msgView;
     private ImageView fpImageView;
@@ -48,13 +52,20 @@ public class FpGAAActivity extends Activity implements OnClickListener {
     private Button btn_end;
     private Button btn_auth;
 
+    private AppCompatTextView tv_Char;
+
     ID_Fpr mLiveScan = null;
 
 
     boolean isExit;
     float fpThreshold;
+    //指纹特征
     byte[] m_byFeature = new byte[ID_Fpr.LIVESCAN_FEATURE_SIZE];
-    byte[] m_byFeatures = new byte[ID_Fpr.LIVESCAN_FEATURE_SIZE * 1000];//length shall refer to the state standard GA1011/1012
+
+    //length shall refer to the state standard GA1011/1012
+    //指纹库特征
+    byte[] m_byFeatures = new byte[ID_Fpr.LIVESCAN_FEATURE_SIZE * 1000];
+
     int nbyFeature = 0;
 
     byte[] byIHVKey = new byte[]{(byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5,
@@ -64,33 +75,11 @@ public class FpGAAActivity extends Activity implements OnClickListener {
     byte[] byIHVData = new byte[]{(byte) 0x3a, (byte) 0xd7, (byte) 0x7b, (byte) 0xb4, (byte) 0x0d, (byte) 0x7a, (byte) 0x36, (byte) 0x60,
             (byte) 0xa8, (byte) 0x9e, (byte) 0xca, (byte) 0xf3, (byte) 0x24, (byte) 0x66, (byte) 0xef, (byte) 0x97};
 
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-
-    private static String[] PERMISSIONS_STORAGE = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-    };
-
-
-    private void checkPermission() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission
-                    .WRITE_EXTERNAL_STORAGE)) {
-                Toast.makeText(this, "Please Obtain Permissions", Toast.LENGTH_SHORT).show();
-            }
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_EXTERNAL_STORAGE);
-
-        } else {
-            Toast.makeText(this, "requestPermissions success", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == ID_Fpr.LIVESCAN_MSG_KEY) {
-                int iRet = 0;
                 switch (msg.arg1) {
                     case ID_Fpr.LIVESCAN_MSG_IN:
                     case ID_Fpr.LIVESCAN_MSG_PERMISSION:
@@ -120,22 +109,33 @@ public class FpGAAActivity extends Activity implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i(TAG, "------------onCreate--------------");
+
         setContentView(R.layout.activity_fp_gaa);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        USBFingerManager.getInstance(this).setDelayMs(500);
         initview();
         //设备系统已做默认授权的处理
         //checkPermission();
 
 
-        USBFingerManager.getInstance(this).setDelayMs(1000);
+    }
 
+    private void open() {
+        MyApplication.getApp().showProgressDialog(this, getString(R.string.fp_usb_init));
         USBFingerManager.getInstance(this).openUSB(new USBFingerManager.OnUSBFingerListener() {
             @Override
             public void onOpenUSBFingerSuccess(String device) {
 
                 if (device.equals(USBFingerManager.BYD_BIG_DEVICE2)) {
+                    MyApplication.getApp().cancleProgressDialog();
+
+                    if (mLiveScan != null) {
+                        return;
+                    }
                     mLiveScan = new ID_Fpr(FpGAAActivity.this, handler);
+
                 } else {
                     Toast.makeText(FpGAAActivity.this, "开发包和指纹模块不一致! 请联系商务", Toast.LENGTH_SHORT).show();
                     btnsetEnabledALL(false);
@@ -145,18 +145,54 @@ public class FpGAAActivity extends Activity implements OnClickListener {
             @Override
             public void onOpenUSBFingerFailure(String error) {
                 Log.e(TAG, error);
+                btnsetEnabledALL(false);
+                MyApplication.getApp().cancleProgressDialog();
+                Toast.makeText(FpGAAActivity.this, error, Toast.LENGTH_SHORT).show();
             }
         });
+
     }
+
+    private void close() {
+        btnsetEnabledEnd(false);
+        if (mLiveScan != null) {
+            mLiveScan.LIVESCAN_Close();
+        }
+        USBFingerManager.getInstance(this).closeUSB();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(TAG, "------------onStart--------------");
+        open();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "------------onResume--------------");
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "------------onRestart--------------");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "------------onStop--------------");
+        close();
+    }
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mLiveScan != null) {
-            mLiveScan.LIVESCAN_Close();
-        }
-
-        USBFingerManager.getInstance(this).closeUSB();
+        Log.i(TAG, "------------onDestroy--------------");
     }
 
 
@@ -186,20 +222,6 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         return super.onKeyDown(keyCode, event);
     }
 
-    public void SendMesg(String Msg) {
-        Message msg = handler.obtainMessage();
-        msg.arg1 = 1;
-        msg.obj = Msg;
-        handler.sendMessage(msg);
-    }
-
-    public void SendBmp(Bitmap bmp) {
-        Message msg = handler.obtainMessage();
-        msg.arg1 = 2;
-        msg.obj = bmp;
-        handler.sendMessage(msg);
-    }
-
 
     public void initview() {
         msgView = findViewById(R.id.edtv1);
@@ -216,6 +238,7 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         btn_end = findViewById(R.id.btn_end);
         btn_auth = findViewById(R.id.btn_auth);
 
+        tv_Char = findViewById(R.id.tv_char);
 
         btn_begin.setOnClickListener(this);
         btn_getfpbmp.setOnClickListener(this);
@@ -243,12 +266,11 @@ public class FpGAAActivity extends Activity implements OnClickListener {
     public void regFingerprint() {
 
         //LIVESCAN_BeginCapture
-        String Msg = "";
-        int iRet = ID_Fpr.LIVESCAN_SUCCESS;
 
         SendMesg("Place Your Finger");
 
         new Thread() {
+
             int iRet = 0;
             byte[] bScore = new byte[1];
             int i = 0;
@@ -257,11 +279,13 @@ public class FpGAAActivity extends Activity implements OnClickListener {
 
             @Override
             public void run() {
+
                 while (!Thread.interrupted()) {
 
                     try {
 
                         iRet = mLiveScan.LIVESCAN_GetFPRawData(fpRaw);
+
                         if (iRet != ID_Fpr.LIVESCAN_SUCCESS) {
                             Msg = String.format("GetFPRawData:%d_%s", iRet, mLiveScan.LIVESCAN_GetErrorInfo(iRet));
                             SendMesg(Msg);
@@ -273,13 +297,20 @@ public class FpGAAActivity extends Activity implements OnClickListener {
                         Msg = String.format("GetQualityScore:%d _%d", iRet, bScore[0] & 0xff);
                         SendMesg(Msg);
 
-                        if ((bScore[0] & 0xff) >= ID_Fpr.LIVESCAN_IMAGE_SCORE_THRESHOLD)//experience value LIVESCAN_IMAGE_SCORE_THRESHOLD
-                        {
+                        //experience value LIVESCAN_IMAGE_SCORE_THRESHOLD
+                        if ((bScore[0] & 0xff) >= ID_Fpr.LIVESCAN_IMAGE_SCORE_THRESHOLD) {
                             //byte cScannerType=0x17
                             //byte cFingerCode = 11~20 97~99 shall refer to the state standard GB5974.1-86
                             iRet = mLiveScan.LIVESCAN_FeatureExtract(m_byFeature);
                             if (iRet >= ID_Fpr.LIVESCAN_SUCCESS) {
                                 System.arraycopy(m_byFeature, 0, m_byFeatures, nbyFeature * ID_Fpr.LIVESCAN_FEATURE_SIZE, ID_Fpr.LIVESCAN_FEATURE_SIZE);
+                                Log.i(TAG, "---------------------------------:" + byteToString(m_byFeature));
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        tv_Char.setText(byteToString(m_byFeature));
+                                    }
+                                });
                                 Msg = String.format("LIVESCAN_FeatureExtract ID:%d ", nbyFeature);
                                 nbyFeature++;
                             } else {
@@ -316,11 +347,7 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         }.start();
     }
 
-    public void matchFingerprint() {
-
-        //LIVESCAN_BeginCapture
-        String Msg = "";
-        int iRet = ID_Fpr.LIVESCAN_SUCCESS;
+    private void matchFingerprint() {
 
         SendMesg("Place Your Finger");
         new Thread() {
@@ -329,7 +356,8 @@ public class FpGAAActivity extends Activity implements OnClickListener {
             int i = 0;
             String Msg = "";
             byte[] fpRaw = new byte[ID_Fpr.LIVESCAN_IMAGE_WIDTH * ID_Fpr.LIVESCAN_IMAGE_HEIGHT];
-            byte[] fpFtp = new byte[512];//shall refer to the state standard GA1011/1012
+            //shall refer to the state standard GA1011/1012
+            byte[] fpFtp = new byte[512];
 
             @Override
             public void run() {
@@ -349,8 +377,8 @@ public class FpGAAActivity extends Activity implements OnClickListener {
                         Msg = String.format("GetQualityScore:%d _%d", iRet, bScore[0] & 0xff);
                         SendMesg(Msg);
 
-                        if ((bScore[0] & 0xff) >= ID_Fpr.LIVESCAN_IMAGE_SCORE_THRESHOLD)//experience value 50
-                        {
+                        //experience value 50
+                        if ((bScore[0] & 0xff) >= ID_Fpr.LIVESCAN_IMAGE_SCORE_THRESHOLD) {
                             //byte cScannerType=0x17
                             //byte cFingerCode = 11~20 97~99 shall refer to the state standard GB5974.1-86
                             iRet = mLiveScan.LIVESCAN_FeatureExtract(fpFtp);
@@ -381,6 +409,7 @@ public class FpGAAActivity extends Activity implements OnClickListener {
                     }
                 }
                 runOnUiThread(new Runnable() {
+                    @Override
                     public void run() {
                         btnsetEnabled(true);
                     }
@@ -391,20 +420,20 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         }.start();
     }
 
-    public void searchFingerprint() {
+    private void searchFingerprint() {
 
         //LIVESCAN_BeginCapture
-        String Msg = "";
-        int iRet = 0;
 
         SendMesg("Place Your Finger");
+
         new Thread() {
             int iRet = 0;
             byte[] bScore = new byte[1];
             int i = 0;
             String Msg = "";
             byte[] fpRaw = new byte[ID_Fpr.LIVESCAN_IMAGE_WIDTH * ID_Fpr.LIVESCAN_IMAGE_HEIGHT];
-            byte[] fpFtp = new byte[512];//shall refer to the state standard GA1011/1012
+            //shall refer to the state standard GA1011/1012
+            byte[] fpFtp = new byte[512];
 
             @Override
             public void run() {
@@ -424,8 +453,8 @@ public class FpGAAActivity extends Activity implements OnClickListener {
                         Msg = String.format("GetQualityScore:%d _%d", iRet, bScore[0] & 0xff);
                         SendMesg(Msg);
 
-                        if ((bScore[0] & 0xff) >= ID_Fpr.LIVESCAN_IMAGE_SCORE_THRESHOLD)//experience value 50
-                        {
+                        //experience value 50
+                        if ((bScore[0] & 0xff) >= ID_Fpr.LIVESCAN_IMAGE_SCORE_THRESHOLD) {
                             //byte cScannerType=0x17
                             //byte cFingerCode = 11~20 97~99 shall refer to the state standard GB5974.1-86
                             iRet = mLiveScan.LIVESCAN_FeatureExtract(fpFtp);
@@ -444,10 +473,12 @@ public class FpGAAActivity extends Activity implements OnClickListener {
                         } else {
                             i++;
                             Thread.sleep(200);
-                            if (i % 2 == 0)
+                            if (i % 2 == 0) {
                                 SendMesg("Lift and Place Your Finger.");
-                            if (i % 2 == 1)
+                            }
+                            if (i % 2 == 1) {
                                 SendMesg("Lift and Place Your Finger...");
+                            }
                         }
 
                     } catch (InterruptedException e) {
@@ -456,6 +487,7 @@ public class FpGAAActivity extends Activity implements OnClickListener {
                 }
                 //LIVESCAN_EndCapture
                 runOnUiThread(new Runnable() {
+                    @Override
                     public void run() {
                         btnsetEnabled(true);
                     }
@@ -466,6 +498,7 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         }.start();
     }
 
+
     private static byte[] encrypt(byte[] key, byte[] data) throws Exception {
         SecretKeySpec skeySpec = new SecretKeySpec(key, "AES");
         Cipher cipher = Cipher.getInstance("AES");
@@ -474,7 +507,7 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         return encrypted;
     }
 
-    public boolean memcmp(byte[] data1, byte[] data2, int len) {
+    private boolean memcmp(byte[] data1, byte[] data2, int len) {
         if (data1 == null && data2 == null) {
             return true;
         }
@@ -497,7 +530,7 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         return bEquals;
     }
 
-    public static String byteToString(byte[] input) {
+    private static String byteToString(byte[] input) {
         String ret = "";
         for (int i = 0; i < input.length; i++) {
             String hex = Integer.toHexString(input[i] & 0xFF);
@@ -512,20 +545,20 @@ public class FpGAAActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(View v) {
         int iRet = 0;
-        String Msg = "";
+        String Msg;
         switch (v.getId()) {
 
-            case R.id.btn_version://
+            case R.id.btn_version:
 
                 if (mLiveScan == null) {
                     return;
                 }
 
                 Msg = String.format("SdkVersion_%s\r\n", mLiveScan.LIVESCAN_GetSdkVersion());
-                Toast.makeText(getApplicationContext(), Msg,
-                        Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), Msg, Toast.LENGTH_SHORT).show();
+                Log(Msg);
                 break;
-            case R.id.btn_devversion://
+            case R.id.btn_devversion:
                 //ID_FprCap
                 byte[] bySN = new byte[32];
                 String sv = mLiveScan.LIVESCAN_GetDevVersion();
@@ -535,10 +568,11 @@ public class FpGAAActivity extends Activity implements OnClickListener {
 
                 Msg = String.format("DevVersion:%s\r\nSN:%s", sv, sn);
 
-                Toast.makeText(getApplicationContext(), Msg,
-                        Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), Msg, Toast.LENGTH_SHORT).show();
+                Log(Msg);
+
                 break;
-            case R.id.btn_begin://
+            case R.id.btn_begin:
                 if (mLiveScan == null) {
                     return;
                 }
@@ -546,7 +580,7 @@ public class FpGAAActivity extends Activity implements OnClickListener {
                 fpInit();
 
                 break;
-            case R.id.btn_auth://
+            case R.id.btn_auth:
                 //LIVESCAN_Init
                 byte[] plaintext1 = new byte[16];
                 byte[] plaintext2 = new byte[16];
@@ -554,8 +588,9 @@ public class FpGAAActivity extends Activity implements OnClickListener {
                 System.arraycopy(byIHVData, 0, plaintext2, 0, 16);
                 if (mLiveScan.LIVESCAN_Encrypt(plaintext1) != ID_Fpr.LIVESCAN_SUCCESS) {
                     Msg = String.format("LIVESCAN_Encrypt:%d_%s\r\n", iRet, mLiveScan.LIVESCAN_GetErrorInfo(iRet));
-                    Toast.makeText(getApplicationContext(), Msg,
-                            Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), Msg, Toast.LENGTH_SHORT).show();
+                    Log(Msg);
+
                     return;
                 }
                 try {
@@ -563,18 +598,20 @@ public class FpGAAActivity extends Activity implements OnClickListener {
 
                     if (memcmp(cryptText, plaintext1, 16) == true) {
                         Msg = String.format("LIVESCAN_Encrypt ok & Auth Success");
-                        Toast.makeText(getApplicationContext(), Msg,
-                                Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), Msg,Toast.LENGTH_SHORT).show();
+                        Log(Msg);
+
                     } else {
                         Msg = String.format("LIVESCAN_Encrypt ok & Auth Failed");
-                        Toast.makeText(getApplicationContext(), Msg,
-                                Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), Msg, Toast.LENGTH_SHORT).show();
+                        Log(Msg);
+
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
-            case R.id.btn_getfpbmp://
+            case R.id.btn_getfpbmp:
 
                 byte[] fpBmp = new byte[ID_Fpr.LIVESCAN_IMAGE_WIDTH * ID_Fpr.LIVESCAN_IMAGE_HEIGHT + ID_Fpr.LIVESCAN_IMAGE_HEADER];
                 iRet = mLiveScan.LIVESCAN_GetFPBmpData(fpBmp);
@@ -604,20 +641,23 @@ public class FpGAAActivity extends Activity implements OnClickListener {
                 //LIVESCAN_Init
                 iRet = mLiveScan.LIVESCAN_Close();
                 Msg = String.format("LIVESCAN_Close:%d_%s\r\n", iRet, mLiveScan.LIVESCAN_GetErrorInfo(iRet));
-                Toast.makeText(getApplicationContext(), Msg,
-                        Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), Msg, Toast.LENGTH_SHORT).show();
+                Log(Msg);
+
                 btnsetEnabledEnd(false);
                 break;
         }
     }
+
 
     private void fpInit() {
         int iRet;
         String Msg;
         iRet = mLiveScan.LIVESCAN_Init();
         Msg = String.format("LIVESCAN_Init:%d_%s\r\n", iRet, mLiveScan.LIVESCAN_GetErrorInfo(iRet));
-        Toast.makeText(getApplicationContext(), Msg,
-                Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), Msg, Toast.LENGTH_SHORT).show();
+        Log(Msg);
+
         if (iRet == ID_Fpr.LIVESCAN_SUCCESS) {
             btn_match.setEnabled(true);
             btn_auth.setEnabled(true);
@@ -631,6 +671,7 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         }
     }
 
+
     private void btnsetEnabled(Boolean b) {
         btn_begin.setEnabled(b);
         btn_version.setEnabled(b);
@@ -640,6 +681,20 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         btn_getfpbmp.setEnabled(b);
         btn_feature.setEnabled(b);
         btn_end.setEnabled(b);
+    }
+
+    private void SendMesg(String Msg) {
+        Message msg = handler.obtainMessage();
+        msg.arg1 = 1;
+        msg.obj = Msg;
+        handler.sendMessage(msg);
+    }
+
+    private void SendBmp(Bitmap bmp) {
+        Message msg = handler.obtainMessage();
+        msg.arg1 = 2;
+        msg.obj = bmp;
+        handler.sendMessage(msg);
     }
 
     private void btnsetEnabledEnd(Boolean b) {
@@ -666,6 +721,11 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         btn_feature.setEnabled(b);
         btn_end.setEnabled(b);
 
+    }
+
+    private void Log(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "------------------------------" + msg);
     }
 
 }

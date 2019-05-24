@@ -18,7 +18,7 @@
             android:background="@drawable/dialog_bg_top"
             android:gravity="center"
             android:padding="20dp"
-            android:text="温馨提示"
+            android:text="@string/general_dialog_tips"
             android:textColor="#FFD306"
             android:textSize="20dp" />
 
@@ -67,7 +67,7 @@
                 android:gravity="center"
                 android:paddingBottom="15dp"
                 android:paddingTop="15dp"
-                android:text="确认"
+                android:text="@string/general_yes"
                 android:textColor="#FFD306"
                 android:textSize="17dp" />
 
@@ -79,7 +79,7 @@
                 android:gravity="center"
                 android:paddingBottom="15dp"
                 android:paddingTop="15dp"
-                android:text="取消"
+                android:text="@string/general_no"
                 android:textColor="#FFD306"
                 android:textSize="17dp" />
 

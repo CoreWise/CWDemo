@@ -19,8 +19,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import com.cw.demo.MyApplication;
 import com.cw.demo.R;
 import com.cw.fpjrasdk.USBFingerManager;
 import com.cw.serialportsdk.utils.DataUtils;
@@ -48,19 +50,12 @@ public class FpJRAActivity extends AppCompatActivity {
 
     private static final String TAG = "SynoOTGKeyFragment";
 
-    private static final String ACTION_USB_PERMISSION = "com.synochip.demo.OTG_DEMO";
-    private static final int MAX_LINES = 12;
-    private static final int CNT_LINES = 11;
     private static final int PS_NO_FINGER = 0x02;
     private static final int PS_OK = 0x00;
     private static int fingerCnt = 1;
     private static int IMAGE_X = 256;
     private static int IMAGE_Y = 288;
-    public int threadCnt;
-    //private int opened = 0;
-    public int thread_i = 0;
-    public int thread_sum = 0;
-    public boolean start_clt = false;
+
 
     @BindView(R.id.bt_enroll)
     Button btEnroll;
@@ -85,15 +80,13 @@ public class FpJRAActivity extends AppCompatActivity {
     EditText extractTime;
     @BindView(R.id.verifyTime)
     EditText verifyTime;
-    String imagePath = "finger.bmp";
     byte[] fingerBuf = new byte[IMAGE_X * IMAGE_Y];
-    boolean ifChecked = false;
-    byte mbAppHand[] = new byte[1];
-    byte mbConHand[] = new byte[1];
-    boolean bIsOpen = false;
+
     byte[] g_TempData = new byte[512];
+
     @BindView(R.id.tv_char)
     AppCompatTextView tvChar;
+
     @BindView(R.id.tv_title)
     AppCompatTextView tvTitle;
 
@@ -108,6 +101,12 @@ public class FpJRAActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_fp_jra);
         unbinder = ButterKnife.bind(this);
+        USBFingerManager.getInstance(this).setDelayMs(500);
+    }
+
+
+    private void open() {
+        MyApplication.getApp().showProgressDialog(this, getString(R.string.fp_usb_init));
 
         USBFingerManager.getInstance(this).openUSB(new USBFingerManager.OnUSBFingerListener() {
             @Override
@@ -119,7 +118,9 @@ public class FpJRAActivity extends AppCompatActivity {
                     if (ret == SyOTG_Key.DEVICE_SUCCESS) {
                         Log.e(TAG, "open device success hkey!");
                         btnFingerState(true);
-                        mDeviceOpened=true;
+                        mDeviceOpened = true;
+                        MyApplication.getApp().cancleProgressDialog();
+
                     } else {
                         Log.e(TAG, "open device fail errocde :" + ret);
                     }
@@ -128,7 +129,9 @@ public class FpJRAActivity extends AppCompatActivity {
 
             @Override
             public void onOpenUSBFingerFailure(String s) {
-
+                btnFingerState(false);
+                MyApplication.getApp().cancleProgressDialog();
+                Toast.makeText(FpJRAActivity.this, s, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -136,25 +139,49 @@ public class FpJRAActivity extends AppCompatActivity {
 
     }
 
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.e(TAG, "---------onPause------------");
+    private void close() {
         btnFingerState(false);
         closeFingerDevice();
         mDeviceOpened = false;
+        USBFingerManager.getInstance(this).closeUSB();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(TAG, "------------onStart--------------");
+        open();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "------------onResume--------------");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "------------onRestart--------------");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "------------onStop--------------");
+        close();
+    }
+
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         Log.e(TAG, "---------onDestroy------------");
-        USBFingerManager.getInstance(this).closeUSB();
+
     }
 
 
-    @OnClick({ R.id.bt_enroll, R.id.bt_verify, R.id.bt_identify, R.id.bt_clear, R.id.bt_show})
+    @OnClick({R.id.bt_enroll, R.id.bt_verify, R.id.bt_identify, R.id.bt_clear, R.id.bt_show})
     public void onViewClicked(View view) {
 
         tvChar.setText("");
@@ -221,24 +248,16 @@ public class FpJRAActivity extends AppCompatActivity {
      * 关闭指纹设备
      */
     private boolean closeFingerDevice() {
-
         try {
-            //uiState(true);
-            //logMsg("Device Closed");
-            //openState(true);
             if (msyUsbKey != null) {
                 msyUsbKey.SyClose();
             }
-
             Log.e(TAG, "Device Closed");
-
             return true;
         } catch (Exception e) {
-            //logMsg("Exception: => " + e.toString());
             Log.e(TAG, "Exception: => " + e.toString());
             return false;
         }
-
     }
 
 
@@ -246,7 +265,6 @@ public class FpJRAActivity extends AppCompatActivity {
      * 采集指纹
      */
     private void enroll() {
-
         if (fingerCnt >= 256) {
             Log.i(TAG, "fingerC= 256");
             return;
@@ -271,7 +289,6 @@ public class FpJRAActivity extends AppCompatActivity {
         fingerCnt = 0;
         Log.e(TAG, "mClear OK");
         tvInfo.setText("Clear Ok");
-
     }
 
     /**
@@ -568,7 +585,7 @@ public class FpJRAActivity extends AppCompatActivity {
 
                 if (cnt >= 2) {
                     publishProgress("end");
-                    publishProgress(getString(R.string.collect_end));
+                    publishProgress(getString(R.string.finger_collect_end));
 
 
                     int i = msyUsbKey.SyUpChar(-1, g_TempData);

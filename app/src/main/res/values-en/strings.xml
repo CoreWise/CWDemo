@@ -47,6 +47,9 @@
          <item>北斗功能兼容机器如下:\n\n- U8</item>
      </string-array>-->
 
+    <string name="general_usb_fp_tips">1.The underlying fingerprint function uses USB HOST communication. After entering the fingerprint demonstration Demo, the device USB can not charge and communicate \n\n2. Only after exiting and plugging out the USB data line can the normal use of USB charging and communication function be achieved. \n\n3. Developers recommend using WiFi ADB to debug and develop fingerprint module!</string>
+
+    <string name="general_dialog_tips">Tips</string>
     <string name="general_tips">Tips:</string>
     <string name="general_exit">Are you sure to exit？</string>
     <string name="general_yes">Yes</string>
@@ -60,7 +63,8 @@
     <string name="general_ok">OK</string>
     <string name="general_cancel">Cancle</string>
 
-    <string name="general_setting">设置</string>
+    <string name="general_setting">Setting</string>
+
 
     <!--条码字符串资源 命名要求: barcode_+功能+英文-->
     <string name="barcode_scan">Scan</string>
@@ -74,6 +78,7 @@
     <string name="barcode_scanner_status">Status</string>
     <string name="barcode_scanner_open">On</string>
     <string name="barcode_scanner_close">Off</string>
+    <string name="barcode_setting">Setting</string>
 
     <string name="barcode_setting_interval">Scan interval:</string>
     <string name="barcode_setting_outmode">OutPut Mode</string>
@@ -190,7 +195,7 @@
     </string-array>
 
 
-    <!-- FingerprintActivity -->
+    <!-- SY FingerprintActivity -->
     <string name="fp_register_fingerprint">注册指纹</string>
     <string name="fp_validate_fingerprint">验证指纹</string>
     <string name="fp_noID">请输入ID</string>
@@ -242,48 +247,60 @@
     <!--指纹字符串资源 命名要求: fp_型号类别_功能_结果-->
 
 
-    <string name="fp_open_device">打开设备</string>
+    <string name="fp_open_device">Open</string>
 
-    <string name="fp_close_device">关闭设备</string>
+    <string name="fp_close_device">Close</string>
 
-    <string name="finger_infos">指纹采集信息：</string>
+    <string name="finger_infos">Fingerprint collection information：</string>
 
-    <string name="fp_capture">取图：</string>
+    <string name="fp_capture">Take picture：</string>
 
-    <string name="fp_extract">提取特征：</string>
-
-
-    <string name="fp_generalize">合成模板：</string>
-
-    <string name="fp_verify">比对：</string>
-    <string name="fp_enroll_fp">录入指纹</string>
-    <string name="fp_verify_fp">比对指纹(1:1)</string>
-    <string name="fp_identify_fp">搜索指纹(1:N)</string>
-    <string name="fp_verify_fp2">比对指纹</string>
-    <string name="fp_identify_fp2">搜索指纹</string>
-    <string name="fp_clear_fp_db">清空指纹库</string>
-    <string name="fp_show_fp">显示指纹</string>
-    <string name="fp_show_devinfos">查看设备信息</string>
+    <string name="fp_extract">Extracting features：</string>
 
 
-    <string name="fingerprintfeatureraw">指纹特征数据:</string>
+    <string name="fp_generalize">Composite template：</string>
 
-    <string name="finger_collect_failure">指纹采集失败!</string>
+    <string name="fp_verify">Comparison：</string>
+    <string name="fp_enroll_fp">Enter fingerprint</string>
+    <string name="fp_verify_fp">Alignment fingerprint(1:1)</string>
+    <string name="fp_identify_fp">Search fingerprint(1:N)</string>
+    <string name="fp_verify_fp2">Alignment fingerprint</string>
+    <string name="fp_identify_fp2">Search fingerprint</string>
+    <string name="fp_clear_fp_db">Clear fingerprint</string>
+    <string name="fp_show_fp">Display fingerprint</string>
+    <string name="fp_show_devinfos">View device Infos</string>
 
-    <string name="finger_leave">请离开手指</string>
-    <string name="finger_press">请按压手指</string>
-    <string name="finger_collect">正在采集第</string>
-    <string name="finger">指纹</string>
-    <string name="finger_collect_end">采集结束!</string>
-    <string name="finger_press_again">请再次按压手指</string>
-    <string name="finger_search">搜索指纹,该指纹ID为</string>
-    <string name="finger_public_verify_success">比对成功!</string>
-    <string name="finger_public_verify_failure">比对失败!</string>
 
-    <string name="finger_public_fetch_feature_failure">提取特征值失败!</string>
-    <string name="finger_public_fetch_feature_success">提取特征值成功!</string>
+    <string name="fingerprintfeatureraw">Fingerprint feature data:</string>
 
-    <string name="collect_end">End of collection!</string>
+    <string name="finger_collect_failure">Fingerprint acquisition failed!</string>
+
+    <string name="finger_leave">Please leave your finger</string>
+    <string name="finger_press">Please press your finger</string>
+    <string name="finger_collect">Collecting</string>
+    <string name="finger">fingerprint</string>
+    <string name="finger_press_again">Please press your finger again</string>
+    <string name="finger_search">Search for the fingerprint, the fingerprint ID is</string>
+    <string name="finger_public_verify_success">Successful comparison!</string>
+    <string name="finger_public_verify_failure">Comparison failure!</string>
+
+    <string name="finger_public_fetch_feature_failure">Failed to extract feature values!</string>
+    <string name="finger_public_fetch_feature_success">Extracted feature values successfully!</string>
+
+    <string name="finger_collect_end">End of collection!</string>
+
+
+    <string name="fp_gaa_welcome">Welcome</string>
+    <string name="fp_gaa_version">FP_Version</string>
+    <string name="fp_gaa_isvauth">FP_ISVAuth</string>
+    <string name="fp_gaa_devversion">FP_DevVersion</string>
+    <string name="fp_gaa_getbmp">FP_GetBmp</string>
+    <string name="fp_gaa_featureextract">FP_FeatureExtract</string>
+    <string name="fp_gaa_featurematch">FP_FeatureMatch</string>
+    <string name="fp_gaa_featuresearch">FP_FeatureSearch</string>
+    <string name="fp_gaa_end">FP_End</string>
+    <string name="fp_usb_init">Fingerprint module initialization...</string>
+
 
     <!--R2000超高频字符串资源 要求:r2000_+功能+英文-->
 

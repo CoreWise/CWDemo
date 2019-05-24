@@ -213,10 +213,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                     R.style.DialogTheme);
         } else {
             mFriendDialog = new FriendDialog(this,
-                    BaseUtils.dip2px(this, 120f),
-                    BaseUtils.dip2px(this, 200f),
+                    BaseUtils.dip2px(this, 80f),
+                    BaseUtils.dip2px(this, 100f),
                     R.layout.dialog_friend,
                     R.style.DialogTheme);
+            mFriendDialog.setMessageSize(15);
         }
 
 
@@ -270,14 +271,45 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
             case 7:
                 //GAA指纹
+                mFriendDialog.setMessage(getResources().getString(R.string.general_usb_fp_tips));
+
                 intent = new Intent(this, FpGAAActivity.class);
 
-                break;
+                final Intent finalIntent = intent;
+                mFriendDialog.setOnClickListener(new FriendDialog.onClickListener() {
+
+                    @Override
+                    public void OnClickPositive() {
+                        startActivity(finalIntent);
+                    }
+                    @Override
+                    public void OnClickNegative() {
+                        mFriendDialog.dismiss();
+                    }
+                });
+                mFriendDialog.show();
+                return;
             case 8:
                 //JRA指纹
+
+                mFriendDialog.setMessage(getResources().getString(R.string.general_usb_fp_tips));
+
                 intent = new Intent(this, FpJRAActivity.class);
 
-                break;
+                final Intent finalIntent2 = intent;
+                mFriendDialog.setOnClickListener(new FriendDialog.onClickListener() {
+
+                    @Override
+                    public void OnClickPositive() {
+                        startActivity(finalIntent2);
+                    }
+                    @Override
+                    public void OnClickNegative() {
+                        mFriendDialog.dismiss();
+                    }
+                });
+                mFriendDialog.show();
+                return;
             case 9:
                 //北斗
                 intent = new Intent(this, BeiDouActivity.class);
@@ -291,13 +323,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         startActivity(intent);
 
 
+
        /*
-               compatible = getResources().getStringArray(R.array.general_compatible);
+        compatible = getResources().getStringArray(R.array.general_compatible);
 
-       mFriendDialog.setMessage(compatible[position]);
+        mFriendDialog.setMessage(compatible[position]);
         final Intent finalIntent = intent;
-
-
 
         mFriendDialog.setOnClickListener(new FriendDialog.onClickListener() {
             @Override
@@ -310,7 +341,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 mFriendDialog.dismiss();
             }
         });
-        //mFriendDialog.show();*/
+
+        mFriendDialog.show();
+        */
+
+
     }
 
     private void setMenuValue() {

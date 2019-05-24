@@ -1,5 +1,6 @@
 package com.cw.demo;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -43,6 +44,9 @@ public class MyApplication extends Application {
     public static MyApplication getApp() {
         return app;
     }
+
+
+    private ProgressDialog progressDialog;
 
 
     @Override
@@ -162,4 +166,28 @@ public class MyApplication extends Application {
             return false;
         }
     }
+
+
+    public void showProgressDialog(Context context,String message) {
+
+        if (progressDialog==null) {
+            progressDialog = new ProgressDialog(context);
+        }
+
+        progressDialog.setMessage(message);
+        progressDialog.setCancelable(false);
+        if (!progressDialog.isShowing()) {
+            progressDialog.show();
+        }
+    }
+
+    public void cancleProgressDialog() {
+
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.cancel();
+            progressDialog = null;
+        }
+
+    }
+
 }
