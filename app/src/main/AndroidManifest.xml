@@ -70,7 +70,7 @@
         <activity
             android:name=".m1.NFCM1Activity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".fingerprint.sy.FingerprintActivity" />
+       <!-- <activity android:name=".fingerprint.sy.FingerprintActivity" />
 
 
         <activity android:name=".idcard_nfclocal.IDCard_NFC_Local_DemoActivity">
@@ -79,7 +79,7 @@
                 android:name="android.nfc.action.TECH_DISCOVERED"
                 android:resource="@xml/nfc_tech_filter" />
 
-        </activity>
+        </activity>-->
         <activity android:name=".GetVersionActivity" />
         <activity android:name=".m1.RFIDM1Activity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
