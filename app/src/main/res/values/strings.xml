@@ -302,6 +302,10 @@
     <string name="fp_usb_init">指纹模块初始化中...</string>
 
 
+        <string name="fp_jra_search_failure">搜索指纹失败,请改变手指按压手势!</string>
+
+
+
     <!--R2000超高频字符串资源 要求:r2000_+功能+英文-->
 
     <string name="r2000_list_antenna_port">"天线号"</string>
@@ -599,7 +603,6 @@
     <string name="nfc_15693_error_not_open">NFC功能未打开，请先开启后重试！</string>
     <string name="nfc_15693_error_no_block">写入区块不存在</string>
     <string name="nfc_15693_error_max">写入数据长度大于空间容量,最大长度为</string>
-
 
 
 </resources>

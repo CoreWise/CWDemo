@@ -280,7 +280,7 @@
     <string name="finger_collect">Collecting</string>
     <string name="finger">fingerprint</string>
     <string name="finger_press_again">Please press your finger again</string>
-    <string name="finger_search">Search for the fingerprint, the fingerprint ID is</string>
+    <string name="finger_search">Search for the fingerprint, the fingerprint ID is  </string>
     <string name="finger_public_verify_success">Successful comparison!</string>
     <string name="finger_public_verify_failure">Comparison failure!</string>
 
@@ -300,6 +300,9 @@
     <string name="fp_gaa_featuresearch">FP_FeatureSearch</string>
     <string name="fp_gaa_end">FP_End</string>
     <string name="fp_usb_init">Fingerprint module initialization...</string>
+
+
+    <string name="fp_jra_search_failure">Failed to search for fingerprints, please change your finger press gesture!</string>
 
 
     <!--R2000超高频字符串资源 要求:r2000_+功能+英文-->

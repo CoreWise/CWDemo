@@ -723,12 +723,12 @@ public class FpJRAActivity extends AppCompatActivity {
 
                 if (msyUsbKey.SySearch(fingerId) != PS_OK) {
                     //publishProgress("Search Error,Please Try again!");
-                    publishProgress("搜索指纹失败,请改变手指按压手势!");
+                    publishProgress(getString(R.string.fp_jra_search_failure));
                     continue;
                 } else {
                     int fingerid = fingerId[0] + 1;
                     //publishProgress("SySearch,ID===>" + fingerid);
-                    publishProgress(getString(R.string.finger_search) + fingerid);
+                    publishProgress(getString(R.string.finger_search) +" "+ fingerid);
                     publishProgress("end");
                     return 0;
                 }
