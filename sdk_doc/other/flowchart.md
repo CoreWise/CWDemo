@@ -204,7 +204,7 @@ cond(no)->op
 graph TD;
     S[Start]-->A[AsyncM1Card reader=new AsyncM1Card]
     A-->B[reader.openM1RFIDSerialPort]
-    B-->D[reader.readCardNum()]
+    B-->D[reader.readCardNum]
     B-->F[reader.setOnReadCardNumListener]
     D-->E[reader.closeM1RFIDSerialPort]
     E-->End
