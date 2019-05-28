@@ -229,10 +229,14 @@
 
 #### 接口调用流程
 
+![RFID M1](https://i.loli.net/2019/05/28/5cecdc412761c59119.png)
 
 
 #### 接口调用案例
 
+参考Demo源码 , [RFIDM1Activity.java](https://github.com/CoreWise/CWDemo/blob/master/app/src/main/java/com/cw/demo/m1/RFIDM1Activity.java)
 
 
 #### 二次开发问题汇总
+
+
