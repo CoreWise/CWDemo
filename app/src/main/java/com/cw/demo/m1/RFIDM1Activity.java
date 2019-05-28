@@ -40,8 +40,8 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
     private static final String[] cardtype = {"S50", "S70"};
     private static final String[] pwdtype = {"KEYA", "KEYB"};
     private static final int[] keyType = {M1CardAPI.KEY_A, M1CardAPI.KEY_B};
-    private static int NUM = 1;
-    private static int mKeyType = M1CardAPI.KEY_A;
+    private  int NUM = 1;
+    private  int mKeyType = M1CardAPI.KEY_A;
     private String DefaultKeyA = "ffffffffffff";// 默认密码A
     private String DefaultKeyB = "ffffffffffff";// 默认密码B
     private Button mBtnGetCardNum, mBtnSendPwd, mBtnValidPwd, mBtnWriteData,
@@ -66,6 +66,7 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
         builder = new AlertDialog.Builder(this);
 
         reader.openM1RFIDSerialPort(cw.getDeviceModel());
+
     }
 
     private void initView() {
@@ -122,6 +123,8 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
 
 
         reader = new AsyncM1Card(getMainLooper());
+
+
 
         reader.setOnReadCardNumListener(new AsyncM1Card.OnReadCardNumListener() {
 
@@ -259,6 +262,8 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
                 }
                 block = Integer.parseInt(mBlockNum.getText().toString());
 
+
+
                 //S50
                 if (mSpinnerCardType.getSelectedItemPosition() == 0) {
                     if (block > 64) {
@@ -277,6 +282,7 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
 
                 keyA = mEdPwdA.getText().toString();
                 keyB = mEdPwdB.getText().toString();
+
                 if (TextUtils.isEmpty(keyA) || TextUtils.isEmpty(keyB)) {
 
                     Toast.makeText(this, R.string.m1_str_not_empty, Toast.LENGTH_SHORT).show();
@@ -290,6 +296,7 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
 
                 mReadData.setText("");
                 mEdShowCard.setText("");
+
                 // 另外块号需要校验
                 if (TextUtils.isEmpty(mBlockNum.getText().toString())) {
 
@@ -303,7 +310,6 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
                 final String data2 = mEdWritePwd.getText().toString();
 
                 if (TextUtils.isEmpty(keyA2) || TextUtils.isEmpty(keyB2) || TextUtils.isEmpty(data2)) {
-
                     Toast.makeText(this, R.string.m1_str_all_not_empty, Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -338,6 +344,7 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
 
                     Toast.makeText(this, R.string.m1_str_all_not_validate, Toast.LENGTH_SHORT).show();
                 }
+
                 break;
             default:
                 break;

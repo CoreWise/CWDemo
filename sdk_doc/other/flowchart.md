@@ -198,6 +198,32 @@ cond(no)->op
 
 ```
 
+
+```graph
+
+graph TD;
+    S[Start]-->A[AsyncM1Card reader=new AsyncM1Card]
+    A-->B[reader.openM1RFIDSerialPort]
+    B-->D[reader.readCardNum()]
+    B-->F[reader.setOnReadCardNumListener]
+    D-->E[reader.closeM1RFIDSerialPort]
+    E-->End
+
+```
+
+
+```graph
+
+graph TD;
+    A[AsyncParseSFZ api=new AsyncParseSFZ]-->B[api.openIDCardSerialPort];
+    B-->C[api.readSFZ];
+    B-->D[api.setOnReadSFZListener];
+    C-->E[api.closeIDCardSerialPort];
+
+```
+
+
+
 ![条码.png](https://i.loli.net/2019/05/08/5cd24de928418.png)
 ![身份证.png](https://i.loli.net/2019/05/08/5cd24de928430.png)
 ![smallfingersousuo.png](https://i.loli.net/2019/05/08/5cd24de93aaa4.png)
@@ -210,3 +236,5 @@ cond(no)->op
 ![bigfinger11.png](https://i.loli.net/2019/05/08/5cd24e0ac2ecb.png)
 ![bigfingerusb.png](https://i.loli.net/2019/05/08/5cd24e0add367.png)
 ![bigfingerluru.png](https://i.loli.net/2019/05/08/5cd24e0ae5f66.png)
+
+
