@@ -120,8 +120,10 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
 
     private int clickCount = 0;
 
+    Handler mHandler = new Handler();
+
     @SuppressLint("HandlerLeak")
-    Handler mHandler = new Handler() {
+    Handler mUpDateUIHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -236,7 +238,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
                     clear_button.setEnabled(true);
 
                 } else {
-                    mHandler.sendEmptyMessage(UPDATEINFOS);
+                    mUpDateUIHandler.sendEmptyMessage(UPDATEINFOS);
 
                 }
             }
@@ -296,6 +298,10 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
                 readFailTime++;
                 clear();
                 refresh(isSequentialRead);
+                if (isSequentialRead) {
+                    oneTime = System.currentTimeMillis() - nowTime;
+                    mUpDateUIHandler.sendEmptyMessage(UPDATEINFOS);
+                }
             }
         });
 
@@ -369,6 +375,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
                 readFailFor8084 = 0;
                 readFailFor4145 = 0;
                 readFailForOther = 0;
+                mHandler.removeCallbacksAndMessages(null);
                 mHandler.post(task);
                 sequential_read.setEnabled(false);
                 read_button.setEnabled(false);
@@ -420,8 +427,8 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         if (!isSequentialRead) {
             return;
         }
-
-        mHandler.postDelayed(task, 400);
+        mHandler.removeCallbacksAndMessages(null);
+        mHandler.postDelayed(task, 200);
 
     }
 

@@ -96,11 +96,11 @@ dependencies {
 
     //串口开发包
     //SerialPort SDK
-    compile(name: 'serialport_sdk_20190520', ext: 'aar')
+    compile(name: 'serialport_sdk_20190528', ext: 'aar')
 
     //身份证开发包,需要依赖串口开发包
     //IDcard SDK,need SerialPort SDK
-    compile(name: 'idcard_sdk_20190521', ext: 'aar')
+    compile(name: 'idcard_sdk_20190528', ext: 'aar')
 
     //GAA大指纹开发包(新固件开发包)
     //GAA FingerPrint SDK
