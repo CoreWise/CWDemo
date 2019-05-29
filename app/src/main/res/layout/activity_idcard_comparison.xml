@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:id="@+id/scv"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="5dp"
+        android:layout_weight="90"
+        android:background="#ffffff"
+        android:fillViewport="true">
+
+        <TextView
+            android:id="@+id/tv_sfz_modle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:textColor="#000000" />
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/read_sfz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scv"
+        android:text="读卡"
+        android:textAllCaps="false" />
+
+
+    <Button
+        android:id="@+id/enroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/read_sfz"
+        android:text="采集指纹"
+        android:textAllCaps="false"
+        />
+
+
+    <Button
+        android:id="@+id/verial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/enroll"
+        android:text="比对"
+        android:textAllCaps="false" />
+
+
+</RelativeLayout>

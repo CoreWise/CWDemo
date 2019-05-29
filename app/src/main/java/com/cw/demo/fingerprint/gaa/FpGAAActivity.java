@@ -38,10 +38,20 @@ import javax.crypto.spec.SecretKeySpec;
 public class FpGAAActivity extends Activity implements OnClickListener {
 
     private static final String TAG = "CwGAAActivity";
-
+    boolean isExit;
+    float fpThreshold;
+    //指纹特征
+    byte[] m_byFeature = new byte[ID_Fpr.LIVESCAN_FEATURE_SIZE];
+    //length shall refer to the state standard GA1011/1012
+    //指纹库特征
+    byte[] m_byFeatures = new byte[ID_Fpr.LIVESCAN_FEATURE_SIZE * 1000];
+    int nbyFeature = 0;
+    byte[] byIHVKey = new byte[]{(byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5,
+            (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5};
+    byte[] byIHVData = new byte[]{(byte) 0x3a, (byte) 0xd7, (byte) 0x7b, (byte) 0xb4, (byte) 0x0d, (byte) 0x7a, (byte) 0x36, (byte) 0x60,
+            (byte) 0xa8, (byte) 0x9e, (byte) 0xca, (byte) 0xf3, (byte) 0x24, (byte) 0x66, (byte) 0xef, (byte) 0x97};
     private TextView msgView;
     private ImageView fpImageView;
-
     private Button btn_version;
     private Button btn_devversion;
     private Button btn_begin;
@@ -51,31 +61,8 @@ public class FpGAAActivity extends Activity implements OnClickListener {
     private Button btn_search;
     private Button btn_end;
     private Button btn_auth;
-
     private AppCompatTextView tv_Char;
-
-    ID_Fpr mLiveScan = null;
-
-
-    boolean isExit;
-    float fpThreshold;
-    //指纹特征
-    byte[] m_byFeature = new byte[ID_Fpr.LIVESCAN_FEATURE_SIZE];
-
-    //length shall refer to the state standard GA1011/1012
-    //指纹库特征
-    byte[] m_byFeatures = new byte[ID_Fpr.LIVESCAN_FEATURE_SIZE * 1000];
-
-    int nbyFeature = 0;
-
-    byte[] byIHVKey = new byte[]{(byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5,
-            (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5, (byte) 0xA5};
-
-
-    byte[] byIHVData = new byte[]{(byte) 0x3a, (byte) 0xd7, (byte) 0x7b, (byte) 0xb4, (byte) 0x0d, (byte) 0x7a, (byte) 0x36, (byte) 0x60,
-            (byte) 0xa8, (byte) 0x9e, (byte) 0xca, (byte) 0xf3, (byte) 0x24, (byte) 0x66, (byte) 0xef, (byte) 0x97};
-
-
+    private ID_Fpr mLiveScan = null;
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -104,6 +91,25 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         }
     };
 
+    private static byte[] encrypt(byte[] key, byte[] data) throws Exception {
+        SecretKeySpec skeySpec = new SecretKeySpec(key, "AES");
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
+        byte[] encrypted = cipher.doFinal(data);
+        return encrypted;
+    }
+
+    private static String byteToString(byte[] input) {
+        String ret = "";
+        for (int i = 0; i < input.length; i++) {
+            String hex = Integer.toHexString(input[i] & 0xFF);
+            if (hex.length() == 1) {
+                hex = '0' + hex;
+            }
+            ret += hex.toUpperCase();
+        }
+        return ret;
+    }
 
     @SuppressLint("HandlerLeak")
     @Override
@@ -188,13 +194,11 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         close();
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "------------onDestroy--------------");
     }
-
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -221,7 +225,6 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         }
         return super.onKeyDown(keyCode, event);
     }
-
 
     public void initview() {
         msgView = findViewById(R.id.edtv1);
@@ -498,15 +501,6 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         }.start();
     }
 
-
-    private static byte[] encrypt(byte[] key, byte[] data) throws Exception {
-        SecretKeySpec skeySpec = new SecretKeySpec(key, "AES");
-        Cipher cipher = Cipher.getInstance("AES");
-        cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
-        byte[] encrypted = cipher.doFinal(data);
-        return encrypted;
-    }
-
     private boolean memcmp(byte[] data1, byte[] data2, int len) {
         if (data1 == null && data2 == null) {
             return true;
@@ -528,18 +522,6 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         }
 
         return bEquals;
-    }
-
-    private static String byteToString(byte[] input) {
-        String ret = "";
-        for (int i = 0; i < input.length; i++) {
-            String hex = Integer.toHexString(input[i] & 0xFF);
-            if (hex.length() == 1) {
-                hex = '0' + hex;
-            }
-            ret += hex.toUpperCase();
-        }
-        return ret;
     }
 
     @Override
