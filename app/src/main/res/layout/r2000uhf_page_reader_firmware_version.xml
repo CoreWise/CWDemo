@@ -9,8 +9,8 @@
 	<ScrollView
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:fadingEdge="vertical"
 	    android:background="#EEEEEE"
+	    android:fadingEdge="vertical"
 	    android:fillViewport="true"
 	    android:scrollbars="vertical"
 		>
@@ -34,40 +34,41 @@
 				<LinearLayout
 				    android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
-					android:paddingLeft="10.0dip"
-					android:paddingTop="5.0dip"
-					android:paddingRight="10.0dip"
+					android:orientation="vertical"
 					android:paddingBottom="5.0dip"
-					android:orientation="vertical" >
+					android:paddingLeft="10.0dip"
+					android:paddingRight="10.0dip"
+					android:paddingTop="5.0dip" >
 
 			        <EditText
 			            android:id="@+id/firmware_version_text"
-			            android:singleLine="true"
 			            android:layout_width="fill_parent"
 			            android:layout_height="30sp"
+			            android:background="@drawable/readonly_editbox_background"
+                    android:enabled="false"
 
 			            android:gravity="center_vertical|center_horizontal"
 			            android:inputType="text"
-			            android:enabled="false"
+			            android:singleLine="true"
 			            android:textSize="16sp" />
 
 					<TextView
 					    android:id="@+id/get"
 						android:layout_width="fill_parent"
 						android:layout_height="wrap_content"
-						android:layout_marginLeft="20.0sp"
-						android:layout_marginTop="20.0sp"
-						android:layout_marginRight="20.0sp"
 						android:layout_marginBottom="5.0sp"
-						android:paddingTop="10.0sp"
-						android:paddingBottom="10.0sp"
-						android:gravity="center_horizontal"
+						android:layout_marginLeft="20.0sp"
+						android:layout_marginRight="20.0sp"
+						android:layout_marginTop="20.0sp"
 						android:background="@drawable/button_selector"
+						android:clickable="true"
+						android:gravity="center_horizontal"
+						android:paddingBottom="10.0sp"
+						android:paddingTop="10.0sp"
 						android:text="@string/get"
 						android:textColor="#ff222222"
-						android:textStyle="bold"
 						android:textSize="16.0sp"
-						android:clickable="true" />
+						android:textStyle="bold" />
 	        </LinearLayout>
 		</LinearLayout>
 	</ScrollView>

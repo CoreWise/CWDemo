@@ -12,6 +12,7 @@ import android.os.HandlerThread;
 import android.util.Log;
 
 
+import com.cw.demo.utils.CrashHandler;
 import com.cw.demo.utils.OKHttpUpdateHttpService;
 import com.xuexiang.xupdate.XUpdate;
 import com.xuexiang.xupdate.entity.UpdateError;
@@ -28,36 +29,26 @@ import static com.xuexiang.xupdate.entity.UpdateError.ERROR.CHECK_NO_NEW_VERSION
 public class MyApplication extends Application {
 
     private static final String TAG ="CWMyApplication";
-
-    private String rootPath;
-
-    private HandlerThread handlerThread;
-
     private static final String FILE_NAME = "cw";
-
     private static MyApplication app;
-
-    public HandlerThread getHandlerThread() {
-        return handlerThread;
-    }
+    private String rootPath;
+    private HandlerThread handlerThread;
+    private ProgressDialog progressDialog;
 
     public static MyApplication getApp() {
         return app;
     }
 
-
-    private ProgressDialog progressDialog;
-
+    public HandlerThread getHandlerThread() {
+        return handlerThread;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
         app = this;
-        //CrashHandler.getInstance().init(this);
-        //handlerThread = new HandlerThread("handlerThread", android.os.Process.THREAD_PRIORITY_BACKGROUND);
-        // handlerThread = new HandlerThread("handlerThread");
-        //handlerThread.start();
-        //setRootPath();
+        CrashHandler.getInstance().init(this);
+
 
         XUpdate.get()
                 .debug(true)

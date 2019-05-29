@@ -125,7 +125,6 @@ public class FpGAAActivity extends Activity implements OnClickListener {
         //设备系统已做默认授权的处理
         //checkPermission();
 
-
     }
 
     private void open() {

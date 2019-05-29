@@ -104,11 +104,11 @@ dependencies {
 
     //GAA大指纹开发包(新固件开发包)
     //GAA FingerPrint SDK
-    compile(name: 'fp_gaa_sdk_20190524', ext: 'aar')
+    compile(name: 'fp_gaa_sdk_20190529', ext: 'aar')
 
     //JRA小指纹开发包
     //JRA FingerPrint SDK
-    compile(name: 'fp_jra_sdk_20190524', ext: 'aar')
+    compile(name: 'fp_jra_sdk_20190529', ext: 'aar')
 
     //PY超高频开发包,需要依赖串口开发包
 

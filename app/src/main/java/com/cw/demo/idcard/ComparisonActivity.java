@@ -1,10 +1,12 @@
 package com.cw.demo.idcard;
 
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.cw.demo.fingerprint.gaa.FpGAAActivity;
 import com.cw.fpgaasdk.USBFingerManager;
 import com.cw.idcardsdk.AsyncParseSFZ;
 import com.cw.idcardsdk.ParseSFZAPI;
+import com.cw.serialportsdk.cw;
 import com.fm.bio.ID_Fpr;
 
 import butterknife.BindView;
@@ -109,6 +112,22 @@ public class ComparisonActivity extends AppCompatActivity {
         });
 
     }
+
+     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        asyncParseSFZ.openIDCardSerialPort(cw.getDeviceModel());
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    protected void onPause() {
+        asyncParseSFZ.closeIDCardSerialPort(cw.getDeviceModel());
+        super.onPause();
+    }
+
 
     @OnClick({R.id.read_sfz, R.id.enroll, R.id.verial})
     public void onViewClicked(View view) {
