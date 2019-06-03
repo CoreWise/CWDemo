@@ -32,16 +32,12 @@ public class MyApplication extends Application {
     private static final String FILE_NAME = "cw";
     private static MyApplication app;
     private String rootPath;
-    private HandlerThread handlerThread;
     private ProgressDialog progressDialog;
 
     public static MyApplication getApp() {
         return app;
     }
 
-    public HandlerThread getHandlerThread() {
-        return handlerThread;
-    }
 
     @Override
     public void onCreate() {

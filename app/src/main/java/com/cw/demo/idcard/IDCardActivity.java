@@ -56,7 +56,9 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
     private static final String TAG = "CwIDCardActivity";
 
     private static final int UPDATEINFOS = 1222;
-
+    long StartMillis;
+    boolean isBack = false;
+    Handler mHandler = new Handler();
     private TextView sfz_name;
     private TextView sfz_sex;
     private TextView sfz_nation;
@@ -67,61 +69,29 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
     private TextView sfz_id;
     private TextView sfz_modle;
     private ImageView sfz_photo;
-
     private Button read_button;
     private Button clear_button;
-
     private Button sequential_read;
     private Button stop;
     private TextView resultInfo;
-
-
-    private ProgressDialog progressDialog;
-
     private AsyncParseSFZ asyncParseSFZ;
-
     private int readTime = 0;
     private int readFailTime = 0;
     private int readTimeout = 0;
     private int readFailFor8084 = 0;
     private int readFailFor4145 = 0;
     private int readFailForOther = 0;
-
     private int readSuccessTime = 0;
-
     private long nowTime, oneTime;
-
-
     /**
      * 是否是连续读取
      */
     private boolean isSequentialRead = false;
-
     private MediaPlayer mediaPlayer = null;
-
     //设置日期格式
     private SimpleDateFormat df;
-
     private Date StartTime, EndTime;
-    long StartMillis;
-
     private String result = "";
-
-
-    private Vibrator mVibrator;
-    private SoundPool soundPool;
-    private int load;
-
-    boolean isBack = false;
-
-
-    //默认五寸屏，无指纹模块
-    private boolean Hasfinger = false;
-
-    private int clickCount = 0;
-
-    Handler mHandler = new Handler();
-
     @SuppressLint("HandlerLeak")
     Handler mUpDateUIHandler = new Handler(){
         @Override
@@ -143,7 +113,21 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
             }
         }
     };
-
+    private Vibrator mVibrator;
+    private SoundPool soundPool;
+    private int load;
+    //默认五寸屏，无指纹模块
+    private boolean Hasfinger = false;
+    private int clickCount = 0;
+    private Runnable task = new Runnable() {
+        @Override
+        public void run() {
+            nowTime = System.currentTimeMillis();
+            readTime++;
+            clear();
+            asyncParseSFZ.readSFZ(ParseSFZAPI.THIRD_GENERATION_CARD);
+        }
+    };
 
     @SuppressLint("WrongConstant")
     @Override
@@ -213,6 +197,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         stop.setOnClickListener(this);
 
         df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     }
 
     private void initData() {
@@ -411,16 +396,6 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
                 break;
         }
     }
-
-    private Runnable task = new Runnable() {
-        @Override
-        public void run() {
-            nowTime = System.currentTimeMillis();
-            readTime++;
-            clear();
-            asyncParseSFZ.readSFZ(ParseSFZAPI.THIRD_GENERATION_CARD);
-        }
-    };
 
     private void refresh(boolean isSequentialRead) {
 

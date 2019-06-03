@@ -106,7 +106,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         new Thread() {
             @Override
             public void run() {
-                String path = Environment.getExternalStorageDirectory().getPath() +  "/Tdemo.log";
+                String path = Environment.getExternalStorageDirectory().getPath() +  "/DemoApp.log";
                 FileOutputStream outStream = null;
                 try {
                     outStream = new FileOutputStream(new File(path)); //模式会检查文件是否存在，存在就往文件追加内容，否则就创建新文件。

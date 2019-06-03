@@ -31,21 +31,12 @@
         android:textAllCaps="false" />
 
 
-    <Button
-        android:id="@+id/enroll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/read_sfz"
-        android:text="采集指纹"
-        android:textAllCaps="false"
-        />
-
 
     <Button
         android:id="@+id/verial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/enroll"
+        android:layout_below="@id/read_sfz"
         android:text="比对"
         android:textAllCaps="false" />
 

@@ -364,9 +364,7 @@ public class FpGAAActivity extends Activity implements OnClickListener {
             @Override
             public void run() {
                 while (!Thread.interrupted()) {
-
                     try {
-
                         iRet = mLiveScan.LIVESCAN_GetFPRawData(fpRaw);
                         if (iRet != ID_Fpr.LIVESCAN_SUCCESS) {
                             Msg = String.format("GetFPRawData:%d_%s", iRet, mLiveScan.LIVESCAN_GetErrorInfo(iRet));
@@ -389,10 +387,8 @@ public class FpGAAActivity extends Activity implements OnClickListener {
                             if (iRet == ID_Fpr.LIVESCAN_SUCCESS) {
                                 float[] fs = new float[1];
                                 iRet = mLiveScan.LIVESCAN_FeatureMatch(m_byFeature, fpFtp, fs);
-
                                 Msg = String.format("FP_FeatureMatch:%f :%s", fs[0], (fs[0] >= fpThreshold) ? "y" : "n");
                                 SendMesg(Msg);
-
                             }
                             break;
                         } else {
