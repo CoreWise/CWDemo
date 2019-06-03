@@ -51,7 +51,6 @@
 | M1 RFID SDK     | u3,CFON640                                                 | [m1rfid_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/m1rfid_sdk_20190521.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/M1RFID.md" target="_blank">查看</a> |
 | M1 NFC          | 该功能调用Android标准M1接口，无SDK，有调用标准接口Demo     | 无                 |              None            |
 | ISO15693 NFC       | 该功能调用Android标准15693接口，无SDK，有调用标准接口Demo  | 无              |              None            |
-| NFC读网络身份证 | 带NFC机器或者CR30S设备                                     | [net_idcard_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/net_idcard_sdk_20190401.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/NFC读网络身份证.md" target="_blank">查看</a> |
 
 
 ----
@@ -97,4 +96,3 @@ Features include :
 | M1 RFID SDK           | u3,CFON640                                                   | [m1rfid_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/m1rfid_sdk_20190521.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/M1RFID.md" target="_blank">View</a> |
 | M1 NFC                | This function calls the Android standard M1 interface, no SDK, there is a call standard interface Demo | No                                                           |                  None                                            |
 | ISO15693 NFC             | This function calls the Android standard 15693 interface, no SDK, there is a call standard interface Demo | No                                                           |                  None                                            |
-| NFC Read Net IDCard   | With NFC machine or CR30S device                             | [net_idcard_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/net_idcard_sdk_20190401.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/NFCReadNetIDCard.md" target="_blank">View</a> |
