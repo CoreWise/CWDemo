@@ -6,13 +6,13 @@
 
    1.2 GAA Fingerprint function occupies the only USB port of the machine
 
-   1.3 BYD Big fingerprint development kit compatible machine, please check :[BYD Big fingerprint development kit compatible machine description](https://github.com/CoreWise/CWDemo#user-content-en)
+   1.3 BYD Big fingerprint development kit compatible machine, please check :[GAA fingerprint development kit compatible machine description](https://github.com/CoreWise/CWDemo#user-content-en)
 
    1.4 [GAA fingerprint development kit download website](https://github.com/CoreWise/CWDemo#user-content-en)
 
 ### 2. Secondary Development Instruction
 
-Because the Qualcomm CPU of this machine only supports one USB port, when using BYD big fingerprint module, it is necessary to call USB management class to switch USB to fingerprint module first. At this time, USB can not be used for charging, data line communication and other operations under normal circumstances.
+Because the Qualcomm CPU of this machine only supports one USB port, when using GAA fingerprint module, it is necessary to call USB management class to switch USB to fingerprint module first. At this time, USB can not be used for charging, data line communication and other operations under normal circumstances.
 
 In this case, USB data line debugging can not be used, it is recommended that network ADB debugging;
 
@@ -90,7 +90,7 @@ OnUSBFingerListener Callback interface description:
 
 ---
 
-**BYD Big Fingerprint Class**
+**GAA Fingerprint Class**
 
 Constant
 ```
