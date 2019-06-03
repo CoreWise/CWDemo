@@ -6,7 +6,7 @@
 
    1.2 GAA Fingerprint function occupies the only USB port of the machine
 
-   1.3 BYD Big fingerprint development kit compatible machine, please check :[GAA fingerprint development kit compatible machine description](https://github.com/CoreWise/CWDemo#user-content-en)
+   1.3 GAA fingerprint development kit compatible machine, please check :[GAA fingerprint development kit compatible machine description](https://github.com/CoreWise/CWDemo#user-content-en)
 
    1.4 [GAA fingerprint development kit download website](https://github.com/CoreWise/CWDemo#user-content-en)
 
@@ -267,5 +267,5 @@ Call this method,return information is error information
 
 #### 2.5  Interface call case
 
-Reference Demo source code FingerBYDBigActivity.java
+Reference Demo source code [FpGAAActivity.java](https://github.com/CoreWise/CWDemo/blob/master/app/src/main/java/com/cw/demo/fingerprint/gaa/FpGAAActivity.java)
 

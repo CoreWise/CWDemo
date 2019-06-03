@@ -642,8 +642,6 @@ public class FpGAAActivity extends Activity implements OnClickListener {
             btn_devversion.setEnabled(true);
             btn_getfpbmp.setEnabled(true);
             btn_feature.setEnabled(true);
-
-
             fpThreshold = mLiveScan.LIVESCAN_GetMatchThreshold();
         }
     }

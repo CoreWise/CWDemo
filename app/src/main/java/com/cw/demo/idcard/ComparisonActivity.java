@@ -1,28 +1,32 @@
 package com.cw.demo.idcard;
 
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ScrollView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cw.demo.MyApplication;
 import com.cw.demo.R;
-import com.cw.demo.fingerprint.gaa.FpGAAActivity;
+import com.cw.fpgaasdk.IDCardIdentify;
 import com.cw.fpgaasdk.USBFingerManager;
 import com.cw.idcardsdk.AsyncParseSFZ;
 import com.cw.idcardsdk.ParseSFZAPI;
 import com.cw.serialportsdk.cw;
-import com.cw.serialportsdk.utils.DataUtils;
 import com.fm.bio.ID_Fpr;
 
 import butterknife.BindView;
@@ -32,36 +36,57 @@ import butterknife.OnClick;
 /**
  * 作者：李阳
  * 时间：2019/5/28
- * 描述：
+ * 描述：GAA指纹不能在插着USB数据线时使用
  */
 public class ComparisonActivity extends AppCompatActivity {
 
 
     private static final String TAG = "ComparisonActivity";
 
-    @BindView(R.id.tv_sfz_modle)
-    TextView tvSfzModle;
-    @BindView(R.id.scv)
-    ScrollView scv;
+
     @BindView(R.id.read_sfz)
     Button readSfz;
 
     @BindView(R.id.verial)
     Button verial;
 
+
+    String liyangAratek1 = "1b840df8801e007e004011060414200e03854020160f78c0000d0765c9c0010b7ae400120768f0e0050b8d0ce11a081021c11506dd2da100060489e10e0681e841120769f0810907ea2d820a0a7068820c0564b7820b11d0c50200026bff020f1a4f0c63050a5133c30c16284b23160b2882031127478ca301092b9d83190d3ccc23060832ef830a09c94f4412693b5de4030947e0a41a096538c51613022e75c30fa74104120101af37b0b0b1b6b3b3383437b3b130aeb02db9adb7485ba852a9a6cda0503d6e6c6957665259584e5e3d32362e231d420f2b0e1a05382728191c373e3fae35acadb3b2b3ab313833abb332aeb536b6bac6260eb637bfcac5b4453a88868171806b746c6578574b51483e37562a3f2723184524311f01382724011b";
+    String liyangAratek2 = "1b8510c8801b006b0040060a7e04e01207103ce016058c45401b0705a1400f056cf1400a078100c11208eb41c10a0a7480e10c0665cba10b11d1d50100036902620e16511c4205095147c20c152b6b22160d1c732210584b986201092ec142190d3ed4c205093307430a0ad16b83116b3f714303093b7d631c0947008419091349840e0f6458a415136bc4e41411023181c20faa6163110101b0b43ab636b0b42fabaf2bb6aab44839a452a9a4ca9c5253a4423f58504d553c36312c221c42102b0e19023926291b1d3a3b3d393f4bb2af34ae34b3ad33adb736b9bac9261ab334c0cbc1b04046af3d3d746b666b58534c483e37552d3f28241e4425311e01382c261f232e011c";
+    String liyangAratek3 = "1b971d888125008a01c012040964600b06896dc01207848d40110716cd001604dbf8a001057cf8800c085b5c61060d1b810114061a80c11809d69d61040652ddc1000790e5811207560a62091b4e2262060e2564c219072989a2160a31b6820c18bdb882040643bf82050837c3a20a0e34d60207084aed020008a5ffc2100a32114314084014030304b123830702a36aa30e17af73830f1933868308093e9c43170b3ba983020a151be40b12602a2412142a41040707a1c4a4060570d0841014022e75620ca4b9c30e0101ad31b1b33e35b0ba3f4935adc0bab252518129a195a99be05b9d1f06e7915597a045971e3c5242454041402f2a2b3a29321e121a352908201c0b183318252a1d1f21253937343b3d4d4da72fa9ab313dadc12c3641bda5c8c8362d014cc8e3d8b59429bf558789c637b7bc37b3303c786b6a65616658524a514f513c3a3d3d31213430232a40181e33220a091922311013232e230129";
     String liyang = "43018c12010b5400000000000000000000000021019a90e600ffffffffffffa21a54fec3239dfc4231c8fc6343bffc9b44a6fc3c4e14fcc154a3fc255ed4fcdd6749fe9f7454fe7582bafcb48fa0fc7a9564fe87a3b1fc23a927fc72b5cafc45bfe4fc8dc7c2fc0cd0eefc75d7e9fc21daeffc95e338fec7e923fe41edfdfc63fb0dfedf011fff98116bfd28150bfff62e07ff133912ffd84debfdb553cffd7d574fff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003843018c1201105600000000000000000000000027019abac600ffffffffffff7419e0fc8b1f1ffcc420bffcd02b60fea63814fc673a34fce74aacfc4651e9fc7e6138fc896e2afcda6f59feab7116fc988a1bfcbc8a00fcd88a50fe5d95ddfc429c38fc1f9eebfc4da333fc5ba4eefccfaa49fe58bb3ffc88c437fcbfc903fe56ccfafcdccb1cfec8d00dfe26d5ecfc49e646fc41e8f9fcefec0ffe6aeffafc54fa3efc32063cfd680645fd0e342efd873b34fdde41ecfd324c26fd00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c90000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000082";
 
-    //指纹特征
-    byte[] m_byFeature = new byte[ID_Fpr.LIVESCAN_FEATURE_SIZE];
+
+    byte[] idCardFpRaw;
 
 
-    //length shall refer to the state standard GA1011/1012
-    //指纹库特征
-    byte[] m_byFeatures = new byte[ID_Fpr.LIVESCAN_FEATURE_SIZE * 1000];
-    int nbyFeature = 0;
     float fpThreshold;
+
+
+    @BindView(R.id.sfz_name)
+    TextView sfzName;
+    @BindView(R.id.sfz_mouth)
+    TextView sfzMouth;
+    @BindView(R.id.sfz_sex)
+    TextView sfzSex;
+    @BindView(R.id.sfz_nation)
+    TextView sfzNation;
+    @BindView(R.id.sfz_day)
+    TextView sfzDay;
+    @BindView(R.id.sfz_id)
+    TextView sfzId;
+    @BindView(R.id.sfz_year)
+    TextView sfzYear;
+    @BindView(R.id.sfz_address)
+    TextView sfzAddress;
+    @BindView(R.id.sfz_photo)
+    ImageView sfzPhoto;
+
+
     private AsyncParseSFZ asyncParseSFZ;
+
     private ID_Fpr mLiveScan = null;
+
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -83,17 +108,6 @@ public class ComparisonActivity extends AppCompatActivity {
         }
     };
 
-    private static String byteToString(byte[] input) {
-        String ret = "";
-        for (int i = 0; i < input.length; i++) {
-            String hex = Integer.toHexString(input[i] & 0xFF);
-            if (hex.length() == 1) {
-                hex = '0' + hex;
-            }
-            ret += hex.toUpperCase();
-        }
-        return ret;
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -102,12 +116,15 @@ public class ComparisonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_idcard_comparison);
         ButterKnife.bind(this);
 
+        setTitle("GAA指纹和身份证指纹比对Demo");
+
         asyncParseSFZ = new AsyncParseSFZ(getMainLooper(), this);
 
         asyncParseSFZ.setOnReadSFZListener(new AsyncParseSFZ.OnReadSFZListener() {
             @Override
             public void onReadSuccess(ParseSFZAPI.People people) {
-                tvSfzModle.setText(people.toString());
+                // tvSfzModle.setText(people.toString());
+                updateInfo(people);
             }
 
             @Override
@@ -115,7 +132,6 @@ public class ComparisonActivity extends AppCompatActivity {
                 Toast.makeText(ComparisonActivity.this, "读身份证错误码 " + i, Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -123,7 +139,6 @@ public class ComparisonActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         asyncParseSFZ.openIDCardSerialPort(cw.getDeviceModel());
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -134,17 +149,49 @@ public class ComparisonActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                Log.i(TAG, "点击了返回键");
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle(R.string.general_tips);
+                builder.setMessage(R.string.general_exit);
+
+                //设置确定按钮
+                builder.setNegativeButton(R.string.general_yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                //设置取消按钮
+                builder.setPositiveButton(R.string.general_no, null);
+                //显示提示框
+                builder.show();
+                break;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
     @OnClick({R.id.read_sfz, R.id.verial})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.read_sfz:
-
                 asyncParseSFZ.readSFZ();
-
                 break;
             case R.id.verial:
 
-                idcardIdentify(DataUtils.hexStringTobyte(liyang), m_byFeature, ID_Fpr.LIVESCAN_IMAGE_SCORE_THRESHOLD);
+                byte[] ddd = new byte[512];
+                System.arraycopy(idCardFpRaw, 512, ddd, 0, 512);
+
+                boolean b = IDCardIdentify.getInstance().idcardIdentifyWithGAA(mLiveScan, idCardFpRaw);
+
+
+                Log.i(TAG, "-----" + b);
+
+                Toast.makeText(this, "比对结果:" + b, Toast.LENGTH_SHORT).show();
 
                 break;
         }
@@ -165,7 +212,12 @@ public class ComparisonActivity extends AppCompatActivity {
     }
 
     private void open() {
-        MyApplication.getApp().showProgressDialog(this, getString(R.string.fp_usb_init));
+
+
+        MyApplication.getApp().showProgressDialog(this, "指纹模块初始化中...");
+
+        USBFingerManager.getInstance(this).setDelayMs(1500);
+
         USBFingerManager.getInstance(this).openUSB(new USBFingerManager.OnUSBFingerListener() {
             @Override
             public void onOpenUSBFingerSuccess(String device) {
@@ -190,6 +242,7 @@ public class ComparisonActivity extends AppCompatActivity {
                 MyApplication.getApp().cancleProgressDialog();
                 Toast.makeText(ComparisonActivity.this, error, Toast.LENGTH_SHORT).show();
             }
+
         });
 
     }
@@ -211,257 +264,29 @@ public class ComparisonActivity extends AppCompatActivity {
         }
     }
 
-    public void regFingerprint() {
 
-        //LIVESCAN_BeginCapture
-
-
-        new Thread() {
-
-            int iRet = 0;
-            byte[] bScore = new byte[1];
-            int i = 0;
-            String Msg = "";
-            byte[] fpRaw = new byte[ID_Fpr.LIVESCAN_IMAGE_WIDTH * ID_Fpr.LIVESCAN_IMAGE_HEIGHT];
-
-            @Override
-            public void run() {
-
-                while (!Thread.interrupted()) {
-
-                    try {
-
-                        iRet = mLiveScan.LIVESCAN_GetFPRawData(fpRaw);
-
-                        if (iRet != ID_Fpr.LIVESCAN_SUCCESS) {
-                            Msg = String.format("GetFPRawData:%d_%s", iRet, mLiveScan.LIVESCAN_GetErrorInfo(iRet));
-                            break;
-                        } else {
-                        }
-                        iRet = mLiveScan.LIVESCAN_GetQualityScore(fpRaw, bScore);
-                        Msg = String.format("GetQualityScore:%d _%d", iRet, bScore[0] & 0xff);
-
-                        //experience value LIVESCAN_IMAGE_SCORE_THRESHOLD
-                        if ((bScore[0] & 0xff) >= ID_Fpr.LIVESCAN_IMAGE_SCORE_THRESHOLD) {
-                            //byte cScannerType=0x17
-                            //byte cFingerCode = 11~20 97~99 shall refer to the state standard GB5974.1-86
-                            iRet = mLiveScan.LIVESCAN_FeatureExtract(m_byFeature);
-                            if (iRet >= ID_Fpr.LIVESCAN_SUCCESS) {
-                                System.arraycopy(m_byFeature, 0, m_byFeatures, nbyFeature * ID_Fpr.LIVESCAN_FEATURE_SIZE, ID_Fpr.LIVESCAN_FEATURE_SIZE);
-                                Log.i(TAG, "---------------------------------:" + byteToString(m_byFeature));
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        tvSfzModle.setText(byteToString(m_byFeature));
-                                    }
-                                });
-                                Msg = String.format("LIVESCAN_FeatureExtract ID:%d ", nbyFeature);
-                                nbyFeature++;
-                            } else {
-                                Msg = String.format("FeatureExtract:%d", iRet);
-                            }
-
-                            break;
-                        } else {
-                            i++;
-                            Thread.sleep(200);
-                            if (i % 2 == 0) {
-                            }
-                            if (i % 2 == 1) {
-                            }
-                        }
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }.start();
-    }
+    private void updateInfo(ParseSFZAPI.People people) {
 
 
-    /**
-     * 比对用户提供的二代身份证指纹特征集合和设备取到的设备取到的设备取到的指纹特征是否有匹配
-     * <p>
-     * 采用 LIVESCAN_FeatureMatch
-     */
-    private boolean idcardIdentify(byte[] fpIDCard, byte[] fpFinger, float fpThreshold) {
+        sfzAddress.setText(people.getPeopleAddress());
+        sfzDay.setText(people.getPeopleBirthday().substring(6));
+        sfzId.setText(people.getPeopleIDCode());
+        sfzMouth.setText(people.getPeopleBirthday().substring(4, 6));
+        sfzName.setText(people.getPeopleName());
+        sfzNation.setText(people.getPeopleNation());
+        sfzSex.setText(people.getPeopleSex());
+        sfzYear.setText(people.getPeopleBirthday().substring(0, 4));
 
-        /*float[] fs = new float[1];
-        int iRet = mLiveScan.LIVESCAN_FeatureMatch(fpIDCard, fpFinger, fs);
-        if (iRet != 0) {
-            String Msg = String.format("LIVESCAN_FeatureMatch:%d", iRet);
-            Log.e(TAG, Msg);
-
-            Toast.makeText(this, "LIVESCAN_FeatureMatch失败！" + Msg, Toast.LENGTH_SHORT).show();
-
-            return false;
+        if (people.getPhoto() != null) {
+            Bitmap photo = BitmapFactory.decodeByteArray(people.getPhoto(), 0, people.getPhoto().length);
+            sfzPhoto.setBackgroundDrawable(new BitmapDrawable(photo));
         }
-        String Msg = String.format("FP_FeatureMatch:%f :%s", fs[0], (fs[0] >= fpThreshold) ? "y" : "n");
-        if (fs[0] >= fpThreshold) {
-            Log.i(TAG, Msg);
 
-            Toast.makeText(this, "比对成功！", Toast.LENGTH_SHORT).show();
-
-            return true;
+        if (people.getModel() != null) {
+            idCardFpRaw = people.getModel();
         } else {
-            Log.e(TAG, Msg);
-            Toast.makeText(this, "比对失败！", Toast.LENGTH_SHORT).show();
-
-            return false;
+            Toast.makeText(this, "该身份证无指纹信息!", Toast.LENGTH_SHORT).show();
         }
-*/
-
-
-        byte[] fpRaw = new byte[ID_Fpr.LIVESCAN_IMAGE_WIDTH * ID_Fpr.LIVESCAN_IMAGE_HEIGHT];
-        byte[] bScore = new byte[1];
-        byte[] fpFtp = new byte[512];
-
-
-        int iRet = mLiveScan.LIVESCAN_GetFPRawData(fpRaw);
-        String Msg;
-        if (iRet != ID_Fpr.LIVESCAN_SUCCESS) {
-            Msg = String.format("GetFPRawData:%d_%s", iRet, mLiveScan.LIVESCAN_GetErrorInfo(iRet));
-            return false;
-        } else {
-
-        }
-
-        iRet = mLiveScan.LIVESCAN_GetQualityScore(fpRaw, bScore);
-
-        Msg = String.format("GetQualityScore:%d _%d", iRet, bScore[0] & 0xff);
-
-        //experience value 50
-        if ((bScore[0] & 0xff) >= ID_Fpr.LIVESCAN_IMAGE_SCORE_THRESHOLD) {
-            //byte cScannerType=0x17
-            //byte cFingerCode = 11~20 97~99 shall refer to the state standard GB5974.1-86
-            iRet = mLiveScan.LIVESCAN_FeatureExtract(fpFtp);
-            Msg = String.format("FeatureExtract:%d", iRet);
-            if (iRet == ID_Fpr.LIVESCAN_SUCCESS) {
-                float[] fs = new float[1];
-                iRet = mLiveScan.LIVESCAN_FeatureMatch(DataUtils.hexStringTobyte(liyang), fpFtp, fs);
-
-                Msg = String.format("FP_FeatureMatch:%f :%s", fs[0], (fs[0] >= fpThreshold) ? "y" : "n");
-
-                Toast.makeText(this, Msg, Toast.LENGTH_SHORT).show();
-
-            }
-            return true;
-        }else {
-            return false;
-        }
-    }
-
-
-    /**
-     * 比对用户提供的二代身份证指纹特征集合和设备取到的设备取到的设备取到的指纹特征是否有匹配
-     * <p>
-     * 采用 LIVESCAN_FeatureSearch
-     */
-    /*private boolean idcardIdentify(byte[] fpIDCard, byte[]... fpFinger) {
-
-        float[] fs = new float[1];
-
-        //指纹库特征
-        byte[] m_byFeatures = new byte[ID_Fpr.LIVESCAN_FEATURE_SIZE * 1000];
-
-
-        for (byte[] fpFinger:fpFinger){
-
-
-        }
-
-        System.arraycopy(m_byFeatures,fpFinger);
-
-        int iRet = mLiveScan.LIVESCAN_FeatureMatch(fpIDCard, fpFinger, fs);
-
-        if (iRet != 0) {
-
-            String Msg = String.format("LIVESCAN_FeatureMatch:%d", iRet);
-            Log.e(TAG, Msg);
-            return false;
-        }
-
-        String Msg = String.format("FP_FeatureMatch:%f :%s", fs[0], (fs[0] >= fpThreshold) ? "y" : "n");
-
-        if (fs[0] >= fpThreshold) {
-            Log.i(TAG, Msg);
-            return true;
-        } else {
-            Log.e(TAG, Msg);
-            return false;
-        }
-
-
-    }*/
-    private void matchFingerprint() {
-
-        new Thread() {
-            int iRet = 0;
-            byte[] bScore = new byte[1];
-            int i = 0;
-            String Msg = "";
-            byte[] fpRaw = new byte[ID_Fpr.LIVESCAN_IMAGE_WIDTH * ID_Fpr.LIVESCAN_IMAGE_HEIGHT];
-            //shall refer to the state standard GA1011/1012
-            byte[] fpFtp = new byte[512];
-
-            @Override
-            public void run() {
-                while (!Thread.interrupted()) {
-
-                    try {
-
-                        iRet = mLiveScan.LIVESCAN_GetFPRawData(fpRaw);
-                        if (iRet != ID_Fpr.LIVESCAN_SUCCESS) {
-                            Msg = String.format("GetFPRawData:%d_%s", iRet, mLiveScan.LIVESCAN_GetErrorInfo(iRet));
-                            break;
-                        } else {
-
-                        }
-                        iRet = mLiveScan.LIVESCAN_GetQualityScore(fpRaw, bScore);
-                        Msg = String.format("GetQualityScore:%d _%d", iRet, bScore[0] & 0xff);
-
-                        //experience value 50
-                        if ((bScore[0] & 0xff) >= ID_Fpr.LIVESCAN_IMAGE_SCORE_THRESHOLD) {
-                            //byte cScannerType=0x17
-                            //byte cFingerCode = 11~20 97~99 shall refer to the state standard GB5974.1-86
-                            iRet = mLiveScan.LIVESCAN_FeatureExtract(fpFtp);
-                            Msg = String.format("FeatureExtract:%d", iRet);
-                            if (iRet == ID_Fpr.LIVESCAN_SUCCESS) {
-                                float[] fs = new float[1];
-                                iRet = mLiveScan.LIVESCAN_FeatureMatch(m_byFeature, fpFtp, fs);
-                                Msg = String.format("FP_FeatureMatch:%f :%s", fs[0], (fs[0] >= fpThreshold) ? "y" : "n");
-
-                                if (fs[0] >= fpThreshold) {
-
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Toast.makeText(ComparisonActivity.this, Msg, Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-
-                                } else {
-
-                                }
-                            }
-                            break;
-                        } else {
-                            i++;
-                            Thread.sleep(200);
-                            if (i % 2 == 0) {
-                            }
-                            if (i % 2 == 1) {
-                            }
-                        }
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-        }.start();
     }
 
 

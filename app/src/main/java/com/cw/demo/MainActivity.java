@@ -282,6 +282,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                     public void OnClickPositive() {
                         startActivity(finalIntent);
                     }
+
                     @Override
                     public void OnClickNegative() {
                         mFriendDialog.dismiss();
@@ -303,6 +304,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                     public void OnClickPositive() {
                         startActivity(finalIntent2);
                     }
+
                     @Override
                     public void OnClickNegative() {
                         mFriendDialog.dismiss();
@@ -312,6 +314,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 return;
             case 9:
                 //北斗
+                intent = new Intent(this, BeiDouActivity.class);
+
+                break;
+
+
+            case 10:
+                //身份证指纹信息比对
                 intent = new Intent(this, BeiDouActivity.class);
 
                 break;

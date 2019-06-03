@@ -275,5 +275,5 @@ Clear the database ,successful return 0
 
 #### 2.5 Interface call case
 
-Reference Demo source code,FingerBYDSmallActivity.java
+Reference Demo source code,[FpJRAActivity.java](https://github.com/CoreWise/CWDemo/blob/master/app/src/main/java/com/cw/demo/fingerprint/jra/FpJRAActivity.java)
 
