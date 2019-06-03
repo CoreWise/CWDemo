@@ -1,14 +1,14 @@
-# BYD Big Fingerprint
+# GAA Fingerprint
 
-### 1.  BYD Big Fingerprint Development Kit Instruction.
+### 1.  GAA Fingerprint Development Kit Instruction.
 
-   1.1  Support BYD Big Fingerprint Module;
+   1.1  Support GAA Fingerprint Module;
 
-   1.2 BYD Big Fingerprint function occupies the only USB port of the machine
+   1.2 GAA Fingerprint function occupies the only USB port of the machine
 
    1.3 BYD Big fingerprint development kit compatible machine, please check :[BYD Big fingerprint development kit compatible machine description](https://github.com/CoreWise/CWDemo#user-content-en)
 
-   1.4 [BYD Big fingerprint development kit download website](https://github.com/CoreWise/CWDemo#user-content-en)
+   1.4 [GAA fingerprint development kit download website](https://github.com/CoreWise/CWDemo#user-content-en)
 
 ### 2. Secondary Development Instruction
 
@@ -45,7 +45,7 @@ Network ADB debugging recommend Android Studio install Android Wifi ADB plug in;
          ...
         //BYD Big Fingerprint Development Kit .(New firmware development kit)
         //BYD Big FingerPrint SDK
-        compile(name: 'finger_byd_big_sdk_20190429', ext: 'aar')
+        compile(name: 'fp_gaa_sdk_20190429', ext: 'aar')
 
      }
 
