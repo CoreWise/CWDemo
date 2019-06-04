@@ -1,24 +1,12 @@
 # HX UHF
 
-* [1.SDK Instruction](#SDKInstruction)
-* [2.二次开发说明](#二次开发说明)
-  * [2.1 AndroidStudio工程配置说明](#AndroidStudio工程配置说明)
-  * [2.2 AndroidManifest.xml配置说明](#AndroidManifest配置说明)
-  * [2.3 接口说明](#接口说明)
-  * [2.4 接口调用流程](#接口调用流程)
-  * [2.5 接口调用案例](#接口调用案例)
-* [3.二次开发问题汇总](#二次开发问题汇总)
-
-
-<a name="二次开发说明"></a>
-
-## SDK Instruction
+## 1、SDK Instruction
 
  1.1 Support B class,C Class etc. Normal label ;
  
- 1.2 HX UHF SDK Compatible Machines Please Check: [SDK Compatible Machines Instruction](https://github.com/CoreWise/CWDemo#user-content-en)
+ 1.2 HX UHF SDK Compatible Machines Please Check: [SDK Compatible Machines Instruction (https://coding.net/u/CoreWise/p/SDK/git)
 
- 1.3 [HX SDK download website](https://github.com/CoreWise/CWDemo#user-content-en)
+ 1.3 [HX SDK download website](https://coding.net/u/CoreWise/p/SDK/git)
  
  1.4 HX UHF needs to rely on serial port development kit
  
@@ -84,99 +72,106 @@ Standby method, used according to requirement
 | setSystemReset             | Setting system level reset                                       |
 | getTypeCAISelectParameters | Get 18000-6C Air Interface Protocol Command'Select'parameter
                       |
-| setTypeCAISelectParameters | 设置18000-6C空中接口协议命令'选择'参数                       |
-| getTypeCAIQueryParameters  | 获取18000-6C空中接口协议命令'查询'参数                       |
-| setTypeCAIQueryParameters  | 设置18000-6C空中接口协议命令'查询'参数                       |
-| getCurrentRFChannel        | 获取射频频道，该命令仅对非FH模式有效                         |
-| setCurrentRFChannel        | 设置射频通道， 该命令仅对非FHSS模式有效                      |
-| getFHAndLBTParameters      | 获取FH和LBT控制                                              |
-| setFHAndLBTParameters      | 设置FH和LBT参数                                              |
-| getTxPowerLevel            | 获取当前Tx功率水平                                           |
-| setTxPowerLevel            | 设置当前Tx功率电平                                           |
-| RF_CW_SignalControl        | 打开/关闭连续波（CW）信号， 该命令包仅对空闲模式有效         |
-| readTypeCUII               | 读取EPC块（PC + EPC）                                        |
-| getFrequencyHoppingTable   | 获取当前跳频表                                               |
-| setFrequencyHoppingTable   | 设置当前跳频表                                               |
-| getModulationMode          | 获取当前调制模式。 调制模式是Rx调制类型和BLF的组合           |
-| setModulationMode          | 获取当前调制模式。 调制模式是Rx调制类型和BLF的组合           |
-| getAntiCollisionMode       | 获取防冲突算法                                               |
-| setAntiCollisionMode       | 设置防冲突算法                                               |
-| blockWriteTypeCTagData     | Blockwrite类型C标签数据                                      |
-| blockEraseTypeCTagData     | 块擦除C类标签数据                                            |
-| blockPermalockTypeCTag     | BlockPermalock C型标签                                       |
-| killTypeCTag               | 删除标签                                                     |
-| lockTypeCTag               | 锁定标签中指示的存储库                                       |
-| getTemperature             | 获取当前温度                                                 |
-| getRSSI                    | 获取RSSI级别                                                 |
-| scanRSSI                   | 扫描所有通道的RSSI级别                                       |
-| updateRegistry             | 设置注册表更新功能                                           |
-| eraseRegistry              | 设置注册表擦除功能                                           |
-| getRegistryItem            | 获取注册表项                                                 |
+| setTypeCAISelectParameters | Setting 18000-6C Air Interface Protocol Command'Select'Parameters
+                     |
+| getTypeCAIQueryParameters  | Obtain 18000-6C Air Interface Protocol Command'Query'Parameters
+                   |
+| setTypeCAIQueryParameters  | Setting 18000-6C Air Interface Protocol Command'Query'Parameters
+                    |
+| getCurrentRFChannel        | Get the radio frequency channel, this command is only valid for non-FH mode
+                        |
+| setCurrentRFChannel        | Set up radio frequency channel, this command is only valid for non-FHSS mode                  |
+| getFHAndLBTParameters      | Obtain FH and LBT Control                                            |
+| setFHAndLBTParameters      | Setting FH and LBT Parameters                                            |
+| getTxPowerLevel            | Obtain current Tx power level                                          |
+| setTxPowerLevel            | Setting current Tx power level                                          |
+| RF_CW_SignalControl        | Turn on/off continuous wave (CW) signal, this command package is only valid for idle mode
+         |
+| readTypeCUII               | Read EPC block (PC + EPC)                                      |
+| getFrequencyHoppingTable   | Obtaion current Frequency hopping table                                             |
+| setFrequencyHoppingTable   | Setting current Frequency hopping table                                             |
+| getModulationMode          | Gets the current modulation mode. Modulation mode is a combination of Rx modulation type and BLF
+         |
+| setModulationMode          | Gets the current modulation mode. Modulation mode is a combination of Rx modulation type and BLF     
+    |
+| getAntiCollisionMode       | Get Acquisition of Anti-Conflict Algorithms                                              |
+| setAntiCollisionMode       | Setting Anti-Conflict Algorithms                                        |
+| blockWriteTypeCTagData     | Blockwrite Type C Label Data                          |
+| blockEraseTypeCTagData     | Block Erase Class C Label Data                                         |
+| blockPermalockTypeCTag     | BlockPermalock Class C Label                                 |
+| killTypeCTag               | Delete a Label                                         |
+| lockTypeCTag               | Lock the repository indicated in the label                                     |
+| getTemperature             | Take the current temperature                                               |
+| getRSSI                    | Get RSSI level                                            |
+| scanRSSI                   | Scanning RSSI levels for all channels                                     |
+| updateRegistry             | Setting up Registry Update Function                                        |
+| eraseRegistry              | Setting Registry Erase Function                                          |
+| getRegistryItem            | Get registry entries                                              |
 
 
-**具体说明:**
+**Specific Instructions:**
 
 - openHXUHFSerialPort
 
-  打开超高频串口模块，建议在onResume中实现
+  Open the UHF Serial Port Module and recommend to implement it in onResume
   
 - closeHXUHFSerialPort
 
-  关闭超高频串口模块，建议在onPause中实现，与 openHXUHFSerialPort 对应
+ Close the UHF Serial Port module and recommend to implement it in onPause, corresponding to openHXUHFSerial Port
 
 - open
 
-  开启超高频模块
+  Turn on UHF Module
 
 - close
 
-  关闭超高频模块,与open对应
+  Turn off UHF module, corresponding to open
 
 - startAutoRead2A(AutoRead autoRead)
 
-  开始盘点，在清单轮次期间启动自动标签读取操作，标签ID通过通知包发送回用户
+  Start the inventory, start the automatic tag reading operation during the list rounds, and the tag ID is sent back to the user through the notification package.
   
-  * @param autoRead 收到数据回调监听
+  * @param autoRead Receiving Data Callback Monitor
 
 - startAutoRead2C(int times, int code, String pwd,
   int sa, int dl, SearchAndRead Interface)
   
-  盘点标签，读到标签就停，并且返回需要读到的数据
+  Inventory tags, stop reading tags, and return the data you need to read
   
-  * @param times 多少秒无数据停止
-  * @param code  需要读的区域 0:读取EPC,1:读取TID
-  * @param pwd   标签访问密码
-  * @param sa    偏移长度
-  * @param dl    要读的长度
-  * @param Interface 收到数据回调监听
+  * @param times How many seconds no data stops
+  * @param code  READING AREA 0: Read EPC, 1: Read TID
+  * @param pwd   Label Access Password
+  * @param sa    Offset length
+  * @param dl    Length to read 
+  * @param Interface Receiving Data Callback Monitor
 
 - readTypeCTagData(byte[] arguments)
 
-  读取标签,传参建议使用方法 arguments 赋值
+ Read labels, pass-on advice using arguments assignment
   
-  * @param arguments 发送的指令
-  * @return 读到的数据
+  * @param arguments Directives sent
+  * @return Readable data
 
 - writeTypeCTagData(byte[] arguments)
 
-  写入标签，传参建议使用方法 arguments 赋值
+  Write labels, pass-on advice using arguments assignment
   
-  * @param arguments 发送的指令
+  * @param arguments Directives sent
   
 - arguments(String pwd, short epcLength, String epc, byte mb,int sa, int dl)
 
-  发送的指令  
+  Directives sent
   
-  * @param pwd 标签访问密码
-  * @param epcLength  标签id长度
-  * @param epc 标签id
-  * @param mb  需要读、写的区域 0:EPC,1:TID,2:User
-  * @param sa  偏移长度
-  * @param dl  要读的长度
+  * @param pwd Label Access Password
+  * @param epc Length  Tag ID length
+  * @param epc Tag ID
+  * @param mb  Read and write areas 0:EPC, 1:TID, 2:User
+  * @param sa  Offset length
+  * @param dl  Length to read
   
 - setRegion(int argument)
 
-  设置当前区域。
+  Set the current area.
   
    * - Korea (0x11)<br>
    * - US (0x21)<br>
@@ -186,48 +181,48 @@ Standby method, used according to requirement
    * - China1 (0x51)<br>
    * - China2 (0x52)<br>
 
-**监听回调接口说明:**
+**Instructions for Monitor callback interface:**
 
 ```
-//开始盘点
+//Start counting
  api.startAutoRead2A(new UHFHXAPI.AutoRead() {
 
                 @Override
                 public void timeout() {
-                    //超时
+                    //overtime
                 }
 
 
                 @Override
                 public void start() {
-                    //开始盘点
+                    //Start counting
                 }
 
 
                 @Override
                 public void processing(byte[] data) {
-                    //获取数据
-                    //标签id
+                    //get data
+                    //Lable id
                     String epc = DataUtils.toHexString(data).substring(4);
                 }
 
                 @Override
                 public void end() {
-                    //结束,根据需求重开线程
+                    //End, restart threads as required
                 }
 
             });
 
 ```
 
-### 2.3 接口调用流程
+### 2.3 Interface invocation process
 
 ![HXUHF.png](https://i.loli.net/2019/05/08/5cd24de943c73.png)
 
 
-### 2.4 接口调用案例
+### 2.4 Interface invocation case
 
-请按步骤实现方法。
+Please follow the steps to implement the method.
 
 ```
     protected ExecutorService pool;
@@ -237,32 +232,32 @@ Standby method, used according to requirement
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hxuhf_activity);
         
-        api = new UHFHXAPI();//步骤:1
+        api = new UHFHXAPI();//Step: 1
         
-        //超高频可控开关，可按需求默认打开
-        view.onClick( .. api.open();//步骤:3)
+        //UHF controllable switch can be turned on by default according to demand
+        view.onClick( .. api.open();//Step:3)
         
-        //点击盘点操作,可按需求换成其他操作
-        view.onClick( .. pool.execute(task);//步骤:4)
+        //Click on the inventory operation, you can switch to other operations as required.
+        view.onClick( .. pool.execute(task);//Step:4)
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        pool = Executors.newSingleThreadExecutor();//步骤:2
+        pool = Executors.newSingleThreadExecutor();//Step:2
         api.openHXUHFSerialPort();
     }
 
     @Override
     protected void onPause() {
-        api.close();//步骤:5
-        api.closeHXUHFSerialPort();//步骤:6
+        api.close();//Step:5
+        api.closeHXUHFSerialPort();//Step:6
         pool.shutdown();
         pool = null;
         super.onPause();
     }
     
-    //循环盘点操作
+    //Cyclic Inventory Operation
      private Runnable task = new Runnable() {
     
             @Override
@@ -311,13 +306,14 @@ Standby method, used according to requirement
 
 ```
 
-## 3、开发问题汇总
+## 3、Summary of development issues
 
-1、问：demo标签读取为什么读不了？
+1、Q：Why can't the demo tag read?
 
-答：需要先开启超高频模块，搜索到标签，**再选择标签**，标签读取显示出标签id说明获取成功。
-选择需要读取区域、访问密码（默认 0000 0000），偏移地址，**数据长度**,点击读取。***标签写入同理***
+A：It is necessary to open the UHF module, search the label, select the label, and read the label to show the ID description of the label to achieve success.
 
-2、问：demo写入标签为什么一直显示输入长度不对？
+Select the area to read, access password (default 0000,000), offset address, ** data length ** and click Read. *** Labels are written in the same way***
 
-答：写入长度需要先选择数据长度，例如：长度为2，就需要输入 0001 0011，**1长度 = 4个16位数字**，当前demo只支持16位输入
+2、Q：Why does the demo write tag always show the wrong input length?
+
+A：Write length needs to select data length first, for example: length 2, you need to input 0001 0011, ** 1 length = 4 16 digits **, currently demo only supports 16 digits input.
