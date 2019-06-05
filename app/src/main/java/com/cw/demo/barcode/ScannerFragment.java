@@ -27,6 +27,9 @@ import com.cw.barcodesdk.SoftDecodingAPI;
 import com.cw.demo.MyApplication;
 import com.cw.demo.R;
 import com.cw.serialportsdk.cw;
+import com.cw.serialportsdk.utils.DataUtils;
+
+import java.io.UnsupportedEncodingException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,8 +43,8 @@ import butterknife.Unbinder;
  */
 public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCodeData {
 
-    private static final String TAG = "CoreWise"+"ScannerFragment";
-
+    private static final String TAG = "cw" + "ScannerFragment";
+    public int all = 0;
     @BindView(R.id.scan)
     Button scan;
     @BindView(R.id.scanning)
@@ -56,23 +59,18 @@ public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCod
     TextView tvAll;
     @BindView(R.id.tv_success)
     TextView tvSuccess;
-
     Unbinder unbinder;
-
     SoftDecodingAPI api;
     @BindView(R.id.cb)
     CheckBox cb;
-
     volatile boolean isAutoClear = true;
     volatile boolean isKey = true;
-
     volatile boolean isScanning = false;
-
     @BindView(R.id.tb)
     ToggleButton tb;
     @BindView(R.id.ll3)
     LinearLayout ll3;
-
+    BarCodeActivity barCodeActivity;
     private Handler mhandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -85,10 +83,6 @@ public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCod
         }
     };
     private int success = 0;
-    public int all = 0;
-
-    BarCodeActivity barCodeActivity;
-
     private BarCodeReceiver receiver;
 
     private int clickCount = 0;
@@ -103,8 +97,6 @@ public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCod
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.barcode_fragment_scanner, container, false);
         api = new SoftDecodingAPI(getActivity(), this);
-
-
 
 
         unbinder = ButterKnife.bind(this, rootView);
@@ -190,6 +182,12 @@ public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCod
                     tvSuccess.setText(getActivity().getString(R.string.barcode_scan_success, success));
                 }
 
+                /*try {
+                    byte[] bytes = data.getBytes("GBK");
+                    Log.e(TAG, "-----------------" + bytes);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }*/
 
                 etBarcode.append(data + "\n");
                 //etBarcode.setText(data);
