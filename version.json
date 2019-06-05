@@ -2,10 +2,10 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 1,
-  "VersionName": "V1.2",
-  "ModifyContent": "1、添加DemoApp更新功能\r\n",
-  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.2/DemoApp_V1.2_release.apk",
+  "VersionCode": 3,
+  "VersionName": "V1.3",
+  "ModifyContent": "1、修复相关bug\r\n2、稳定版本\r\n",
+  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.3/DemoApp_V1.3_release.apk",
   "ApkSize": 6964,
   "ApkMd5": ""
 }
