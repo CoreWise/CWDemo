@@ -354,6 +354,11 @@ public class HXUHFActivity extends BaseUHFActivity {
                 @Override
                 public void timeout() {
                     Log.i(TAG, "timeout");
+                    if (!isStop) {
+                        pool.execute(task);
+                    } else {
+                        hMsg.sendEmptyMessage(INVENTORY_OVER);
+                    }
                 }
 
                 @Override
