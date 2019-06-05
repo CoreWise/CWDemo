@@ -22,7 +22,7 @@ android {
         //versionName "DemoApp_V1.2"
 
 
-        versionCode 2
+        versionCode 3
         versionName "DemoApp_V1.3"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
