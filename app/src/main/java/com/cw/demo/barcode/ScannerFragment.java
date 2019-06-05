@@ -203,6 +203,7 @@ public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCod
                         etBarcode.setText("");
                     }
                 }
+
                 //LocalLog.e(TAG, "--all:--" + all + "--success:--" + success + "--data:--" + data);
             }
         });
@@ -235,7 +236,6 @@ public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCod
                 scan.setEnabled(isChecked);
                 scanning.setEnabled(isChecked);
                 end.setEnabled(isChecked);
-
             }
         });
 
@@ -255,12 +255,8 @@ public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCod
                     api.CloseScanning();
                 }
                 break;
-
         }
-
-
         boolean isScan = (boolean) MyApplication.getApp().getParam(getActivity(), "isScanning", false);
-
         if (isScan) {
             api.setTime((Integer) MyApplication.getApp().getParam(getActivity(), "intervaltime", 800));
             clear.setEnabled(false);
