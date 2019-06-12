@@ -182,12 +182,6 @@ public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCod
                     tvSuccess.setText(getActivity().getString(R.string.barcode_scan_success, success));
                 }
 
-                /*try {
-                    byte[] bytes = data.getBytes("GBK");
-                    Log.e(TAG, "-----------------" + bytes);
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }*/
 
                 etBarcode.append(data + "\n");
                 //etBarcode.setText(data);

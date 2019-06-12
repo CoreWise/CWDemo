@@ -40,6 +40,7 @@ import com.cw.demo.R2000UHF.UHF2000Activity;
 import com.cw.demo.barcode.BarCodeActivity;
 import com.cw.demo.beidou.BeiDouActivity;
 import com.cw.demo.fingerprint.gaa.FpGAAActivity;
+import com.cw.demo.fingerprint.gab.FpGABActivity;
 import com.cw.demo.fingerprint.jra.FpJRAActivity;
 import com.cw.demo.hxuhf.HXUHFActivity;
 import com.cw.demo.idcard.IDCardActivity;
@@ -61,7 +62,7 @@ import kr.co.namee.permissiongen.PermissionGen;
 /**
  * @author Administrator
  */
-public class MainActivity extends AppCompatActivity implements OnClickListener {
+public class MainActivity extends BaseActivity implements OnClickListener {
 
     private static final String TAG = "CoreWise" + "MainActivity";
 
@@ -169,6 +170,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
                 R.drawable.icon_fingerprint,
                 R.drawable.icon_fingerprint,
+                R.drawable.icon_fingerprint,
+
 
                 R.drawable.beidou};
 
@@ -207,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
         if (MyApplication.getApp().isLandscape(this)) {
             mFriendDialog = new FriendDialog(this,
-                    BaseUtils.dip2px(this, 250f),
+                    BaseUtils.dip2px(this, 160f),
                     BaseUtils.dip2px(this, 30f),
                     R.layout.dialog_friend,
                     R.style.DialogTheme);
@@ -312,14 +315,38 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 });
                 mFriendDialog.show();
                 return;
+
             case 9:
+                //GAB指纹
+
+                mFriendDialog.setMessage(getResources().getString(R.string.general_usb_fp_tips));
+
+                intent = new Intent(this, FpGABActivity.class);
+
+                final Intent finalIntent3 = intent;
+                mFriendDialog.setOnClickListener(new FriendDialog.onClickListener() {
+
+                    @Override
+                    public void OnClickPositive() {
+                        startActivity(finalIntent3);
+                    }
+
+                    @Override
+                    public void OnClickNegative() {
+                        mFriendDialog.dismiss();
+                    }
+                });
+                mFriendDialog.show();
+                return;
+
+            case 10:
                 //北斗
                 intent = new Intent(this, BeiDouActivity.class);
 
                 break;
 
 
-            case 10:
+            case 11:
                 //身份证指纹信息比对
                 intent = new Intent(this, BeiDouActivity.class);
 
@@ -402,27 +429,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     }
 
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(R.string.general_tips);
-            builder.setMessage(R.string.general_exit);
-
-            //设置确定按钮
-            builder.setNegativeButton(R.string.general_yes, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    finish();
-                }
-            });
-            //设置取消按钮
-            builder.setPositiveButton(R.string.general_no, null);
-            //显示提示框
-            builder.show();
-        }
-        return super.onKeyDown(keyCode, event);
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

@@ -34,7 +34,7 @@ android {
         //versionName "DemoApp_V1.3"
 
         versionCode 4
-        versionName "DemoApp_V1.4_debug"
+        versionName "DemoApp_V1.4"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -94,13 +94,18 @@ dependencies {
     compile(name: 'barcode_sdk_20190429', ext: 'aar')
     //串口开发包
     //SerialPort SDK
-    compile(name: 'serialport_sdk_20190528', ext: 'aar')
+    compile(name: 'serialport_sdk_20190612', ext: 'aar')
     //身份证开发包,需要依赖串口开发包
     //IDcard SDK,need SerialPort SDK
     compile(name: 'idcard_sdk_20190528', ext: 'aar')
     //GAA大指纹开发包(新固件开发包)
     //GAA FingerPrint SDK
     compile(name: 'fp_gaa_sdk_20190603', ext: 'aar')
+
+    //GAA大指纹开发包(新固件开发包)
+    // GAA FingerPrint SDK
+    compile(name: 'fp_gab_sdk_20190611', ext: 'aar')
+
     //JRA小指纹开发包
     //JRA FingerPrint SDK
     compile(name: 'fp_jra_sdk_20190529', ext: 'aar')

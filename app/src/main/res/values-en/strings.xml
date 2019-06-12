@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">DemoApp</string>
 
     <!--通用字符串资源  命名要求: general_+英文-->
@@ -27,6 +27,7 @@
 
         <item>FP_GAA</item>
         <item>FP_JRA</item>
+        <item>FP_GAB</item>
 
 
         <item>北斗短报文</item>
@@ -111,6 +112,7 @@
         <item>Direct Display</item>
         <item>Key Emulation</item>
         <item>Copy To System ClipBoard</item>
+        <item>BroadCast</item>
     </string-array>
 
 
@@ -303,6 +305,102 @@
 
 
     <string name="fp_jra_search_failure">Failed to search for fingerprints, please change your finger press gesture!</string>
+
+
+        <!--USB-->
+
+    <string name="fp_loading">Loading</string>
+    <string name="fp_preparing_device">The equipment is being prepared, please wait...</string>
+    <string name="fp_closing_device">The device is shutting down, please wait...</string>
+
+     <!-- 指纹仪 -->
+    <string name="fingerprint">Fingerprint instrument</string>
+    <string name="fps_sn">指纹传感器序列号：<xliff:g>%1$s</xliff:g></string>
+    <string name="fps_fw">指纹传感器内部固件版本号：<xliff:g>%1$s</xliff:g></string>
+    <string name="fp_collect_info">Single fingerprint collection information：</string>
+    <string name="capture">Take Picture：</string>
+    <string name="extract">Extracting Features：</string>
+    <string name="generalize">Composite Template：</string>
+    <string name="verify">Comparison：</string>
+    <string name="enroll_fp">Enter Fingerprint</string>
+    <string name="verify_fp">Alignment fingerprint(1:1)</string>
+    <string name="identify_fp">Search fingerprint(1:N)</string>
+    <string name="verify_fp2">Alignment fingerprint</string>
+    <string name="identify_fp2">Search fingerprint</string>
+    <string name="clear_fp_db">Clear</string>
+    <string name="show_fp">Display fingerprint</string>
+    <string name="press_finger">Please press your finger!</string>
+    <string name="enrolling">Registering fingerprint……</string>
+    <string name="verifying">Comparing fingerprints……</string>
+    <string name="identifying">Looking for fingerprints in the fingerprint library……</string>
+    <string name="fingerprint_device_open_success">The fingerprint device is turned on successfully.！</string>
+    <string name="fingerprint_device_open_failed">Fingerprint reader failed to open！</string>
+    <string name="fingerprint_device_close_success">The fingerprint device is successfully closed！</string>
+    <string name="fingerprint_device_close_failed">Fingerprint reader failed to close！</string>
+    <string name="fingerprint_device_power_on_failed">The fingerprint device failed to power on.</string>
+    <string name="fingerprint_device_power_off_failed">Fingerprint device failed to power off！</string>
+    <string name="algorithm_initialization_failed">Bione algorithm initialization failed！</string>
+    <string name="algorithm_cleanup_failed">Bione algorithm failed to initialize！</string>
+    <string name="fp_not_done">not done</string>
+    <string name="capture_image_success">The fingerprint image was successfully acquired!</string>
+    <string name="capture_image_failed">Failed to capture fingerprint image！</string>
+    <string name="enroll_failed_because_of_extract_feature">Input failed, error extraction feature!</string>
+    <string name="enroll_failed_because_of_make_template">Entry failed, error generating template！</string>
+    <string name="enroll_failed_because_of_get_id">Failed to enter, failed to get the available fingerprint ID！</string>
+    <string name="enroll_failed_because_of_error">Entry failed！</string>
+    <string name="enroll_success">Successful entry！</string>
+    <string name="enrolled_id">The fingerprint ID is<xliff:g>%1$d</xliff:g></string>
+    <string name="verify_failed_because_of_extract_feature">The comparison failed, the feature extraction error occurred.！</string>
+    <string name="verify_failed_because_of_error">Comparison failure！</string>
+    <string name="fingerprint_not_match">Fingerprint mismatch！</string>
+    <string name="fingerprint_match">Fingerprint matching！</string>
+    <string name="fingerprint_similarity">Fingerprint similarity is<xliff:g>%1$d</xliff:g></string>
+    <string name="identify_failed_because_of_extract_feature">The comparison failed, the feature extraction error occurred.</string>
+    <string name="identify_failed_because_of_error">Comparison failure！</string>
+    <string name="identify_match">Successful verification！</string>
+    <string name="matched_id">Match fingerprint ID is <xliff:g>%1$d</xliff:g></string>
+    <string name="clear_fingerprint_database_success">Clear fingerprint database successfully！</string>
+    <string name="clear_fingerprint_database_failed">Failed to clear fingerprint library！</string>
+
+
+
+    <!-- 错误代码 -->
+    <string name="info_error">error</string>
+    <string name="operation_successful">Successful operation！</string>
+    <string name="error_operation_failed">operation failed！</string>
+    <string name="error_wrong_connection">Connection error causes operation to fail！</string>
+    <string name="error_device_busy">The device is busy and the operation fails.！</string>
+    <string name="error_device_not_open">The device does not open, causing the operation to fail！</string>
+    <string name="error_timeout">Transfer timeout causes operation to fail！</string>
+    <string name="error_no_permission">No operation permission causes the operation to fail！</string>
+    <string name="error_wrong_parameter">Input parameter error causes operation to fail！</string>
+    <string name="error_decode">Decoding error causes operation to fail！</string>
+    <string name="error_initialization_failed">Device initialization failed, causing the operation to fail！</string>
+    <string name="error_not_support">Unsupported operation causes operation to fail！</string>
+    <string name="error_not_enough_memory">Insufficient memory causes the operation to fail！</string>
+    <string name="error_device_not_found">Failure to find device caused operation failed！</string>
+    <string name="error_device_reopen">Repeated opening of the device causes the operation to fail！</string>
+    <string name="error_algorithm_initialization_failed">Failed to initialize the fingerprint algorithm, causing the operation to fail！</string>
+    <string name="error_invalid_feature_data">Fingerprint feature data error causes operation to fail！</string>
+    <string name="error_bad_image">The fingerprint image is too bad, causing the operation to fail.</string>
+    <string name="error_not_match">Fingerprint mismatch causes operation to fail！</string>
+    <string name="error_low_point">The fingerprint comparison score is too low, causing the operation to fail！</string>
+    <string name="error_no_finger">No finger causes the operation to fail！</string>
+    <string name="error_no_result">No matching fingerprint in the fingerprint library causes the operation to fail！</string>
+    <string name="error_out_of_bound">Input fingerprint ID out of bounds causes operation to fail！</string>
+    <string name="error_database_full">The fingerprint library is full and the operation fails.！</string>
+    <string name="error_library_missing">Loss of fingerprint algorithm library causes operation to fail！</string>
+    <string name="error_algorithm_uninitialize">Fingerprint algorithm uninitialized causes operation to fail！</string>
+    <string name="error_algorithm_reinitialize">Repeated initialization of the fingerprint algorithm causes the operation to fail！</string>
+    <string name="error_repeated_enroll">Fingerprint duplicate registration causes operation to fail！</string>
+    <string name="error_not_enrolled">Fingerprint not registered causes operation to fail！</string>
+    <string name="error_no_card">Failure to find the card caused the operation to fail！</string>
+    <string name="error_invalid_card">Invalid card causes operation to fail！</string>
+    <string name="error_invalid_decode_lib">Invalid card decoding library causes operation to fail！</string>
+    <string name="error_other">Other errors caused the operation to fail！</string>
+
+
+
     <!--R2000超高频字符串资源 要求:r2000_+功能+英文-->
 
     <string name="r2000_list_antenna_port">"天线号"</string>
@@ -338,6 +436,8 @@
     <string name="uhf_tag_test">标签测试</string>
 
     <string name="r2000_uhf_support">暂不支持，敬请期待！</string>
+
+
     <!--R2000超高频-->
     <drawable name="clr_normal">#666666</drawable>
     <drawable name="clr_pressed">#333333</drawable>

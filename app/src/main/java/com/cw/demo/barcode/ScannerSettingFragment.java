@@ -20,9 +20,10 @@ import android.widget.Spinner;
 import android.widget.ToggleButton;
 
 
-import com.cw.demo.utils.BaseUtils;
-import com.cw.demo.MyApplication;
 import com.cw.demo.R;
+import com.cw.demo.barcode.BarCodeActivity;
+import com.cw.demo.utils.BaseUtils;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,7 +81,6 @@ public class ScannerSettingFragment extends Fragment {
         super.onResume();
         BaseUtils.disableSubControls(llSetting, false);
         btnSet.setText(R.string.barcode_setting_enable);
-        etInterval.setText("" + MyApplication.getApp().getParam(getActivity(),"intervaltime", 800));
 
         etPre.setText(Settings.System.getString(getActivity().getContentResolver(), "SCANNER_PREFIX"));
         etEnd.setText(Settings.System.getString(getActivity().getContentResolver(), "SCANNER_SUFFIX"));
@@ -103,7 +103,7 @@ public class ScannerSettingFragment extends Fragment {
 
         spOutputmode.setSelection(outputMode);
 
-        boolean isShowToast = Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_ISSHOWTOAST", 1) == 1; //是否打印吐司，默认打印
+       boolean isShowToast = Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_ISSHOWTOAST", 1) == 1; //是否打印吐司，默认打印
 
         tbToast.setChecked(isShowToast);
 
@@ -139,7 +139,8 @@ public class ScannerSettingFragment extends Fragment {
                     InputMethodManager inputmanger = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 }
-                if (btnSet.getText().toString().equals(getString(R.string.barcode_setting_disable))) {
+                String s1 = btnSet.getText().toString();
+                if (s1.equals("禁用")||s1.equals("Disable")) {
                     BaseUtils.disableSubControls(llSetting, false);
                     etInterval.setEnabled(false);
                     etPre.setEnabled(false);
@@ -157,12 +158,20 @@ public class ScannerSettingFragment extends Fragment {
                     etPre.setCursorVisible(false);
                     etEnd.setCursorVisible(false);
 
-                    btnSet.setText(getString(R.string.barcode_setting_enable));
+                    btnSet.setText(R.string.barcode_setting_enable);
                     Settings.System.putString(getActivity().getContentResolver(), "SCANNER_PREFIX", String.valueOf(etPre.getText()));
                     Settings.System.putString(getActivity().getContentResolver(), "SCANNER_SUFFIX", String.valueOf(etEnd.getText()));
-                    MyApplication.getApp().setParam(getActivity(),"intervaltime", Integer.parseInt(etInterval.getText().toString()));
 
-                } else if (btnSet.getText().toString().equals(getString(R.string.barcode_setting_enable))) {
+                    String s = etInterval.getText().toString();
+
+                    int i = Integer.parseInt(s);
+
+                    //App.getApp().setParam(getActivity(),"intervaltime",i);
+
+                    Settings.System.putInt(getActivity().getContentResolver(),"scan_timeout",i);
+
+
+                } else if (s1.equals("取消禁用")||s1.equals("Enable")) {
                     etInterval.setEnabled(true);
                     etPre.setEnabled(true);
                     etEnd.setEnabled(true);
@@ -180,7 +189,7 @@ public class ScannerSettingFragment extends Fragment {
                     etEnd.setCursorVisible(true);
 
                     BaseUtils.disableSubControls(llSetting, true);
-                    btnSet.setText(getString(R.string.barcode_setting_disable));
+                    btnSet.setText(R.string.barcode_setting_disable);
                 }
                 /*Toast.makeText(barCodeActivity, "设置成功!", Toast.LENGTH_SHORT).show();*/
                 break;
@@ -230,6 +239,7 @@ public class ScannerSettingFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
+
         });
 
         //result.addTextChangedListener(ResultTextwatcher);

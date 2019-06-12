@@ -5,4 +5,11 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="black">#000</color>
+
+
+        <color name="activity_background">#FFFFFF</color>
+    <color name="information_text_color">#00AA00</color>
+    <color name="information_details_text_color">#00AA00</color>
+    <color name="error_text_color">#FF0000</color>
+    <color name="error_details_text_color">#FF0000</color>
 </resources>

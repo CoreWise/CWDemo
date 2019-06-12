@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">DemoApp</string>
 
     <!--通用字符串资源  命名要求: general_+英文-->
@@ -26,7 +26,7 @@
 
         <item>GAA指纹</item>
         <item>JRA指纹</item>
-
+   <item>GAB指纹</item>
 
         <item>北斗短报文</item>
 
@@ -62,7 +62,7 @@
     <string name="general_write_fail">写入失败！</string>
     <string name="general_ok">确定</string>
     <string name="general_cancel">取消</string>
-        <string name="general_setting">设置</string>
+    <string name="general_setting">设置</string>
 
 
     <!--条码字符串资源 命名要求: barcode_+功能+英文-->
@@ -78,7 +78,7 @@
     <string name="barcode_scanner_open">开启</string>
     <string name="barcode_scanner_close">关闭</string>
 
-        <string name="barcode_setting">设置</string>
+    <string name="barcode_setting">设置</string>
 
 
     <string name="barcode_setting_interval">扫描间隔:</string>
@@ -112,6 +112,8 @@
         <item>直接显示</item>
         <item>模拟按键</item>
         <item>复制到系统剪切板</item>
+             <item>广播</item>
+
     </string-array>
 
 
@@ -302,7 +304,105 @@
     <string name="fp_usb_init">指纹模块初始化中...</string>
 
 
-        <string name="fp_jra_search_failure">搜索指纹失败,请改变手指按压手势!</string>
+    <string name="fp_jra_search_failure">搜索指纹失败,请改变手指按压手势!</string>
+
+
+    <string name="fp_not_done">未进行</string>
+    <!--USB-->
+
+    <string name="fp_loading">正在加载</string>
+    <string name="fp_preparing_device">设备正在准备，请稍候……</string>
+    <string name="fp_closing_device">设备正在关闭，请稍候……</string>
+
+
+    <!-- 指纹仪 -->
+    <string name="fingerprint">指纹仪</string>
+    <string name="fps_sn">指纹传感器序列号：<xliff:g>%1$s</xliff:g></string>
+    <string name="fps_fw">指纹传感器内部固件版本号：<xliff:g>%1$s</xliff:g></string>
+    <string name="fp_collect_info">单次指纹采集信息：</string>
+    <string name="capture">取图：</string>
+    <string name="extract">提取特征：</string>
+    <string name="generalize">合成模板：</string>
+    <string name="verify">比对：</string>
+    <string name="enroll_fp">录入指纹</string>
+    <string name="verify_fp">比对指纹(1:1)</string>
+    <string name="identify_fp">搜索指纹(1:N)</string>
+        <string name="verify_fp2">比对指纹</string>
+    <string name="identify_fp2">搜索指纹</string>
+    <string name="clear_fp_db">清空指纹库</string>
+    <string name="show_fp">显示指纹</string>
+    <string name="press_finger">请按压手指!</string>
+    <string name="enrolling">正在注册指纹……</string>
+    <string name="verifying">正在比对指纹……</string>
+    <string name="identifying">正在指纹库中查找指纹……</string>
+    <string name="fingerprint_device_open_success">指纹仪打开成功！</string>
+    <string name="fingerprint_device_open_failed">指纹仪打开失败！</string>
+    <string name="fingerprint_device_close_success">指纹仪关闭成功！</string>
+    <string name="fingerprint_device_close_failed">指纹仪关闭失败！</string>
+    <string name="fingerprint_device_power_on_failed">指纹仪上电失败！</string>
+    <string name="fingerprint_device_power_off_failed">指纹仪断电失败！</string>
+    <string name="algorithm_initialization_failed">Bione算法初始化失败！</string>
+    <string name="algorithm_cleanup_failed">Bione算法反初始化失败！</string>
+    <string name="capture_image_success">指纹图像获取成功！</string>
+    <string name="capture_image_failed">采集指纹图像失败！</string>
+    <string name="enroll_failed_because_of_extract_feature">录入失败，提取特征出错！</string>
+    <string name="enroll_failed_because_of_make_template">录入失败，生成模板出错！</string>
+    <string name="enroll_failed_because_of_get_id">录入失败，获取可用的指纹ID失败！</string>
+    <string name="enroll_failed_because_of_error">录入失败！</string>
+    <string name="enroll_success">录入成功！</string>
+    <string name="enrolled_id">指纹ID为<xliff:g>%1$d</xliff:g></string>
+    <string name="verify_failed_because_of_extract_feature">比对失败，提取特征出错！</string>
+    <string name="verify_failed_because_of_error">比对失败！</string>
+    <string name="fingerprint_not_match">指纹不匹配！</string>
+    <string name="fingerprint_match">指纹匹配！</string>
+    <string name="fingerprint_similarity">指纹相似度为<xliff:g>%1$d</xliff:g></string>
+    <string name="identify_failed_because_of_extract_feature">比对失败，提取特征出错！</string>
+    <string name="identify_failed_because_of_error">比对失败！</string>
+    <string name="identify_match">验证成功！</string>
+    <string name="matched_id">匹配指纹ID为<xliff:g>%1$d</xliff:g></string>
+    <string name="clear_fingerprint_database_success">清空指纹库成功！</string>
+    <string name="clear_fingerprint_database_failed">清空指纹库失败！</string>
+
+
+     <!-- 错误代码 -->
+    <string name="info_error">错误</string>
+    <string name="operation_successful">操作成功！</string>
+    <string name="error_operation_failed">操作失败！</string>
+    <string name="error_wrong_connection">连接错误导致操作失败！</string>
+    <string name="error_device_busy">设备忙导致操作失败！</string>
+    <string name="error_device_not_open">设备未打开导致操作失败！</string>
+    <string name="error_timeout">传输超时导致操作失败！</string>
+    <string name="error_no_permission">无操作权限导致操作失败！</string>
+    <string name="error_wrong_parameter">输入参数错误导致操作失败！</string>
+    <string name="error_decode">解码错误导致操作失败！</string>
+    <string name="error_initialization_failed">设备初始化失败导致操作失败！</string>
+    <string name="error_not_support">不被支持的操作导致操作失败！</string>
+    <string name="error_not_enough_memory">内存不足导致操作失败！</string>
+    <string name="error_device_not_found">未能找到设备导致操作失败！</string>
+    <string name="error_device_reopen">设备重复打开导致操作失败！</string>
+    <string name="error_algorithm_initialization_failed">指纹算法初始化失败导致操作失败！</string>
+    <string name="error_invalid_feature_data">指纹特征数据错误导致操作失败！</string>
+    <string name="error_bad_image">指纹图像太差导致操作失败！</string>
+    <string name="error_not_match">指纹不匹配导致操作失败！</string>
+    <string name="error_low_point">指纹比对分值太低导致操作失败！</string>
+    <string name="error_no_finger">无手指导致操作失败！</string>
+    <string name="error_no_result">指纹库中无匹配指纹导致操作失败！</string>
+    <string name="error_out_of_bound">输入指纹ID越界导致操作失败！</string>
+    <string name="error_database_full">指纹库已满导致操作失败！</string>
+    <string name="error_library_missing">指纹算法库丢失导致操作失败！</string>
+    <string name="error_algorithm_uninitialize">指纹算法未初始化导致操作失败！</string>
+    <string name="error_algorithm_reinitialize">指纹算法重复初始化导致操作失败！</string>
+    <string name="error_repeated_enroll">指纹重复注册导致操作失败！</string>
+    <string name="error_not_enrolled">指纹未注册导致操作失败！</string>
+    <string name="error_no_card">未能找到卡片导致操作失败！</string>
+    <string name="error_invalid_card">卡片无效导致操作失败！</string>
+    <string name="error_invalid_decode_lib">卡片解码库无效导致操作失败！</string>
+    <string name="error_other">其它错误导致操作失败！</string>
+
+
+
+
+
 
 
 
