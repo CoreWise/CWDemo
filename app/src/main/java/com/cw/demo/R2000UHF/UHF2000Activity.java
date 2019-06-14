@@ -34,18 +34,12 @@ import butterknife.ButterKnife;
 public class UHF2000Activity extends AppCompatActivity {
 
     private static final String TAG = "UHF2000Activity";
-
-
+    public R2000UHFAPI r2000UHFAPI;
+    public LogList mLogList;
     @BindView(R.id.log_list)
     LogList logList;
-
-
-    public R2000UHFAPI r2000UHFAPI;
-
-
     FragmentTransaction transaction;
     FragmentManager fragmentManager;
-    public LogList mLogList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,7 +48,6 @@ public class UHF2000Activity extends AppCompatActivity {
 
         r2000UHFAPI = R2000UHFAPI.getInstance();
 
-        r2000UHFAPI.open(this);
 
 
         /*set it to be no title*/
@@ -80,10 +73,23 @@ public class UHF2000Activity extends AppCompatActivity {
 
 
     @Override
+    protected void onResume() {
+        super.onResume();
+                r2000UHFAPI.open(this);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+                r2000UHFAPI.close();
+
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "uhf2000---onDestroy");
-        r2000UHFAPI.close();
     }
 
     private void initView() {
