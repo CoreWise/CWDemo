@@ -2,10 +2,10 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 3,
-  "VersionName": "V1.3",
-  "ModifyContent": "1、修复相关bug\r\n2、稳定版本\r\n",
-  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.3/DemoApp_V1.3_release.apk",
-  "ApkSize": 6964,
+  "VersionCode": 4,
+  "VersionName": "V1.4",
+  "ModifyContent": "1、优化上下电相关问题\r\n2、添加GAA指纹身份证比对功能\r\n3、区分港澳台暂住证\r\n4、新增GAB指纹\r\n",
+  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.4/DemoApp_V1.4_release.apk",
+  "ApkSize": 8063,
   "ApkMd5": ""
 }
