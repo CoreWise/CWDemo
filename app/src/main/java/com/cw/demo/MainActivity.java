@@ -2,10 +2,8 @@ package com.cw.demo;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -16,10 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -159,79 +154,67 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
         keys = getResources().getStringArray(R.array.general_functions);
 
-        icons = new int[]{
-                R.drawable.icon_barcode,
 
-                R.drawable.icon_m1,
-                R.drawable.icon_idcard,
-                R.drawable.icon_idcard_gaa,
+        icons=new int[keys.length];
+        for (int i = 0; i < keys.length; i++) {
+            icons[i] = getResources().obtainTypedArray(R.array.general_icons).getResourceId(i, 0);
+        }
 
-                R.drawable.icon_m1,
-                R.drawable.rfid15693,
-
-                R.drawable.icon_phy,
-                R.drawable.icon_r2000,
-
-                R.drawable.icon_fingerprint,
-                R.drawable.icon_fingerprint,
-                R.drawable.icon_fingerprint,
-
-                R.drawable.beidou};
 
         Intent intent = null;
 
         intent = new Intent(this, BarCodeActivity.class);
-        intent.putExtra("tag","BarCodeActivity");
+        intent.putExtra("tag", "BarCodeActivity");
         mListIntent.add(intent);
 
         intent = new Intent(this, RFIDM1Activity.class);
-        intent.putExtra("tag","RFIDM1Activity");
+        intent.putExtra("tag", "RFIDM1Activity");
         mListIntent.add(intent);
 
         intent = new Intent(this, IDCardActivity.class);
-        intent.putExtra("tag","IDCardActivity");
+        intent.putExtra("tag", "IDCardActivity");
         mListIntent.add(intent);
 
         intent = new Intent(this, ComparisonActivity.class);
-        intent.putExtra("tag","ComparisonActivity");
+        intent.putExtra("tag", "ComparisonActivity");
         mListIntent.add(intent);
 
         intent = new Intent(this, NFCM1Activity.class);
-        intent.putExtra("tag","NFCM1Activity");
+        intent.putExtra("tag", "NFCM1Activity");
         mListIntent.add(intent);
 
         intent = new Intent(this, NFCISO15693Activity.class);
-        intent.putExtra("tag","NFCISO15693Activity");
+        intent.putExtra("tag", "NFCISO15693Activity");
         mListIntent.add(intent);
 
         intent = new Intent(this, HXUHFActivity.class);
-        intent.putExtra("tag","HXUHFActivity");
+        intent.putExtra("tag", "HXUHFActivity");
         mListIntent.add(intent);
 
         intent = new Intent(this, UHF2000Activity.class);
-        intent.putExtra("tag","UHF2000Activity");
+        intent.putExtra("tag", "UHF2000Activity");
         mListIntent.add(intent);
 
         intent = new Intent(this, FpGAAActivity.class);
-        intent.putExtra("tag","FpGAAActivity");
+        intent.putExtra("tag", "FpGAAActivity");
         mListIntent.add(intent);
 
         intent = new Intent(this, FpJRAActivity.class);
-        intent.putExtra("tag","FpJRAActivity");
+        intent.putExtra("tag", "FpJRAActivity");
         mListIntent.add(intent);
 
         intent = new Intent(this, FpGABActivity.class);
-        intent.putExtra("tag","FpGABActivity");
+        intent.putExtra("tag", "FpGABActivity");
         mListIntent.add(intent);
 
         intent = new Intent(this, BeiDouActivity.class);
-        intent.putExtra("tag","BeiDouActivity");
+        intent.putExtra("tag", "BeiDouActivity");
         mListIntent.add(intent);
 
 
 
-        /*icons = new int[]{R.drawable.beidou, R.drawable.m1, R.drawable.icon_barcode, R.drawable.ic, R.drawable.sfz,
-                R.drawable.hx, R.drawable.fingerprint, R.drawable.loop, R.drawable.rfid15693, R.drawable.fingerprint,
+        /*icons = new int[]{R.drawable.icon_beidou, R.drawable.m1, R.drawable.icon_barcode, R.drawable.ic, R.drawable.sfz,
+                R.drawable.hx, R.drawable.fingerprint, R.drawable.loop, R.drawable.icon_rfid15693, R.drawable.fingerprint,
                 R.drawable.cpu, R.drawable.ic, R.drawable.ic, R.drawable.ic, R.drawable.cpu, R.drawable.ic, R.drawable.hx};*/
 
         preferences = getSharedPreferences("features", MODE_PRIVATE);
@@ -280,8 +263,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         }
 
 
-        if (intent == null)
-        {
+        if (intent == null) {
             return;
         }
         String tag = intent.getStringExtra("tag");
@@ -421,7 +403,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 new int[]{R.id.menu_icon, R.id.menu_name});
         gridview.setAdapter(menuAdapter);
     }
-
 
 
     @Override

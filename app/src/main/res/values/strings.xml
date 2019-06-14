@@ -34,6 +34,29 @@
     </string-array>
 
 
+    <integer-array name="general_icons">
+        <item>@drawable/icon_barcode</item>
+
+        <item>@drawable/icon_m1</item>
+        <item>@drawable/icon_idcard</item>
+        <item>@drawable/icon_idcard_gaa</item>
+
+        <item>@drawable/icon_m1</item>
+        <item>@drawable/icon_rfid15693</item>
+
+        <item>@drawable/icon_phy</item>
+        <item>@drawable/icon_r2000</item>
+
+        <item>@drawable/icon_fingerprint</item>
+        <item>@drawable/icon_fingerprint</item>
+        <item>@drawable/icon_fingerprint</item>
+
+        <item>@drawable/icon_beidou</item>
+
+
+    </integer-array>
+
+
     <!-- <string-array name="general_compatible">
          <item>条码功能兼容机器如下:\n\n- CFON640\n- A370\n- U1 One-dimensional code\n- U1 QR\n- U1_4710\n- U3\n- U8</item>
          <item>身份证(RFID)功能兼容机器如下:\n\n- CFON640\n- A370\n- U3\n- U8</item>

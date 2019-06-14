@@ -37,77 +37,111 @@ import butterknife.ButterKnife;
 
 public class HXUHFActivity extends BaseUHFActivity {
 
-    private String TAG = "CW" + BaseUHFActivity.class.getSimpleName();
-
-
+    public UHFHXAPI api;
     @BindView(R.id.ll_read_write)
     LinearLayout llReadWrite;
-
+    private String TAG = "CW" + BaseUHFActivity.class.getSimpleName();
     private Button singleSearch;
-
     private Button mBtSetting;
-
-    public UHFHXAPI api;
-
     private SoundPool soundPool;
-
-
-    /**
-     * 用于集中处理显示等事件信息的静态类
-     *
-     * @author chenshanjing
-     */
-    class StartHander extends Handler {
-
-        WeakReference<Activity> mActivityRef;
-
-        StartHander(Activity activity) {
-            mActivityRef = new WeakReference<Activity>(activity);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            Activity activity = mActivityRef.get();
-            if (activity == null) {
-                return;
-            }
-
-            switch (msg.what) {
-                case MSG_SHOW_EPC_INFO:
-                    ShowEPC((String) msg.obj);
-                    break;
-
-                case MSG_DISMISS_CONNECT_WAIT_SHOW:
-                    prgDlg.dismiss();
-                    if ((Boolean) msg.obj) {
-                        Toast.makeText(activity, activity.getText(R.string.hxuhf_info_connect_success), Toast.LENGTH_SHORT)
-                                .show();
-                        // byte[] data = api.setRegion(0x52).data;
-                        // byte[] data = api.getRegion().data;
-                        // Log.d("jokey", "data-->"+DataUtils.toHexString(data));
-                        setting.setEnabled(true);
-                        buttonInv.setClickable(true);
-                    } else {
-                        Toast.makeText(activity, activity.getText(R.string.hxuhf_info_connect_fail), Toast.LENGTH_SHORT).show();
-                    }
-                    break;
-                case INVENTORY_OVER:
-                    Toast.makeText(HXUHFActivity.this, R.string.hxuhf_inventory_over, Toast.LENGTH_SHORT).show();
-                    break;
-            }
-        }
-    }
-
     private Handler hMsg = new StartHander(this);
-
     private Handler mhandler;
-
     private int times = 5000;// 默认超时5秒
     private byte code = 1;// 默认读取epc区域 0:读取EPC,1:读取TID
     private short sa = 0;// 默认偏移从0开始
     private short dl = 5;// 默认数据长度5
     private String pwd = "00000000";// 默认访问密码00000000
+    private boolean isStop;
+    private long startTime;
+    private Runnable task = new Runnable() {
 
+        @Override
+        public void run() {
+
+            api.readEPC(new UHFHXAPI.AutoRead() {
+                @Override
+                public void timeout() {
+                    Log.i(TAG, "timeout");
+                    if (!isStop) {
+                        pool.execute(task);
+                    } else {
+                        hMsg.sendEmptyMessage(INVENTORY_OVER);
+                    }
+                }
+
+                @Override
+                public void start() {
+                    //load = soundPool.load(getApplicationContext(), R.raw.ok, 1);
+                    Log.i(TAG, "start");
+                    startTime = System.currentTimeMillis();
+                }
+
+
+                @Override
+                public void processing(byte[] data) {
+                    String epc = DataUtils.toHexString(data).substring(4);
+                    long l = System.currentTimeMillis() - startTime;
+                    readTime.put(epc, l);
+                    hMsg.obtainMessage(MSG_SHOW_EPC_INFO, epc).sendToTarget();
+                    Log.i(TAG, "data=" + epc + "    time=" + l);
+                }
+
+                @Override
+                public void end() {
+                    Log.i(TAG, "end");
+                    Log.i(TAG, "isStop=" + isStop);
+                    Log.e(TAG, "===================================================================================");
+                    if (!isStop) {
+                        pool.execute(task);
+                    } else {
+                        hMsg.sendEmptyMessage(INVENTORY_OVER);
+                    }
+                }
+
+            });
+
+
+            //api.readEPC();
+
+            /*api.startAutoRead2A(new UHFHXAPI.AutoRead() {
+                @Override
+                public void timeout() {
+                    Log.i(TAG, "timeout");
+                }
+
+                @Override
+                public void start() {
+                    //load = soundPool.load(getApplicationContext(), R.raw.ok, 1);
+                    Log.i(TAG, "start");
+                    startTime = System.currentTimeMillis();
+                }
+
+
+                @Override
+                public void processing(byte[] data) {
+                    String epc = DataUtils.toHexString(data).substring(4);
+                    long l = System.currentTimeMillis() - startTime;
+                    readTime.put(epc, l);
+                    hMsg.obtainMessage(MSG_SHOW_EPC_INFO, epc).sendToTarget();
+                    Log.i(TAG, "data=" + epc + "    time=" + l);
+                }
+
+                @Override
+                public void end() {
+                    Log.i(TAG, "end");
+                    Log.i(TAG, "isStop=" + isStop);
+                    Log.e(TAG, "===================================================================================");
+                    if (!isStop) {
+                        pool.execute(task);
+                    } else {
+                        hMsg.sendEmptyMessage(INVENTORY_OVER);
+                    }
+                }
+
+            });*/
+        }
+    };
+    private boolean isOnPause;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -341,108 +375,12 @@ public class HXUHFActivity extends BaseUHFActivity {
         }
     }
 
-    private boolean isStop;
-
-    private long startTime;
-
-    private Runnable task = new Runnable() {
-
-        @Override
-        public void run() {
-
-            api.readEPC(new UHFHXAPI.AutoRead() {
-                @Override
-                public void timeout() {
-                    Log.i(TAG, "timeout");
-                    if (!isStop) {
-                        pool.execute(task);
-                    } else {
-                        hMsg.sendEmptyMessage(INVENTORY_OVER);
-                    }
-                }
-
-                @Override
-                public void start() {
-                    //load = soundPool.load(getApplicationContext(), R.raw.ok, 1);
-                    Log.i(TAG, "start");
-                    startTime = System.currentTimeMillis();
-                }
-
-
-                @Override
-                public void processing(byte[] data) {
-                    String epc = DataUtils.toHexString(data).substring(4);
-                    long l = System.currentTimeMillis() - startTime;
-                    readTime.put(epc, l);
-                    hMsg.obtainMessage(MSG_SHOW_EPC_INFO, epc).sendToTarget();
-                    Log.i(TAG, "data=" + epc + "    time=" + l);
-                }
-
-                @Override
-                public void end() {
-                    Log.i(TAG, "end");
-                    Log.i(TAG, "isStop=" + isStop);
-                    Log.e(TAG, "===================================================================================");
-                    if (!isStop) {
-                        pool.execute(task);
-                    } else {
-                        hMsg.sendEmptyMessage(INVENTORY_OVER);
-                    }
-                }
-
-            });
-
-
-            //api.readEPC();
-
-            /*api.startAutoRead2A(new UHFHXAPI.AutoRead() {
-                @Override
-                public void timeout() {
-                    Log.i(TAG, "timeout");
-                }
-
-                @Override
-                public void start() {
-                    //load = soundPool.load(getApplicationContext(), R.raw.ok, 1);
-                    Log.i(TAG, "start");
-                    startTime = System.currentTimeMillis();
-                }
-
-
-                @Override
-                public void processing(byte[] data) {
-                    String epc = DataUtils.toHexString(data).substring(4);
-                    long l = System.currentTimeMillis() - startTime;
-                    readTime.put(epc, l);
-                    hMsg.obtainMessage(MSG_SHOW_EPC_INFO, epc).sendToTarget();
-                    Log.i(TAG, "data=" + epc + "    time=" + l);
-                }
-
-                @Override
-                public void end() {
-                    Log.i(TAG, "end");
-                    Log.i(TAG, "isStop=" + isStop);
-                    Log.e(TAG, "===================================================================================");
-                    if (!isStop) {
-                        pool.execute(task);
-                    } else {
-                        hMsg.sendEmptyMessage(INVENTORY_OVER);
-                    }
-                }
-
-            });*/
-        }
-    };
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onResume() {
         super.onResume();
-        //api.openHXUHFSerialPort(cw.getDeviceModel());
         isOnPause = false;
     }
-
-    private boolean isOnPause;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -453,13 +391,58 @@ public class HXUHFActivity extends BaseUHFActivity {
         if (buttonInv.isChecked()) {
             buttonInv.setChecked(false);
             buttonInv.setClickable(false);
-            api.close();
         }
         if (buttonConnect.isChecked()) {
             buttonConnect.setChecked(false);
         }
-        //api.closeHXUHFSerialPort(cw.getDeviceModel());
+        api.closeHXUHFSerialPort(cw.getDeviceModel());
         super.onPause();
+    }
+
+    /**
+     * 用于集中处理显示等事件信息的静态类
+     *
+     * @author chenshanjing
+     */
+    class StartHander extends Handler {
+
+        WeakReference<Activity> mActivityRef;
+
+        StartHander(Activity activity) {
+            mActivityRef = new WeakReference<Activity>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            Activity activity = mActivityRef.get();
+            if (activity == null) {
+                return;
+            }
+
+            switch (msg.what) {
+                case MSG_SHOW_EPC_INFO:
+                    ShowEPC((String) msg.obj);
+                    break;
+
+                case MSG_DISMISS_CONNECT_WAIT_SHOW:
+                    prgDlg.dismiss();
+                    if ((Boolean) msg.obj) {
+                        Toast.makeText(activity, activity.getText(R.string.hxuhf_info_connect_success), Toast.LENGTH_SHORT)
+                                .show();
+                        // byte[] data = api.setRegion(0x52).data;
+                        // byte[] data = api.getRegion().data;
+                        // Log.d("jokey", "data-->"+DataUtils.toHexString(data));
+                        setting.setEnabled(true);
+                        buttonInv.setClickable(true);
+                    } else {
+                        Toast.makeText(activity, activity.getText(R.string.hxuhf_info_connect_fail), Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case INVENTORY_OVER:
+                    Toast.makeText(HXUHFActivity.this, R.string.hxuhf_inventory_over, Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
     }
 
 
