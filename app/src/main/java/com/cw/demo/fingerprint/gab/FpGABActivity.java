@@ -199,6 +199,7 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onOpenUSBFingerFailure(String error) {
+                MyApplication.getApp().cancleProgressDialog();
 
                 Toast.makeText(FpGABActivity.this, "" + error, Toast.LENGTH_SHORT).show();
 
@@ -322,6 +323,12 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
 
     private void closeDevice() {
 
+
+        if (mScanner == null) {
+            mDeviceOpened = false;
+
+            return;
+        }
 
         //showProgressDialog(getString(R.string.fp_loading), getString(R.string.fp_closing_device));
         enableControl(false);

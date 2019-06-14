@@ -100,15 +100,15 @@ dependencies {
     compile(name: 'idcard_sdk_20190528', ext: 'aar')
     //GAA大指纹开发包(新固件开发包)
     //GAA FingerPrint SDK
-    compile(name: 'fp_gaa_sdk_20190603', ext: 'aar')
+    compile(name: 'fp_gaa_sdk_20190614', ext: 'aar')
 
-    //GAA大指纹开发包(新固件开发包)
-    // GAA FingerPrint SDK
-    compile(name: 'fp_gab_sdk_20190611', ext: 'aar')
+    //GAB大指纹开发包
+    // GAB FingerPrint SDK
+    compile(name: 'fp_gab_sdk_20190614', ext: 'aar')
 
     //JRA小指纹开发包
     //JRA FingerPrint SDK
-    compile(name: 'fp_jra_sdk_20190529', ext: 'aar')
+    compile(name: 'fp_jra_sdk_20190614', ext: 'aar')
     //PY超高频开发包,需要依赖串口开发包
     //HX UHF SDK,need SerialPort SDK
     compile(name: 'phychips_uhf_sdk_20190520', ext: 'aar')

@@ -134,19 +134,6 @@ public class ComparisonActivity extends AppCompatActivity {
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    @Override
-    protected void onResume() {
-        super.onResume();
-        asyncParseSFZ.openIDCardSerialPort(cw.getDeviceModel());
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    @Override
-    protected void onPause() {
-        asyncParseSFZ.closeIDCardSerialPort(cw.getDeviceModel());
-        super.onPause();
-    }
 
 
     @Override
@@ -197,18 +184,25 @@ public class ComparisonActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onStart() {
         super.onStart();
         Log.i(TAG, "------------onStart--------------");
+        asyncParseSFZ.openIDCardSerialPort(cw.getDeviceModel());
+
         open();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "------------onStop--------------");
+
         close();
+        asyncParseSFZ.closeIDCardSerialPort(cw.getDeviceModel());
+
     }
 
     private void open() {
@@ -241,6 +235,7 @@ public class ComparisonActivity extends AppCompatActivity {
                 Log.e(TAG, error);
                 MyApplication.getApp().cancleProgressDialog();
                 Toast.makeText(ComparisonActivity.this, error, Toast.LENGTH_SHORT).show();
+                verial.setEnabled(false);
             }
 
         });
