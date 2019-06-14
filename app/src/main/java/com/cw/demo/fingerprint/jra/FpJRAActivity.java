@@ -113,16 +113,19 @@ public class FpJRAActivity extends AppCompatActivity {
             public void onOpenUSBFingerSuccess(String s, UsbManager usbManager, UsbDevice usbDevice) {
                 if (s.equals(USBFingerManager.BYD_SMALL_DEVICE)) {
 
+                    MyApplication.getApp().cancleProgressDialog();
+
                     msyUsbKey = new SyOTG_Key(usbManager, usbDevice);
                     int ret = msyUsbKey.SyOpen();
                     if (ret == SyOTG_Key.DEVICE_SUCCESS) {
                         Log.e(TAG, "open device success hkey!");
                         btnFingerState(true);
                         mDeviceOpened = true;
-                        MyApplication.getApp().cancleProgressDialog();
 
                     } else {
                         Log.e(TAG, "open device fail errocde :" + ret);
+                                                btnFingerState(false);
+
                     }
                 }
             }

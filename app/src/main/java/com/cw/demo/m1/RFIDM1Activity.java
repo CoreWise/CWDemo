@@ -35,11 +35,11 @@ import android_serialport_api.SerialPortManager;
  */
 public class RFIDM1Activity extends AppCompatActivity implements OnClickListener {
 
-    private Spinner mSpinnerCardType, mSpinnerPwdType;
-    private ArrayAdapter<String> mAdapterCardType, mAdapterPwdType;
     private static final String[] cardtype = {"S50", "S70"};
     private static final String[] pwdtype = {"KEYA", "KEYB"};
     private static final int[] keyType = {M1CardAPI.KEY_A, M1CardAPI.KEY_B};
+    private Spinner mSpinnerCardType, mSpinnerPwdType;
+    private ArrayAdapter<String> mAdapterCardType, mAdapterPwdType;
     private  int NUM = 1;
     private  int mKeyType = M1CardAPI.KEY_A;
     private String DefaultKeyA = "ffffffffffff";// 默认密码A
@@ -65,7 +65,6 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
 
         builder = new AlertDialog.Builder(this);
 
-        reader.openM1RFIDSerialPort(cw.getDeviceModel());
 
     }
 
@@ -369,18 +368,21 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
     @Override
     protected void onResume() {
         super.onResume();
+                reader.openM1RFIDSerialPort(cw.getDeviceModel());
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onPause() {
         super.onPause();
+                reader.closeM1RFIDSerialPort(cw.getDeviceModel());
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        reader.closeM1RFIDSerialPort(cw.getDeviceModel());
 
     }
 

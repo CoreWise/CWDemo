@@ -111,8 +111,8 @@ dependencies {
     compile(name: 'fp_gaa_sdk_20190614', ext: 'aar')
 
 
-    //GAA大指纹开发包(新固件开发包)
-    // GAA FingerPrint SDK
+    //GAB大指纹开发包(新固件开发包)
+    // GAB FingerPrint SDK
     compile(name: 'fp_gab_sdk_20190614', ext: 'aar')
 
     //JRA小指纹开发包
@@ -127,7 +127,7 @@ dependencies {
 
     //北斗开发包,需要依赖串口开发包
     //BeiDou SDK,need SerialPort SDK
-    compile(name: 'beidou_sdk_20190524', ext: 'aar')
+    compile(name: 'beidou_sdk_20190614', ext: 'aar')
 
 
     //R2000超高频开发包,需要依赖串口开发包
