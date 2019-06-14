@@ -17,6 +17,7 @@
 
         <item>RFID(M1卡)</item>
         <item>身份证(RFID)</item>
+        <item>身份证-GAA</item>
 
         <item>NFC(M1卡)</item>
         <item>NFC(ISO 15693)</item>
@@ -26,11 +27,12 @@
 
         <item>GAA指纹</item>
         <item>JRA指纹</item>
-   <item>GAB指纹</item>
+        <item>GAB指纹</item>
 
         <item>北斗短报文</item>
 
     </string-array>
+
 
     <!-- <string-array name="general_compatible">
          <item>条码功能兼容机器如下:\n\n- CFON640\n- A370\n- U1 One-dimensional code\n- U1 QR\n- U1_4710\n- U3\n- U8</item>

@@ -18,6 +18,7 @@ import android.os.Vibrator;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -409,10 +410,18 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
 
     private void updateInfo(ParseSFZAPI.People people) {
 
-        mediaPlayer.release();
-        mediaPlayer = null;
-        mediaPlayer = MediaPlayer.create(this, R.raw.ok);
-        mediaPlayer.start();
+        if (mediaPlayer!=null)
+        {
+            mediaPlayer.release();
+            mediaPlayer = null;
+            mediaPlayer = MediaPlayer.create(this, R.raw.ok);
+            mediaPlayer.start();
+        }
+
+        if (TextUtils.equals(people.getType(),"J"))
+        {
+            Toast.makeText(this,"港澳台居住证",Toast.LENGTH_SHORT).show();
+        }
 
         sfz_address.setText(people.getPeopleAddress());
         sfz_day.setText(people.getPeopleBirthday().substring(6));
@@ -469,8 +478,6 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
 
         asyncParseSFZ.openIDCardSerialPort(cw.getDeviceModel());
         //SwitchUtil.getInstance().openUSB();
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

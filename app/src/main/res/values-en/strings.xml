@@ -17,6 +17,7 @@
 
         <item>M1Card(RFID)</item>
         <item>身份证(RFID)</item>
+        <item>身份证-GAA</item>
 
         <item>NFC(M1Card)</item>
         <item>NFC(ISO 15693)</item>

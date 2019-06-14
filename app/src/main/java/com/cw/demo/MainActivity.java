@@ -12,8 +12,10 @@ import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -43,6 +45,7 @@ import com.cw.demo.fingerprint.gaa.FpGAAActivity;
 import com.cw.demo.fingerprint.gab.FpGABActivity;
 import com.cw.demo.fingerprint.jra.FpJRAActivity;
 import com.cw.demo.hxuhf.HXUHFActivity;
+import com.cw.demo.idcard.ComparisonActivity;
 import com.cw.demo.idcard.IDCardActivity;
 import com.cw.demo.m1.NFCM1Activity;
 import com.cw.demo.m1.RFIDM1Activity;
@@ -72,6 +75,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
     private String[] compatible;
     private String[] keys;
+    private List<Intent> mListIntent = new ArrayList<>();
     private int[] icons;
 
     private SharedPreferences preferences;
@@ -84,7 +88,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
     private TextView tvVersion;
 
-
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -153,7 +157,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
     private void initData() {
 
-
         keys = getResources().getStringArray(R.array.general_functions);
 
         icons = new int[]{
@@ -161,6 +164,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
                 R.drawable.icon_m1,
                 R.drawable.icon_idcard,
+                R.drawable.icon_idcard_gaa,
 
                 R.drawable.icon_m1,
                 R.drawable.rfid15693,
@@ -172,8 +176,59 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 R.drawable.icon_fingerprint,
                 R.drawable.icon_fingerprint,
 
-
                 R.drawable.beidou};
+
+        Intent intent = null;
+
+        intent = new Intent(this, BarCodeActivity.class);
+        intent.putExtra("tag","BarCodeActivity");
+        mListIntent.add(intent);
+
+        intent = new Intent(this, RFIDM1Activity.class);
+        intent.putExtra("tag","RFIDM1Activity");
+        mListIntent.add(intent);
+
+        intent = new Intent(this, IDCardActivity.class);
+        intent.putExtra("tag","IDCardActivity");
+        mListIntent.add(intent);
+
+        intent = new Intent(this, ComparisonActivity.class);
+        intent.putExtra("tag","ComparisonActivity");
+        mListIntent.add(intent);
+
+        intent = new Intent(this, NFCM1Activity.class);
+        intent.putExtra("tag","NFCM1Activity");
+        mListIntent.add(intent);
+
+        intent = new Intent(this, NFCISO15693Activity.class);
+        intent.putExtra("tag","NFCISO15693Activity");
+        mListIntent.add(intent);
+
+        intent = new Intent(this, HXUHFActivity.class);
+        intent.putExtra("tag","HXUHFActivity");
+        mListIntent.add(intent);
+
+        intent = new Intent(this, UHF2000Activity.class);
+        intent.putExtra("tag","UHF2000Activity");
+        mListIntent.add(intent);
+
+        intent = new Intent(this, FpGAAActivity.class);
+        intent.putExtra("tag","FpGAAActivity");
+        mListIntent.add(intent);
+
+        intent = new Intent(this, FpJRAActivity.class);
+        intent.putExtra("tag","FpJRAActivity");
+        mListIntent.add(intent);
+
+        intent = new Intent(this, FpGABActivity.class);
+        intent.putExtra("tag","FpGABActivity");
+        mListIntent.add(intent);
+
+        intent = new Intent(this, BeiDouActivity.class);
+        intent.putExtra("tag","BeiDouActivity");
+        mListIntent.add(intent);
+
+
 
         /*icons = new int[]{R.drawable.beidou, R.drawable.m1, R.drawable.icon_barcode, R.drawable.ic, R.drawable.sfz,
                 R.drawable.hx, R.drawable.fingerprint, R.drawable.loop, R.drawable.rfid15693, R.drawable.fingerprint,
@@ -192,17 +247,18 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     }
 
     private void showActivity(String str) {
-        int position = -1;
+        Intent intent = null;
         for (int i = 0; i < keys.length; i++) {
             if (keys[i].equals(str)) {
-                position = i;
+
+                intent = mListIntent.get(i);
                 break;
             }
         }
 
-        SharedPreferences mySharedPreferences = getSharedPreferences("SysConfig", Activity.MODE_PRIVATE);
+//        SharedPreferences mySharedPreferences = getSharedPreferences("SysConfig", Activity.MODE_PRIVATE);
 
-        Editor editor = mySharedPreferences.edit();
+//        Editor editor = mySharedPreferences.edit();
 
 
         @SuppressLint("ResourceType") final FriendDialog mFriendDialog;
@@ -224,59 +280,17 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         }
 
 
-        Intent intent = null;
+        if (intent == null)
+        {
+            return;
+        }
+        String tag = intent.getStringExtra("tag");
 
+        switch (tag) {
 
-        switch (position) {
-            case 0:
-                //条码
-                intent = new Intent(this, BarCodeActivity.class);
-
-                break;
-            case 1:
-                //RFID M1
-                intent = new Intent(this, RFIDM1Activity.class);
-
-
-                break;
-            case 2:
-                //身份证
-                intent = new Intent(this, IDCardActivity.class);
-
-
-                break;
-            case 3:
-                //NFC M1
-                intent = new Intent(this, NFCM1Activity.class);
-
-                break;
-
-            case 4:
-                //NFC ISO15693
-                intent = new Intent(this, NFCISO15693Activity.class);
-
-                break;
-
-            case 5:
-
-                //PhyChips超高频
-                intent = new Intent(this, HXUHFActivity.class);
-
-
-                break;
-            case 6:
-
-                //R2000超高频
-                intent = new Intent(this, UHF2000Activity.class);
-
-
-                break;
-
-            case 7:
+            case "FpGAAActivity":
                 //GAA指纹
                 mFriendDialog.setMessage(getResources().getString(R.string.general_usb_fp_tips));
-
-                intent = new Intent(this, FpGAAActivity.class);
 
                 final Intent finalIntent = intent;
                 mFriendDialog.setOnClickListener(new FriendDialog.onClickListener() {
@@ -293,12 +307,10 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 });
                 mFriendDialog.show();
                 return;
-            case 8:
+
+            case "FpJRAActivity":
                 //JRA指纹
-
                 mFriendDialog.setMessage(getResources().getString(R.string.general_usb_fp_tips));
-
-                intent = new Intent(this, FpJRAActivity.class);
 
                 final Intent finalIntent2 = intent;
                 mFriendDialog.setOnClickListener(new FriendDialog.onClickListener() {
@@ -316,12 +328,9 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 mFriendDialog.show();
                 return;
 
-            case 9:
+            case "FpGABActivity":
                 //GAB指纹
-
                 mFriendDialog.setMessage(getResources().getString(R.string.general_usb_fp_tips));
-
-                intent = new Intent(this, FpGABActivity.class);
 
                 final Intent finalIntent3 = intent;
                 mFriendDialog.setOnClickListener(new FriendDialog.onClickListener() {
@@ -339,26 +348,11 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 mFriendDialog.show();
                 return;
 
-            case 10:
-                //北斗
-                intent = new Intent(this, BeiDouActivity.class);
-
-                break;
-
-
-            case 11:
-                //身份证指纹信息比对
-                intent = new Intent(this, BeiDouActivity.class);
-
-                break;
             default:
                 break;
         }
 
-
         startActivity(intent);
-
-
 
        /*
         compatible = getResources().getStringArray(R.array.general_compatible);
