@@ -41,7 +41,7 @@ android {
         versionName "DemoApp_V1.5"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+ 
         //multiDexEnabled true
 
     }
@@ -107,7 +107,7 @@ dependencies {
 
     //身份证开发包,需要依赖串口开发包
     //IDcard SDK,need SerialPort SDK
-    compile(name: 'idcard_sdk_20190612', ext: 'aar')
+    compile(name: 'idcard_sdk_20190617', ext: 'aar')
 
 
     //GAA大指纹开发包(新固件开发包)
