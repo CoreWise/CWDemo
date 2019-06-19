@@ -61,9 +61,7 @@ public class UHF2000Activity extends AppCompatActivity {
 
         initView();
 
-
         fragmentManager = getSupportFragmentManager();
-
 
         toFragment(new mainfragment());
 
