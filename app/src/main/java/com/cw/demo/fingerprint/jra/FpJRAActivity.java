@@ -276,7 +276,6 @@ public class FpJRAActivity extends AppCompatActivity {
         bar.setProgress(0);
         ImputAsyncTask asyncTask = new ImputAsyncTask();
         asyncTask.execute(1);
-
     }
 
 

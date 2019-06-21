@@ -151,16 +151,11 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     }
 
     private void initData() {
-
         keys = getResources().getStringArray(R.array.general_functions);
-
-
         icons=new int[keys.length];
         for (int i = 0; i < keys.length; i++) {
             icons[i] = getResources().obtainTypedArray(R.array.general_icons).getResourceId(i, 0);
         }
-
-
         Intent intent = null;
 
         intent = new Intent(this, BarCodeActivity.class);
