@@ -55,6 +55,9 @@
 
 ----
 
+[**相关APK,历史开发包下载地址**](https://git.dev.tencent.com/CoreWise/SDK.git)
+
+
 ----
 
 <h3 id="user-content-en">English Doc</h3>
@@ -96,3 +99,10 @@ Features include :
 | M1 RFID SDK           | u3,CFON640                                                   | [m1rfid_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/m1rfid_sdk_20190521.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/M1RFID.md" target="_blank">View</a> |
 | M1 NFC                | This function calls the Android standard M1 interface, no SDK, there is a call standard interface Demo | No                                                           |                  None                                            |
 | ISO15693 NFC             | This function calls the Android standard 15693 interface, no SDK, there is a call standard interface Demo | No                                                           |                  None                                            |
+
+
+
+
+---
+
+[**Related APK, history development package download address**](https://git.dev.tencent.com/CoreWise/SDK.git)
