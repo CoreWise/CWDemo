@@ -14,6 +14,7 @@ import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -98,7 +99,7 @@ public class FpJRAActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_fp_jra);
         unbinder = ButterKnife.bind(this);
         USBFingerManager.getInstance(this).setDelayMs(500);
@@ -730,7 +731,7 @@ public class FpJRAActivity extends AppCompatActivity {
                 } else {
                     int fingerid = fingerId[0] + 1;
                     //publishProgress("SySearch,ID===>" + fingerid);
-                    publishProgress(getString(R.string.finger_search) +" "+ fingerid);
+                    publishProgress(getString(R.string.finger_search) + " " + fingerid);
                     publishProgress("end");
                     return 0;
                 }
