@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,9 +28,6 @@ import com.cw.barcodesdk.SoftDecodingAPI;
 import com.cw.demo.MyApplication;
 import com.cw.demo.R;
 import com.cw.serialportsdk.cw;
-import com.cw.serialportsdk.utils.DataUtils;
-
-import java.io.UnsupportedEncodingException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -176,12 +174,14 @@ public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCod
             @SuppressLint("StringFormatMatches")
             @Override
             public void run() {
-                //按键扫描
-                if (!isKey) {
-                    success++;
-                    tvSuccess.setText(getActivity().getString(R.string.barcode_scan_success, success));
+                if (!TextUtils.isEmpty(data) && !data.contains("null") && !data.contains("no"))
+                {
+                    //按键扫描
+                    if (!isKey) {
+                        success++;
+                        tvSuccess.setText(getActivity().getString(R.string.barcode_scan_success, success));
+                    }
                 }
-
 
                 etBarcode.append(data + "\n");
                 //etBarcode.setText(data);

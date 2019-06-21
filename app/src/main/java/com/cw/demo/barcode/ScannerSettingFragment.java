@@ -140,7 +140,7 @@ public class ScannerSettingFragment extends Fragment {
                     inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 }
                 String s1 = btnSet.getText().toString();
-                if (s1.equals("禁用")||s1.equals("Disable")) {
+                if (s1.equals(getString(R.string.barcode_setting_disable))) {//||s1.equals("Disable")
                     BaseUtils.disableSubControls(llSetting, false);
                     etInterval.setEnabled(false);
                     etPre.setEnabled(false);
@@ -171,7 +171,7 @@ public class ScannerSettingFragment extends Fragment {
                     Settings.System.putInt(getActivity().getContentResolver(),"scan_timeout",i);
 
 
-                } else if (s1.equals("取消禁用")||s1.equals("Enable")) {
+                } else if (s1.equals(getString(R.string.barcode_setting_enable))) {//||s1.equals("Enable")
                     etInterval.setEnabled(true);
                     etPre.setEnabled(true);
                     etEnd.setEnabled(true);
