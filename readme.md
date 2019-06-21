@@ -36,6 +36,7 @@
 #### SDK说明
 
 **温馨提示1**:  本开发文档均采用MarkDown文件格式，AndroidStudio预览可安装markdown插件
+
 **温馨提示2**:  如果下方aar下载失效，可以点击下方相关历史开发包下载地址去下载最新开发包
 
 | 功能            | sdk目前支持的机型                                          | sdk名字                                                      |                           开发文档                           |
@@ -85,6 +86,7 @@ Features include :
 
 
 **Tips 1:** This development document uses the MarkDown file format, and the AndroidStudio preview can be installed with the markdown plugin.
+
 **Tips 2**:  If the download below aar is invalid, you can click the relevant historical development package download address below to download the latest development package.
 
 | Functions             | Models currently supported by sdk                            | SDK Name                                                     |                           SDK Doc                            |
