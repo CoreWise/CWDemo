@@ -35,19 +35,20 @@
 
 #### SDK说明
 
-**温馨提示**:  本开发文档均采用MarkDown文件格式，AndroidStudio预览可安装markdown插件
+**温馨提示1**:  本开发文档均采用MarkDown文件格式，AndroidStudio预览可安装markdown插件
+**温馨提示2**:  如果下方aar下载失效，可以点击下方相关历史开发包下载地址去下载最新开发包
 
 | 功能            | sdk目前支持的机型                                          | sdk名字                                                      |                           开发文档                           |
 | :-------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------: |
 | 条码            | u1,u3,u8,CFON640,A370                                      | [barcode_sdk_*.aar](<https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/barcode_sdk_20190429.aar>) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/条码.md" target="_blank">查看</a> |
-| 身份证          | u3,u8,CFON640,A370,新A370                                  | [idcard_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/idcard_sdk_20190521.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/身份证.md" target="_blank">查看</a> |
+| 身份证          | u3,u8,CFON640,A370,新A370                                  | [idcard_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/idcard_sdk_20190613.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/身份证.md" target="_blank">查看</a> |
 | GAA指纹       | u3,u8                                                      | [fp_gaa_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/fp_gaa_sdk_20190520.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/GAA指纹.md" target="_blank">查看</a> |
-| JRA小指纹       | u3,u8                                                      | [fp_jra_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/fp_jra_sdk_20190520.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/JRA指纹.md" target="_blank">查看</a> |
+| JRA小指纹       | u3,u8                                                      | [fp_jra_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/fp_jra_sdk_20190614.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/JRA指纹.md" target="_blank">查看</a> |
 | FBB FingerPrint       | u3,u8,新370                                          |请跳转 [FBB FingerPrint Demo](https://github.com/CoreWise/FBBFingerDemo) |  |
 | PhyChips超高频      | u3,CFON640,A370                                            | [phychips_uhf_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/phychips_uhf_sdk_20190520.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/phychips超高频.md" target="_blank">查看</a> |
 | R2000超高频     | u8                                                         | [r2000uhf_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/r2000uhf_sdk_20190429.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/R2000超高频.md" target="_blank">查看</a> |
-| 串口SDK         | 需要串口的功能需要添加该sdk,如HX超高频,身份证,北斗,M1 RFID | [serialport_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/serialport_sdk_20190520.aar) |                                    None                          |
-| 北斗短报文SDK         | u8                                                         | [beidou_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/beidou_sdk_20190429.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/北斗.md" target="_blank">查看</a> |
+| 串口SDK         | 需要串口的功能需要添加该sdk,如HX超高频,身份证,北斗,M1 RFID | [serialport_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/serialport_sdk_20190612.aar) |                                    None                          |
+| 北斗短报文SDK         | u8                                                         | [beidou_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/beidou_sdk_20190614.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/北斗.md" target="_blank">查看</a> |
 | M1 RFID SDK     | u3,CFON640                                                 | [m1rfid_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/m1rfid_sdk_20190521.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/M1RFID.md" target="_blank">查看</a> |
 | M1 NFC          | 该功能调用Android标准M1接口，无SDK，有调用标准接口Demo     | 无                 |              None            |
 | ISO15693 NFC       | 该功能调用Android标准15693接口，无SDK，有调用标准接口Demo  | 无              |              None            |
@@ -83,19 +84,20 @@ Features include :
 #### SDK Description
 
 
-**Tips:** This development document uses the MarkDown file format, and the AndroidStudio preview can be installed with the markdown plugin.
+**Tips 1:** This development document uses the MarkDown file format, and the AndroidStudio preview can be installed with the markdown plugin.
+**Tips 2**:  If the download below aar is invalid, you can click the relevant historical development package download address below to download the latest development package.
 
 | Functions             | Models currently supported by sdk                            | SDK Name                                                     |                           SDK Doc                            |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------: |
 | BarCode               | u1,u3,u8,CFON640,A370                                        | [barcode_sdk_*.aar](<https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/barcode_sdk_20190429.aar>) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/BarCode.md" target="_blank">View</a> |
-| IDCard                | u3,u8,CFON640,A370,New A370                                  | [idcard_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/idcard_sdk_20190521.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/IDCard.md" target="_blank">View</a> |
-| GAA FingerPrint   | u3,u8                                                        | [fp_gaa_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/fp_gaa_sdk_20190520.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/GAAFingerPrint.md" target="_blank">View</a> |
-| JRA FingerPrint | u3,u8                                                        | [fp_jra_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/fp_jra_sdk_20190520.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/JRAFingerPrint.md" target="_blank">View</a> |
+| IDCard                | u3,u8,CFON640,A370,New A370                                  | [idcard_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/idcard_sdk_20190613.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/IDCard.md" target="_blank">View</a> |
+| GAA FingerPrint   | u3,u8                                                        | [fp_gaa_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/fp_gaa_sdk_20190614.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/GAAFingerPrint.md" target="_blank">View</a> |
+| JRA FingerPrint | u3,u8                                                        | [fp_jra_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/fp_jra_sdk_20190614.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/JRAFingerPrint.md" target="_blank">View</a> |
 | FBB FingerPrint       | u3,u8,New A370                                                     | See this Project [FBB FingerPrint Demo](https://github.com/CoreWise/FBBFingerDemo) |  |
 | PhyChips UHF                | u3,CFON640,A370                                              | [phychips_uhf_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/phychips_uhf_sdk_20190520.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/HXUHF.md" target="_blank">View</a> |
 | R2000 UHF             | u8                                                           | [r2000uhf_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/r2000uhf_sdk_20190429.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/R2000UHF.md" target="_blank">View</a> |
-| SerialPort SDK        | Need to add the sdk function, such as HX UHF, ID card, Beidou, M1 RFID | [serialport_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/serialport_sdk_20190520.aar) |            None                                                  |
-| BeiDou SDK            | u8                                                           | [beidou_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/beidou_sdk_20190429.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/BeiDou.md" target="_blank">View</a> |
+| SerialPort SDK        | Need to add the sdk function, such as HX UHF, ID card, Beidou, M1 RFID | [serialport_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/serialport_sdk_20190612.aar) |            None                                                  |
+| BeiDou SDK            | u8                                                           | [beidou_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/beidou_sdk_20190614.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/BeiDou.md" target="_blank">View</a> |
 | M1 RFID SDK           | u3,CFON640                                                   | [m1rfid_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/m1rfid_sdk_20190521.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/M1RFID.md" target="_blank">View</a> |
 | M1 NFC                | This function calls the Android standard M1 interface, no SDK, there is a call standard interface Demo | No                                                           |                  None                                            |
 | ISO15693 NFC             | This function calls the Android standard 15693 interface, no SDK, there is a call standard interface Demo | No                                                           |                  None                                            |
