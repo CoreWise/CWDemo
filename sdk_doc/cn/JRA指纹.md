@@ -58,6 +58,10 @@
     //JRA FingerPrint SDK
     compile(name: 'fp_jra_sdk_20190429', ext: 'aar')
 
+    //串口开发包
+    //SerialPort SDK
+    compile(name: 'serialport_sdk_20190702', ext: 'aar')
+
  }
 
 ```
@@ -85,9 +89,12 @@
 
 OnUSBFingerListener回调接口说明:
 
-- onOpenUSBFingerSuccess(String device):
+- onOpenUSBFingerSuccess(String device, UsbManager mUsbManager, UsbDevice mDevice):
 
     切换USB到指纹模组成功，返回当前指纹模组的名称
+    device:返回当前指纹模组型号
+    mUsbManager:返回UsbManager管理实例
+    mDevice:返回UsbDevice实例
 
 - onOpenUSBFingerFailure(String error):
 
@@ -95,6 +102,7 @@ OnUSBFingerListener回调接口说明:
 
 
 ---
+
 
 **JRA小指纹类**
 
@@ -108,150 +116,183 @@ OnUSBFingerListener回调接口说明:
 
 ```
 
+
+
+
 | JRA FingerPrint API接口 | 接口说明 |
 | :----- | :---- |
-| SyOTG_Key | 构造函数 |
-| SyOpen | 打开设备 |
-| SyClose | 关闭设备 |
-| SyGetInfo | 获取设备信息 |
-| SyUpChar | 上传特征 |
-| SyDownChar | 下载特征 |
-| SyGetImage | 获取图像 |
-| SyUpImage | 上传图像 |
-| SyEnroll | 指纹录入 |
-| SySearch | 指纹对比 |
-| SyDeletChar | 指纹删除 |
-| SyClear | 清除数据库 |
+| JRA_API | 构造函数 |
+| openJRA | 打开设备 |
+| closeJRA | 关闭设备 |
+| PSGetImage | 上传特征 |
+| PSUpImage | 下载特征 |
+| PSGenChar | 获取图像 |
+| PSRegModule | 上传图像 |
+| PSStoreChar | 指纹录入 |
+| PSSearch | 指纹对比 |
+| PSDownCharToJRA | 指纹删除 |
+| WriteBmp | 生成指纹图片 |
+
 
 具体说明:
 
--  public SyOTG_Key(UsbManager mManager, UsbDevice mDev)
+- public JRA_API(UsbManager mManager, UsbDevice mDev)
 
-    构造函数
+  ```
+  构造函数
 
-    ```
-    参数：
-    mManager：UsbManager对象
-    mDev	：USB总线探测到的指纹模组设备。
-    ```
-    
-- public int SyOpen()
+  ```
 
-    打开设备,成功返回0
-   
-- public void SyClose()
-
-    关闭设备
-    
-- public int SyGetInfo(byte [] DeviceInfo)
-
-    获取设备信息
+- public int openJRA()
 
     ```
-    参数：
-    DeviceInfo： 32Byte设备信息。
-    返回值：成功返回0
-    ```
-    
-- public int SyUpChar(int pageId,byte[] tempdata)
-    
-    上传特征
-    
-    ```
-    参数：
-    pageId：要上传的特征的数据库ID号。
-    Tempdata：512Byte存储指纹特征数组。
-    返回值：成功返回0
-    ```
-    
-- public int SyDownChar(int pageId,byte[] tempdata)
-    
-    下载特征
-    
-    ```
-    参数：
-    	pageId：下载指纹特征到的数据库ID号。
-    	Tempdata：512Byte指纹特征。
-    返回值：成功返回0
-    ```
-    
-- public int SyGetImage()
+    /**
+     * 打开模组
+     *
+     * @return
+     *          {@link PS_DEVICE_NOT_FOUND:has not found jra device}
+     *          {@link PS_EXCEPTION:exception}
+     *          {@link PS_OK:ok}
+     */
 
-    获取图像,成功返回0
-    
-- public int SyUpImage(byte [] pImageData)
-
-    上传图像
 
     ```
-    参数：
-    pImageData：获取到的图像数据。
-    返回值：成功返回0
-    ```
-    
-- public int SyEnroll(int cnt,int fingerId)
 
-    指纹录入
-    
+- public int closeJRA()
     ```
-    参数：
-    	Cnt：录入次数。
-    	fingerId：要存储到数据库的ID号。
-    返回值：成功返回0
-    ```
-    
-- public int SySearch(int[] fingerId )
+    /**
+     * 关闭模组
+     *
+     * @return
+     *       {@link PS_EXCEPTION:exception}
+     *       {@link PS_OK:ok}
+     */
 
-    指纹对比
-    
     ```
-    参数：
-    fingerId：搜索到匹配指纹模版号码,int 型4Byte。
-    返回值：成功返回0
+- public int PSGetImage()
     ```
-    
-- public int SyDeletChar(int fingerId)
+    /**
+     * JRA模组采集指纹图像存在JRA模组缓存区内（容易丢失或者被覆盖,需要配合PSUpImage将数据上传到app）
+     *
+     * @return
+     *       {@link PS_OK:ok}
+     */
+    ```
+- public int PSUpImage(byte[] pImageData)
+    ```
+   /**
+     * JRA模组将存在JRA缓存区内图片数据(byte[])上传到app
+     *
+     * @param pImageData
+     * @return
+     *       {@link PS_OK:ok}
+     */
+    ```
+- public int PSGenChar(int bufferID)
+    ```
+    /**
+     * 将ImageBuffer 中的原始图像生成指纹特征文件存于CharBuffer1 或CharBuffer2 输入参数：
+     * BufferID(特征缓冲区号)
+     * <p>
+     * 根据原始图像生成指纹特征存于特征文件缓冲区
+     *
+     * @param bufferID {@link CHAR_BUFFER_A} ,{@link CHAR_BUFFER_B}
+     * @return
+     *        {@link PS_OK:ok}
+     */
+    ```
+- public int PSRegModule()
+    ```
+    /**
+     * 合并特征生成模板，将CharBuffer1和CharBuffer2中的特征文件合并生成模板，
+     * 将特征文件合并生成模板存于特征文件缓冲区
+     *
+     * @param fpRaw 返回特征值
+     * @return
+     *        {@link PS_OK:ok}
+     */
+    ```
+- public int PSStoreChar(int[] pageID, byte[] fpRaw)
+    ```
+    /**
+     *
+     * 将CharBuffer中的模板储存到指定的pageId号的flash数据库位置
+     * pageId：返回id范围为0~1000 ： BufferID(缓冲区号)，PageID（指纹库位置号0~999）
+     *
+     * @param pageID,返回注册指纹的id
+     * @param fpRaw,返回注册指纹的特征值，512bit
+     * @return
+     *        {@link PS_OK:ok}
+     */
+    ```
+- public int PSSearch(int bufferID, int[] id)
+    ```
 
-    指纹删除
-    
     ```
-    参数：
-    	fingerId:要删除的指纹模版号码。
-    返回值：成功返回0
+- public int PSDownCharToJRA(byte[] fpRaw, int[] id)
     ```
-    
-- public int SyClear()
+        /**
+     * 将指纹数据下载到JRA模组里
+     *
+     * @param fpRaw,特征值，512byte
+     * @param id 返回到该特征值的id
+     * @return
+     *        {@link PS_OK:ok}
+     */
+    ```
+- public int PSEmpty()
+    ```
+     /**
+     * 删除flash 数据库中所有指纹模板
+     *
+     * @return
+     *        {@link PS_OK:ok}
+     */
+    ```
 
-    清除数据库,成功返回0
-    
+- public int getUserIndex()
+    ```
+    /**
+     * 获取当前JRA指纹模组里指纹数量
+     *
+     * @return 返回指纹数量
+     *        {@link PS_OK:ok}
+     */
+
+    ```
+- public int[] getUserId()
+    ```
+   /**
+     * 获取指纹ID数组
+     *
+     * @return
+     */
+    ```
+- public int getUserMaxId()
+    ```
+    /**
+     * 获取指纹最大ID
+     *
+     * @return
+     */
+    ```
+
 
 **错误码**
 
 ```
-#define PS_OK                			0x00
-#define PS_COMM_ERR          			0x01
-#define PS_NO_FINGER         			0x02
-#define PS_GET_IMG_ERR     			    0x03
-#define PS_FP_TOO_DRY        			0x04
-#define PS_FP_TOO_WET        			0x05
-#define PS_FP_DISORDER      			0x06
-#define PS_LITTLE_FEATURE  			    0x07
-#define PS_NOT_MATCH        	  		0x08
-#define PS_NOT_SEARCHED      			0x09
-#define PS_MERGE_ERR         			0x0a
-#define PS_ADDRESS_OVER      			0x0b
-#define PS_READ_ERR          			0x0c
-#define PS_UP_TEMP_ERR       			0x0d
-#define PS_RECV_ERR          			0x0e
-#define PS_UP_IMG_ERR        			0x0f
-#define PS_DEL_TEMP_ERR      			0x10
-#define PS_CLEAR_TEMP_ERR    			0x11
-#define PS_SLEEP_ERR         			0x12
-#define PS_INVALID_PASSWORD  			0x13
-#define PS_RESET_ERR         			0x14
-#define PS_INVALID_IMAGE     			0x15
-#define PS_HANGOVER_UNREMOVE 		    0x17
+    public static final int PS_DEVICE_NOT_FOUND = -1;
+    public static final int PS_EXCEPTION = -2;
+    public static final int PS_NO_FINGER_IN_JRA = -3;
+    public static final int PS_OK = 0x00;
+    public static final int PS_NO_FINGER = 0x02;
+    public final static int PS_DEVICE_SUCCESS = 0x00000000;
+    public final static int PS_DEVICE_FAILED = 0x20000001;
+    public static final int PS_MAX_FINGER = 1000;
+    public static final int PS_RAW_NOT_512 = -101;
+
 ```
+
 
 ### 接口调用流程
 

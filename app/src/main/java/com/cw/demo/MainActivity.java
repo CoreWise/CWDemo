@@ -38,7 +38,7 @@ import com.cw.demo.barcode.BarCodeActivity;
 import com.cw.demo.beidou.BeiDouActivity;
 import com.cw.demo.fingerprint.gaa.FpGAAActivity;
 import com.cw.demo.fingerprint.gab.FpGABActivity;
-import com.cw.demo.fingerprint.jra.FpJRAActivity;
+import com.cw.demo.fingerprint.jra.JRAActivity;
 import com.cw.demo.hxuhf.HXUHFActivity;
 import com.cw.demo.idcard.ComparisonActivity;
 import com.cw.demo.idcard.IDCardActivity;
@@ -194,7 +194,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         intent.putExtra("tag", "FpGAAActivity");
         mListIntent.add(intent);
 
-        intent = new Intent(this, FpJRAActivity.class);
+        intent = new Intent(this, JRAActivity.class);
         intent.putExtra("tag", "FpJRAActivity");
         mListIntent.add(intent);
 

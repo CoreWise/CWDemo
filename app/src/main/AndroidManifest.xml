@@ -23,6 +23,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,43 +34,53 @@
         </activity>
         <activity
             android:name=".barcode.BarCodeActivity"
+                        android:configChanges="orientation|keyboardHidden|screenSize"
+
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
             android:name=".idcard.IDCardActivity"
+                        android:configChanges="orientation|keyboardHidden|screenSize"
+
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
 
         <activity
             android:name=".fingerprint.gaa.FpGAAActivity"
-            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+                        android:screenOrientation="portrait"
+
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <activity
             android:name=".hxuhf.HXUHFActivity"
-            android:configChanges="orientation|keyboardHidden"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
 
 
         <activity
-            android:name=".fingerprint.jra.FpJRAActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
-        <activity
             android:name=".ISO_15693.NFCISO15693Activity"
+                        android:configChanges="orientation|keyboardHidden|screenSize"
+
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
             android:name=".beidou.BeiDouActivity"
+                        android:configChanges="orientation|keyboardHidden|screenSize"
+
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".R2000UHF.UHF2000Activity"
-            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+                        android:screenOrientation="landscape"
+
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".m1.NFCM1Activity"
+                        android:configChanges="orientation|keyboardHidden|screenSize"
+
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
        <!-- <activity android:name=".fingerprint.sy.FingerprintActivity" />
 
@@ -82,15 +94,24 @@
         </activity>-->
         <activity android:name=".GetVersionActivity" />
         <activity android:name=".m1.RFIDM1Activity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:configChanges="orientation|keyboardHidden|screenSize"
+                        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
 
         <activity android:name=".idcard.ComparisonActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:configChanges="orientation|keyboardHidden|screenSize"
+                        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+>
 
         </activity>
         <activity android:name=".fingerprint.gab.FpGABActivity"
-                    android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+                    android:configChanges="orientation|keyboardHidden|screenSize"
+                        android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+
+        <activity android:name=".fingerprint.jra.JRAActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+                        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
     </application>
 

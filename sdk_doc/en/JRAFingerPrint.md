@@ -63,9 +63,11 @@ Because the Qualcomm CPU of this machine only supports one USB port, when using 
 
  dependencies {
      ...
-    //BYD Small Fingerprint Development Kit .(New firmware development kit)
-    //BYD Small FingerPrint SDK
+    //JRA Fingerprint Development Kit .(New firmware development kit)
+    //JRA FingerPrint SDK
     compile(name: 'fp_gaa_sdk_20190429', ext: 'aar')
+    //SerialPort SDK,need usbManager
+    compile(name: 'serialport_sdk_20190702', ext: 'aar')
 
  }
 

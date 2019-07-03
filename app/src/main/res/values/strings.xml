@@ -730,4 +730,34 @@
     <string name="nfc_15693_error_max">写入数据长度大于空间容量,最大长度为</string>
 
 
+    <!--JRA指纹-->
+    <string name="fp_jra_capture">采集指纹图像</string>
+    <string name="fp_jra_enroll">录入指纹</string>
+    <string name="fp_jra_search">搜索指纹</string>
+    <string name="fp_jra_stop">停止</string>
+    <string name="fp_jra_clear">清空</string>
+    <string name="fp_jra_infos">查看设备信息</string>
+    <string name="fp_jra_up_image_failure">上传图像失败:</string>
+    <string name="fp_jra_write_bmp_failure">生成bmp文件失败:</string>
+    <string name="fp_jra_enter_fp_please">显示图片,请在传感器放上手指</string>
+    <string name="fp_jra_fp_raw_1_failure">指纹1生成特征失败:</string>
+    <string name="fp_jra_fp_raw_2_failure">指纹2生成特征失败:</string>
+    <string name="fp_jra_enter_fp_again">请再次放上手指</string>
+    <string name="fp_jra_fp_raw_failure_please_enter_again">生成模板失败，请重新录入</string>
+    <string name="fp_jra_fp_raw_full">JRA模组里指纹数据已经满了!JRA最大支持1000枚指纹</string>
+    <string name="fp_jra_store_raw_failure">存储特征失败,请重新录入</string>
+    <string name="fp_jra_eroll_success">录入指纹成功,=====>ID:</string>
+    <string name="fp_jra_enroll_failure">指纹录入失败，请重新录入</string>
+    <string name="fp_jra_enroll_start">录入指纹=>开始,请放上手指</string>
+    <string name="fp_jra_search_no">没有找到此指纹</string>
+    <string name="fp_jra_search_fp_success">成功搜索到此指纹,ID===></string>
+    <string name="fp_jra_search_start">搜索指纹=>开始,请放上手指</string>
+
+
+    <!--usb-->
+    <string name="fp_usb_open_success">切换USB成功</string>
+    <string name="fp_usb_open_failure">切换USB失败</string>
+    <string name="n1_cr30a_jra_n2_cr30a_sd_fg_txt">说明: 1.CR30A为本公司一款基于JRA指纹模组的采集指纹的终端设备 2.CR30A采集的指纹特征数据保存在sd卡根目录下，名为fg.txt</string>
+
+
 </resources>

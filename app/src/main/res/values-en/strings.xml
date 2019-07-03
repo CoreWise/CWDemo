@@ -701,4 +701,35 @@
     <string name="nfc_15693_error_max">写入数据长度大于空间容量,最大长度为</string>
 
 
+    <!--JRA指纹-->
+    <string name="fp_jra_capture">Capture</string>
+    <string name="fp_jra_enroll">Enroll</string>
+    <string name="fp_jra_search">Search</string>
+    <string name="fp_jra_stop">Stop</string>
+    <string name="fp_jra_clear">Clear</string>
+    <string name="fp_jra_infos">Infos</string>
+    <string name="fp_jra_up_image_failure">Uploading image failed:</string>
+    <string name="fp_jra_write_bmp_failure">Failed to generate bmp file:</string>
+    <string name="fp_jra_enter_fp_please">Show the picture, please put your finger on the sensor</string>
+    <string name="fp_jra_fp_raw_1_failure">Fingerprint 1 generation feature failed:</string>
+    <string name="fp_jra_fp_raw_2_failure">Fingerprint 2 generation feature failed:</string>
+    <string name="fp_jra_enter_fp_again">Please put your finger again</string>
+    <string name="fp_jra_fp_raw_failure_please_enter_again">Failed to generate template, please re-enter</string>
+    <string name="fp_jra_fp_raw_full">The fingerprint data in the JRA module is full ! JRA supports up to 1000 fingerprints</string>
+    <string name="fp_jra_store_raw_failure">Storage feature failed, please re-Enroll</string>
+    <string name="fp_jra_eroll_success">Successful fingerprint entry,=====>ID</string>
+    <string name="fp_jra_enroll_failure">Fingerprint Enroll failed, please re-Enroll</string>
+    <string name="fp_jra_enroll_start">Enter fingerprint => start, please put your finger</string>
+    <string name="fp_jra_search_no">Did not find this fingerprint</string>
+    <string name="fp_jra_search_fp_success">Successfully searched for this fingerprint,ID===></string>
+
+    <string name="fp_jra_cr30a">说明: 1.CR30A为本公司一款基于JRA指纹模组的采集指纹的终端设备 2.CR30A采集的指纹特征数据保存在sd卡根目录下，名为fg.txt</string>
+
+
+
+    <!--usb-->
+    <string name="fp_usb_open_success">Switch USB successfully</string>
+    <string name="fp_usb_open_failure">Switching USB failed</string>
+
+
 </resources>

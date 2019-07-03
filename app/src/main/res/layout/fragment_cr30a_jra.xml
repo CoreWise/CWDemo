@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/cr30a"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Read fp.txt"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Down Char Into JRA Module"
+        android:textAllCaps="false"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="5dp"
+        android:text="@string/n1_cr30a_jra_n2_cr30a_sd_fg_txt"/>
+
+
+</LinearLayout>

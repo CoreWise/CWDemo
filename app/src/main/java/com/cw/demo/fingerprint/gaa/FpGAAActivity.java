@@ -9,6 +9,8 @@ import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.hardware.usb.UsbDevice;
+import android.hardware.usb.UsbManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -27,8 +29,7 @@ import android.widget.Toast;
 
 import com.cw.demo.MyApplication;
 import com.cw.demo.R;
-import com.cw.demo.fingerprint.jra.FpJRAActivity;
-import com.cw.fpgaasdk.USBFingerManager;
+import com.cw.serialportsdk.usbFingerManager.USBFingerManager;
 import com.fm.bio.ID_Fpr;
 
 
@@ -129,11 +130,14 @@ public class FpGAAActivity extends Activity implements OnClickListener {
 
     private void open() {
         MyApplication.getApp().showProgressDialog(this, getString(R.string.fp_usb_init));
+
+
+
         USBFingerManager.getInstance(this).openUSB(new USBFingerManager.OnUSBFingerListener() {
             @Override
-            public void onOpenUSBFingerSuccess(String device) {
+            public void onOpenUSBFingerSuccess(String device, UsbManager usbManager, UsbDevice usbDevice) {
 
-                if (device.equals(USBFingerManager.BYD_BIG_DEVICE2)) {
+                if (device.equals(USBFingerManager.GAA_DEVICE)) {
                     MyApplication.getApp().cancleProgressDialog();
 
                     if (mLiveScan != null) {

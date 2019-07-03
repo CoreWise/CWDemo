@@ -25,8 +25,9 @@ import android.widget.Toast;
 
 import com.cw.demo.MyApplication;
 import com.cw.demo.R;
-import com.cw.fpgabsdk.FingerPrintAPI;
-import com.cw.fpgabsdk.USBFingerManager;
+import com.cw.fpfbbsdk.FingerPrintAPI;
+import com.cw.serialportsdk.usbFingerManager.USBFingerManager;
+
 
 import cn.com.aratek.fp.Bione;
 import cn.com.aratek.fp.FingerprintImage;
@@ -187,23 +188,17 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
         USBFingerManager.getInstance(this).openUSB(new USBFingerManager.OnUSBFingerListener() {
             @Override
             public void onOpenUSBFingerSuccess(String device, UsbManager mUsbManager, UsbDevice mDevice) {
-
                 MyApplication.getApp().cancleProgressDialog();
                 mScanner = new FingerprintScanner(FpGABActivity.this);
                 api = FingerPrintAPI.getInstance();
-
                 openDevice();
-
-
             }
 
             @Override
             public void onOpenUSBFingerFailure(String error) {
                 MyApplication.getApp().cancleProgressDialog();
-
                 Toast.makeText(FpGABActivity.this, "" + error, Toast.LENGTH_SHORT).show();
                 MyApplication.getApp().cancleProgressDialog();
-
             }
         });
     }
