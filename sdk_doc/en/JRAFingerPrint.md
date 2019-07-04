@@ -111,6 +111,8 @@ OnUSBFingerListenerCallback interface description::
 
 Constant
 
+常量
+
 ```
     private static final int PS_OK = 0;
     private static final int CHAR_BUFF_A = 1;
@@ -119,112 +121,166 @@ Constant
 
 ```
 
-| JRA FingerPrint API Interface | Interface Instruction |
+
+
+
+| JRA FingerPrint API接口 | 接口说明 |
 | :----- | :---- |
-| SyOTG_Key | Constructed Function |
-| SyOpen | Open Equipment |
-| SyClose | Close Equipment|
-| SyGetInfo | Obtain Equipment Information |
-| SyUpChar | Upload Feature |
-| SyDownChar | Download Features |
-| SyGetImage | Obtain Image |
-| SyUpImage | Upload Images |
-| SyEnroll | Fingerprint Entry |
-| SySearch | Fingerprint Comparison |
-| SyDeletChar | Fingerprint Delete |
-| SyClear | Clear the database |
+| JRA_API | Constructor |
+| openJRA | Open device |
+| closeJRA | close device |
+| PSGetImage | JRA obtains fingerprint image data |
+| PSUpImage | Upload image data to app |
+| PSGenChar | Generate feature data in the specified buffer area |
+| PSRegModule | Merging generated feature values |
+| PSStoreChar | Store feature values to flash |
+| PSSearch | Search fingerprint |
+| PSDownCharToJRA | Download feature values to JRA Flash |
+| WriteBmp | Generate fingerprint image |
+| PSEmpty|clear all|
 
-Specific Instruction:
 
--  public SyOTG_Key(UsbManager mManager, UsbDevice mDev)
+具体说明:
 
-    Constructed Function
+- public JRA_API(UsbManager mManager, UsbDevice mDev)
 
-    ```
-    Parameter：
-mManager：UsbManagerObjet
-    mDev	：USB bus detected the fingerprint module equipment.
-    ```
+  ```
+  构造函数
 
-- public int SyOpen()
-
-Open equipment, successful return to 0
-
-- public void SyClose()
-
-   Close equipment
-
-- public int SyGetInfo(byte [] DeviceInfo)
-
-    Obtain equipment information
-    ```
-    Parameter：
-DeviceInfo： 32Byte Equipment Information
-Return value:successful return to 0
-
-    ```
-
-- public int SyUpChar(int pageId,byte[] tempdata)
-
-Upload Feature
-
-    ```
-    Parameter：
-    pageId： Download fingerprint features to database ID number.
-    Tempdata：512ByteStoring fingerprint feature block.
-Return value:successful return to 0
-    ```
-
-- public int SyDownChar(int pageId,byte[] tempdata)
-
-    Download feature
-    ```
-    Parameter：
-    	pageId：Download fingerprint feature database ID number
-    	Tempdata：512Byte Fingerprint feature.
-    Return value:successful return to 0
   ```
 
-- public int SyGetImage()
+- public int openJRA()
 
-    Obtain Image,successful return to 0
-- public int SyUpImage(byte [] pImageData)
-
-    Upload Image
     ```
-    Parameter：
-pImageData： Obtain Image data.
+    /**
+     * 打开模组
+     *
+     * @return
+     *          {@link PS_DEVICE_NOT_FOUND:has not found jra device}
+     *          {@link PS_EXCEPTION:exception}
+     *          {@link PS_OK:ok}
+     */
 
-Return value:successful return 0
-    ```
 
-- public int SyEnroll(int cnt,int fingerId)
-
-    Fingerprint Enter
-    ```
-    Parameter：
-    	Cnt：Enter Times
-    	fingerId：ID number to be stored in the database。
-    Return value: successful return 0    ```
-
-- public int SySearch(int[] fingerId )
-
-    Fingerprint Comparison
-    ```
-    Parameter ：
-fingerId：Search to  matching fingerprint template number, int type 4Byte.
-
-Return value:successful return to 0
     ```
 
-- public int SyDeletChar(int fingerId)
-
-    Fingerprint delete
+- public int closeJRA()
     ```
-    Parameter：
-    	fingerId: The number of fingerprint template to delete.
-Return value:successful return to 0
+    /**
+     * 关闭模组
+     *
+     * @return
+     *       {@link PS_EXCEPTION:exception}
+     *       {@link PS_OK:ok}
+     */
 
+    ```
+- public int PSGetImage()
+    ```
+    /**
+     * JRA模组采集指纹图像存在JRA模组缓存区内（容易丢失或者被覆盖,需要配合PSUpImage将数据上传到app）
+     *
+     * @return
+     *       {@link PS_OK:ok}
+     */
+    ```
+- public int PSUpImage(byte[] pImageData)
+    ```
+   /**
+     * JRA模组将存在JRA缓存区内图片数据(byte[])上传到app
+     *
+     * @param pImageData
+     * @return
+     *       {@link PS_OK:ok}
+     */
+    ```
+- public int PSGenChar(int bufferID)
+    ```
+    /**
+     * 将ImageBuffer 中的原始图像生成指纹特征文件存于CharBuffer1 或CharBuffer2 输入参数：
+     * BufferID(特征缓冲区号)
+     * <p>
+     * 根据原始图像生成指纹特征存于特征文件缓冲区
+     *
+     * @param bufferID {@link CHAR_BUFFER_A} ,{@link CHAR_BUFFER_B}
+     * @return
+     *        {@link PS_OK:ok}
+     */
+    ```
+- public int PSRegModule()
+    ```
+    /**
+     * 合并特征生成模板，将CharBuffer1和CharBuffer2中的特征文件合并生成模板，
+     * 将特征文件合并生成模板存于特征文件缓冲区
+     *
+     * @param fpRaw 返回特征值
+     * @return
+     *        {@link PS_OK:ok}
+     */
+    ```
+- public int PSStoreChar(int[] pageID, byte[] fpRaw)
+    ```
+    /**
+     *
+     * 将CharBuffer中的模板储存到指定的pageId号的flash数据库位置
+     * pageId：返回id范围为0~1000 ： BufferID(缓冲区号)，PageID（指纹库位置号0~999）
+     *
+     * @param pageID,返回注册指纹的id
+     * @param fpRaw,返回注册指纹的特征值，512bit
+     * @return
+     *        {@link PS_OK:ok}
+     */
+    ```
+- public int PSSearch(int bufferID, int[] id)
+    ```
+
+    ```
+- public int PSDownCharToJRA(byte[] fpRaw, int[] id)
+    ```
+        /**
+     * 将指纹数据下载到JRA模组里
+     *
+     * @param fpRaw,特征值，512byte
+     * @param id 返回到该特征值的id
+     * @return
+     *        {@link PS_OK:ok}
+     */
+    ```
+- public int PSEmpty()
+    ```
+     /**
+     * 删除flash 数据库中所有指纹模板
+     *
+     * @return
+     *        {@link PS_OK:ok}
+     */
+    ```
+
+- public int getUserIndex()
+    ```
+    /**
+     * 获取当前JRA指纹模组里指纹数量
+     *
+     * @return 返回指纹数量
+     *        {@link PS_OK:ok}
+     */
+
+    ```
+- public int[] getUserId()
+    ```
+   /**
+     * 获取指纹ID数组
+     *
+     * @return
+     */
+    ```
+- public int getUserMaxId()
+    ```
+    /**
+     * 获取指纹最大ID
+     *
+     * @return
+     */
     ```
 
 - public int SyClear()
@@ -235,47 +291,37 @@ Clear the database ,successful return 0
 **Error Code**
 
 ```
-#define PS_OK                			0x00
-#define PS_COMM_ERR          			0x01
-#define PS_NO_FINGER         			0x02
-#define PS_GET_IMG_ERR     			    0x03
-#define PS_FP_TOO_DRY        			0x04
-#define PS_FP_TOO_WET        			0x05
-#define PS_FP_DISORDER      			0x06
-#define PS_LITTLE_FEATURE  			    0x07
-#define PS_NOT_MATCH        	  		0x08
-#define PS_NOT_SEARCHED      			0x09
-#define PS_MERGE_ERR         			0x0a
-#define PS_ADDRESS_OVER      			0x0b
-#define PS_READ_ERR          			0x0c
-#define PS_UP_TEMP_ERR       			0x0d
-#define PS_RECV_ERR          			0x0e
-#define PS_UP_IMG_ERR        			0x0f
-#define PS_DEL_TEMP_ERR      			0x10
-#define PS_CLEAR_TEMP_ERR    			0x11
-#define PS_SLEEP_ERR         			0x12
-#define PS_INVALID_PASSWORD  			0x13
-#define PS_RESET_ERR         			0x14
-#define PS_INVALID_IMAGE     			0x15
-#define PS_HANGOVER_UNREMOVE 		    0x17
+    public static final int PS_DEVICE_NOT_FOUND = -1;
+    public static final int PS_EXCEPTION = -2;
+    public static final int PS_NO_FINGER_IN_JRA = -3;
+    public static final int PS_OK = 0x00;
+    public static final int PS_NO_FINGER = 0x02;
+    public final static int PS_DEVICE_SUCCESS = 0x00000000;
+    public final static int PS_DEVICE_FAILED = 0x20000001;
+    public static final int PS_MAX_FINGER = 1000;
+    public static final int PS_RAW_NOT_512 = -101;
+
 ```
+
+
 
 ### 2.4 Interface call process
 
 - #### Open and initialize fingerprint module
 
-![smallfinger.png](https://i.loli.net/2019/05/08/5cd24de9568f8.png)
+![usb.png](https://i.loli.net/2019/07/04/5d1d9c1c0145f92487.png)
 
 
 - #### Collection fingerprint
-![smallfingerluru.png](https://i.loli.net/2019/05/08/5cd24de95695e.png)
+![jra_cature_erroll.jpg](https://i.loli.net/2019/07/04/5d1d9bf14929d24967.jpg)
 
 
 - #### Search fingerprint
-![smallfingersousuo.png](https://i.loli.net/2019/05/08/5cd24de93aaa4.png)
+![jrasearch.png](https://i.loli.net/2019/07/04/5d1d9d7d0892b66361.png)
+
+
 
 
 #### 2.5 Interface call case
 
-Reference Demo source code,[FpJRAActivity.java](https://github.com/CoreWise/CWDemo/blob/master/app/src/main/java/com/cw/demo/fingerprint/jra/FpJRAActivity.java)
-
+Reference Demo source code,[JRAActivity.java](https://github.com/CoreWise/CWDemo/blob/master/app/src/main/java/com/cw/demo/fingerprint/jra/JRAActivity.java)

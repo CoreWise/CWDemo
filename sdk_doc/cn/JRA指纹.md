@@ -124,15 +124,15 @@ OnUSBFingerListener回调接口说明:
 | JRA_API | 构造函数 |
 | openJRA | 打开设备 |
 | closeJRA | 关闭设备 |
-| PSGetImage | 上传特征 |
-| PSUpImage | 下载特征 |
-| PSGenChar | 获取图像 |
-| PSRegModule | 上传图像 |
-| PSStoreChar | 指纹录入 |
-| PSSearch | 指纹对比 |
-| PSDownCharToJRA | 指纹删除 |
+| PSGetImage | JRA获取指纹图片数据 |
+| PSUpImage | 上传图片数据到app |
+| PSGenChar | 在指定缓存区生成特征数据 |
+| PSRegModule | 合并生成特征值 |
+| PSStoreChar | 存储特征值到flash |
+| PSSearch | 搜索指纹 |
+| PSDownCharToJRA | 将特征值下载到JRA Flash |
 | WriteBmp | 生成指纹图片 |
-
+| PSEmpty|清空指纹库|
 
 具体说明:
 
@@ -313,7 +313,7 @@ OnUSBFingerListener回调接口说明:
 
 #### 接口调用案例
 
-参考Demo源码,FpJRAActivity.java
+参考Demo源码,[JRAActivity.java](https://github.com/CoreWise/CWDemo/blob/master/app/src/main/java/com/cw/demo/fingerprint/jra/JRAActivity.java)
 
 
 #### 二次开发问题汇总
