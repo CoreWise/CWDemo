@@ -298,17 +298,17 @@ OnUSBFingerListener回调接口说明:
 
 - #### 打开并初始化指纹模块
 
-![smallfinger.png](https://i.loli.net/2019/05/08/5cd24de9568f8.png)
+![usb.png](https://i.loli.net/2019/07/04/5d1d9c1c0145f92487.png)
 
 
 - #### 采集指纹
 
-![smallfingerluru.png](https://i.loli.net/2019/05/08/5cd24de95695e.png)
+![jra_cature_erroll.jpg](https://i.loli.net/2019/07/04/5d1d9bf14929d24967.jpg)
 
 
 - #### 搜索指纹
 
-![smallfingersousuo.png](https://i.loli.net/2019/05/08/5cd24de93aaa4.png)
+![jrasearch.png](https://i.loli.net/2019/07/04/5d1d9d7d0892b66361.png)
 
 
 #### 接口调用案例

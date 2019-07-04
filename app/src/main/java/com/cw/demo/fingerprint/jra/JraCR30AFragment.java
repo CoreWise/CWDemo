@@ -55,11 +55,15 @@ public class JraCR30AFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_cr30a_jra, container, false);
-
         unbinder = ButterKnife.bind(this, root);
         return root;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        up.setEnabled(false);
+    }
 
     public void readFromFpTxt() {
         fingerRaw.clear();
@@ -99,6 +103,10 @@ public class JraCR30AFragment extends BaseFragment {
 
             for (String data : fingerRaw) {
                 Log.i(TAG, "指纹数据1:  " + data);
+            }
+            if (fingerRaw.size()>0) {
+                        up.setEnabled(true);
+
             }
 
             for (int i = 0; i < fingerRaw.size(); i++) {

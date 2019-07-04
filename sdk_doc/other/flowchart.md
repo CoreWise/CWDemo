@@ -65,9 +65,9 @@ graph TD;
 graph TD;
     start[Start]-->AA[USBFingerManager.getInstance.setDelayMs]
     AA-->A{USBFingerManager.getInstance.openUSB}
-    A--Success-->B[SyOTG_Key msyUsbKey = new SyOTG_Key];
+    A--Success-->B[JRA_API api = new JRA_API];
     A--Failure-->C[Error Check Machine];
-    B-->E[msyUsbKey.SyOpen]
+    B-->E[api.openJRA]
 
 ```
 
@@ -80,8 +80,8 @@ graph TD;
     A-->B[录入:msyUsbKey.SyEnroll]
     B-->C{第一次录入}
     C--Yes-->A
-    C--No-->D{msyUsbKey.SyEnroll == PS_OK}
-    D--Yes-->E[上传特征:msyUsbKey.SyUpChar]
+    C--No-->D{api.SyEnroll == JRA_API.PS_OK}
+    D--Yes-->E[上传特征:api.SyUpChar]
     D--No-->F[指纹采集失败]
     E-->End
 

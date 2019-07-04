@@ -1,5 +1,6 @@
 package com.cw.demo.fingerprint.jra;
 
+import android.hardware.Sensor;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.os.Build;
