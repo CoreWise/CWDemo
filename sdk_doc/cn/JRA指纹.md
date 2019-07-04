@@ -58,8 +58,8 @@
     //JRA FingerPrint SDK
     compile(name: 'fp_jra_sdk_20190429', ext: 'aar')
 
-    //串口开发包
-    //SerialPort SDK
+    //相关工具开发包
+    //Utils SDK，必须依赖
     compile(name: 'serialport_sdk_20190702', ext: 'aar')
 
  }
