@@ -290,3 +290,13 @@ OnUSBFingerListener回调接口说明:
 
 
 #### 二次开发问题汇总
+
+
+- 指纹类的应用在横竖屏切换时,如果重复初始化模块导致出现的一系列问题？
+
+    ```
+    在清单文件里相应的Activity标签下添加一下内容:
+    android:configChanges="orientation|keyboardHidden|screenSize"
+
+
+    ```

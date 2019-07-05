@@ -65,6 +65,7 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
     private EditText mVerifyTime;
     private ImageView mFingerprintImage;
     private ProgressDialog mProgressDialog;
+
     private FingerprintScanner mScanner;
     private FingerPrintAPI api;
 
@@ -215,13 +216,11 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_open_close:
-
                 if (!mDeviceOpened) {
                     openDevice();
                 } else {
                     closeDevice();
                 }
-
                 break;
             case R.id.bt_enroll:
                 enroll();//录入指纹
@@ -252,7 +251,6 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void updateSingerTestText(long captureTime, long extractTime, long generalizeTime, long verifyTime) {
-
         String[] texts = new String[4];
         if (captureTime < 0) {
             texts[0] = getString(R.string.fp_not_done);
@@ -285,9 +283,7 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
         } else {
             texts[3] = verifyTime + "ms";
         }
-
         mHandler.sendMessage(mHandler.obtainMessage(MSG_UPDATE_TEXT, texts));
-
     }
 
     private void enableControl(boolean enable) {
@@ -295,7 +291,6 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void openDevice() {
-
         showProgressDialog(getString(R.string.fp_loading), getString(R.string.fp_preparing_device));
         int error;
         if ((error = mScanner.open()) != FingerprintScanner.RESULT_OK) {

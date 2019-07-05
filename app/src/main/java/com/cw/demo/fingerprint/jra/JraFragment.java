@@ -131,13 +131,15 @@ public class JraFragment extends BaseFragment {
         int[] userId = parentActivity.jraApi.getUserId();
         int userMaxId = parentActivity.jraApi.getUserMaxId();
 
+        parentActivity.updateMsg("jra has " + userIndex + " fp");
+
         parentActivity.updateMsg("there are :");
         for (int i = 0; i < userIndex; i++) {
             parentActivity.updateMsg("id:" + userId[i]);
         }
         if (userIndex != 0) {
             parentActivity.updateMsg("Max Id：" + userMaxId);
-            parentActivity.updateMsg("jra has " + userIndex + "fp");
+            parentActivity.updateMsg("jra has " + userIndex + " fp");
 
         }
     }

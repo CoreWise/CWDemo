@@ -104,9 +104,8 @@ public class JraCR30AFragment extends BaseFragment {
             for (String data : fingerRaw) {
                 Log.i(TAG, "指纹数据1:  " + data);
             }
-            if (fingerRaw.size()>0) {
-                        up.setEnabled(true);
-
+            if (fingerRaw.size() > 0) {
+                up.setEnabled(true);
             }
 
             for (int i = 0; i < fingerRaw.size(); i++) {
@@ -131,7 +130,7 @@ public class JraCR30AFragment extends BaseFragment {
         } catch (IOException e) {
             e.printStackTrace();
             Log.e(TAG, e.toString());
-                        parentActivity.updateMsg(e.toString());
+            parentActivity.updateMsg(e.toString());
 
         }
     }
@@ -145,16 +144,16 @@ public class JraCR30AFragment extends BaseFragment {
         }
         parentActivity.updateMsg("Clear the fingerprint database successfully, start uploading the fingerprint library to the module!");
 
-        int[] id=new int[1];
+        int[] id = new int[1];
 
 
         for (int i = 0; i < fingerRaw.size(); i++) {
             //pageId由你决定，和录入一样的,这个ID由你决定，这里必须存储，不然将搜索不到
-            if (parentActivity.jraApi.PSDownCharToJRA(DataUtils.hexStringTobyte(fingerRaw.get(i)),id) != PS_OK) {
+            if (parentActivity.jraApi.PSDownCharToJRA(DataUtils.hexStringTobyte(fingerRaw.get(i)), id) != PS_OK) {
                 parentActivity.updateMsg("Failed to store template");
                 return;
             } else {
-                parentActivity.updateMsg("The storage template is successful, and the id is returned:"+id[0]);
+                parentActivity.updateMsg("The storage template is successful, and the id is returned:" + id[0]);
             }
 
             if (i == fingerRaw.size() - 1) {
