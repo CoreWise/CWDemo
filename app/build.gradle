@@ -37,8 +37,12 @@ android {
         //versionCode 4
         //versionName "DemoApp_V1.4"
 
-        versionCode 5
-        versionName "DemoApp_V1.5"
+        //V1.5已发布,特别说明：需要修改工程根目录下的version.json文件
+        //versionCode 5
+        //versionName "DemoApp_V1.5"
+
+        versionCode 6
+        versionName "DemoApp_V1.6"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
  
