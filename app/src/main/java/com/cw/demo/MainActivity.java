@@ -37,6 +37,7 @@ import com.cw.demo.R2000UHF.UHF2000Activity;
 import com.cw.demo.barcode.BarCodeActivity;
 import com.cw.demo.beidou.BeiDouActivity;
 import com.cw.demo.fingerprint.gaa.FpGAAActivity;
+import com.cw.demo.fingerprint.gaa.NewFpGAAActivity;
 import com.cw.demo.fingerprint.gab.FpGABActivity;
 import com.cw.demo.fingerprint.jra.JRAActivity;
 import com.cw.demo.hxuhf.HXUHFActivity;
@@ -190,8 +191,10 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         intent.putExtra("tag", "UHF2000Activity");
         mListIntent.add(intent);
 
-        intent = new Intent(this, FpGAAActivity.class);
-        intent.putExtra("tag", "FpGAAActivity");
+        intent = new Intent(this, NewFpGAAActivity.class);
+        intent.putExtra("tag", "NewFpGAAActivity");
+//        intent = new Intent(this, FpGAAActivity.class);
+//        intent.putExtra("tag", "FpGAAActivity");
         mListIntent.add(intent);
 
         intent = new Intent(this, JRAActivity.class);

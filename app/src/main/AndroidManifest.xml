@@ -45,10 +45,17 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
 
+        <!--<activity-->
+            <!--android:name=".fingerprint.gaa.FpGAAActivity"-->
+            <!--android:configChanges="orientation|keyboardHidden|screenSize"-->
+                        <!--android:screenOrientation="portrait"-->
+
+            <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>-->
+
         <activity
-            android:name=".fingerprint.gaa.FpGAAActivity"
+            android:name=".fingerprint.gaa.NewFpGAAActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-                        android:screenOrientation="portrait"
+            android:screenOrientation="portrait"
 
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
