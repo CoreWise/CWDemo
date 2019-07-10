@@ -116,7 +116,7 @@ dependencies {
 
     //GAA大指纹开发包(新固件开发包),,需要依赖串口开发包
     //GAA FingerPrint SDK,need SerialPort SDK
-    compile(name: 'fp_gaa_sdk_20190705', ext: 'aar')
+    compile(name: 'fp_gaa_sdk_20190710', ext: 'aar')
 
 
     //GAB大指纹开发包(新固件开发包),需要依赖串口开发包

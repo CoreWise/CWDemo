@@ -88,6 +88,7 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "------------onStop--------------");
+
         close();
     }
 
@@ -154,6 +155,8 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
     }
 
     private void close() {
+        btnStatus(true);
+        globalControl = false;
         updateMsg("设备已关闭");
         if (gaa_api != null) {
             gaa_api.closeGAA();
