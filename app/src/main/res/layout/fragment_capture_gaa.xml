@@ -41,13 +41,13 @@
                 android:id="@+id/capture"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="采集指纹图像" />
+                android:text="@string/fp_gaa_capture" />
 
             <Button
                 android:id="@+id/enroll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="录入指纹" />
+                android:text="@string/fp_gaa_enroll" />
 
             <Button
                 android:id="@+id/enroll2"
@@ -60,13 +60,13 @@
                 android:id="@+id/search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="搜索指纹" />
+                android:text="@string/fp_gaa_search" />
 
             <Button
                 android:id="@+id/stop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="停止" />
+                android:text="@string/fp_gaa_stop" />
 
         </LinearLayout>
 
@@ -107,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="查看设备信息" />
+            android:text="@string/fp_gaa_infos" />
 
         <Button
             android:id="@+id/clear"
@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
 
-            android:text="清空" />
+            android:text="@string/fp_gaa_clear" />
 
     </LinearLayout>
 

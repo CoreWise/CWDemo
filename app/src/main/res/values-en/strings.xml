@@ -732,4 +732,12 @@
     <string name="fp_usb_open_failure">Switching USB failed</string>
 
 
+    <!--GAA指纹-->
+    <string name="fp_gaa_capture">Capture</string>
+    <string name="fp_gaa_enroll">Enroll</string>
+    <string name="fp_gaa_search">Search</string>
+    <string name="fp_gaa_stop">Stop</string>
+    <string name="fp_gaa_clear">Clear</string>
+    <string name="fp_gaa_infos">Infos</string>
+
 </resources>

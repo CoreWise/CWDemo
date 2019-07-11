@@ -94,131 +94,104 @@ OnUSBFingerListener Callback interface description:
 
 Constant
 ```
-    public static final int LIVESCAN_EINVAL = -1;
-    public static final int LIVESCAN_EMEMORY = -2;
-    public static final int LIVESCAN_EFUN = -3;
-    public static final int LIVESCAN_EDEVICE = -4;
-    public static final int LIVESCAN_EINIT = -5;
-    public static final int LIVESCAN_EUNKOWN = -6;
-    public static final int LIVESCAN_EELSE = -9;
-    public static final int LIVESCAN_SUCCESS = 1;
-    public static final int LIVESCAN_NONE = 0;
-    public static int LIVESCAN_FEATURE_SIZE = 512;
+       public static final int LIVESCAN_SUCCESS = 1;//Successful operation
+       public static final int LIVESCAN_NOTINIT = -12;//Not initialized
+       public static final int LIVESCAN_AUTH_FAILED = -13;//Authentication module verification failed
+       public static final int LIVESCAN_AUTH_ENCRYPT_FAILED = -14;//Encryption algorithm failed
+       public static final int LIVESCAN_UPIMAGE_FAILED = -15;//Uploading image failed
+       public static final int LIVESCAN_NO_FINGER = -16;//No finger
+       public static final int LIVESCAN_SEARCH_THRESHOLD = -17;//Search similarity is below threshold
+       public static final int LIVESCAN_CLEAR_ERROR = -18;//Delete error
+       public static final int LIVESCAN_ERROR_LENGTH = -19;//Insufficient length of entry
+       public static final int LIVESCAN_NOTADD = -20;//Failed to add fingerprint feature value
 
-
-    public static int LIVESCAN_IMAGE_SCORE_THRESHOLD = 25;
-    public static int LIVESCAN_IMAGE_WIDTH = 256;
-    public static int LIVESCAN_IMAGE_HEIGHT = 360;
-    public static int LIVESCAN_IMAGE_HEADER = 1078;
-    public static final byte LIVESCAN_MSG_PERMISSION = 17;
-    public static final byte LIVESCAN_MSG_IN = 18;
-    public static final byte LIVESCAN_MSG_OUT = 19;
-    public static final int LIVESCAN_MSG_KEY = 8213;
-
-    public static String LIVESCAN_S_EINVAL = "Invalid Parameter";
-    public static String LIVESCAN_S_MEMORY = "Memory allocation failed";
-    public static String LIVESCAN_S_FUN = "Function unrealized";
-    public static String LIVESCAN_S_DEVICE = "The device does not exist";
-    public static String LIVESCAN_S_INIT = "Device has not been initialized";
-    public static String LIVESCAN_S_UNKOWN = "Unkown";
-    public static String LIVESCAN_S_ELSE = "Other errors";
-    public static String LIVESCAN_S_SUCCESS = "Success";
+       public static final int LIVESCAN_EINVAL = -1;
+       public static final int LIVESCAN_EMEMORY = -2;
+       public static final int LIVESCAN_EFUN = -3;
+       public static final int LIVESCAN_EDEVICE = -4;
+       public static final int LIVESCAN_EINIT = -5;
+       public static final int LIVESCAN_EUNKOWN = -6;
+       public static final int LIVESCAN_EELSE = -9;
+       public static final int LIVESCAN_SUCCESS = 1;
+       public static final int LIVESCAN_NONE = 0;
+       public static int LIVESCAN_FEATURE_SIZE = 512;
 
 ```
 
 
 | BYD FingerPrint API Port | Port Instruction |
 | :----- | :---- |
-| ID_Fpr | Big Fingerprint API Class |
-|LIVESCAN_Init|Initialization Device|
-|LIVESCAN_Close|Close Equipment|
-|LIVESCAN_GetFPRawData(byte[]pRawData);| Obtain fingerprint image|
-|LIVESCAN_FPRawDataToBmp(byte[] pRawData) |Image to BMP|
-|LIVESCAN_GetFPBmpData(byte[]pBmpData) |Obtain BMP fingerprint image|
-|LIVESCAN_GetSdkVersion()|SDK Version
-|LIVESCAN_GetDevVersion();|Equipment Version
-|LIVESCAN_GetDevSN(byte[]bySN)|Equipment serial number
-|LIVESCAN_GetErrorInfo(int nErrorNo)| Obtain Wrong information
-|LIVESCAN_FeatureExtract(byte[] pFeatureData)|Feature Collect
-|LIVESCAN_GetMatchThreshold()| Obtain the matching fraction threshold,Note: Initialization calls are required
-|LIVESCAN_FeatureMatch(byte[] pFeatureData2,byte[] pFeatureData2,float[]pfSimilarity) |Fingerprint Match(1:1)
-|LIVESCAN_GetQualityScore(byte[] pFingerImgBuf,byte[] pnScore)| Obtain Image quality
-|LIVESCAN_FeatureSearch(byte[] jpFeatureData, byte[] jpFeatureDatas, int nFeatureData,int[] index,float[] pfSimilarity); |Search fingerprint(1:N)|
-|LIVESCAN_Encrypt(byte[]pISVData)|Encryption
+| GAA_API| Constructor |
+|openGAA|Open module|
+|closeGAA|Close module|
+|PSGetImage|GAA collects fingerprint images and saves them locally|
+|PSUpImage |Upload GAA save local fingerprint image to view layer|
+|PSGenChar |Extract feature values and save feature values|
+|PSSearch|Search fingerprint|
+|PSEmpty|Clear fingerprint library|
+|DataToBmp|Fingerprint picture byte to bitmap|
 
 Specific Instruction:
 
-- public int LIVESCAN_Init();
-
-- public int LIVESCAN_Close ();
-
-- public int LIVESCAN_GetFPRawData(byte[]pRawData);
+- public GAA_API(Context context)
     ```
-    byte[]pRawData：Memory is  LIVESCAN_IMAGE_WIDTH* LIVESCAN_IMAGE_HEIGHT
-Return value reference constant
-```
-
-- public  Bitmap LIVESCAN_FPRawDataToBmp(byte[] pRawData);
-    ```
-    byte[] pRawData：Memory  LIVESCAN_IMAGE_WIDTH* LIVESCAN_IMAGE_HEIGHT
-    Return value Bitmap
-    ```
-- public int LIVESCAN_GetFPBmpData(byte[]pBmpData);
-    ```
-    byte[]pBmpData：Memory is LIVESCAN_IMAGE_WIDTH* LIVESCAN_IMAGE_HEIGHT+ LIVESCAN_IMAGE_HEADER
-    ```
-- public String LIVESCAN_GetSdkVersion();
-
-- public String LIVESCAN_GetDevVersion();
-
-- public int LIVESCAN_GetDevSN(byte[]bySN); byte[]bySN 32 byte
-    ```
-Return value reference constant
+    Constructor
     ```
 
-- public String LIVESCAN_GetErrorInfo(int nErrorNo);
+- public int openGAA()
     ```
-    int nErrorNo：Error Number
-Return error information
-
-    ```
-- public int LIVESCAN_FeatureExtract(byte[] pFeatureData);
-    ```
-    byte[] pFeatureData Feature size LIVESCAN_FEATURE_SIZE Return value reference constant
-    ```
-- public float LIVESCAN_GetMatchThreshold();
-    ```
-     Obtain the matching fraction threshold,
-Note: Initialization calls are required
-    ```
-- LIVESCAN_FeatureMatch(byte[] pFeatureData2,byte[] pFeatureData2,float[]pfSimilarity);
-    ```
-    byte[] pFeatureData1：Feature  1，Feature size LIVESCAN_FEATURE_SIZE
-    byte[] pFeatureData2：Feature  2，Feature  LIVESCAN_FEATURE_SIZE
-float[] pfSimilarity：Return similarity
- Return value reference constant
- ```
-- public int LIVESCAN_GetQualityScore(byte[] pFingerImgBuf,byte[] pnScore)
-
-    ```
-    byte[] pFingerImgBuf：Memory LIVESCAN_IMAGE_WIDTH* LIVESCAN_IMAGE_HEIGHT
-    byte[] pnScore：Image Quality，recommended value LIVESCAN_IMAGE_SCORE_THRESHOLD
-    Return value reference constant
+    Open module
+    Return successfully:LIVESCAN_SUCCESS
     ```
 
-- public int LIVESCAN_FeatureSearch(byte[] jpFeatureData, byte[] jpFeatureDatas, int nFeatureData,int[] index,float[] pfSimilarity);
+- public int closeGAA()
     ```
-    byte[] jpFeatureData Feature Size LIVESCAN_FEATURE_SIZE
-
-    byte[] jpFeatureDatas Module Data j according  LIVESCAN_FEATURE_SIZEE length cumulative ,length is  nFeatureData *LIVESCAN_FEATURE_SIZE
-
-    int[] nFeatureData Template number
-
-    int[] index Returns the index with the highest similarity  float[] pf Similarity Returns the  similarity
-- public int LIVESCAN_Encrypt(byte[]pISVData);
+    Close module
     ```
-    pISVData size 16bytes
-   Use Manufacturer keys to encrypted return of pISVData,has been confirmed as a designated manufacturer's equipment,Return value reference constant
+
+- public int PSGetImage()
+    ```
+    GAA module starts collecting fingerprint images And save it locally
+    ```
+- public int PSUpImage(byte[] pImageData)
+    ```
+    The GAA module will save the local fingerprint image to the app.
+
+    byte[] pImageData  Incoming size needs to be greater than 256 * 360, return fingerprint image
+    ```
+- public int PSGenChar(byte[] mFeature,int[] id)
+    ```
+    Extract the feature values of the locally saved fingerprint image, save the feature values, and add the fingerprint library.
+
+    byte[] mFeature  The incoming size needs to be greater than 512, returning the generated eigenvalue
+    int[] id  Returns the id corresponding to the feature value
+    ```
+
+- public int PSGenChar(byte[] mFeature)
+    ```
+    Extract the feature value of the locally saved fingerprint image without saving the feature value
+
+    byte[] mFeature  The incoming size needs to be greater than 512, returning the feature value of the saved fingerprint image.
+    ```
+
+- public int PSSearch(byte[] mFeature, int[] mId)
+    ```
+    Search fingerprint
+
+    byte[] mFeature  Fingerprint feature value that needs to be searched
+    int[] mId  Returned fingerprint index
+    Return successfully:LIVESCAN_SUCCESS
+    ```
+
+- public int PSEmpty()
+    ```
+    Clear fingerprint library
+    ```
+- public Bitmap DataToBmp(byte[] fpRaw)
+    ```
+   Fingerprint picture byte to bitmap
+
+   byte[] fpRaw  back Fingerprint picture
     ```
 
 
@@ -228,14 +201,15 @@ Call this method,return information is error information
 - mLiveScan.LIVESCAN_GetErrorInfo(iRet)
 
 ```
-    public static String LIVESCAN_S_EINVAL = "Invalid Parameter";
-    public static String LIVESCAN_S_MEMORY = "Memory allocation failed";
-    public static String LIVESCAN_S_FUN = "Function unrealized";
-    public static String LIVESCAN_S_DEVICE = "The device does not exist";
-    public static String LIVESCAN_S_INIT = "Device has not been initialized";
-    public static String LIVESCAN_S_UNKOWN = "Unkown";
-    public static String LIVESCAN_S_ELSE = "Other errors";
-    public static String LIVESCAN_S_SUCCESS = "Success";
+    public static final int LIVESCAN_NOTINIT = -12;//Not initialized
+    public static final int LIVESCAN_AUTH_FAILED = -13;//Authentication module verification failed
+    public static final int LIVESCAN_AUTH_ENCRYPT_FAILED = -14;//Encryption algorithm failed
+    public static final int LIVESCAN_UPIMAGE_FAILED = -15;//Uploading image failed
+    public static final int LIVESCAN_NO_FINGER = -16;//No finger
+    public static final int LIVESCAN_SEARCH_THRESHOLD = -17;//Search similarity is below threshold
+    public static final int LIVESCAN_CLEAR_ERROR = -18;//Delete error
+    public static final int LIVESCAN_ERROR_LENGTH = -19;//Insufficient length of entry
+    public static final int LIVESCAN_NOTADD = -20;//Failed to add fingerprint feature value
 ```
 
 
@@ -267,5 +241,5 @@ Call this method,return information is error information
 
 #### 2.5  Interface call case
 
-Reference Demo source code [FpGAAActivity.java](https://github.com/CoreWise/CWDemo/blob/master/app/src/main/java/com/cw/demo/fingerprint/gaa/FpGAAActivity.java)
+Reference Demo source code [NewFpGAAActivity.java](https://github.com/CoreWise/CWDemo/blob/master/app/src/main/java/com/cw/demo/fingerprint/gaa/NewFpGAAActivity.java)
 

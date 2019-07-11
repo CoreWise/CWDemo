@@ -760,4 +760,12 @@
     <string name="n1_cr30a_jra_n2_cr30a_sd_fg_txt">说明: 1.CR30A为本公司一款基于JRA指纹模组的采集指纹的终端设备 2.CR30A采集的指纹特征数据保存在sd卡根目录下，名为fg.txt</string>
 
 
+    <!--JRA指纹-->
+    <string name="fp_gaa_capture">采集指纹图像</string>
+    <string name="fp_gaa_enroll">录入指纹</string>
+    <string name="fp_gaa_search">搜索指纹</string>
+    <string name="fp_gaa_stop">停止</string>
+    <string name="fp_gaa_clear">清空</string>
+    <string name="fp_gaa_infos">查看设备信息</string>
+
 </resources>
