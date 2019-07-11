@@ -107,6 +107,17 @@ OnUSBFingerListener回调接口说明:
 常量
 
 ```
+    public static final int LIVESCAN_SUCCESS = 1;//操作成功
+    public static final int LIVESCAN_NOTINIT = -12;//没有初始化
+    public static final int LIVESCAN_AUTH_FAILED = -13;//认证模块校验失败
+    public static final int LIVESCAN_AUTH_ENCRYPT_FAILED = -14;//加密算法失败
+    public static final int LIVESCAN_UPIMAGE_FAILED = -15;//上传图片失败
+    public static final int LIVESCAN_NO_FINGER = -16;//没有手指
+    public static final int LIVESCAN_SEARCH_THRESHOLD = -17;//搜索相似度低于阀值
+    public static final int LIVESCAN_CLEAR_ERROR = -18;//删除错误
+    public static final int LIVESCAN_ERROR_LENGTH = -19;//入参长度不足
+    public static final int LIVESCAN_NOTADD = -20;//添加指纹特征值失败
+
     public static final int LIVESCAN_EINVAL = -1;
     public static final int LIVESCAN_EMEMORY = -2;
     public static final int LIVESCAN_EFUN = -3;
@@ -118,138 +129,97 @@ OnUSBFingerListener回调接口说明:
     public static final int LIVESCAN_NONE = 0;
     public static int LIVESCAN_FEATURE_SIZE = 512;
 
-
-    public static int LIVESCAN_IMAGE_SCORE_THRESHOLD = 25;
-    public static int LIVESCAN_IMAGE_WIDTH = 256;
-    public static int LIVESCAN_IMAGE_HEIGHT = 360;
-    public static int LIVESCAN_IMAGE_HEADER = 1078;
-    public static final byte LIVESCAN_MSG_PERMISSION = 17;
-    public static final byte LIVESCAN_MSG_IN = 18;
-    public static final byte LIVESCAN_MSG_OUT = 19;
-    public static final int LIVESCAN_MSG_KEY = 8213;
-
-    public static String LIVESCAN_S_EINVAL = "Invalid Parameter";
-    public static String LIVESCAN_S_MEMORY = "Memory allocation failed";
-    public static String LIVESCAN_S_FUN = "Function unrealized";
-    public static String LIVESCAN_S_DEVICE = "The device does not exist";
-    public static String LIVESCAN_S_INIT = "Device has not been initialized";
-    public static String LIVESCAN_S_UNKOWN = "Unkown";
-    public static String LIVESCAN_S_ELSE = "Other errors";
-    public static String LIVESCAN_S_SUCCESS = "Success";
-
 ```
 
 
-| GAA FingerPrint API接口 | 接口说明 |
+| GAA GAA_API API接口 | 接口说明 |
 | :----- | :---- |
-| ID_Fpr | 大指纹API类 |
-|LIVESCAN_Init|初始化设备|
-|LIVESCAN_Close|关闭设备|
-|LIVESCAN_GetFPRawData(byte[]pRawData);|获取指纹图像|
-|LIVESCAN_FPRawDataToBmp(byte[] pRawData) |图像转BMP|
-|LIVESCAN_GetFPBmpData(byte[]pBmpData) |获取BMP指纹图像|
-|LIVESCAN_GetSdkVersion()|SDK版本
-|LIVESCAN_GetDevVersion();|设备版本
-|LIVESCAN_GetDevSN(byte[]bySN)|设备序列号
-|LIVESCAN_GetErrorInfo(int nErrorNo)|获取错误信息
-|LIVESCAN_FeatureExtract(byte[] pFeatureData)|特征提取
-|LIVESCAN_GetMatchThreshold()|获取匹配分数阀值，注：需在初始化调用
-|LIVESCAN_FeatureMatch(byte[] pFeatureData2,byte[] pFeatureData2,float[]pfSimilarity) |指纹匹配(1:1)
-|LIVESCAN_GetQualityScore(byte[] pFingerImgBuf,byte[] pnScore)|获取图像质量
-|LIVESCAN_FeatureSearch(byte[] jpFeatureData, byte[] jpFeatureDatas, int nFeatureData,int[] index,float[] pfSimilarity); |搜索指纹(1:N)|
-|LIVESCAN_Encrypt(byte[]pISVData)|加密
+| GAA_API| 构造函数 |
+|openGAA|打开模组|
+|closeGAA|关闭模组|
+|PSGetImage|GAA采集指纹图片,并保存在本地|
+|PSUpImage |将GAA保存本地指纹图片上传到view层|
+|PSGenChar |提取特征值,保存特征值|
+|PSSearch|搜索指纹|
+|PSEmpty|清空指纹库|
+|DataToBmp|指纹图片byte转bitmap|
 
 具体说明:
 
-- public int LIVESCAN_Init();
-
-- public int LIVESCAN_Close ();
-
-- public int LIVESCAN_GetFPRawData(byte[]pRawData);
+- public GAA_API(Context context)
     ```
-    byte[]pRawData：内存为 LIVESCAN_IMAGE_WIDTH* LIVESCAN_IMAGE_HEIGHT
-    返回值参考常量
+    构造函数
     ```
 
-- public  Bitmap LIVESCAN_FPRawDataToBmp(byte[] pRawData);
+- public int openGAA()
     ```
-    byte[] pRawData：内存为 LIVESCAN_IMAGE_WIDTH* LIVESCAN_IMAGE_HEIGHT
-    返回值 Bitmap
-    ```
-- public int LIVESCAN_GetFPBmpData(byte[]pBmpData);
-    ```
-    byte[]pBmpData：内存为 LIVESCAN_IMAGE_WIDTH* LIVESCAN_IMAGE_HEIGHT+ LIVESCAN_IMAGE_HEADER
-    ```
-- public String LIVESCAN_GetSdkVersion();
-
-- public String LIVESCAN_GetDevVersion();
-
-- public int LIVESCAN_GetDevSN(byte[]bySN); byte[]bySN 32 字节
-    ```
-    返回值参考常量
+    打开模组
+    成功返回:LIVESCAN_SUCCESS
     ```
 
-- public String LIVESCAN_GetErrorInfo(int nErrorNo);
+- public int closeGAA()
     ```
-    int nErrorNo：错误号
-    返回值错误信息
-    ```
-- public int LIVESCAN_FeatureExtract(byte[] pFeatureData);
-    ```
-    byte[] pFeatureData 特征大小 LIVESCAN_FEATURE_SIZE 返回值参考常量
-
-    ```
-- public float LIVESCAN_GetMatchThreshold();
-    ```
-    返回值为匹配分数阈值
-    注：需在初始化调用
-    ```
-- LIVESCAN_FeatureMatch(byte[] pFeatureData2,byte[] pFeatureData2,float[]pfSimilarity);
-    ```
-    byte[] pFeatureData1：特征 1，特征大小 LIVESCAN_FEATURE_SIZE
-    byte[] pFeatureData2：特征 2，特征大小 LIVESCAN_FEATURE_SIZE
-    float[] pfSimilarity：返回的相似度
-    返回值参考常量
-    ```
-- public int LIVESCAN_GetQualityScore(byte[] pFingerImgBuf,byte[] pnScore)
-
-    ```
-    byte[] pFingerImgBuf：内存为LIVESCAN_IMAGE_WIDTH* LIVESCAN_IMAGE_HEIGHT
-    byte[] pnScore：图像质量，建议值 LIVESCAN_IMAGE_SCORE_THRESHOLD
-    返回值参考常量
+    关闭模组
     ```
 
-- public int LIVESCAN_FeatureSearch(byte[] jpFeatureData, byte[] jpFeatureDatas, int nFeatureData,int[] index,float[] pfSimilarity);
+- public int PSGetImage()
     ```
-    byte[] jpFeatureData 特征大小 LIVESCAN_FEATURE_SIZE
-
-    byte[] jpFeatureDatas 模板数据 j 按照 LIVESCAN_FEATURE_SIZEE 的长度累计 长度为 nFeatureData *LIVESCAN_FEATURE_SIZE
-
-    int[] nFeatureData 模板个数
-
-    int[] index 返回相似度最高的索引 float[] pfSimilarity 返回相似度
-
-- public int LIVESCAN_Encrypt(byte[]pISVData);
+    GAA模块开始采集指纹图片
+    并保存在本地
     ```
-    pISVData 大小 16bytes
-    采用厂商密钥对 pISVData 进行加密返回，已确认是否为指定厂商设备 返回值参考常量
+- public int PSUpImage(byte[] pImageData)
+    ```
+    GAA模组将保存本地指纹图片上传到app
+
+    byte[] pImageData 传入大小需要大于 256 * 360,返回指纹图片
+    ```
+- public int PSGenChar(byte[] mFeature,int[] id)
+    ```
+    提取本地保存指纹图片的特征值,保存特征值,添加指纹库
+
+    byte[] mFeature 传入大小需要大于 512,返回生成的特征值
+    int[] id 返回特征值对应的id
     ```
 
+- public int PSGenChar(byte[] mFeature)
+    ```
+    提取本地保存指纹图片的特征值,不保存特征值
+
+    byte[] mFeature 传入大小需要大于 512,返回保存指纹图片的特征值
+    ```
+
+- public int PSSearch(byte[] mFeature, int[] mId)
+    ```
+    搜索指纹
+
+    byte[] mFeature 需要搜索的指纹特征值
+    int[] mId 返回的指纹索引
+    成功返回:LIVESCAN_SUCCESS
+    ```
+
+- public int PSEmpty()
+    ```
+    清空指纹库
+    ```
+- public Bitmap DataToBmp(byte[] fpRaw)
+    ```
+   指纹图片 byte转bitmap
+
+   byte[] fpRaw 指纹图片
+    ```
 
 **错误码**
 
-调用该方法,返回信息即为错误信息
-- mLiveScan.LIVESCAN_GetErrorInfo(iRet)
-
 ```
-    public static String LIVESCAN_S_EINVAL = "Invalid Parameter";
-    public static String LIVESCAN_S_MEMORY = "Memory allocation failed";
-    public static String LIVESCAN_S_FUN = "Function unrealized";
-    public static String LIVESCAN_S_DEVICE = "The device does not exist";
-    public static String LIVESCAN_S_INIT = "Device has not been initialized";
-    public static String LIVESCAN_S_UNKOWN = "Unkown";
-    public static String LIVESCAN_S_ELSE = "Other errors";
-    public static String LIVESCAN_S_SUCCESS = "Success";
+    public static final int LIVESCAN_NOTINIT = -12;//没有初始化
+    public static final int LIVESCAN_AUTH_FAILED = -13;//认证模块校验失败
+    public static final int LIVESCAN_AUTH_ENCRYPT_FAILED = -14;//加密算法失败
+    public static final int LIVESCAN_UPIMAGE_FAILED = -15;//上传图片失败
+    public static final int LIVESCAN_NO_FINGER = -16;//没有手指
+    public static final int LIVESCAN_SEARCH_THRESHOLD = -17;//搜索相似度低于阀值
+    public static final int LIVESCAN_CLEAR_ERROR = -18;//删除错误
+    public static final int LIVESCAN_ERROR_LENGTH = -19;//入参长度不足
+    public static final int LIVESCAN_NOTADD = -20;//添加指纹特征值失败
 ```
 
 
@@ -285,7 +255,7 @@ OnUSBFingerListener回调接口说明:
 
 #### 接口调用案例
 
-参考Demo源码,FingerGAABigActivity.java
+参考Demo源码,NewFingerGAABigActivity.java
 
 
 
