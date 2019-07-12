@@ -4,14 +4,10 @@ package com.cw.demo.fingerprint.gaa;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.AppCompatTextView;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -26,7 +22,9 @@ import android.widget.Toast;
 
 import com.cw.demo.MyApplication;
 import com.cw.demo.R;
-import com.cw.fpgaasdk.GAA_API;
+import com.cw.fpgaasdk.FingerGAAFactory;
+import com.cw.fpgaasdk.GAANewAPI;
+import com.cw.fpgaasdk.GAAOldAPI;
 import com.cw.fpgaasdk.USBFingerManager;
 import com.cw.serialportsdk.utils.DataUtils;
 import com.fm.bio.ID_Fpr;
@@ -47,7 +45,8 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
     TextView msgText;
     boolean globalControl = true;
 
-    public GAA_API gaa_api;
+    //    public GAA_API mGaaApi;
+    public FingerGAAFactory mGaaApi;
 
 
     @SuppressLint("HandlerLeak")
@@ -60,7 +59,6 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         initview();
-
     }
 
 
@@ -125,21 +123,45 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
         USBFingerManager.getInstance(this).openUSB(new USBFingerManager.OnUSBFingerListener() {
             @Override
             public void onOpenUSBFingerSuccess(String device) {
+                MyApplication.getApp().cancleProgressDialog();
                 if (device.equals(USBFingerManager.BYD_BIG_DEVICE2)) {
-                    MyApplication.getApp().cancleProgressDialog();
-                    gaa_api = new GAA_API(NewFpGAAActivity.this);
-                    int ret = gaa_api.openGAA();
-                    if (ret == GAA_API.LIVESCAN_SUCCESS) {
-                        updateMsg("open device success");
-                    } else if (ret == GAA_API.LIVESCAN_NOTINIT) {
+
+                    mGaaApi = new GAANewAPI(NewFpGAAActivity.this);
+//                    mGaaApi = new GAA_API(NewFpGAAActivity.this);
+                    int ret = mGaaApi.openGAA();
+                    if (ret == FingerGAAFactory.LIVESCAN_SUCCESS) {
+                        updateMsg("open device success 1");
+                    } else if (ret == FingerGAAFactory.LIVESCAN_NOTINIT) {
                         updateMsg("not init");
-                    } else if (ret == GAA_API.LIVESCAN_AUTH_FAILED) {
+                    } else if (ret == FingerGAAFactory.LIVESCAN_AUTH_FAILED) {
                         updateMsg("auth failed");
                     } else {
                         updateMsg("unknown " + ret);
                     }
 
+                } else if (device.equals(USBFingerManager.BYD_BIG_DEVICE)) {
+                    mGaaApi = new GAAOldAPI(NewFpGAAActivity.this);
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            int ret = mGaaApi.openGAA();
+                            if (ret == FingerGAAFactory.LIVESCAN_SUCCESS) {
+                                updateMsg("open device success 2");
+                            } else if (ret == FingerGAAFactory.LIVESCAN_NOTINIT) {
+                                updateMsg("not init");
+                            } else if (ret == FingerGAAFactory.LIVESCAN_AUTH_FAILED) {
+                                updateMsg("auth failed");
+                            } else {
+                                String msg = mGaaApi.ErrorInfo(ret);
+                                updateMsg("unknown " + ret);
+                                updateMsg("msg =" + msg);
+                            }
+                        }
+                    },1000);
                 } else {
+                    updateMsg("开发包和指纹模块不一致! 请联系商务 " + device);
+//                    Toast.makeText(NewFpGAAActivity.this, "device ="+device, Toast.LENGTH_SHORT).show();
                     Toast.makeText(NewFpGAAActivity.this, "开发包和指纹模块不一致! 请联系商务", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -158,8 +180,8 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
         btnStatus(true);
         globalControl = false;
         updateMsg("设备已关闭");
-        if (gaa_api != null) {
-            gaa_api.closeGAA();
+        if (mGaaApi != null) {
+            mGaaApi.closeGAA();
         }
         USBFingerManager.getInstance(this).closeUSB();
     }
@@ -205,7 +227,7 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
             case R.id.clear:
                 updateMsg(null);
 
-                if (GAA_API.LIVESCAN_SUCCESS != gaa_api.PSEmpty()) {
+                if (FingerGAAFactory.LIVESCAN_SUCCESS != mGaaApi.PSEmpty()) {
                     updateMsg("清空指纹库失败");
                 }
                 updateMsg("清空指纹库成功");
@@ -227,21 +249,21 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
                 if (globalControl == false) {
                     return -1;
                 }
-                while (gaa_api.PSGetImage() != GAA_API.LIVESCAN_NO_FINGER) {
-
+                while (mGaaApi.PSGetImage() != FingerGAAFactory.LIVESCAN_NO_FINGER) {
                     if (globalControl == false) {
                         return -1;
                     }
                     sleep(20);
                 }
-                while (gaa_api.PSGetImage() == GAA_API.LIVESCAN_NO_FINGER) {
+                while (mGaaApi.PSGetImage() == FingerGAAFactory.LIVESCAN_NO_FINGER) {
 
                     if (globalControl == false) {
                         return -1;
                     }
+                    publishProgress("mGaaApi.PSGetImage():" + mGaaApi.PSGetImage());
                     sleep(10);
                 }
-                if ((ret = gaa_api.PSUpImage(gaa_api.PS_FingerBuf)) != ID_Fpr.LIVESCAN_SUCCESS) {
+                if ((ret = mGaaApi.PSUpImage(mGaaApi.PS_FingerBuf)) != ID_Fpr.LIVESCAN_SUCCESS) {
                     publishProgress("上传图像失败:" + ret);
                     continue;
                 }
@@ -259,7 +281,7 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
         @Override
         protected void onProgressUpdate(String... values) {
             if (values[0].equals("OK")) {
-                updateFingerImg(gaa_api.PS_FingerBuf);
+                updateFingerImg(mGaaApi.PS_FingerBuf);
                 return;
             }
             updateMsg(values[0]);
@@ -282,21 +304,21 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
                 if (globalControl == false) {
                     return -1;
                 }
-                while (gaa_api.PSGetImage() != GAA_API.LIVESCAN_NO_FINGER) {
+                while (mGaaApi.PSGetImage() != FingerGAAFactory.LIVESCAN_NO_FINGER) {
                     if (globalControl == false) {
                         return -1;
                     }
 
                     sleep(20);
                 }
-                while (gaa_api.PSGetImage() == GAA_API.LIVESCAN_NO_FINGER) {
+                while (mGaaApi.PSGetImage() == FingerGAAFactory.LIVESCAN_NO_FINGER) {
                     if (globalControl == false) {
                         return -1;
                     }
                     sleep(10);
                 }
 
-                if ((ret = gaa_api.PSUpImage(gaa_api.PS_FingerBuf)) != GAA_API.LIVESCAN_SUCCESS) {
+                if ((ret = mGaaApi.PSUpImage(mGaaApi.PS_FingerBuf)) != FingerGAAFactory.LIVESCAN_SUCCESS) {
                     publishProgress("上传图像失败:" + ret);
                     continue;
                 }
@@ -305,7 +327,7 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
                 byte[] mFeature = new byte[ID_Fpr.LIVESCAN_FEATURE_SIZE];
                 int[] fingerId = new int[1];
                 //生成模板
-                if ((ret = gaa_api.PSGenChar(mFeature, fingerId)) != GAA_API.LIVESCAN_SUCCESS) {
+                if ((ret = mGaaApi.PSGenChar(mFeature, fingerId)) != FingerGAAFactory.LIVESCAN_SUCCESS) {
                     publishProgress("生成特征失败:" + ret);
                     continue;
                 } else {
@@ -340,7 +362,7 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
         @Override
         protected void onProgressUpdate(String... values) {
             if (values[0].equals("OK")) {
-                updateFingerImg(gaa_api.PS_FingerBuf);
+                updateFingerImg(mGaaApi.PS_FingerBuf);
                 return;
             }
             if (values[0].equals("updateProgress")) {
@@ -367,30 +389,32 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
                 if (globalControl == false) {
                     return -1;
                 }
-                while (gaa_api.PSGetImage() == GAA_API.LIVESCAN_NO_FINGER) {
+                while (mGaaApi.PSGetImage() == FingerGAAFactory.LIVESCAN_NO_FINGER) {
                     if (globalControl == false) {
                         return -1;
                     }
                     sleep(20);
                 }
-                if ((ret = gaa_api.PSUpImage(gaa_api.PS_FingerBuf)) != GAA_API.LIVESCAN_SUCCESS) {
+                if ((ret = mGaaApi.PSUpImage(mGaaApi.PS_FingerBuf)) != FingerGAAFactory.LIVESCAN_SUCCESS) {
                     continue;
                 }
                 publishProgress("OK");
 
                 byte[] mFeature = new byte[ID_Fpr.LIVESCAN_FEATURE_SIZE];
-                if (gaa_api.PSGenChar(mFeature) != GAA_API.LIVESCAN_SUCCESS) {
+                if (mGaaApi.PSGenChar(mFeature) != FingerGAAFactory.LIVESCAN_SUCCESS) {
                     continue;
                 }
                 time = System.currentTimeMillis();
 
-                if (GAA_API.LIVESCAN_SUCCESS != gaa_api.PSSearch(mFeature, fingerId)) {
+                int code = mGaaApi.PSSearch(mFeature, fingerId);
+                if (FingerGAAFactory.LIVESCAN_SUCCESS != code) {//mGaaApi.PSSearch(mFeature, fingerId)
                     publishProgress("没有找到此指纹");
+                    publishProgress("code = "+code);
                     continue;
                 }
 
 //                int[] fingerId1 = new int[3];
-//                gaa_api.newTime(mFeature, fingerId1);
+//                mGaaApi.newTime(mFeature, fingerId1);
 
                 updateMsg("search time = " + (System.currentTimeMillis() - time));
                 publishProgress("成功搜索到此指纹,ID===> 0 =" + fingerId[0]);
@@ -407,7 +431,7 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
         @Override
         protected void onProgressUpdate(String... values) {
             if (values[0].equals("OK")) {
-                updateFingerImg(gaa_api.PS_FingerBuf);
+                updateFingerImg(mGaaApi.PS_FingerBuf);
                 return;
             }
             updateMsg(values[0]);
@@ -430,21 +454,21 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
 //                if (globalControl == false) {
 //                    return -1;
 //                }
-//                while (gaa_api.PSGetImage() != GAA_API.LIVESCAN_NO_FINGER) {
+//                while (mGaaApi.PSGetImage() != GAA_API.LIVESCAN_NO_FINGER) {
 //                    if (globalControl == false) {
 //                        return -1;
 //                    }
 //
 //                    sleep(20);
 //                }
-//                while (gaa_api.PSGetImage() == GAA_API.LIVESCAN_NO_FINGER) {
+//                while (mGaaApi.PSGetImage() == GAA_API.LIVESCAN_NO_FINGER) {
 //                    if (globalControl == false) {
 //                        return -1;
 //                    }
 //                    sleep(10);
 //                }
 //
-//                if ((ret = gaa_api.PSUpImage(gaa_api.PS_FingerBuf)) != GAA_API.LIVESCAN_SUCCESS) {
+//                if ((ret = mGaaApi.PSUpImage(mGaaApi.PS_FingerBuf)) != GAA_API.LIVESCAN_SUCCESS) {
 //                    publishProgress("上传图像失败:" + ret);
 //                    continue;
 //                }
@@ -453,7 +477,7 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
 //                byte[] mFeature = new byte[ID_Fpr.LIVESCAN_FEATURE_SIZE];
 //                int[] fingerId = new int[1];
 //                //生成模板
-//                if ((ret = gaa_api.PSGenChar2(mFeature,fingerId)) != GAA_API.LIVESCAN_SUCCESS) {
+//                if ((ret = mGaaApi.PSGenChar2(mFeature,fingerId)) != GAA_API.LIVESCAN_SUCCESS) {
 //                    publishProgress("生成特征失败:" + ret);
 //                    continue;
 //                } else {
@@ -488,7 +512,7 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
 //        @Override
 //        protected void onProgressUpdate(String... values) {
 //            if (values[0].equals("OK")) {
-//                updateFingerImg(gaa_api.PS_FingerBuf);
+//                updateFingerImg(mGaaApi.PS_FingerBuf);
 //                return;
 //            }
 //            if (values[0].equals("updateProgress")) {
@@ -505,7 +529,7 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
             updateMsg("updateFingerImg");
 //            Bitmap bitmap = BitmapFactory.decodeByteArray(fpBmp, 0, fpBmp.length);
 //            fingerImage.setImageBitmap(bitmap);
-            fingerImage.setImageBitmap(gaa_api.DataToBmp(fpBmp));
+            fingerImage.setImageBitmap(mGaaApi.DataToBmp(fpBmp));
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -268,7 +268,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
         switch (tag) {
 
-            case "FpGAAActivity":
+            case "NewFpGAAActivity":
                 //GAA指纹
                 mFriendDialog.setMessage(getResources().getString(R.string.general_usb_fp_tips));
 
