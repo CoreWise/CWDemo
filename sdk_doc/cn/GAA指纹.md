@@ -132,9 +132,9 @@ OnUSBFingerListener回调接口说明:
 ```
 
 
-| GAA GAA_API API接口 | 接口说明 |
+| GAA GaaApiBase API接口 | 接口说明 |
 | :----- | :---- |
-| GAA_API| 构造函数 |
+|GaaFingerFactory().createGAAFinger(String,Context)| 构造函数，返回GaaApiBase，GaaApiBase.ZiDevice新固件，GaaApiBase.BHMDevice老固件 |
 |openGAA|打开模组|
 |closeGAA|关闭模组|
 |PSGetImage|GAA采集指纹图片,并保存在本地|
@@ -146,9 +146,12 @@ OnUSBFingerListener回调接口说明:
 
 具体说明:
 
-- public GAA_API(Context context)
+- public GaaApiBase createGAAFinger(String gaaSelect, Context context)
     ```
     构造函数
+
+    String gaaSelect 选择初始化GaaApiBase具体Gaa指纹
+    GaaApiBase.ZiDevice新固件 | GaaApiBase.BHMDevice老固件
     ```
 
 - public int openGAA()
