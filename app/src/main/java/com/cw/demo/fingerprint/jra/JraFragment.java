@@ -111,12 +111,15 @@ public class JraFragment extends BaseFragment {
                 getInfos();
                 break;
             case R.id.clear:
-                parentActivity.updateMsg(null);
+                updateMsg(null);
+//                parentActivity.updateMsg(null);
 
                 if (JRA_API.PS_OK != parentActivity.jraApi.PSEmpty()) {
-                    parentActivity.updateMsg("清空指纹库失败");
+                    updateMsg("清空指纹库失败");
+//                    parentActivity.updateMsg("清空指纹库失败");
                 }
-                parentActivity.updateMsg("清空指纹库成功");
+                updateMsg("清空指纹库成功");
+//                parentActivity.updateMsg("清空指纹库成功");
 
                 break;
         }
@@ -131,15 +134,20 @@ public class JraFragment extends BaseFragment {
         int[] userId = parentActivity.jraApi.getUserId();
         int userMaxId = parentActivity.jraApi.getUserMaxId();
 
-        parentActivity.updateMsg("jra has " + userIndex + " fp");
+        updateMsg("jra has " + userIndex + " fp");
+//        parentActivity.updateMsg("jra has " + userIndex + " fp");
 
-        parentActivity.updateMsg("there are :");
+        updateMsg("there are :");
+//        parentActivity.updateMsg("there are :");
         for (int i = 0; i < userIndex; i++) {
-            parentActivity.updateMsg("id:" + userId[i]);
+            updateMsg("id:" + userId[i]);
+//            parentActivity.updateMsg("id:" + userId[i]);
         }
         if (userIndex != 0) {
-            parentActivity.updateMsg("Max Id：" + userMaxId);
-            parentActivity.updateMsg("jra has " + userIndex + " fp");
+            updateMsg("Max Id：" + userMaxId);
+            updateMsg("jra has " + userIndex + " fp");
+//            parentActivity.updateMsg("Max Id：" + userMaxId);
+//            parentActivity.updateMsg("jra has " + userIndex + " fp");
 
         }
     }
@@ -379,14 +387,20 @@ public class JraFragment extends BaseFragment {
                 btnStatus(true);
             } else {
                 bar.setProgress(0);
-                parentActivity.updateMsg(getString(R.string.fp_jra_enroll_failure));
+                updateMsg(getString(R.string.fp_jra_enroll_failure));
+//                parentActivity.updateMsg(getString(R.string.fp_jra_enroll_failure));
                 globalControl = false;
             }
         }
 
         @Override
         protected void onPreExecute() {
-            parentActivity.updateMsg(getString(R.string.fp_jra_enroll_start));
+            updateMsg(getString(R.string.fp_jra_enroll_start));
+
+//            if (isAdded())
+//            {
+//                parentActivity.updateMsg(getString(R.string.fp_jra_enroll_start));
+//            }
         }
 
         @Override
@@ -400,7 +414,13 @@ public class JraFragment extends BaseFragment {
                 bar.setProgress(Progress);
                 return;
             }
-            parentActivity.updateMsg(values[0]);
+
+            updateMsg(values[0]);
+
+//            if (isAdded())
+//            {
+//                parentActivity.updateMsg(values[0]);
+//            }
         }
     }
 
@@ -458,5 +478,12 @@ public class JraFragment extends BaseFragment {
         }
     }
 
+    public void updateMsg(String s)
+    {
+        if (isAdded())
+        {
+            parentActivity.updateMsg(s);
+        }
+    }
 
 }
