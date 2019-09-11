@@ -28,6 +28,7 @@
 - R2000超高频
 - 北斗短报文
 - M1 RFID
+- 125K RFID SDK
 - M1 NFC
 - 15693 NFC
 
@@ -50,7 +51,8 @@
 | R2000超高频     | u8                                                         | [r2000uhf_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/r2000uhf_sdk_20190429.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/R2000超高频.md" target="_blank">查看</a> |
 | 串口SDK         | 需要串口的功能需要添加该sdk,如HX超高频,身份证,北斗,M1 RFID | [serialport_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/serialport_sdk_20190612.aar) |                                    None                          |
 | 北斗短报文SDK         | u8                                                         | [beidou_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/beidou_sdk_20190614.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/北斗.md" target="_blank">查看</a> |
-| M1 RFID SDK     | u3,CFON640                                                 | [m1rfid_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/m1rfid_sdk_20190521.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/M1RFID.md" target="_blank">查看</a> |
+| M1 RFID SDK     | u3,CFON640                                                 | [m1rfid_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/m1rfid_sdk_20190911.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/M1RFID.md" target="_blank">查看</a> |
+| 125K RFID SDK     | u8                                              | [m1rfid_sdk_*.aar(125K开包集成在M1RFID开发包，2019.09.11)](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/m1rfid_sdk_20190911.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/125KRFID.md" target="_blank">查看</a> |
 | M1 NFC          | 该功能调用Android标准M1接口，无SDK，有调用标准接口Demo     | 无                 |              None            |
 | ISO15693 NFC       | 该功能调用Android标准15693接口，无SDK，有调用标准接口Demo  | 无              |              None            |
 |网络身份证|带NFC机器|请跳转[网络身份证](https://github.com/CoreWise/NetReadIDCard)|None|
@@ -77,6 +79,7 @@ Features include :
 - R2000 UHF
 - BeiDou
 - M1 RFID
+- 125K RFID SDK
 - M1 NFC
 - 15693 NFC
 
@@ -101,6 +104,7 @@ Features include :
 | SerialPort SDK        | Need to add the sdk function, such as HX UHF, ID card, Beidou, M1 RFID | [serialport_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/serialport_sdk_20190612.aar) |            None                                                  |
 | BeiDou SDK            | u8                                                           | [beidou_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/beidou_sdk_20190614.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/BeiDou.md" target="_blank">View</a> |
 | M1 RFID SDK           | u3,CFON640                                                   | [m1rfid_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/m1rfid_sdk_20190521.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/M1RFID.md" target="_blank">View</a> |
+| 125K RFID SDK     | u8                                              | [m1rfid_sdk_*.aar( M1RFID SDK contains 125KRFID SDK ，2019.09.11)](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/m1rfid_sdk_20190911.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/125KRFID.md" target="_blank">查看</a> |
 | M1 NFC                | This function calls the Android standard M1 interface, no SDK, there is a call standard interface Demo | No                                                           |                  None                                            |
 | ISO15693 NFC             | This function calls the Android standard 15693 interface, no SDK, there is a call standard interface Demo | No                                                           |                  None                                            |
 

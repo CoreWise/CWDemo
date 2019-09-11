@@ -241,6 +241,7 @@ public class JraFragment extends BaseFragment {
                     }
                     sleep(20);
                 }
+
                 while (parentActivity.jraApi.PSGetImage() == JRA_API.PS_NO_FINGER) {
 
                     if (globalControl == false) {
@@ -253,6 +254,7 @@ public class JraFragment extends BaseFragment {
                     publishProgress(getString(R.string.fp_jra_up_image_failure) + ret);
                     continue;
                 }
+
                 if ((ret = parentActivity.jraApi.WriteBmp(parentActivity, JRA_API.PS_FingerBuf)) != 0) {
                     publishProgress(getString(R.string.fp_jra_write_bmp_failure) + ret);
                     continue;

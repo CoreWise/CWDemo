@@ -16,6 +16,8 @@
         <item>条码</item>
 
         <item>RFID(M1卡)</item>
+                <item>RFID(125K)</item>
+
         <item>身份证(RFID)</item>
         <item>身份证-GAA</item>
 
@@ -38,6 +40,7 @@
         <item>@drawable/icon_barcode</item>
 
         <item>@drawable/icon_m1</item>
+        <item>@drawable/icon_rfid125k</item>
         <item>@drawable/icon_idcard</item>
         <item>@drawable/icon_idcard_gaa</item>
 

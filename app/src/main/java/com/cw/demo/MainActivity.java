@@ -45,6 +45,7 @@ import com.cw.demo.idcard.ComparisonActivity;
 import com.cw.demo.idcard.IDCardActivity;
 import com.cw.demo.m1.NFCM1Activity;
 import com.cw.demo.m1.RFIDM1Activity;
+import com.cw.demo.rfid.RFIDFor125KActivity;
 import com.cw.demo.ui.FriendDialog;
 import com.cw.demo.utils.BaseUtils;
 
@@ -153,7 +154,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
     private void initData() {
         keys = getResources().getStringArray(R.array.general_functions);
-        icons=new int[keys.length];
+        icons = new int[keys.length];
         for (int i = 0; i < keys.length; i++) {
             icons[i] = getResources().obtainTypedArray(R.array.general_icons).getResourceId(i, 0);
         }
@@ -165,6 +166,10 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
         intent = new Intent(this, RFIDM1Activity.class);
         intent.putExtra("tag", "RFIDM1Activity");
+        mListIntent.add(intent);
+
+        intent = new Intent(this, RFIDFor125KActivity.class);
+        intent.putExtra("tag", "RFIDFor125KActivity");
         mListIntent.add(intent);
 
         intent = new Intent(this, IDCardActivity.class);

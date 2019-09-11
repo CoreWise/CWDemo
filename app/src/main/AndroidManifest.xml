@@ -34,30 +34,30 @@
         </activity>
         <activity
             android:name=".barcode.BarCodeActivity"
-                        android:configChanges="orientation|keyboardHidden|screenSize"
+            android:configChanges="orientation|keyboardHidden|screenSize"
 
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
             android:name=".idcard.IDCardActivity"
-                        android:configChanges="orientation|keyboardHidden|screenSize"
+            android:configChanges="orientation|keyboardHidden|screenSize"
 
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
 
         <!--<activity-->
-            <!--android:name=".fingerprint.gaa.FpGAAActivity"-->
-            <!--android:configChanges="orientation|keyboardHidden|screenSize"-->
-                        <!--android:screenOrientation="portrait"-->
+        <!--android:name=".fingerprint.gaa.FpGAAActivity"-->
+        <!--android:configChanges="orientation|keyboardHidden|screenSize"-->
+        <!--android:screenOrientation="portrait"-->
 
-            <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>-->
+        <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>-->
 
         <activity
             android:name=".fingerprint.gaa.NewFpGAAActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
 
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
             android:name=".hxuhf.HXUHFActivity"
@@ -69,56 +69,64 @@
 
         <activity
             android:name=".ISO_15693.NFCISO15693Activity"
-                        android:configChanges="orientation|keyboardHidden|screenSize"
+            android:configChanges="orientation|keyboardHidden|screenSize"
 
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
             android:name=".beidou.BeiDouActivity"
-                        android:configChanges="orientation|keyboardHidden|screenSize"
+            android:configChanges="orientation|keyboardHidden|screenSize"
 
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".R2000UHF.UHF2000Activity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-                        android:screenOrientation="landscape"
+            android:screenOrientation="landscape"
 
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".m1.NFCM1Activity"
-                        android:configChanges="orientation|keyboardHidden|screenSize"
+            android:configChanges="orientation|keyboardHidden|screenSize"
 
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-       <!-- <activity android:name=".fingerprint.sy.FingerprintActivity" />
+        <!-- <activity android:name=".fingerprint.sy.FingerprintActivity" />
 
 
-        <activity android:name=".idcard_nfclocal.IDCard_NFC_Local_DemoActivity">
+         <activity android:name=".idcard_nfclocal.IDCard_NFC_Local_DemoActivity">
 
-             <meta-data
-                android:name="android.nfc.action.TECH_DISCOVERED"
-                android:resource="@xml/nfc_tech_filter" />
+              <meta-data
+                 android:name="android.nfc.action.TECH_DISCOVERED"
+                 android:resource="@xml/nfc_tech_filter" />
 
-        </activity>-->
+         </activity>-->
         <activity android:name=".GetVersionActivity" />
-        <activity android:name=".m1.RFIDM1Activity"
+        <activity
+            android:name=".m1.RFIDM1Activity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-                        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
 
-        <activity android:name=".idcard.ComparisonActivity"
+        <activity
+            android:name=".idcard.ComparisonActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-                        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
->
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
-        <activity android:name=".fingerprint.gab.FpGABActivity"
-                    android:configChanges="orientation|keyboardHidden|screenSize"
-                        android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-
-
-        <activity android:name=".fingerprint.jra.JRAActivity"
+        <activity
+            android:name=".fingerprint.gab.FpGABActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-                        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+
+        <activity
+            android:name=".fingerprint.jra.JRAActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".rfid.RFIDFor125KActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize">
+
+        </activity>
 
     </application>
 

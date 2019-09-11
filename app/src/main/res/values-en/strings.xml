@@ -16,6 +16,8 @@
         <item>BarCode</item>
 
         <item>M1Card(RFID)</item>
+                        <item>RFID(125K)</item>
+
         <item>身份证(RFID)</item>
         <item>身份证-GAA</item>
 
