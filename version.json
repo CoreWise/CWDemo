@@ -2,10 +2,10 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 5,
-  "VersionName": "V1.5",
-  "ModifyContent": "1、新增机型判断方式,需要更换系统\r\n2、jra指纹优化\r\n3、gab指纹bug处理\r\n4、gaa指纹优化\r\n5、超高频兼容800\r\n",
-  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.5/DemoApp_V1.5_release.apk",
+  "VersionCode": 7,
+  "VersionName": "V1.7",
+  "ModifyContent": "1、新增RFID125K功能\r\n",
+  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.7/DemoApp_V1.7_release.apk",
   "ApkSize": 8202,
   "ApkMd5": ""
 }

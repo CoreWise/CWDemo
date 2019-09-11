@@ -41,8 +41,8 @@ android {
         //versionCode 5
         //versionName "DemoApp_V1.5"
 
-        versionCode 6
-        versionName "DemoApp_V1.6"
+        versionCode 7
+        versionName "DemoApp_V1.7"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
  
