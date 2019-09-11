@@ -194,6 +194,11 @@ public class HXUHFActivity extends BaseUHFActivity {
                             }
                         });
                     }
+
+                    @Override
+                    public void end() {
+
+                    }
                 });
             }
         });
