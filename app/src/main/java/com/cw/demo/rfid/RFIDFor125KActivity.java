@@ -1,13 +1,16 @@
 package com.cw.demo.rfid;
 
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -89,5 +92,27 @@ public class RFIDFor125KActivity extends AppCompatActivity {
             case R.id.tv_result:
                 break;
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.general_tips);
+            builder.setMessage(R.string.general_exit);
+
+            //设置确定按钮
+            builder.setNegativeButton(R.string.general_yes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            //设置取消按钮
+            builder.setPositiveButton(R.string.general_no, null);
+            //显示提示框
+            builder.show();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
