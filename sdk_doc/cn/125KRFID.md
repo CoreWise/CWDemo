@@ -89,6 +89,7 @@
 | RFIDFor125KAPI() | 构造函数 |
 | openRFID125K() | 打开125K RFID|
 | closeRFID125K() | 关闭125K RFID |
+|setReFreshTime(int reFreshTime)|刷新频率,单位ms，默认200ms|
 |setOnResultListenner|结果回调|
 
 
@@ -118,6 +119,13 @@
   关闭RFID 125K模块
 
   ```
+- public void setReFreshTime(int reFreshTime)
+
+  ```
+  设置刷新频率，单位ms，默认200ms
+
+  ```  
+  
   
 - setOnResultListenner(OnResultListenner onResultListenner)
 
