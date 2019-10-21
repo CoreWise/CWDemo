@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.ToggleButton;
 
 
+import com.cw.demo.MyApplication;
 import com.cw.demo.R;
 import com.cw.demo.barcode.BarCodeActivity;
 import com.cw.demo.utils.BaseUtils;
@@ -86,6 +87,9 @@ public class ScannerSettingFragment extends Fragment {
         etEnd.setText(Settings.System.getString(getActivity().getContentResolver(), "SCANNER_SUFFIX"));
         spEndchar.setSelection(Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_TERMINAL_CHAR", 0));
 
+        etInterval.setText(""+(Integer) MyApplication.getApp().getParam(getActivity(), "intervaltime", 800));
+
+
         boolean soundOn = Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_SOUND_ON", 1) == 1;
         boolean vibrationOn = Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_VIBRATION_ON", 0) == 1;
 
@@ -103,11 +107,12 @@ public class ScannerSettingFragment extends Fragment {
 
         spOutputmode.setSelection(outputMode);
 
-       boolean isShowToast = Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_ISSHOWTOAST", 1) == 1; //是否打印吐司，默认打印
+        boolean isShowToast = Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_ISSHOWTOAST", 1) == 1; //是否打印吐司，默认打印
 
         tbToast.setChecked(isShowToast);
 
         initSetting();
+
     }
 
 
@@ -118,7 +123,7 @@ public class ScannerSettingFragment extends Fragment {
         if (isVisibleToUser) {
 
         } else {
-           // btnSet.setText("取消禁用");
+            // btnSet.setText("取消禁用");
         }
         super.setUserVisibleHint(isVisibleToUser);
     }
@@ -166,9 +171,10 @@ public class ScannerSettingFragment extends Fragment {
 
                     int i = Integer.parseInt(s);
 
-                    //App.getApp().setParam(getActivity(),"intervaltime",i);
+                    MyApplication.getApp().setParam(getActivity(), "intervaltime", i);
 
-                    Settings.System.putInt(getActivity().getContentResolver(),"scan_timeout",i);
+
+                    Settings.System.putInt(getActivity().getContentResolver(), "scan_timeout", i);
 
 
                 } else if (s1.equals(getString(R.string.barcode_setting_enable))) {//||s1.equals("Enable")
