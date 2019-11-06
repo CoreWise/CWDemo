@@ -23,6 +23,7 @@
 - 身份证(RFID)
 - 本地身份证(NFC)
 - GAA指纹
+- GAB指纹
 - JRA指纹
 - PhyChips超高频
 - R2000超高频
@@ -45,6 +46,7 @@
 | 条码            | u1,u3,u8,CFON640,A370                                      | [barcode_sdk_*.aar](<https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/barcode_sdk_20190429.aar>) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/条码.md" target="_blank">查看</a> |
 | 身份证          | u3,u8,CFON640,A370,新A370                                  | [idcard_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/idcard_sdk_20190617.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/身份证.md" target="_blank">查看</a> |
 | GAA指纹       | u3,u8                                                      | [fp_gaa_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/fp_gaa_sdk_20190722.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/GAA指纹.md" target="_blank">查看</a> |
+| GAB指纹       | u3,u8,新A370                                                     | [fp_gab_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/fp_gab_sdk_20190701.aar) |  |
 | JRA小指纹       | u3,u8                                                      | [fp_jra_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/fp_jra_sdk_20190731.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/JRA指纹.md" target="_blank">查看</a> |
 | FBB FingerPrint       | u3,u8,新370                                          |请跳转 [FBB FingerPrint Demo](https://github.com/CoreWise/FBBFingerDemo) |  |
 | PhyChips超高频      | u3,CFON640,A370                                            | [phychips_uhf_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/phychips_uhf_sdk_20190801.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/phychips超高频.md" target="_blank">查看</a> |
@@ -74,6 +76,7 @@ Features include :
 - IDCard(RFID)
 - Local IDCard(NFC)
 - GAA FingerPrint
+- GAB FingerPrint
 - JRA FingerPrint
 - HX UHF
 - R2000 UHF
@@ -97,6 +100,7 @@ Features include :
 | BarCode               | u1,u3,u8,CFON640,A370                                        | [barcode_sdk_*.aar](<https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/barcode_sdk_20190429.aar>) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/BarCode.md" target="_blank">View</a> |
 | IDCard                | u3,u8,CFON640,A370,New A370                                  | [idcard_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/idcard_sdk_20190617.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/IDCard.md" target="_blank">View</a> |
 | GAA FingerPrint   | u3,u8                                                        | [fp_gaa_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/fp_gaa_sdk_20190722.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/GAAFingerPrint.md" target="_blank">View</a> |
+| GAB FingerPrint    | u3,u8,new A370                                                     | [fp_gab_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/fp_gab_sdk_20190701.aar) |  |
 | JRA FingerPrint | u3,u8                                                        | [fp_jra_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/fp_jra_sdk_20190731.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/JRAFingerPrint.md" target="_blank">View</a> |
 | FBB FingerPrint       | u3,u8,New A370                                                     | See this Project [FBB FingerPrint Demo](https://github.com/CoreWise/FBBFingerDemo) |  |
 | PhyChips UHF                | u3,CFON640,A370                                              | [phychips_uhf_sdk_*.aar](https://coding.net/u/CoreWise/p/SDK/git/raw/master/aar/phychips_uhf_sdk_20190801.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/en/HXUHF.md" target="_blank">View</a> |
