@@ -129,18 +129,23 @@ OnUSBFingerListener回调接口说明:
   
   
 - public int open(); 
+
     打开指纹设备电源
 
 - public int close(); 
+
     关闭指纹设备电源
 
 - public int prepare(); 
+
     准备采集指纹
 
 - public int finish(); 
+
     采集指纹结束
 
 - public Result capture(); 
+
     采集一帧FingerprintImage类型指纹图像
     包含FingerprintImage类型指纹图像及错误代码
     
@@ -156,6 +161,7 @@ OnUSBFingerListener回调接口说明:
 具体说明:
 
 - public byte[] convert2Bmp();
+
     将指纹图像转化为BMP图像字节序列
     byte[]类型BMP图像字节序列
     
@@ -186,24 +192,29 @@ OnUSBFingerListener回调接口说明:
 具体说明:
 
 - public static int initialize(Contextcontext,StringdbPath);
+
   初始化Bione算法context当前应用程序上下文环境dbPath指纹库文件路径返回值：错误代码
     
 - public static int  exit(); 
+
     结束Bione算法并执行清理错误代码
 
 - public static int getFingerprintQuality(FingerprintImageimage);
+
   取得指定FingerprintImage指纹图像对象质量
   参数：imageFingerprintImage类型指纹图像对象
   返回值：>=0指纹图像质量值，<0错误代码
   
   
 - public static Result extractFeature(FingerprintImageimage);
+
   从FingerprintImage指纹图像对象提取特征
   参数：imageFingerprintImage类型指纹图像对象
   返回值：包含byte[]类型指纹特征数据及错误代码
   
-- public Result 
+- public Result
   makeTemplate(byte[]feature1,byte[]feature2,byte[]feature3);
+  
   从同一手指的三个指纹特征合成模板数据 feature1同一手指第一次采集的指纹特征数据
   eature2同一手指第二次采集的指纹特征数据
   feature3同一手指第三次采集的指纹特征数据
@@ -211,74 +222,88 @@ OnUSBFingerListener回调接口说明:
 
 
 - publicstaticbooleanisFreeID(intid);
+
     判断该id在当前指纹库中是否已被注册指纹 数：id需要判断是否可用于注册的id
-    返回值：true该id尚未注册指纹，可以进行注册
-false该id已经注册过指纹或该id无效，不可注册指纹
+    返回值：true该id尚未注册指纹，可以进行注册 
+    false该id已经注册过指纹或该id无效，不可注册指纹
 
 - publicstaticintgetFreeID();
+
     功能描述：获取一个当前指纹库中未使用的id值
     返回值：>=0可用于注册的id
     <0错误代码
 
 
 - publicstaticgetFeature(intid); 
+
   功能描述：获取当前指纹库中指定id值对应的指纹特征或
   模板参数：id要获取的指纹特征的id值 包含byte[]类型指纹特征或模板数据及错误代码
 
 
 - public static Result getAllFeatures();
+
   功能描述：获取当前指纹库中所有指纹特征或模板
   返回值：包含Map<Integer,byte[]>类型指纹特征或模板数据及错误代码（请参看Bione错误代码）的Result
   实例
 
 - public static int getEnrolledCount();
+
     功能描述：获取当前指纹库中已注册指纹特征或模板数量返 回 值：>= 0 已注册入当前库的指纹特征或模板数量
     < 0 错误代码
 
 - public static int enroll(int id, byte[] feature);
+
     功能描述：注册指纹特征入当前指纹库参 数：id 需要注册入当前库的指纹 id 值
     feature 需要注册入库的指纹特征或模板数据返 回 值：错误代码说 明：必须保证 id 值在当前库中唯一，必要时可使用 isFreeID 方法判断该 id 是否已被注册或使用
     getFreeID 方法申请一个未使用的 id 值进行注册
 
 
 - public static int delete(int id);
+
     功能描述：删除当前指纹库中指定 id 对应的指纹特征参 数：id 需要从当前库中删除的指纹特征或模板 id返 回 值：错误代码
 
 
 - public static int clear();
+
     功能描述：清空当前指纹特征库参 数：无
     返 回 值：错误代码
 
 - public static Result verify(int id, byte[] feature);
+
     功能描述：将当前指纹库中 id 所对应的指纹特征和目标指纹特征进行比对参 数：id 需要比对的指纹库中的指纹 id
     feature 需要比对的目标指纹特征数据
     返 回 值：包含 Boolean 类型比对结果及错误代码
 
 
-- public static Result verify(byte[] feature1, byte[] feature2);功能描述：比对两个指纹特征是否匹配参 数：feature1 指纹特征 1
-feature2 指纹特征 2 返 回 值：包含 Boolean 类型比对结果及错误代码
+- public static Result verify(byte[] feature1, byte[] feature2);
+    功能描述：比对两个指纹特征是否匹配参 数：feature1 指纹特征 1
+    feature2 指纹特征 2 返 回 值：包含 Boolean 类型比对结果及错误代码
 
 
 - public static int identify(byte[] feature);
+
     功能描述：搜索当前指纹库，查询匹配的指纹特征对应的 id 并返回结果参 数：feature 要在当前库中进行匹配的指纹特征或模板
     返 回 值：>= 0 匹配成功，返回匹配 id
     < 0 错误代码
 
 
 - public static Result idcardVerify(byte[] idcardFeature, byte[] feature);
+
     功能描述：比对二代身份证内的指纹特征和设备取到的指纹特征是否匹配参 数：idcardFeature 二代身份证内的指纹特征
     feature 设备取到的指纹特征
-    返 回 值：包含 Boolean 类型比对结果及错误代码（请参看 Bione 错误代码）的 Result 实例
+    返 回 值：包含 Boolean 类型比对结果及错误代码的 Result 实例
     说 明：无。
     < 0 错误代码
 
 
 - public static Result idcardIdentify(Map<String, byte[]> idcardFeatureMap, byte[] feature);
+
     功能描述：比对用户提供的二代身份证指纹特征集合和设备取到的指纹特征是否有匹配参 数：idcardFeatureMap 要进行 1:N 比对的二代身份证指纹特征集合
     feature 设备取到的指纹特征
     返 回 值：包含 String 类型比对匹配结果及错误代码
 
 - public static void setSecurityLevel(int level);
+
     功能描述：设置指纹比对的安全等级参 数：level 指纹比对的安全等级（HIGH、MEDIUM、LOW）
 
 
