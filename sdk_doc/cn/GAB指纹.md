@@ -301,9 +301,7 @@ OnUSBFingerListener回调接口说明:
 
     功能描述：将当前指纹库中 id 所对应的指纹特征和目标指纹特征进行比对
     
-    参 数：id 需要比对的指纹库中的指纹 id
-    
-            feature 需要比对的目标指纹特征数据
+    参 数：id 需要比对的指纹库中的指纹 id ，feature 需要比对的目标指纹特征数据
     
     返 回 值：包含 Boolean 类型比对结果及错误代码
 
@@ -312,8 +310,7 @@ OnUSBFingerListener回调接口说明:
 
     功能描述：比对两个指纹特征是否匹配
     
-    参 数：feature1 指纹特征 1
-    feature2 指纹特征 2 
+    参 数：feature1 指纹特征 1 ，feature2 指纹特征 2
     
     返 回 值：包含 Boolean 类型比对结果及错误代码
 
