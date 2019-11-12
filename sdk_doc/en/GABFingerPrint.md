@@ -1,15 +1,15 @@
 # GAB Large fingerprint
 
 
-* [1.GAB Large fingerprint development kit description](#GAA大指纹开发包说明)
-* [2.Secondary development description](#二次开发说明)
-  * [2.1 AndroidStudio Engineering configuration description](#AndroidStudio工程配置说明)
-  * [2.2 AndroidManifest.xml Configuration instructions](#AndroidManifest配置说明)
-  * [2.3 Interface instructions](#接口说明)
-  * [2.4 Interface invocation process](#接口调用流程)
-  * [2.5 Interface invocation case](#接口调用案例)
-* [3.Summary of secondary development problems](#二次开发问题汇总)
+* [1.GAB Large fingerprint development kit description](#111)
+* [2.Secondary development description](#112)
+  * [2.1 AndroidStudio Engineering configuration description](#113)
+  * [2.2 AndroidManifest.xml Configuration instructions](#114)
+  * [2.3 Interface instructions](#115)
+  * [2.4 Interface invocation process](#116)
+* [3.Summary of secondary development problems](#117)
 
+<a name="111"></a>
 ### GAB Large fingerprint development kit description
 
    1.1 Support GAB fingerprint module;
@@ -22,12 +22,15 @@
    1.4
    [GAB large fingerprint development kit download address](https://github.com/CoreWise/CWDemo#user-content-zh)
 
+<a name="112"></a>
 ### Secondary development description
 
    Since the Qualcomm CPU of this machine only supports one USB port, when using the GAB large fingerprint module, it is necessary to first call the USB management class to switch the USB to the fingerprint module. At this time, USB cannot be used for charging, data line communication and other operations under normal circumstances.
    In this case, USB data line debugging can not be used, it is recommended that the network adb debugging;
 
    Android Studio is recommended to install the Android Wifi adb plug-in for adb debugging;
+   
+<a name="113"></a>
 #### AndroidStudio Engineering configuration description
 
 - 1.Add aar to the project libs directory
@@ -62,7 +65,7 @@
  }
 
 ```
-
+<a name="114"></a>
 #### AndroidManifest Configuration instructions
 
 
@@ -78,6 +81,7 @@ android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 ```
 
+<a name="115"></a>
 #### Interface instructions
 
 
@@ -405,13 +409,13 @@ Function description: compare the fingerprint feature corresponding to id in the
 |NOT_ENROLLED|-2014|The specified ID is not registered
 
 
-
+<a name="116"></a>
 #### Interface invocation case
 
 Refer to Demo source code
 
 
-
+<a name="117"></a>
 #### Summary of secondary development problems
 
 
