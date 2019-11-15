@@ -41,8 +41,11 @@ android {
         //versionCode 5
         //versionName "DemoApp_V1.5"
 
-        versionCode 7
-        versionName "DemoApp_V1.7"
+        //versionCode 7
+        //versionName "DemoApp_V1.7"
+
+         versionCode 8
+        versionName "DemoApp_V1.8"  //兼容u8 hxuhf
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
  
@@ -130,7 +133,7 @@ dependencies {
 
     //PY超高频开发包,需要依赖串口开发包
     //HX UHF SDK,need SerialPort SDK
-    compile(name: 'phychips_uhf_sdk_20190801', ext: 'aar')
+    compile(name: 'phychips_uhf_sdk_20191114', ext: 'aar')
 
 
     //北斗开发包,需要依赖串口开发包

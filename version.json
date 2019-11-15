@@ -2,10 +2,10 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 7,
-  "VersionName": "V1.7",
-  "ModifyContent": "1、新增RFID125K功能\r\n",
-  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.7/DemoApp_V1.7_release.apk",
+  "VersionCode": 8,
+  "VersionName": "V1.8",
+  "ModifyContent": "1、U8 HXUHF功能\r\n",
+  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.8/DemoApp_V1.8_release.apk",
   "ApkSize": 8202,
   "ApkMd5": ""
 }
