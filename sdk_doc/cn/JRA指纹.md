@@ -146,6 +146,7 @@ OnUSBFingerListener回调接口说明:
 - public int openJRA()
 
     ```
+    
     /**
      * 打开模组
      *
@@ -154,8 +155,7 @@ OnUSBFingerListener回调接口说明:
      *          {@link PS_EXCEPTION:exception}
      *          {@link PS_OK:ok}
      */
-
-
+     
     ```
 
 - public int closeJRA()

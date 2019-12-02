@@ -45,7 +45,7 @@ android {
         //versionName "DemoApp_V1.7"
 
          versionCode 8
-        versionName "DemoApp_V1.8"  //兼容u8 hxuhf
+        versionName "DemoApp_V1.9"  //兼容u8 hxuhf
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
  
@@ -128,7 +128,7 @@ dependencies {
 
     //JRA小指纹开发包,需要依赖串口开发包
     //JRA FingerPrint SDK,need SerialPort SDK
-    compile(name: 'fp_jra_sdk_20190731', ext: 'aar')
+    compile(name: 'fp_jra_sdk_20190920', ext: 'aar')
 
 
     //PY超高频开发包,需要依赖串口开发包

@@ -1,9 +1,11 @@
 package com.cw.demo.m1;
 
+import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
@@ -25,14 +27,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.cw.demo.R;
 import com.cw.serialportsdk.utils.DataUtils;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,7 +50,6 @@ import butterknife.OnClick;
 
 
 /**
- *
  * NFC读M1卡是调用Android标准接口
  */
 
@@ -64,7 +73,10 @@ public class NFCM1Activity extends AppCompatActivity {
     AppCompatEditText tvData;
     @BindView(R.id.btn_write)
     AppCompatButton btnWrite;
-
+    @BindView(R.id.tv_all)
+    TextView tvAll;
+    @BindView(R.id.tv_success)
+    TextView tvSuccess;
 
     private NfcAdapter nfcAdapter;
     private PendingIntent pendingIntent;
@@ -77,22 +89,9 @@ public class NFCM1Activity extends AppCompatActivity {
 
     private MifareClassic mfc;
     private Tag tag;
-
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_nfc_m1);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        ButterKnife.bind(this);
-        setTitle("NFC读M1卡演示Demo");
-
-        initNFC();
-        initEvent();
-
-    }
+    int[] colors = new int[]{Color.BLACK, Color.BLUE, Color.RED, Color.GREEN};
+    int pick = 0;
+    private int success = 0;
 
     private void initEvent() {
 
@@ -135,7 +134,25 @@ public class NFCM1Activity extends AppCompatActivity {
         nfcAdapter.disableForegroundDispatch(this);
 
     }
+    private int sum = 0;
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_nfc_m1);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        ButterKnife.bind(this);
+        setTitle("NFC读M1卡演示Demo");
+
+        initNFC();
+        initEvent();
+
+        tvSuccess.setText(getString(R.string.barcode_scan_success, ""));
+        tvAll.setText(getString(R.string.barcode_scan_all, ""));
+
+    }
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -143,6 +160,15 @@ public class NFCM1Activity extends AppCompatActivity {
         //当该Activity接收到NFC标签时，运行该方法
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction()) || NfcAdapter.ACTION_TECH_DISCOVERED.equals(intent.getAction())) {
 
+
+            sum++;
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    tvAll.setText(getString(R.string.barcode_scan_all, sum));
+
+                }
+            });
             tvM1PasswordA.setError(null);
             tvM1PasswordB.setError(null);
             tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
@@ -204,7 +230,6 @@ public class NFCM1Activity extends AppCompatActivity {
         }
     }
 
-
     public String readBlock(Tag tag, int block) {
         mfc = MifareClassic.get(tag);
         for (String tech : tag.getTechList()) {
@@ -225,6 +250,24 @@ public class NFCM1Activity extends AppCompatActivity {
                 byte[] data = mfc.readBlock(block);
                 tvM1PasswordA.setError(null);
                 tvM1BlockResult.setText(DataUtils.toHexString(data));
+
+                tvM1BlockResult.setTextColor(colors[(pick++)]);
+
+                if (pick == colors.length) {
+                    pick = 0;
+                }
+                success++;
+                runOnUiThread(new Runnable() {
+                    @SuppressLint("StringFormatMatches")
+                    @Override
+                    public void run() {
+                        tvSuccess.setText(getString(R.string.barcode_scan_success, success));
+
+                    }
+                });
+                //写入File
+                writeToFile(DataUtils.toHexString(data));
+
             } else {
                 tvM1PasswordA.setError("密码A验证失败!");
                 tvM1BlockResult.setText("");
@@ -301,7 +344,7 @@ public class NFCM1Activity extends AppCompatActivity {
     public void onViewClicked() {
         tvData.setError(null);
 
-        if (mfc==null) {
+        if (mfc == null) {
             Toast.makeText(NFCM1Activity.this, "mfc is null!", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -315,9 +358,9 @@ public class NFCM1Activity extends AppCompatActivity {
                 if (b) {
                     //Drawable dd=n;
                     Drawable dr = NFCM1Activity.this.getDrawable(R.drawable.ic_pass);
-                                dr.setBounds(0, 0, dr.getIntrinsicWidth(), dr.getIntrinsicHeight());
+                    dr.setBounds(0, 0, dr.getIntrinsicWidth(), dr.getIntrinsicHeight());
 
-                    tvData.setError("写入数据成功",dr);
+                    tvData.setError("写入数据成功", dr);
                 } else {
 
                     tvData.setError("写入数据失败");
@@ -327,7 +370,7 @@ public class NFCM1Activity extends AppCompatActivity {
 
     }
 
-        @Override
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -347,6 +390,34 @@ public class NFCM1Activity extends AppCompatActivity {
             builder.show();
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+
+    public void writeToFile(String data) {
+
+
+        File file = new File("/sdcard/m1.txt");
+
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        BufferedWriter out = null;
+        try {
+            out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true)));
+            out.write(data + "\r\n");
+            out.flush();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 }

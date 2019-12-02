@@ -149,17 +149,16 @@
             android:textSize="16sp" />
 
 
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/tv_data"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="5"
-                android:gravity="center"
-                android:maxLength="32"
-                android:text="0123456789abcdef0123456789abcdef"
-                android:textSize="12sp" />
-
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/tv_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:maxLength="32"
+            android:text="0123456789abcdef0123456789abcdef"
+            android:textSize="12sp" />
 
 
     </LinearLayout>
@@ -174,17 +173,52 @@
         android:text="写入" />
 
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/tv_m1_blockResult"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        android:layout_margin="20dp"
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_m1_blockResult"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-        android:gravity="center"
+            android:layout_margin="20dp"
 
-        android:text="Result"
-        android:textSize="16sp" />
+            android:gravity="center"
+
+            android:text="Result"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="@string/barcode_scan_all"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_success"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/barcode_scan_success"
+                android:textColor="@android:color/black" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 
 </LinearLayout>
