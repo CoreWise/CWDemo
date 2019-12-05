@@ -162,6 +162,32 @@
     <string name="hxuhf_singlesearch">单次扫描</string>
     <string name="hxuhf_txt_offset">偏移地址:</string>
     <string name="hxuhf_txt_length">数据长度:</string>
+    <string name="hxuhf_txt_region">区域:</string>
+    <string name="hxuhf_button_get_region">获取区域</string>
+    <string name="hxuhf_button_set_region">设置区域</string>
+    <string name="hxuhf_get_region_success">获取区域成功</string>
+    <string name="hxuhf_set_region_success">设置区域成功</string>
+    <string name="hxuhf_get_channel_success">获取信道成功</string>
+    <string name="hxuhf_set_channel_success">设置信道成功</string>
+    <string name="hxuhf_get_region_error1">获取区域失败</string>
+    <string name="hxuhf_get_region_error2">获取区域不在预设范围</string>
+    <string name="hxuhf_set_region_error1">设置区域失败</string>
+    <string name="hxuhf_get_channel_error1">获取信道失败</string>
+    <string name="hxuhf_get_channel_error2">对应区域没有此信道</string>
+    <string name="hxuhf_set_channel_error1">设置信道失败</string>
+    <string name="hxuhf_txt_channel">信道:</string>
+    <string name="hxuhf_button_get_channel">获取信道</string>
+    <string name="hxuhf_button_set_channel">设置信道</string>
+    <string-array name="hxuhf_region">
+        <item>Korea (0x11)</item>
+        <item>North America (0x21)</item>
+        <item>US (0x22)</item>
+        <item>Europe (0x31)</item>
+        <item>Japan (0x41)</item>
+        <item>China1 (0x51)</item>
+        <item>China2 (0x52)</item>
+    </string-array>
+
     <string name="hxuhf_txt_accesspwd">访问密码:</string>
     <string name="hxuhf_txt_timeout">超时设置:</string>
     <string name="hxuhf_tab_read">标签读取</string>

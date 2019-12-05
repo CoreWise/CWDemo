@@ -112,6 +112,7 @@ public class TagReadFragment extends Fragment {
 
     public String readTag(byte[] args) {
         UHFHXAPI.Response response = ((HXUHFActivity) getActivity()).api.readTypeCTagData(args);
+//        UHFHXAPI.Response response = ((HXUHFActivity) getActivity()).api.readTypeCTagLongData(args);
         if (response.result == UHFHXAPI.Response.RESPONSE_PACKET
                 && response.data != null) {
             return DataUtils.toHexString(response.data);

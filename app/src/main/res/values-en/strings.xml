@@ -135,6 +135,32 @@
     <string name="hxuhf_singlesearch">Single</string>
     <string name="hxuhf_txt_offset">Offset:</string>
     <string name="hxuhf_txt_length">Length:</string>
+    <string name="hxuhf_txt_region">Region:</string>
+    <string name="hxuhf_button_get_region">get region</string>
+    <string name="hxuhf_button_set_region">set region</string>
+    <string name="hxuhf_get_region_success">Get region success.</string>
+    <string name="hxuhf_set_region_success">Setting the zone succeeded.</string>
+    <string name="hxuhf_get_channel_success">Get channel successfully.</string>
+    <string name="hxuhf_set_channel_success">Set up channel successfully.</string>
+    <string name="hxuhf_get_region_error1">Failed to get area.</string>
+    <string name="hxuhf_get_region_error2">Get area is not in the preset range.</string>
+    <string name="hxuhf_set_region_error1">Setting the area failed.</string>
+    <string name="hxuhf_get_channel_error1">Failed to get channel.</string>
+    <string name="hxuhf_get_channel_error2">The corresponding area does not have this channel.</string>
+    <string name="hxuhf_set_channel_error1">Failed to set the channel.</string>
+    <string name="hxuhf_txt_channel">Channel:</string>
+    <string name="hxuhf_button_get_channel">get channel</string>
+    <string name="hxuhf_button_set_channel">set channel</string>
+    <string-array name="hxuhf_region">
+        <item>Korea (0x11)</item>
+        <item>North America (0x21)</item>
+        <item>US (0x22)</item>
+        <item>Europe (0x31)</item>
+        <item>Japan (0x41)</item>
+        <item>China1 (0x51)</item>
+        <item>China2 (0x52)</item>
+    </string-array>
+
     <string name="hxuhf_txt_accesspwd">Password:</string>
     <string name="hxuhf_txt_timeout">timeout:</string>
     <string name="hxuhf_tab_read">Tag read</string>

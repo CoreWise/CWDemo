@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minWidth="300dp"
+    android:minWidth="400dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -136,6 +136,108 @@
                 android:text="5"
                 android:textSize="14sp" />
         </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_region"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/hxuhf_txt_region"
+                android:textAllCaps="false"
+
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/sp_region"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/tv_region"
+                android:layout_toRightOf="@+id/tv_region" />
+
+            <Button
+                android:id="@+id/get_region_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_toEndOf="@+id/sp_region"
+                android:layout_toRightOf="@+id/sp_region"
+                android:text="@string/hxuhf_button_get_region" />
+
+            <Button
+                android:id="@+id/set_region_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_toEndOf="@+id/get_region_button"
+                android:layout_toRightOf="@+id/get_region_button"
+                android:text="@string/hxuhf_button_set_region" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_channel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/hxuhf_txt_channel"
+                android:textAllCaps="false"
+
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/sp_channel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/tv_channel"
+                android:layout_toRightOf="@+id/tv_channel" />
+
+            <Button
+                android:id="@+id/get_channel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_toEndOf="@+id/sp_channel"
+                android:layout_toRightOf="@+id/sp_channel"
+                android:text="@string/hxuhf_button_get_channel" />
+
+            <Button
+                android:id="@+id/set_channel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_toEndOf="@+id/get_channel_button"
+                android:layout_toRightOf="@+id/get_channel_button"
+                android:text="@string/hxuhf_button_set_channel" />
+
+
+        </RelativeLayout>
+
     </LinearLayout>
 
     <LinearLayout
