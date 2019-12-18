@@ -88,6 +88,14 @@
             android:textSize="12sp" />
 
         <Button
+            android:id="@+id/uid_sfz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/idcard_uid"
+            android:textAllCaps="false"
+            android:textSize="12sp" />
+
+        <Button
             android:id="@+id/clear_sfz"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

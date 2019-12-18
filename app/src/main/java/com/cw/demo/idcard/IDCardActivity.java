@@ -73,6 +73,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
     private Button read_button;
     private Button clear_button;
     private Button sequential_read;
+    private Button uid_button;
     private Button stop;
     private TextView resultInfo;
     private AsyncParseSFZ asyncParseSFZ;
@@ -190,12 +191,14 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         clear_button = findViewById(R.id.clear_sfz);
         sequential_read = findViewById(R.id.sequential_read);
         stop = findViewById(R.id.stop);
+        uid_button = findViewById(R.id.uid_sfz);
         resultInfo = findViewById(R.id.resultInfo);
 
         read_button.setOnClickListener(this);
         clear_button.setOnClickListener(this);
         sequential_read.setOnClickListener(this);
         stop.setOnClickListener(this);
+        uid_button.setOnClickListener(this);
 
         df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -295,7 +298,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
 
             @Override
             public void onReadSuccess(String id) {
-                //moduleView.setText(id);
+                sfz_modle.setText(id);
                 if (!isSequentialRead) {
                     read_button.setEnabled(true);
                     sequential_read.setEnabled(true);
@@ -392,6 +395,9 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
                 resultInfo.setText(result);
 
                 break;
+            case R.id.uid_sfz:
+                asyncParseSFZ.readCardID();
+                break;
             default:
 
                 break;
@@ -446,6 +452,9 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         } else {
             sfz_modle.setText("没有指纹信息");
         }
+
+//        String s = asyncParseSFZ.readUID();
+//        sfz_modle.setText(s);
     }
 
     private void clear() {

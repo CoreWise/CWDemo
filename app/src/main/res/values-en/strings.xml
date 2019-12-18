@@ -124,7 +124,7 @@
     <string name="idcard_reading">Reading</string>
     <string name="idcard_reading_stop">Stop</string>
     <string name="idcard_clear">Clear</string>
-
+    <string name="idcard_uid">UID</string>
 
     <!--HX超高频字符串资源 要求:hxuhf_+功能+英文-->
     <string name="hxuhf_open">Open</string>

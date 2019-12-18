@@ -154,6 +154,14 @@ public class MyApplication extends Application {
         }
     }
 
+    public boolean isShowingProgress()
+    {
+        if (progressDialog == null)
+        {
+            return false;
+        }
+        return progressDialog.isShowing();
+    }
 
     public void showProgressDialog(Context context,String message) {
 

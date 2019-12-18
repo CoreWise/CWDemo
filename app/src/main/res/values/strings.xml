@@ -150,6 +150,7 @@
     <string name="idcard_reading">连续读取</string>
     <string name="idcard_reading_stop">停止</string>
     <string name="idcard_clear">清空</string>
+    <string name="idcard_uid">UID</string>
 
 
     <!--HX超高频字符串资源 要求:hxuhf_+功能+英文-->

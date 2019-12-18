@@ -460,6 +460,12 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
 
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
+                if (MyApplication.getApp().isShowingProgress())
+                {
+                    MyApplication.getApp().cancleProgressDialog();
+                    return true;
+                }
+
                 Log.i(TAG, "点击了返回键");
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(R.string.general_tips);
