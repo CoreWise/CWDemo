@@ -29,26 +29,30 @@ android {
         //versionCode 1
         //versionName "DemoApp_V1.2"
 
-        //V1.3已发布,特别说明：需要修改工程根目录下的version.json文件
         //versionCode 3
         //versionName "DemoApp_V1.3"
 
-        //V1.4已发布,特别说明：需要修改工程根目录下的version.json文件
         //versionCode 4
         //versionName "DemoApp_V1.4"
 
-        //V1.5已发布,特别说明：需要修改工程根目录下的version.json文件
         //versionCode 5
         //versionName "DemoApp_V1.5"
 
         //versionCode 7
         //versionName "DemoApp_V1.7"
 
-         versionCode 9
-        versionName "DemoApp_V1.9"  //兼容u8 hxuhf
+        // versionCode 8
+        // versionName "DemoApp_V1.8"//兼容u8 hxuhf
+
+        // versionCode 9
+        // versionName "DemoApp_V1.9"
+
+        //自动升级 修改工程根目录下的version.json文件
+        versionCode 10
+        versionName "DemoApp_V1.10"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
- 
+
 //        //multiDexEnabled true
 //        ndk {
 //            // 设置支持的SO库架构
