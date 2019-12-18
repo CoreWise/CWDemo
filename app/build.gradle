@@ -44,7 +44,7 @@ android {
         //versionCode 7
         //versionName "DemoApp_V1.7"
 
-         versionCode 8
+         versionCode 9
         versionName "DemoApp_V1.9"  //兼容u8 hxuhf
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
