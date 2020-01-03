@@ -4,6 +4,8 @@ package com.cw.demo.fingerprint.gaa;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.hardware.usb.UsbDevice;
+import android.hardware.usb.UsbManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,9 +26,8 @@ import com.cw.demo.MyApplication;
 import com.cw.demo.R;
 import com.cw.fpgaasdk.GaaApiBHMDevice;
 import com.cw.fpgaasdk.GaaApiBase;
-import com.cw.fpgaasdk.GaaApiZiDevice;
 import com.cw.fpgaasdk.GaaFingerFactory;
-import com.cw.fpgaasdk.USBFingerManager;
+import com.cw.serialportsdk.usbFingerManager.USBFingerManager;
 import com.cw.serialportsdk.utils.DataUtils;
 import com.fm.bio.ID_Fpr;
 
@@ -123,7 +124,7 @@ public class NewFpGAAActivity extends Activity implements OnClickListener {
         MyApplication.getApp().showProgressDialog(this, getString(R.string.fp_usb_init));
         USBFingerManager.getInstance(this).openUSB(new USBFingerManager.OnUSBFingerListener() {
             @Override
-            public void onOpenUSBFingerSuccess(String device) {
+            public void onOpenUSBFingerSuccess(String device, UsbManager usbManager, UsbDevice usbDevice) {
                 MyApplication.getApp().cancleProgressDialog();
                 if (device.equals(GaaApiBase.ZiDevice)) {
                     //新固件

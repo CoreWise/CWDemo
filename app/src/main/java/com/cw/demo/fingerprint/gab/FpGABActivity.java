@@ -9,6 +9,7 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
@@ -28,6 +29,9 @@ import com.cw.demo.R;
 import com.cw.fpfbbsdk.FingerPrintAPI;
 import com.cw.serialportsdk.usbFingerManager.USBFingerManager;
 
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 import cn.com.aratek.fp.Bione;
 import cn.com.aratek.fp.FingerprintImage;
@@ -247,7 +251,42 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
         if (fi == null || (fpBmp = fi.convert2Bmp()) == null || (bitmap = BitmapFactory.decodeByteArray(fpBmp, 0, fpBmp.length)) == null) {
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.nofinger);
         }
+
+        if (bitmap != null)
+        {
+            addBitMap(bitmap);
+        }
         mHandler.sendMessage(mHandler.obtainMessage(MSG_UPDATE_IMAGE, bitmap));
+    }
+
+    private void addBitMap(Bitmap bitmap) {
+        String fileName = "";
+
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            fileName = Environment.getExternalStorageDirectory().getPath().toString();
+        }
+
+
+        fileName = fileName + "/demoApp/JRB/finger_"+System.currentTimeMillis()+".jpg";
+
+        File isexist = new File(fileName);
+        if (!isexist.exists()) {
+            try {
+                isexist.getParentFile().mkdirs();
+//                isexist.createNewFile();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            FileOutputStream out = new FileOutputStream(isexist);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateSingerTestText(long captureTime, long extractTime, long generalizeTime, long verifyTime) {
@@ -314,7 +353,7 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
 
     private void closeDevice() {
 
-        if (mScanner==null) {
+        if (mScanner == null) {
             return;
         }
 

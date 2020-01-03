@@ -202,12 +202,12 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 //        intent.putExtra("tag", "FpGAAActivity");
         mListIntent.add(intent);
 
-        intent = new Intent(this, JRAActivity.class);
-        intent.putExtra("tag", "FpJRAActivity");
-        mListIntent.add(intent);
-
         intent = new Intent(this, FpGABActivity.class);
         intent.putExtra("tag", "FpGABActivity");
+        mListIntent.add(intent);
+
+        intent = new Intent(this, JRAActivity.class);
+        intent.putExtra("tag", "FpJRAActivity");
         mListIntent.add(intent);
 
         intent = new Intent(this, BeiDouActivity.class);
