@@ -750,15 +750,14 @@
     <string name="fp_jra_enroll_start">Enter fingerprint => start, please put your finger</string>
     <string name="fp_jra_search_no">Did not find this fingerprint</string>
     <string name="fp_jra_search_fp_success">Successfully searched for this fingerprint,ID===></string>
-
-    <string name="fp_jra_cr30a">说明: 1.CR30A为本公司一款基于JRA指纹模组的采集指纹的终端设备 2.CR30A采集的指纹特征数据保存在sd卡根目录下，名为fg.txt</string>
-
+    <string name="fp_jra_search_start">Search fingerprint => Start,Please put your finger</string>
 
 
     <!--usb-->
     <string name="fp_usb_open_success">Switch USB successfully</string>
     <string name="fp_usb_open_failure">Switching USB failed</string>
 
+    <string name="n1_cr30a_jra_n2_cr30a_sd_fg_txt">Note: 1. CR30A is a terminal device for collecting fingerprints based on JRA fingerprint module 2. The fingerprint feature data collected by CR30A is stored in the root directory of the sd card, named fg.txt</string>
 
     <!--GAA指纹-->
     <string name="fp_gaa_capture">Capture</string>

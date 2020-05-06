@@ -3,38 +3,13 @@
 
     <!--通用字符串资源  命名要求: general_+英文-->
 
-    <string name="general_functions_settings">功能设置</string>
+    <string name="general_functions_settings">Function</string>
 
-    <string name="general_check_app_version">Demo版本</string>
-    <string name="general_check_version">固件版本</string>
-    <string name="general_strApkVersion">Apk版本：  </string>
-    <string name="general_strStmVersion">Stm32版本：  </string>
+    <string name="general_check_app_version">Demo Version</string>
 
-
-    <string-array name="general_functions">
-
-        <item>条码</item>
-
-        <item>RFID(M1卡)</item>
-                <item>RFID(125K)</item>
-
-        <item>身份证(RFID)</item>
-        <item>身份证-GAA</item>
-
-        <item>NFC(M1卡)</item>
-        <item>NFC(ISO 15693)</item>
-
-        <item>PhyChips超高频</item>
-        <item>R2000超高频</item>
-
-        <item>GAA指纹</item>
-        <item>GAB指纹</item>
-        <item>JRA指纹</item>
-
-        <item>北斗短报文</item>
-
-    </string-array>
-
+    <string name="general_check_version">Firmware Version</string>
+    <string name="general_strApkVersion">Apk Version:</string>
+    <string name="general_strStmVersion">STM32 Version:</string>
 
     <integer-array name="general_icons">
         <item>@drawable/icon_barcode</item>
@@ -59,6 +34,30 @@
 
     </integer-array>
 
+    <string-array name="general_functions">
+
+        <item>BarCode</item>
+
+        <item>M1Card(RFID)</item>
+                        <item>RFID(125K)</item>
+
+        <item>身份证(RFID)</item>
+        <item>身份证-GAA</item>
+
+        <item>NFC(M1Card)</item>
+        <item>NFC(ISO 15693)</item>
+
+
+        <item>UHF_PhyChips</item>
+        <item>UHF_R2000</item>
+
+        <item>FP_GAA</item>
+        <item>FP_GAB</item>
+        <item>FP_JRA</item>
+
+
+        <item>北斗短报文</item>
+    </string-array>
 
     <!-- <string-array name="general_compatible">
          <item>条码功能兼容机器如下:\n\n- CFON640\n- A370\n- U1 One-dimensional code\n- U1 QR\n- U1_4710\n- U3\n- U8</item>
@@ -69,116 +68,112 @@
          <item>SY指纹功能兼容机器如下:\n\n- CFON640\n- A370</item>
          <item>BYD大指纹(新)功能兼容机器如下:\n\n- U3\n- U8</item>
          <item>BYD小指纹功能兼容机器如下:\n\n- U3\n- U8</item>
-         <item>M1卡(RFID)功能兼容机器如下:\n\n- CFON640\n- U3\n- U8</item>
+         <item>M1卡(RFID)功能兼容机器如下:\n\n- CFON640\n- U3</item>
          <item>M1卡(NFC)功能兼容机器如下:\n\n- 带NFC功能的机器</item>
          <item>ISO 15693功能兼容机器如下:\n\n- 带NFC功能的机器</item>
          <item>北斗功能兼容机器如下:\n\n- U8</item>
      </string-array>-->
 
-    <string name="general_usb_fp_tips">1.该指纹功能底层采用USB HOST通信,进入该指纹演示Demo后,设备USB无法充电、无法通信\n\n2.退出再插拔下USB数据线才能正常使用USB充电、通信功能!\n\n3.开发者建议使用wifi adb调试开发指纹模块!</string>
+    <string name="general_usb_fp_tips">1.The underlying fingerprint function uses USB HOST communication. After entering the fingerprint demonstration Demo, the device USB can not charge and communicate \n\n2. Only after exiting and plugging out the USB data line can the normal use of USB charging and communication function be achieved. \n\n3. Developers recommend using WiFi ADB to debug and develop fingerprint module!</string>
 
-    <string name="general_dialog_tips">温馨提示</string>
-    <string name="general_tips">温馨提示:</string>
-    <string name="general_exit">您确认退出？</string>
-    <string name="general_yes">确定</string>
-    <string name="general_no">取消</string>
+    <string name="general_dialog_tips">Tips</string>
+    <string name="general_tips">Tips:</string>
+    <string name="general_exit">Are you sure to exit？</string>
+    <string name="general_yes">Yes</string>
+    <string name="general_no">No</string>
 
-    <string name="general_open_serial_fail">打开串口失败！</string>
-    <string name="general_open_serial_success">打开串口成功！</string>
+    <string name="general_open_serial_fail">Open the serial port fails!</string>
+    <string name="general_open_serial_success">Open the serial port success!</string>
 
     <string name="general_write_success">写入成功！</string>
     <string name="general_write_fail">写入失败！</string>
-    <string name="general_ok">确定</string>
-    <string name="general_cancel">取消</string>
-    <string name="general_setting">设置</string>
+    <string name="general_ok">OK</string>
+    <string name="general_cancel">Cancle</string>
+
+    <string name="general_setting">Setting</string>
 
 
     <!--条码字符串资源 命名要求: barcode_+功能+英文-->
-    <string name="barcode_scan">单扫</string>
-    <string name="barcode_scanning_open">连续扫码</string>
-    <string name="barcode_scanning_close">关闭连续</string>
-    <string name="barcode_scan_clear">清空</string>
-    <string name="barcode_scan_is_auto_clear">是否自清</string>
-    <string name="barcode_scan_all">总共: %1$s</string>
-    <string name="barcode_scan_success">成功: %1$s</string>
+    <string name="barcode_scan">Scan</string>
+    <string name="barcode_scanning_open">Scanning</string>
+    <string name="barcode_scanning_close">Stop</string>
+    <string name="barcode_scan_clear">Clear</string>
+    <string name="barcode_scan_is_auto_clear">Auto Clear:</string>
+    <string name="barcode_scan_all">All: %1$s</string>
+    <string name="barcode_scan_success">Success: %1$s</string>
 
-    <string name="barcode_scanner_status">扫描仪状态</string>
-    <string name="barcode_scanner_open">开启</string>
-    <string name="barcode_scanner_close">关闭</string>
+    <string name="barcode_scanner_status">Status</string>
+    <string name="barcode_scanner_open">On</string>
+    <string name="barcode_scanner_close">Off</string>
+    <string name="barcode_setting">Setting</string>
 
-    <string name="barcode_setting">设置</string>
-
-
-    <string name="barcode_setting_interval">扫描间隔:</string>
-    <string name="barcode_setting_outmode">输出模式</string>
-    <string name="barcode_setting_endchar">结束字符</string>
-    <string name="barcode_setting_prefix">前缀</string>
-    <string name="barcode_setting_suffix">后缀</string>
-    <string name="barcode_setting_effect">声音和震动</string>
-    <string name="barcode_setting_enable">禁用</string>
-    <string name="barcode_setting_disable">取消禁用</string>
-    <string name="barcode_setting_showtoast">是否打印吐司：</string>
+    <string name="barcode_setting_interval">Scan interval:</string>
+    <string name="barcode_setting_outmode">OutPut Mode</string>
+    <string name="barcode_setting_endchar">EndChar</string>
+    <string name="barcode_setting_prefix">Prefix</string>
+    <string name="barcode_setting_suffix">Suffix</string>
+    <string name="barcode_setting_effect">Sound and Vibrator</string>
+    <string name="barcode_setting_enable">Enable</string>
+    <string name="barcode_setting_disable">Disable</string>
+    <string name="barcode_setting_showtoast">Whether to print Toast：</string>
 
 
     <string-array name="barcode_setting_endchar">
-        <item>回车</item>
-        <item>换行</item>
-        <item>空格</item>
+        <item>Enter</item>
+        <item>New Line</item>
+        <item>Space</item>
         <item>Tab</item>
-        <item>无</item>
+        <item>None</item>
 
     </string-array>
 
     <string-array name="barcode_setting_effect">
-        <item>无</item>
-        <item>只有震动</item>
-        <item>只有声音</item>
-        <item>震动及声音</item>
+        <item>None</item>
+        <item>Vibrator</item>
+        <item>Sound</item>
+        <item>Vibrator And Sound</item>
     </string-array>
 
     <string-array name="barcode_setting_output_mode">
-        <item>直接显示</item>
-        <item>模拟按键</item>
-        <item>复制到系统剪切板</item>
-             <item>广播</item>
-
+        <item>Direct Display</item>
+        <item>Key Emulation</item>
+        <item>Copy To System ClipBoard</item>
+        <item>BroadCast</item>
     </string-array>
 
 
     <!--身份证字符串资源 要求:idcard_+功能+英文-->
-    <string name="idcard_read">读取身份证</string>
-    <string name="idcard_reading">连续读取</string>
-    <string name="idcard_reading_stop">停止</string>
-    <string name="idcard_clear">清空</string>
+    <string name="idcard_read">Read IDCard</string>
+    <string name="idcard_reading">Reading</string>
+    <string name="idcard_reading_stop">Stop</string>
+    <string name="idcard_clear">Clear</string>
     <string name="idcard_uid">UID</string>
 
-
     <!--HX超高频字符串资源 要求:hxuhf_+功能+英文-->
-    <string name="hxuhf_open">开启模块</string>
-    <string name="hxuhf_search_tag">搜索标签</string>
-    <string name="hxuhf_setting">设置</string>
-
-    <string name="hxuhf_read_count">读取次数:</string>
-    <string name="hxuhf_readtime">时间：</string>
-    <string name="hxuhf_singlesearch">单次扫描</string>
-    <string name="hxuhf_txt_offset">偏移地址:</string>
-    <string name="hxuhf_txt_length">数据长度:</string>
-    <string name="hxuhf_txt_region">区域:</string>
-    <string name="hxuhf_button_get_region">获取区域</string>
-    <string name="hxuhf_button_set_region">设置区域</string>
-    <string name="hxuhf_get_region_success">获取区域成功</string>
-    <string name="hxuhf_set_region_success">设置区域成功</string>
-    <string name="hxuhf_get_channel_success">获取信道成功</string>
-    <string name="hxuhf_set_channel_success">设置信道成功</string>
-    <string name="hxuhf_get_region_error1">获取区域失败</string>
-    <string name="hxuhf_get_region_error2">获取区域不在预设范围</string>
-    <string name="hxuhf_set_region_error1">设置区域失败</string>
-    <string name="hxuhf_get_channel_error1">获取信道失败</string>
-    <string name="hxuhf_get_channel_error2">对应区域没有此信道</string>
-    <string name="hxuhf_set_channel_error1">设置信道失败</string>
-    <string name="hxuhf_txt_channel">信道:</string>
-    <string name="hxuhf_button_get_channel">获取信道</string>
-    <string name="hxuhf_button_set_channel">设置信道</string>
+    <string name="hxuhf_open">Open</string>
+    <string name="hxuhf_search_tag">Inventory</string>
+    <string name="hxuhf_setting">Setting</string>
+    <string name="hxuhf_read_count">count:</string>
+    <string name="hxuhf_readtime">time：</string>
+    <string name="hxuhf_singlesearch">Single</string>
+    <string name="hxuhf_txt_offset">Offset:</string>
+    <string name="hxuhf_txt_length">Length:</string>
+    <string name="hxuhf_txt_region">Region:</string>
+    <string name="hxuhf_button_get_region">get region</string>
+    <string name="hxuhf_button_set_region">set region</string>
+    <string name="hxuhf_get_region_success">Get region success.</string>
+    <string name="hxuhf_set_region_success">Setting the zone succeeded.</string>
+    <string name="hxuhf_get_channel_success">Get channel successfully.</string>
+    <string name="hxuhf_set_channel_success">Set up channel successfully.</string>
+    <string name="hxuhf_get_region_error1">Failed to get area.</string>
+    <string name="hxuhf_get_region_error2">Get area is not in the preset range.</string>
+    <string name="hxuhf_set_region_error1">Setting the area failed.</string>
+    <string name="hxuhf_get_channel_error1">Failed to get channel.</string>
+    <string name="hxuhf_get_channel_error2">The corresponding area does not have this channel.</string>
+    <string name="hxuhf_set_channel_error1">Failed to set the channel.</string>
+    <string name="hxuhf_txt_channel">Channel:</string>
+    <string name="hxuhf_button_get_channel">get channel</string>
+    <string name="hxuhf_button_set_channel">set channel</string>
     <string-array name="hxuhf_region">
         <item>Korea (0x11)</item>
         <item>North America (0x21)</item>
@@ -189,26 +184,27 @@
         <item>China2 (0x52)</item>
     </string-array>
 
-    <string name="hxuhf_txt_accesspwd">访问密码:</string>
-    <string name="hxuhf_txt_timeout">超时设置:</string>
-    <string name="hxuhf_tab_read">标签读取</string>
-    <string name="hxuhf_tab_write">标签写入</string>
-    <string name="hxuhf_txt_tag_tit">选中标签:</string>
-    <string name="hxuhf_txt_read_eare">读取区域:</string>
-    <string name="hxuhf_txt_write_eare">写入区域:</string>
+    <string name="hxuhf_txt_accesspwd">Password:</string>
+    <string name="hxuhf_txt_timeout">timeout:</string>
+    <string name="hxuhf_tab_read">Tag read</string>
+    <string name="hxuhf_tab_write">Tag write</string>
+    <string name="hxuhf_txt_tag_tit">Selected tag:</string>
+    <string name="hxuhf_txt_read_eare">Read area:</string>
+    <string name="hxuhf_txt_write_eare">Write area:</string>
     <string name="hxuhf_txt_count">0000</string>
+
     <string name="hxuhf_txt_pwdzero">00000000</string>
     <string name="hxuhf_hint_write_read">偏移地址是指从你要读写的区域的位置开始，这个长度是距离区域0点计数的，1个长度等于两个字节或四个十六进制数字。\n此文本只支持16位，1数据长度 = 4个16进制数字</string>
-    <string name="hxuhf_power">功率：</string>
-    <string name="hxuhf_write">写入</string>
-    <string name="hxuhf_read">读取</string>
+    <string name="hxuhf_power">Power:</string>
+    <string name="hxuhf_write">Write</string>
+    <string name="hxuhf_read">Read</string>
     <string name="hxuhf_txt_null">N/A</string>
     <string name="hxuhf_info_connect_success">连接成功</string>
     <string name="hxuhf_info_connect_fail">连接失败</string>
-    <string name="hxuhf_inventory_over">盘点结束</string>
+    <string name="hxuhf_inventory_over">Inventory over</string>
     <string name="hxuhf_read_timeout">读取超时！</string>
-    <string name="hxuhf_connect_to_device">连接设备</string>
-    <string name="hxuhf_connecting_to_device">正在连接设备，请稍后.</string>
+    <string name="hxuhf_connect_to_device">Connect device</string>
+    <string name="hxuhf_connecting_to_device">Connecting device,please wait...</string>
     <string name="hxuhf_txt_singleScanSetting">单次扫描设置</string>
     <string name="hxuhf_read_success">读取成功！</string>
     <string name="hxuhf_read_fail">读取失败！</string>
@@ -254,48 +250,48 @@
 
 
     <!-- SY FingerprintActivity -->
-    <string name="fp_jra_register_fingerprint">注册指纹</string>
-    <string name="fp_jra_validate_fingerprint">验证指纹</string>
-    <string name="fp_jra_noID">请输入ID</string>
-    <string name="fp_jra_calibration_success">校准成功</string>
-    <string name="fp_jra_calibration_fail">校准失败</string>
-    <string name="fp_jra_clear_flash_success">清空指纹库成功</string>
-    <string name="fp_jra_clear_flash_fail">清空指纹库失败</string>
-    <string name="fp_jra_first_register">请先注册指纹！</string>
-    <string name="fp_jra_print_finger">请按指纹！</string>
+    <string name="fp_jra_register_fingerprint">Registration fingerprint</string>
+    <string name="fp_jra_validate_fingerprint">Verify fingerprint</string>
+    <string name="fp_jra_noID">Please enter the ID</string>
+    <string name="fp_jra_calibration_success">Successful calibration</string>
+    <string name="fp_jra_calibration_fail">Calibration failed</string>
+    <string name="fp_jra_clear_flash_success">Clear successfully</string>
+    <string name="fp_jra_clear_flash_fail">Clear failed</string>
+    <string name="fp_jra_first_register">Please register your fingerprint first！</string>
+    <string name="fp_jra_print_finger">Please press fingerprint！</string>
     <string name="back">back</string>
-    <string name="fp_jra_clear_flash">清空指纹库</string>
-    <string name="fp_jra_calibration">校准</string>
-    <string name="fp_jra_import_finger">导入</string>
-    <string name="fp_jra_save_model">保存模板</string>
+    <string name="fp_jra_clear_flash">Clear fingerprint library</string>
+    <string name="fp_jra_calibration">calibration</string>
+    <string name="fp_jra_import_finger">Import</string>
+    <string name="fp_jra_save_model">Save template</string>
 
-    <string name="fp_jra_print_finger_again">请再次按指纹！</string>
-    <string name="fp_jra_processing">指纹采集成功，正在上传处理...</string>
-    <string name="fp_jra_generate_char_fail">生成特征值失败！</string>
-    <string name="fp_jra_reg_model_success">合成模板成功！</string>
-    <string name="fp_jra_reg_model_fail">合成模板失败！</string>
-    <string name="fp_jra_register_success">注册成功！</string>
-    <string name="fp_jra_register_fail">注册失败！</string>
-    <string name="fp_jra_verifying_wait">正在验证，请稍后...</string>
-    <string name="fp_jra_down_char_fail">验证失败</string>
-    <string name="fp_jra_verifying_through">验证通过</string>
-    <string name="fp_jra_verifying_fail">验证失败</string>
-    <string name="fp_jra_up_image_success">上传指纹图像成功</string>
-    <string name="fp_jra_up_image_fail">上传指纹图像失败</string>
-    <string name="fp_jra_clear_model">清除模板</string>
+    <string name="fp_jra_print_finger_again">Please press fingerprint again！</string>
+    <string name="fp_jra_processing">Fingerprint acquisition is successful, uploading processing...</string>
+    <string name="fp_jra_generate_char_fail">Failed to generate feature values！</string>
+    <string name="fp_jra_reg_model_success">Synthetic template succeeded！</string>
+    <string name="fp_jra_reg_model_fail">Composite template failed！</string>
+    <string name="fp_jra_register_success">registration success！</string>
+    <string name="fp_jra_register_fail">registration failed！</string>
+    <string name="fp_jra_verifying_wait">Verifying, please wait...</string>
+    <string name="fp_jra_down_char_fail">verification failed</string>
+    <string name="fp_jra_verifying_through">Verification passed</string>
+    <string name="fp_jra_verifying_fail">verification failed</string>
+    <string name="fp_jra_up_image_success">Upload fingerprint image successfully</string>
+    <string name="fp_jra_up_image_fail">Failed to upload fingerprint image</string>
+    <string name="fp_jra_clear_model">Clear template</string>
     <string name="fp_jra_id_model">ID:</string>
-    <string name="fp_jra_clear_model_success">清除模板成功</string>
-    <string name="fp_jra_clear_model_fail">清除模板失败</string>
-    <string name="fp_jra_enter_id">请输入ID</string>
-    <string name="fp_jra_register3">注册</string>
-    <string name="fp_jra_down_store">下载存储</string>
-    <string name="fp_jra_validate3">验证</string>
-    <string name="fp_jra_down_store_success">下载存储成功</string>
-    <string name="fp_jra_down_store_fail">下载存储失败</string>
-    <string name="fp_jra_search_success">搜索成功</string>
-    <string name="fp_jra_search_fail">搜索失败</string>
-    <string name="fp_jra_down_store_null">模板不能为空</string>
-    <string name="fp_jra_compares">比较</string>
+    <string name="fp_jra_clear_model_success">Clear template successfully</string>
+    <string name="fp_jra_clear_model_fail">Failed to clear template</string>
+    <string name="fp_jra_enter_id">Please enter the ID</string>
+    <string name="fp_jra_register3">registered</string>
+    <string name="fp_jra_down_store">Download storage</string>
+    <string name="fp_jra_validate3">verification</string>
+    <string name="fp_jra_down_store_success">Download stored successfully</string>
+    <string name="fp_jra_down_store_fail">Download storage failed</string>
+    <string name="fp_jra_search_success">Search success</string>
+    <string name="fp_jra_search_fail">Search failed</string>
+    <string name="fp_jra_down_store_null">Template cannot be empty</string>
+    <string name="fp_jra_compares">Comparison</string>
     <string-array name="fingerprint_size">
         <item>小指纹</item>
         <item>大指纹</item>
@@ -305,49 +301,50 @@
     <!--指纹字符串资源 命名要求: fp_型号类别_功能_结果-->
 
 
-    <string name="fp_open_device">打开设备</string>
+    <string name="fp_open_device">Open</string>
 
-    <string name="fp_close_device">关闭设备</string>
+    <string name="fp_close_device">Close</string>
 
-    <string name="finger_infos">指纹采集信息：</string>
+    <string name="finger_infos">Fingerprint collection information：</string>
 
-    <string name="fp_capture">取图：</string>
+    <string name="fp_capture">Take picture：</string>
 
-    <string name="fp_extract">提取特征：</string>
-
-
-    <string name="fp_generalize">合成模板：</string>
-
-    <string name="fp_verify">比对：</string>
-    <string name="fp_enroll_fp">录入指纹</string>
-    <string name="fp_verify_fp">比对指纹(1:1)</string>
-    <string name="fp_identify_fp">搜索指纹(1:N)</string>
-    <string name="fp_verify_fp2">比对指纹</string>
-    <string name="fp_identify_fp2">搜索指纹</string>
-    <string name="fp_clear_fp_db">清空指纹库</string>
-    <string name="fp_show_fp">显示指纹</string>
-    <string name="fp_show_devinfos">查看设备信息</string>
+    <string name="fp_extract">Extracting features：</string>
 
 
-    <string name="fingerprintfeatureraw">指纹特征数据:</string>
+    <string name="fp_generalize">Composite template：</string>
 
-    <string name="finger_collect_failure">指纹采集失败!</string>
-
-    <string name="finger_leave">请离开手指</string>
-    <string name="finger_press">请按压手指</string>
-    <string name="finger_collect">正在采集第</string>
-    <string name="finger">指纹</string>
-    <string name="finger_collect_end">采集结束!</string>
-    <string name="finger_press_again">请再次按压手指</string>
-    <string name="finger_search">搜索指纹,该指纹ID为</string>
-    <string name="finger_public_verify_success">比对成功!</string>
-    <string name="finger_public_verify_failure">比对失败!</string>
-
-    <string name="finger_public_fetch_feature_failure">提取特征值失败!</string>
-    <string name="finger_public_fetch_feature_success">提取特征值成功!</string>
+    <string name="fp_verify">Comparison：</string>
+    <string name="fp_enroll_fp">Enter fingerprint</string>
+    <string name="fp_verify_fp">Alignment fingerprint(1:1)</string>
+    <string name="fp_identify_fp">Search fingerprint(1:N)</string>
+    <string name="fp_verify_fp2">Alignment fingerprint</string>
+    <string name="fp_identify_fp2">Search fingerprint</string>
+    <string name="fp_clear_fp_db">Clear fingerprint</string>
+    <string name="fp_show_fp">Display fingerprint</string>
+    <string name="fp_show_devinfos">View device Infos</string>
 
 
-    <string name="fp_gaa_welcome">欢迎使用</string>
+    <string name="fingerprintfeatureraw">Fingerprint feature data:</string>
+
+    <string name="finger_collect_failure">Fingerprint acquisition failed!</string>
+
+    <string name="finger_leave">Please leave your finger</string>
+    <string name="finger_press">Please press your finger</string>
+    <string name="finger_collect">Collecting</string>
+    <string name="finger">fingerprint</string>
+    <string name="finger_press_again">Please press your finger again</string>
+    <string name="finger_search">Search for the fingerprint, the fingerprint ID is </string>
+    <string name="finger_public_verify_success">Successful comparison!</string>
+    <string name="finger_public_verify_failure">Comparison failure!</string>
+
+    <string name="finger_public_fetch_feature_failure">Failed to extract feature values!</string>
+    <string name="finger_public_fetch_feature_success">Extracted feature values successfully!</string>
+
+    <string name="finger_collect_end">End of collection!</string>
+
+
+    <string name="fp_gaa_welcome">Welcome</string>
     <string name="fp_gaa_version">FP_Version</string>
     <string name="fp_gaa_isvauth">FP_ISVAuth</string>
     <string name="fp_gaa_devversion">FP_DevVersion</string>
@@ -356,108 +353,103 @@
     <string name="fp_gaa_featurematch">FP_FeatureMatch</string>
     <string name="fp_gaa_featuresearch">FP_FeatureSearch</string>
     <string name="fp_gaa_end">FP_End</string>
-    <string name="fp_usb_init">指纹模块初始化中...</string>
+    <string name="fp_usb_init">Fingerprint module initialization...</string>
 
 
-    <string name="fp_jra_search_failure">搜索指纹失败,请改变手指按压手势!</string>
+    <string name="fp_jra_search_failure">Failed to search for fingerprints, please change your finger press gesture!</string>
 
 
-    <string name="fp_not_done">未进行</string>
-    <!--USB-->
+        <!--USB-->
 
-    <string name="fp_loading">正在加载</string>
-    <string name="fp_preparing_device">设备正在准备，请稍候……</string>
-    <string name="fp_closing_device">设备正在关闭，请稍候……</string>
+    <string name="fp_loading">Loading</string>
+    <string name="fp_preparing_device">The equipment is being prepared, please wait...</string>
+    <string name="fp_closing_device">The device is shutting down, please wait...</string>
 
-
-    <!-- 指纹仪 -->
-    <string name="fingerprint">指纹仪</string>
+     <!-- 指纹仪 -->
+    <string name="fingerprint">Fingerprint instrument</string>
     <string name="fps_sn">指纹传感器序列号：<xliff:g>%1$s</xliff:g></string>
     <string name="fps_fw">指纹传感器内部固件版本号：<xliff:g>%1$s</xliff:g></string>
-    <string name="fp_collect_info">单次指纹采集信息：</string>
-    <string name="capture">取图：</string>
-    <string name="extract">提取特征：</string>
-    <string name="generalize">合成模板：</string>
-    <string name="verify">比对：</string>
-    <string name="enroll_fp">录入指纹</string>
-    <string name="verify_fp">比对指纹(1:1)</string>
-    <string name="identify_fp">搜索指纹(1:N)</string>
-        <string name="verify_fp2">比对指纹</string>
-    <string name="identify_fp2">搜索指纹</string>
-    <string name="clear_fp_db">清空指纹库</string>
-    <string name="show_fp">显示指纹</string>
-    <string name="press_finger">请按压手指!</string>
-    <string name="enrolling">正在注册指纹……</string>
-    <string name="verifying">正在比对指纹……</string>
-    <string name="identifying">正在指纹库中查找指纹……</string>
-    <string name="fingerprint_device_open_success">指纹仪打开成功！</string>
-    <string name="fingerprint_device_open_failed">指纹仪打开失败！</string>
-    <string name="fingerprint_device_close_success">指纹仪关闭成功！</string>
-    <string name="fingerprint_device_close_failed">指纹仪关闭失败！</string>
-    <string name="fingerprint_device_power_on_failed">指纹仪上电失败！</string>
-    <string name="fingerprint_device_power_off_failed">指纹仪断电失败！</string>
-    <string name="algorithm_initialization_failed">Bione算法初始化失败！</string>
-    <string name="algorithm_cleanup_failed">Bione算法反初始化失败！</string>
-    <string name="capture_image_success">指纹图像获取成功！</string>
-    <string name="capture_image_failed">采集指纹图像失败！</string>
-    <string name="enroll_failed_because_of_extract_feature">录入失败，提取特征出错！</string>
-    <string name="enroll_failed_because_of_make_template">录入失败，生成模板出错！</string>
-    <string name="enroll_failed_because_of_get_id">录入失败，获取可用的指纹ID失败！</string>
-    <string name="enroll_failed_because_of_error">录入失败！</string>
-    <string name="enroll_success">录入成功！</string>
-    <string name="enrolled_id">指纹ID为<xliff:g>%1$d</xliff:g></string>
-    <string name="verify_failed_because_of_extract_feature">比对失败，提取特征出错！</string>
-    <string name="verify_failed_because_of_error">比对失败！</string>
-    <string name="fingerprint_not_match">指纹不匹配！</string>
-    <string name="fingerprint_match">指纹匹配！</string>
-    <string name="fingerprint_similarity">指纹相似度为<xliff:g>%1$d</xliff:g></string>
-    <string name="identify_failed_because_of_extract_feature">比对失败，提取特征出错！</string>
-    <string name="identify_failed_because_of_error">比对失败！</string>
-    <string name="identify_match">验证成功！</string>
-    <string name="matched_id">匹配指纹ID为<xliff:g>%1$d</xliff:g></string>
-    <string name="clear_fingerprint_database_success">清空指纹库成功！</string>
-    <string name="clear_fingerprint_database_failed">清空指纹库失败！</string>
-
-
-     <!-- 错误代码 -->
-    <string name="info_error">错误</string>
-    <string name="operation_successful">操作成功！</string>
-    <string name="error_operation_failed">操作失败！</string>
-    <string name="error_wrong_connection">连接错误导致操作失败！</string>
-    <string name="error_device_busy">设备忙导致操作失败！</string>
-    <string name="error_device_not_open">设备未打开导致操作失败！</string>
-    <string name="error_timeout">传输超时导致操作失败！</string>
-    <string name="error_no_permission">无操作权限导致操作失败！</string>
-    <string name="error_wrong_parameter">输入参数错误导致操作失败！</string>
-    <string name="error_decode">解码错误导致操作失败！</string>
-    <string name="error_initialization_failed">设备初始化失败导致操作失败！</string>
-    <string name="error_not_support">不被支持的操作导致操作失败！</string>
-    <string name="error_not_enough_memory">内存不足导致操作失败！</string>
-    <string name="error_device_not_found">未能找到设备导致操作失败！</string>
-    <string name="error_device_reopen">设备重复打开导致操作失败！</string>
-    <string name="error_algorithm_initialization_failed">指纹算法初始化失败导致操作失败！</string>
-    <string name="error_invalid_feature_data">指纹特征数据错误导致操作失败！</string>
-    <string name="error_bad_image">指纹图像太差导致操作失败！</string>
-    <string name="error_not_match">指纹不匹配导致操作失败！</string>
-    <string name="error_low_point">指纹比对分值太低导致操作失败！</string>
-    <string name="error_no_finger">无手指导致操作失败！</string>
-    <string name="error_no_result">指纹库中无匹配指纹导致操作失败！</string>
-    <string name="error_out_of_bound">输入指纹ID越界导致操作失败！</string>
-    <string name="error_database_full">指纹库已满导致操作失败！</string>
-    <string name="error_library_missing">指纹算法库丢失导致操作失败！</string>
-    <string name="error_algorithm_uninitialize">指纹算法未初始化导致操作失败！</string>
-    <string name="error_algorithm_reinitialize">指纹算法重复初始化导致操作失败！</string>
-    <string name="error_repeated_enroll">指纹重复注册导致操作失败！</string>
-    <string name="error_not_enrolled">指纹未注册导致操作失败！</string>
-    <string name="error_no_card">未能找到卡片导致操作失败！</string>
-    <string name="error_invalid_card">卡片无效导致操作失败！</string>
-    <string name="error_invalid_decode_lib">卡片解码库无效导致操作失败！</string>
-    <string name="error_other">其它错误导致操作失败！</string>
+    <string name="fp_collect_info">Single fingerprint collection information：</string>
+    <string name="capture">Take Picture：</string>
+    <string name="extract">Extracting Features：</string>
+    <string name="generalize">Composite Template：</string>
+    <string name="verify">Comparison：</string>
+    <string name="enroll_fp">Enter Fingerprint</string>
+    <string name="verify_fp">Alignment fingerprint(1:1)</string>
+    <string name="identify_fp">Search fingerprint(1:N)</string>
+    <string name="verify_fp2">Alignment fingerprint</string>
+    <string name="identify_fp2">Search fingerprint</string>
+    <string name="clear_fp_db">Clear</string>
+    <string name="show_fp">Display fingerprint</string>
+    <string name="press_finger">Please press your finger!</string>
+    <string name="enrolling">Registering fingerprint……</string>
+    <string name="verifying">Comparing fingerprints……</string>
+    <string name="identifying">Looking for fingerprints in the fingerprint library……</string>
+    <string name="fingerprint_device_open_success">The fingerprint device is turned on successfully.！</string>
+    <string name="fingerprint_device_open_failed">Fingerprint reader failed to open！</string>
+    <string name="fingerprint_device_close_success">The fingerprint device is successfully closed！</string>
+    <string name="fingerprint_device_close_failed">Fingerprint reader failed to close！</string>
+    <string name="fingerprint_device_power_on_failed">The fingerprint device failed to power on.</string>
+    <string name="fingerprint_device_power_off_failed">Fingerprint device failed to power off！</string>
+    <string name="algorithm_initialization_failed">Bione algorithm initialization failed！</string>
+    <string name="algorithm_cleanup_failed">Bione algorithm failed to initialize！</string>
+    <string name="fp_not_done">not done</string>
+    <string name="capture_image_success">The fingerprint image was successfully acquired!</string>
+    <string name="capture_image_failed">Failed to capture fingerprint image！</string>
+    <string name="enroll_failed_because_of_extract_feature">Input failed, error extraction feature!</string>
+    <string name="enroll_failed_because_of_make_template">Entry failed, error generating template！</string>
+    <string name="enroll_failed_because_of_get_id">Failed to enter, failed to get the available fingerprint ID！</string>
+    <string name="enroll_failed_because_of_error">Entry failed！</string>
+    <string name="enroll_success">Successful entry！</string>
+    <string name="enrolled_id">The fingerprint ID is<xliff:g>%1$d</xliff:g></string>
+    <string name="verify_failed_because_of_extract_feature">The comparison failed, the feature extraction error occurred.！</string>
+    <string name="verify_failed_because_of_error">Comparison failure！</string>
+    <string name="fingerprint_not_match">Fingerprint mismatch！</string>
+    <string name="fingerprint_match">Fingerprint matching！</string>
+    <string name="fingerprint_similarity">Fingerprint similarity is<xliff:g>%1$d</xliff:g></string>
+    <string name="identify_failed_because_of_extract_feature">The comparison failed, the feature extraction error occurred.</string>
+    <string name="identify_failed_because_of_error">Comparison failure！</string>
+    <string name="identify_match">Successful verification！</string>
+    <string name="matched_id">Match fingerprint ID is <xliff:g>%1$d</xliff:g></string>
+    <string name="clear_fingerprint_database_success">Clear fingerprint database successfully！</string>
+    <string name="clear_fingerprint_database_failed">Failed to clear fingerprint library！</string>
 
 
 
-
-
+    <!-- 错误代码 -->
+    <string name="info_error">error</string>
+    <string name="operation_successful">Successful operation！</string>
+    <string name="error_operation_failed">operation failed！</string>
+    <string name="error_wrong_connection">Connection error causes operation to fail！</string>
+    <string name="error_device_busy">The device is busy and the operation fails.！</string>
+    <string name="error_device_not_open">The device does not open, causing the operation to fail！</string>
+    <string name="error_timeout">Transfer timeout causes operation to fail！</string>
+    <string name="error_no_permission">No operation permission causes the operation to fail！</string>
+    <string name="error_wrong_parameter">Input parameter error causes operation to fail！</string>
+    <string name="error_decode">Decoding error causes operation to fail！</string>
+    <string name="error_initialization_failed">Device initialization failed, causing the operation to fail！</string>
+    <string name="error_not_support">Unsupported operation causes operation to fail！</string>
+    <string name="error_not_enough_memory">Insufficient memory causes the operation to fail！</string>
+    <string name="error_device_not_found">Failure to find device caused operation failed！</string>
+    <string name="error_device_reopen">Repeated opening of the device causes the operation to fail！</string>
+    <string name="error_algorithm_initialization_failed">Failed to initialize the fingerprint algorithm, causing the operation to fail！</string>
+    <string name="error_invalid_feature_data">Fingerprint feature data error causes operation to fail！</string>
+    <string name="error_bad_image">The fingerprint image is too bad, causing the operation to fail.</string>
+    <string name="error_not_match">Fingerprint mismatch causes operation to fail！</string>
+    <string name="error_low_point">The fingerprint comparison score is too low, causing the operation to fail！</string>
+    <string name="error_no_finger">No finger causes the operation to fail！</string>
+    <string name="error_no_result">No matching fingerprint in the fingerprint library causes the operation to fail！</string>
+    <string name="error_out_of_bound">Input fingerprint ID out of bounds causes operation to fail！</string>
+    <string name="error_database_full">The fingerprint library is full and the operation fails.！</string>
+    <string name="error_library_missing">Loss of fingerprint algorithm library causes operation to fail！</string>
+    <string name="error_algorithm_uninitialize">Fingerprint algorithm uninitialized causes operation to fail！</string>
+    <string name="error_algorithm_reinitialize">Repeated initialization of the fingerprint algorithm causes the operation to fail！</string>
+    <string name="error_repeated_enroll">Fingerprint duplicate registration causes operation to fail！</string>
+    <string name="error_not_enrolled">Fingerprint not registered causes operation to fail！</string>
+    <string name="error_no_card">Failure to find the card caused the operation to fail！</string>
+    <string name="error_invalid_card">Invalid card causes operation to fail！</string>
+    <string name="error_invalid_decode_lib">Invalid card decoding library causes operation to fail！</string>
+    <string name="error_other">Other errors caused the operation to fail！</string>
 
 
 
@@ -496,6 +488,8 @@
     <string name="uhf_tag_test">标签测试</string>
 
     <string name="r2000_uhf_support">暂不支持，敬请期待！</string>
+
+
     <!--R2000超高频-->
     <drawable name="clr_normal">#666666</drawable>
     <drawable name="clr_pressed">#333333</drawable>
@@ -703,8 +697,6 @@
     <string name="access_list_data">"数据"</string>
     <string name="access_list_times">"操作次数"</string>
 
-    <!--<string name="save">保存</string>-->
-    <!--<string name="unsave">不保存</string>-->
 
     <string name="get">读取</string>
 
@@ -761,41 +753,41 @@
 
 
     <!--JRA指纹-->
-    <string name="fp_jra_capture">采集指纹图像</string>
-    <string name="fp_jra_enroll">录入指纹</string>
-    <string name="fp_jra_search">搜索指纹</string>
-    <string name="fp_jra_stop">停止</string>
-    <string name="fp_jra_clear">清空</string>
-    <string name="fp_jra_infos">查看设备信息</string>
-    <string name="fp_jra_up_image_failure">上传图像失败:</string>
-    <string name="fp_jra_write_bmp_failure">生成bmp文件失败:</string>
-    <string name="fp_jra_enter_fp_please">显示图片,请在传感器放上手指</string>
-    <string name="fp_jra_fp_raw_1_failure">指纹1生成特征失败:</string>
-    <string name="fp_jra_fp_raw_2_failure">指纹2生成特征失败:</string>
-    <string name="fp_jra_enter_fp_again">请再次放上手指</string>
-    <string name="fp_jra_fp_raw_failure_please_enter_again">生成模板失败，请重新录入</string>
-    <string name="fp_jra_fp_raw_full">JRA模组里指纹数据已经满了!JRA最大支持1000枚指纹</string>
-    <string name="fp_jra_store_raw_failure">存储特征失败,请重新录入</string>
-    <string name="fp_jra_eroll_success">录入指纹成功,=====>ID:</string>
-    <string name="fp_jra_enroll_failure">指纹录入失败，请重新录入</string>
-    <string name="fp_jra_enroll_start">录入指纹=>开始,请放上手指</string>
-    <string name="fp_jra_search_no">没有找到此指纹</string>
-    <string name="fp_jra_search_fp_success">成功搜索到此指纹,ID===></string>
-    <string name="fp_jra_search_start">搜索指纹=>开始,请放上手指</string>
-
+    <string name="fp_jra_capture">Capture</string>
+    <string name="fp_jra_enroll">Enroll</string>
+    <string name="fp_jra_search">Search</string>
+    <string name="fp_jra_stop">Stop</string>
+    <string name="fp_jra_clear">Clear</string>
+    <string name="fp_jra_infos">Infos</string>
+    <string name="fp_jra_up_image_failure">Uploading image failed:</string>
+    <string name="fp_jra_write_bmp_failure">Failed to generate bmp file:</string>
+    <string name="fp_jra_enter_fp_please">Show the picture, please put your finger on the sensor</string>
+    <string name="fp_jra_fp_raw_1_failure">Fingerprint 1 generation feature failed:</string>
+    <string name="fp_jra_fp_raw_2_failure">Fingerprint 2 generation feature failed:</string>
+    <string name="fp_jra_enter_fp_again">Please put your finger again</string>
+    <string name="fp_jra_fp_raw_failure_please_enter_again">Failed to generate template, please re-enter</string>
+    <string name="fp_jra_fp_raw_full">The fingerprint data in the JRA module is full ! JRA supports up to 1000 fingerprints</string>
+    <string name="fp_jra_store_raw_failure">Storage feature failed, please re-Enroll</string>
+    <string name="fp_jra_eroll_success">Successful fingerprint entry,=====>ID</string>
+    <string name="fp_jra_enroll_failure">Fingerprint Enroll failed, please re-Enroll</string>
+    <string name="fp_jra_enroll_start">Enter fingerprint => start, please put your finger</string>
+    <string name="fp_jra_search_no">Did not find this fingerprint</string>
+    <string name="fp_jra_search_fp_success">Successfully searched for this fingerprint,ID===></string>
+    <string name="fp_jra_search_start">Search fingerprint => Start,Please put your finger</string>
 
     <!--usb-->
-    <string name="fp_usb_open_success">切换USB成功</string>
-    <string name="fp_usb_open_failure">切换USB失败</string>
-    <string name="n1_cr30a_jra_n2_cr30a_sd_fg_txt">说明: 1.CR30A为本公司一款基于JRA指纹模组的采集指纹的终端设备 2.CR30A采集的指纹特征数据保存在sd卡根目录下，名为fg.txt</string>
+    <string name="fp_usb_open_success">Switch USB successfully</string>
+    <string name="fp_usb_open_failure">Switching USB failed</string>
+
+    <string name="n1_cr30a_jra_n2_cr30a_sd_fg_txt">Note: 1. CR30A is a terminal device for collecting fingerprints based on JRA fingerprint module 2. The fingerprint feature data collected by CR30A is stored in the root directory of the sd card, named fg.txt</string>
 
 
-    <!--JRA指纹-->
-    <string name="fp_gaa_capture">采集指纹图像</string>
-    <string name="fp_gaa_enroll">录入指纹</string>
-    <string name="fp_gaa_search">搜索指纹</string>
-    <string name="fp_gaa_stop">停止</string>
-    <string name="fp_gaa_clear">清空</string>
-    <string name="fp_gaa_infos">查看设备信息</string>
+    <!--GAA指纹-->
+    <string name="fp_gaa_capture">Capture</string>
+    <string name="fp_gaa_enroll">Enroll</string>
+    <string name="fp_gaa_search">Search</string>
+    <string name="fp_gaa_stop">Stop</string>
+    <string name="fp_gaa_clear">Clear</string>
+    <string name="fp_gaa_infos">Infos</string>
 
 </resources>

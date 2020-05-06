@@ -1,0 +1,777 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">DemoApp</string>
+
+    <!--通用字符串资源  命名要求: general_+英文-->
+
+    <string name="general_functions_settings">功能设置</string>
+
+    <string name="general_check_app_version">Demo版本</string>
+    <string name="general_check_version">固件版本</string>
+    <string name="general_strApkVersion">Apk版本：  </string>
+    <string name="general_strStmVersion">Stm32版本：  </string>
+
+
+    <string-array name="general_functions">
+
+        <item>条码</item>
+
+        <item>RFID(M1卡)</item>
+                <item>RFID(125K)</item>
+
+        <item>身份证(RFID)</item>
+        <item>身份证-GAA</item>
+
+        <item>NFC(M1卡)</item>
+        <item>NFC(ISO 15693)</item>
+
+        <item>PhyChips超高频</item>
+        <item>R2000超高频</item>
+
+        <item>GAA指纹</item>
+        <item>GAB指纹</item>
+        <item>JRA指纹</item>
+
+        <item>北斗短报文</item>
+
+    </string-array>
+
+
+    <!-- <string-array name="general_compatible">
+         <item>条码功能兼容机器如下:\n\n- CFON640\n- A370\n- U1 One-dimensional code\n- U1 QR\n- U1_4710\n- U3\n- U8</item>
+         <item>身份证(RFID)功能兼容机器如下:\n\n- CFON640\n- A370\n- U3\n- U8</item>
+         <item>本地身份证(NFC)功能兼容机器如下:\n\n- A370</item>
+         <item>HX超高频功能兼容机器如下:\n\n- CFON640\n- U3</item>
+         <item>R2000超高频功能兼容机器如下:\n\n- U8</item>
+         <item>SY指纹功能兼容机器如下:\n\n- CFON640\n- A370</item>
+         <item>BYD大指纹(新)功能兼容机器如下:\n\n- U3\n- U8</item>
+         <item>BYD小指纹功能兼容机器如下:\n\n- U3\n- U8</item>
+         <item>M1卡(RFID)功能兼容机器如下:\n\n- CFON640\n- U3\n- U8</item>
+         <item>M1卡(NFC)功能兼容机器如下:\n\n- 带NFC功能的机器</item>
+         <item>ISO 15693功能兼容机器如下:\n\n- 带NFC功能的机器</item>
+         <item>北斗功能兼容机器如下:\n\n- U8</item>
+     </string-array>-->
+
+    <string name="general_usb_fp_tips">1.该指纹功能底层采用USB HOST通信,进入该指纹演示Demo后,设备USB无法充电、无法通信\n\n2.退出再插拔下USB数据线才能正常使用USB充电、通信功能!\n\n3.开发者建议使用wifi adb调试开发指纹模块!</string>
+
+    <string name="general_dialog_tips">温馨提示</string>
+    <string name="general_tips">温馨提示:</string>
+    <string name="general_exit">您确认退出？</string>
+    <string name="general_yes">确定</string>
+    <string name="general_no">取消</string>
+
+    <string name="general_open_serial_fail">打开串口失败！</string>
+    <string name="general_open_serial_success">打开串口成功！</string>
+
+    <string name="general_write_success">写入成功！</string>
+    <string name="general_write_fail">写入失败！</string>
+    <string name="general_ok">确定</string>
+    <string name="general_cancel">取消</string>
+    <string name="general_setting">设置</string>
+
+
+    <!--条码字符串资源 命名要求: barcode_+功能+英文-->
+    <string name="barcode_scan">单扫</string>
+    <string name="barcode_scanning_open">连续扫码</string>
+    <string name="barcode_scanning_close">关闭连续</string>
+    <string name="barcode_scan_clear">清空</string>
+    <string name="barcode_scan_is_auto_clear">是否自清</string>
+    <string name="barcode_scan_all">总共: %1$s</string>
+    <string name="barcode_scan_success">成功: %1$s</string>
+
+    <string name="barcode_scanner_status">扫描仪状态</string>
+    <string name="barcode_scanner_open">开启</string>
+    <string name="barcode_scanner_close">关闭</string>
+
+    <string name="barcode_setting">设置</string>
+
+
+    <string name="barcode_setting_interval">扫描间隔:</string>
+    <string name="barcode_setting_outmode">输出模式</string>
+    <string name="barcode_setting_endchar">结束字符</string>
+    <string name="barcode_setting_prefix">前缀</string>
+    <string name="barcode_setting_suffix">后缀</string>
+    <string name="barcode_setting_effect">声音和震动</string>
+    <string name="barcode_setting_enable">禁用</string>
+    <string name="barcode_setting_disable">取消禁用</string>
+    <string name="barcode_setting_showtoast">是否打印吐司：</string>
+
+
+    <string-array name="barcode_setting_endchar">
+        <item>回车</item>
+        <item>换行</item>
+        <item>空格</item>
+        <item>Tab</item>
+        <item>无</item>
+
+    </string-array>
+
+    <string-array name="barcode_setting_effect">
+        <item>无</item>
+        <item>只有震动</item>
+        <item>只有声音</item>
+        <item>震动及声音</item>
+    </string-array>
+
+    <string-array name="barcode_setting_output_mode">
+        <item>直接显示</item>
+        <item>模拟按键</item>
+        <item>复制到系统剪切板</item>
+             <item>广播</item>
+
+    </string-array>
+
+
+    <!--身份证字符串资源 要求:idcard_+功能+英文-->
+    <string name="idcard_read">读取身份证</string>
+    <string name="idcard_reading">连续读取</string>
+    <string name="idcard_reading_stop">停止</string>
+    <string name="idcard_clear">清空</string>
+    <string name="idcard_uid">UID</string>
+
+
+    <!--HX超高频字符串资源 要求:hxuhf_+功能+英文-->
+    <string name="hxuhf_open">开启模块</string>
+    <string name="hxuhf_search_tag">搜索标签</string>
+    <string name="hxuhf_setting">设置</string>
+
+    <string name="hxuhf_read_count">读取次数:</string>
+    <string name="hxuhf_readtime">时间：</string>
+    <string name="hxuhf_singlesearch">单次扫描</string>
+    <string name="hxuhf_txt_offset">偏移地址:</string>
+    <string name="hxuhf_txt_length">数据长度:</string>
+    <string name="hxuhf_txt_region">区域:</string>
+    <string name="hxuhf_button_get_region">获取区域</string>
+    <string name="hxuhf_button_set_region">设置区域</string>
+    <string name="hxuhf_get_region_success">获取区域成功</string>
+    <string name="hxuhf_set_region_success">设置区域成功</string>
+    <string name="hxuhf_get_channel_success">获取信道成功</string>
+    <string name="hxuhf_set_channel_success">设置信道成功</string>
+    <string name="hxuhf_get_region_error1">获取区域失败</string>
+    <string name="hxuhf_get_region_error2">获取区域不在预设范围</string>
+    <string name="hxuhf_set_region_error1">设置区域失败</string>
+    <string name="hxuhf_get_channel_error1">获取信道失败</string>
+    <string name="hxuhf_get_channel_error2">对应区域没有此信道</string>
+    <string name="hxuhf_set_channel_error1">设置信道失败</string>
+    <string name="hxuhf_txt_channel">信道:</string>
+    <string name="hxuhf_button_get_channel">获取信道</string>
+    <string name="hxuhf_button_set_channel">设置信道</string>
+    <string-array name="hxuhf_region">
+        <item>Korea (0x11)</item>
+        <item>North America (0x21)</item>
+        <item>US (0x22)</item>
+        <item>Europe (0x31)</item>
+        <item>Japan (0x41)</item>
+        <item>China1 (0x51)</item>
+        <item>China2 (0x52)</item>
+    </string-array>
+
+    <string name="hxuhf_txt_accesspwd">访问密码:</string>
+    <string name="hxuhf_txt_timeout">超时设置:</string>
+    <string name="hxuhf_tab_read">标签读取</string>
+    <string name="hxuhf_tab_write">标签写入</string>
+    <string name="hxuhf_txt_tag_tit">选中标签:</string>
+    <string name="hxuhf_txt_read_eare">读取区域:</string>
+    <string name="hxuhf_txt_write_eare">写入区域:</string>
+    <string name="hxuhf_txt_count">0000</string>
+    <string name="hxuhf_txt_pwdzero">00000000</string>
+    <string name="hxuhf_hint_write_read">偏移地址是指从你要读写的区域的位置开始，这个长度是距离区域0点计数的，1个长度等于两个字节或四个十六进制数字。\n此文本只支持16位，1数据长度 = 4个16进制数字</string>
+    <string name="hxuhf_power">功率：</string>
+    <string name="hxuhf_write">写入</string>
+    <string name="hxuhf_read">读取</string>
+    <string name="hxuhf_txt_null">N/A</string>
+    <string name="hxuhf_info_connect_success">连接成功</string>
+    <string name="hxuhf_info_connect_fail">连接失败</string>
+    <string name="hxuhf_inventory_over">盘点结束</string>
+    <string name="hxuhf_read_timeout">读取超时！</string>
+    <string name="hxuhf_connect_to_device">连接设备</string>
+    <string name="hxuhf_connecting_to_device">正在连接设备，请稍后.</string>
+    <string name="hxuhf_txt_singleScanSetting">单次扫描设置</string>
+    <string name="hxuhf_read_success">读取成功！</string>
+    <string name="hxuhf_read_fail">读取失败！</string>
+    <string name="hxuhf_length_zero">数据长度不能为0！</string>
+    <!--<string name="hxuhf_write_success">写入成功！</string>-->
+    <!--<string name="hxuhf_write_fail">写入失败！</string>-->
+    <string name="hxuhf_length_not_right">写入数据长度不对！</string>
+
+    <string-array name="hxuhf_dbm">
+        <item>8.0</item>
+        <item>10.0</item>
+        <item>11.0</item>
+        <item>12.0</item>
+        <item>17.0</item>
+        <item>18.0</item>
+        <item>18.0</item>
+        <item>18.5</item>
+        <item>19.0</item>
+        <item>19.5</item>
+        <item>20.0</item>
+        <item>20.5</item>
+        <item>21.0</item>
+        <item>21.5</item>
+        <item>22.0</item>
+        <item>22.5</item>
+        <item>23.0</item>
+        <item>23.5</item>
+        <item>24.0</item>
+        <item>24.5</item>
+        <item>25.0</item>
+        <item>25.5</item>
+        <item>26.0</item>
+        <item>26.5</item>
+        <item>27.0</item>
+        <item>27.5</item>
+        <item>28.0</item>
+        <item>28.5</item>
+        <item>29.0</item>
+        <item>29.5</item>
+        <item>30.0</item>
+        <item>30.5</item>
+    </string-array>
+
+
+    <!-- SY FingerprintActivity -->
+    <string name="fp_jra_register_fingerprint">注册指纹</string>
+    <string name="fp_jra_validate_fingerprint">验证指纹</string>
+    <string name="fp_jra_noID">请输入ID</string>
+    <string name="fp_jra_calibration_success">校准成功</string>
+    <string name="fp_jra_calibration_fail">校准失败</string>
+    <string name="fp_jra_clear_flash_success">清空指纹库成功</string>
+    <string name="fp_jra_clear_flash_fail">清空指纹库失败</string>
+    <string name="fp_jra_first_register">请先注册指纹！</string>
+    <string name="fp_jra_print_finger">请按指纹！</string>
+    <string name="back">back</string>
+    <string name="fp_jra_clear_flash">清空指纹库</string>
+    <string name="fp_jra_calibration">校准</string>
+    <string name="fp_jra_import_finger">导入</string>
+    <string name="fp_jra_save_model">保存模板</string>
+
+    <string name="fp_jra_print_finger_again">请再次按指纹！</string>
+    <string name="fp_jra_processing">指纹采集成功，正在上传处理...</string>
+    <string name="fp_jra_generate_char_fail">生成特征值失败！</string>
+    <string name="fp_jra_reg_model_success">合成模板成功！</string>
+    <string name="fp_jra_reg_model_fail">合成模板失败！</string>
+    <string name="fp_jra_register_success">注册成功！</string>
+    <string name="fp_jra_register_fail">注册失败！</string>
+    <string name="fp_jra_verifying_wait">正在验证，请稍后...</string>
+    <string name="fp_jra_down_char_fail">验证失败</string>
+    <string name="fp_jra_verifying_through">验证通过</string>
+    <string name="fp_jra_verifying_fail">验证失败</string>
+    <string name="fp_jra_up_image_success">上传指纹图像成功</string>
+    <string name="fp_jra_up_image_fail">上传指纹图像失败</string>
+    <string name="fp_jra_clear_model">清除模板</string>
+    <string name="fp_jra_id_model">ID:</string>
+    <string name="fp_jra_clear_model_success">清除模板成功</string>
+    <string name="fp_jra_clear_model_fail">清除模板失败</string>
+    <string name="fp_jra_enter_id">请输入ID</string>
+    <string name="fp_jra_register3">注册</string>
+    <string name="fp_jra_down_store">下载存储</string>
+    <string name="fp_jra_validate3">验证</string>
+    <string name="fp_jra_down_store_success">下载存储成功</string>
+    <string name="fp_jra_down_store_fail">下载存储失败</string>
+    <string name="fp_jra_search_success">搜索成功</string>
+    <string name="fp_jra_search_fail">搜索失败</string>
+    <string name="fp_jra_down_store_null">模板不能为空</string>
+    <string name="fp_jra_compares">比较</string>
+    <string-array name="fingerprint_size">
+        <item>小指纹</item>
+        <item>大指纹</item>
+    </string-array>
+
+
+    <!--指纹字符串资源 命名要求: fp_型号类别_功能_结果-->
+
+
+    <string name="fp_open_device">打开设备</string>
+
+    <string name="fp_close_device">关闭设备</string>
+
+    <string name="finger_infos">指纹采集信息：</string>
+
+    <string name="fp_capture">取图：</string>
+
+    <string name="fp_extract">提取特征：</string>
+
+
+    <string name="fp_generalize">合成模板：</string>
+
+    <string name="fp_verify">比对：</string>
+    <string name="fp_enroll_fp">录入指纹</string>
+    <string name="fp_verify_fp">比对指纹(1:1)</string>
+    <string name="fp_identify_fp">搜索指纹(1:N)</string>
+    <string name="fp_verify_fp2">比对指纹</string>
+    <string name="fp_identify_fp2">搜索指纹</string>
+    <string name="fp_clear_fp_db">清空指纹库</string>
+    <string name="fp_show_fp">显示指纹</string>
+    <string name="fp_show_devinfos">查看设备信息</string>
+
+
+    <string name="fingerprintfeatureraw">指纹特征数据:</string>
+
+    <string name="finger_collect_failure">指纹采集失败!</string>
+
+    <string name="finger_leave">请离开手指</string>
+    <string name="finger_press">请按压手指</string>
+    <string name="finger_collect">正在采集第</string>
+    <string name="finger">指纹</string>
+    <string name="finger_collect_end">采集结束!</string>
+    <string name="finger_press_again">请再次按压手指</string>
+    <string name="finger_search">搜索指纹,该指纹ID为</string>
+    <string name="finger_public_verify_success">比对成功!</string>
+    <string name="finger_public_verify_failure">比对失败!</string>
+
+    <string name="finger_public_fetch_feature_failure">提取特征值失败!</string>
+    <string name="finger_public_fetch_feature_success">提取特征值成功!</string>
+
+
+    <string name="fp_gaa_welcome">欢迎使用</string>
+    <string name="fp_gaa_version">FP_Version</string>
+    <string name="fp_gaa_isvauth">FP_ISVAuth</string>
+    <string name="fp_gaa_devversion">FP_DevVersion</string>
+    <string name="fp_gaa_getbmp">FP_GetBmp</string>
+    <string name="fp_gaa_featureextract">FP_FeatureExtract</string>
+    <string name="fp_gaa_featurematch">FP_FeatureMatch</string>
+    <string name="fp_gaa_featuresearch">FP_FeatureSearch</string>
+    <string name="fp_gaa_end">FP_End</string>
+    <string name="fp_usb_init">指纹模块初始化中...</string>
+
+
+    <string name="fp_jra_search_failure">搜索指纹失败,请改变手指按压手势!</string>
+
+
+    <string name="fp_not_done">未进行</string>
+    <!--USB-->
+
+    <string name="fp_loading">正在加载</string>
+    <string name="fp_preparing_device">设备正在准备，请稍候……</string>
+    <string name="fp_closing_device">设备正在关闭，请稍候……</string>
+
+
+    <!-- 指纹仪 -->
+    <string name="fingerprint">指纹仪</string>
+    <string name="fps_sn">指纹传感器序列号：<xliff:g>%1$s</xliff:g></string>
+    <string name="fps_fw">指纹传感器内部固件版本号：<xliff:g>%1$s</xliff:g></string>
+    <string name="fp_collect_info">单次指纹采集信息：</string>
+    <string name="capture">取图：</string>
+    <string name="extract">提取特征：</string>
+    <string name="generalize">合成模板：</string>
+    <string name="verify">比对：</string>
+    <string name="enroll_fp">录入指纹</string>
+    <string name="verify_fp">比对指纹(1:1)</string>
+    <string name="identify_fp">搜索指纹(1:N)</string>
+        <string name="verify_fp2">比对指纹</string>
+    <string name="identify_fp2">搜索指纹</string>
+    <string name="clear_fp_db">清空指纹库</string>
+    <string name="show_fp">显示指纹</string>
+    <string name="press_finger">请按压手指!</string>
+    <string name="enrolling">正在注册指纹……</string>
+    <string name="verifying">正在比对指纹……</string>
+    <string name="identifying">正在指纹库中查找指纹……</string>
+    <string name="fingerprint_device_open_success">指纹仪打开成功！</string>
+    <string name="fingerprint_device_open_failed">指纹仪打开失败！</string>
+    <string name="fingerprint_device_close_success">指纹仪关闭成功！</string>
+    <string name="fingerprint_device_close_failed">指纹仪关闭失败！</string>
+    <string name="fingerprint_device_power_on_failed">指纹仪上电失败！</string>
+    <string name="fingerprint_device_power_off_failed">指纹仪断电失败！</string>
+    <string name="algorithm_initialization_failed">Bione算法初始化失败！</string>
+    <string name="algorithm_cleanup_failed">Bione算法反初始化失败！</string>
+    <string name="capture_image_success">指纹图像获取成功！</string>
+    <string name="capture_image_failed">采集指纹图像失败！</string>
+    <string name="enroll_failed_because_of_extract_feature">录入失败，提取特征出错！</string>
+    <string name="enroll_failed_because_of_make_template">录入失败，生成模板出错！</string>
+    <string name="enroll_failed_because_of_get_id">录入失败，获取可用的指纹ID失败！</string>
+    <string name="enroll_failed_because_of_error">录入失败！</string>
+    <string name="enroll_success">录入成功！</string>
+    <string name="enrolled_id">指纹ID为<xliff:g>%1$d</xliff:g></string>
+    <string name="verify_failed_because_of_extract_feature">比对失败，提取特征出错！</string>
+    <string name="verify_failed_because_of_error">比对失败！</string>
+    <string name="fingerprint_not_match">指纹不匹配！</string>
+    <string name="fingerprint_match">指纹匹配！</string>
+    <string name="fingerprint_similarity">指纹相似度为<xliff:g>%1$d</xliff:g></string>
+    <string name="identify_failed_because_of_extract_feature">比对失败，提取特征出错！</string>
+    <string name="identify_failed_because_of_error">比对失败！</string>
+    <string name="identify_match">验证成功！</string>
+    <string name="matched_id">匹配指纹ID为<xliff:g>%1$d</xliff:g></string>
+    <string name="clear_fingerprint_database_success">清空指纹库成功！</string>
+    <string name="clear_fingerprint_database_failed">清空指纹库失败！</string>
+
+
+     <!-- 错误代码 -->
+    <string name="info_error">错误</string>
+    <string name="operation_successful">操作成功！</string>
+    <string name="error_operation_failed">操作失败！</string>
+    <string name="error_wrong_connection">连接错误导致操作失败！</string>
+    <string name="error_device_busy">设备忙导致操作失败！</string>
+    <string name="error_device_not_open">设备未打开导致操作失败！</string>
+    <string name="error_timeout">传输超时导致操作失败！</string>
+    <string name="error_no_permission">无操作权限导致操作失败！</string>
+    <string name="error_wrong_parameter">输入参数错误导致操作失败！</string>
+    <string name="error_decode">解码错误导致操作失败！</string>
+    <string name="error_initialization_failed">设备初始化失败导致操作失败！</string>
+    <string name="error_not_support">不被支持的操作导致操作失败！</string>
+    <string name="error_not_enough_memory">内存不足导致操作失败！</string>
+    <string name="error_device_not_found">未能找到设备导致操作失败！</string>
+    <string name="error_device_reopen">设备重复打开导致操作失败！</string>
+    <string name="error_algorithm_initialization_failed">指纹算法初始化失败导致操作失败！</string>
+    <string name="error_invalid_feature_data">指纹特征数据错误导致操作失败！</string>
+    <string name="error_bad_image">指纹图像太差导致操作失败！</string>
+    <string name="error_not_match">指纹不匹配导致操作失败！</string>
+    <string name="error_low_point">指纹比对分值太低导致操作失败！</string>
+    <string name="error_no_finger">无手指导致操作失败！</string>
+    <string name="error_no_result">指纹库中无匹配指纹导致操作失败！</string>
+    <string name="error_out_of_bound">输入指纹ID越界导致操作失败！</string>
+    <string name="error_database_full">指纹库已满导致操作失败！</string>
+    <string name="error_library_missing">指纹算法库丢失导致操作失败！</string>
+    <string name="error_algorithm_uninitialize">指纹算法未初始化导致操作失败！</string>
+    <string name="error_algorithm_reinitialize">指纹算法重复初始化导致操作失败！</string>
+    <string name="error_repeated_enroll">指纹重复注册导致操作失败！</string>
+    <string name="error_not_enrolled">指纹未注册导致操作失败！</string>
+    <string name="error_no_card">未能找到卡片导致操作失败！</string>
+    <string name="error_invalid_card">卡片无效导致操作失败！</string>
+    <string name="error_invalid_decode_lib">卡片解码库无效导致操作失败！</string>
+    <string name="error_other">其它错误导致操作失败！</string>
+
+
+
+
+
+
+
+
+    <!--R2000超高频字符串资源 要求:r2000_+功能+英文-->
+
+    <string name="r2000_list_antenna_port">"天线号"</string>
+    <string name="r2000_access_list_times">"操作次数"</string>
+    <string name="r2000_access_list_data_len">"数据长度"</string>
+    <string name="r2000_access_list_data">"数据"</string>
+    <string name="r2000_uhf_temp">温度</string>
+
+    <string name="r2000_iso180006cinventory">6C 标签</string>
+    <string name="r2000_iso180006binventory">6B 标签</string>
+    <string name="r2000_inventory_real_mode">盘存标签(实时模式)</string>
+    <string name="r2000_inventory_buffer_mode">盘存标签(缓存模式)</string>
+    <string name="r2000_inventory_fast4ant_mode">快速4天线盘存</string>
+    <string name="r2000_iso180006Binventory">6B盘存标签</string>
+
+    <string name="r2000_start_inventory">开始存盘</string>
+    <string name="r2000_stop_inventory">结束存盘</string>
+
+    <string name="r2000_real_session">自定义Session参数</string>
+    <string name="r2000_select_antenna">天线选择</string>
+    <string name="r2000_antenna_1">天线1</string>
+    <string name="r2000_antenna_2">天线2</string>
+    <string name="r2000_antenna_3">天线3</string>
+    <string name="r2000_antenna_4">天线4</string>
+    <string name="r2000_real_round">每条命令的盘存次数:</string>
+
+    <string name="r2000_open_tag_list">标签列表(点击展开)</string>
+    <string name="r2000_close_tag_list">标签列表(点击隐藏)</string>
+
+    <string name="r2000_open_caption">操作记录(点击展开)</string>
+    <string name="r2000_close_caption">操作记录(点击隐藏)</string>
+
+    <string name="uhf_tag_test">标签测试</string>
+
+    <string name="r2000_uhf_support">暂不支持，敬请期待！</string>
+    <!--R2000超高频-->
+    <drawable name="clr_normal">#666666</drawable>
+    <drawable name="clr_pressed">#333333</drawable>
+
+    <drawable name="list_normal">#00000000</drawable>
+    <drawable name="list_pressed">#FF333333</drawable>
+
+    <string name="menu_settings">Settings</string>
+
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="goon">继续</string>
+    <string name="switchwifi">切换</string>
+    <string name="alert_diag_title">提示</string>
+    <string name="are_you_sure_to_exit">确认要退出吗？</string>
+
+    <string name="tab_title2">标签测试</string>
+    <string name="tab_title3">串口监控</string>
+
+    <string name="connect_rs232">"串口连接"</string>
+    <string name="connect_tcp_ip">"TCP/IP 连接"</string>
+    <string name="connect_bluetooth">"蓝牙连接"</string>
+    <string name="connect">"立即连接"</string>
+
+    <string name="connect_tcp_ip_address">"IP:"</string>
+    <string name="connect_tcp_ip_port">"端口:"</string>
+
+    <string name="com_port">串口号:</string>
+    <string name="baud_rate">波特率:</string>
+    <string name="com_port_usb">"USB串口(FT312D)"</string>
+
+    <string name="rs232_error">"串口参数设置错误"</string>
+
+    <string name="error_configuration">请先配置</string>
+    <string name="error_security">该串口号没有读写权限</string>
+    <string name="error_unknown">打开失败，未知错误</string>
+
+    <string name="scanning">正在搜索设备</string>
+    <string name="select_device">选择要连接的设备</string>
+    <string name="none_paired">尚无配对设备</string>
+    <string name="none_found">未发现设备</string>
+    <string name="title_paired_devices">已配对的设备</string>
+    <string name="title_other_devices">其他可用设备</string>
+    <string name="button_scan">搜索设备</string>
+
+    <string name="back_to_main">返回主页面</string>
+
+    <string name="open_caption">操作记录(点击展开)</string>
+    <string name="close_caption">操作记录(点击隐藏)</string>
+
+    <string name="setting_reset">复位读写器</string>
+    <string name="setting_base">基本参数设置</string>
+    <string name="setting_reader_address">读写器RS-485地址(HEX)</string>
+    <string name="setting_identifier">读写器识别标识(12字节)</string>
+    <string name="setting_firmware_version">固件版本</string>
+    <string name="setting_temperature">工作温度</string>
+    <string name="setting_gpio">读写GPIO</string>
+    <string name="setting_set_gpio">写GPIO(GPIO3,GPIO4):</string>
+    <string name="setting_get_gpio">读GPIO(GPIO1,GPIO2):</string>
+    <string name="setting_gpio_1">高</string>
+    <string name="setting_gpio_0">低</string>
+    <string name="setting_beeper">蜂鸣器状态</string>
+    <string name="beeper_quiet">安静</string>
+    <string name="beeper_all">存盘后鸣响</string>
+    <string name="beeper_one">每读到一张标签鸣响(影响速度，仅供测试)</string>
+
+    <string name="setting_rf">射频参数设置</string>
+    <string name="setting_drm_status">DRM状态</string>
+    <string name="setting_out_power">射频输出功率</string>
+    <string name="dBm">dBm</string>
+    <string name="setting_antenna">切换当前工作天线</string>
+    <string name="antenna_port">天线端口:</string>
+    <string name="setting_return_loss">测量回波损耗(Return Loss)</string>
+    <string name="setting_ant_detector">天线灵敏度</string>
+    <string name="ant_detector">回波损耗阈值:</string>
+    <string name="desc">说明:</string>
+    <string name="desc_detector_1">1.读写标签时系统自动测量天线端口的回波损耗(Return Loss)。</string>
+    <string name="desc_detector_2">2.为保护设备，检测到回波损耗大于此阈值将报错并停止读写标签操作。</string>
+    <string name="desc_detector_3">3.此阈值越大对天线端口阻抗匹配要求越高，设为0关闭此功能。</string>
+
+    <string name="setting_monza">"标签快速读取TID功能"</string>
+    <string name="desc_monza_1">1.只有Impinj Monza系列标签的部分型号支持快速读TID功能。</string>
+    <string name="desc_monza_2">2.若标签不支持快速读TID请关闭此功能。</string>
+
+    <string name="setting_region">射频频谱 </string>
+    <string name="region_custom">自定义频点</string>
+    <string name="region_default">默认频点</string>
+    <string name="region_range">范围:</string>
+    <string name="freq_start">起始频率:</string>
+    <string name="freq_end">截止频率:</string>
+    <string name="freq_interval">频道间隔:</string>
+    <string name="freq_nums">频点数量:</string>
+    <string name="freq_unit">个</string>
+
+    <string name="setting_profile">射频通讯链路 </string>
+    <string name="profile_option0">"配置0  Tari 25uS; FM0 40KHz"</string>
+    <string name="profile_option1">"配置1(推荐且为默认)  Tari 25uS; Miller 4 250KHz"</string>
+    <string name="profile_option2">"配置2  Tari 25uS; Miller 4 300KHz" </string>
+    <string name="profile_option3">"配置3  Tari 6.25uS; FM0 400KHz" </string>
+
+    <string name="iso180006cinventory">6C 标签</string>
+    <string name="iso180006binventory">6B 标签</string>
+    <string name="inventory_real_mode">盘存标签(实时模式)</string>
+    <string name="inventory_buffer_mode">盘存标签(缓存模式)</string>
+    <string name="inventory_fast4ant_mode">快速4天线盘存</string>
+    <string name="iso180006Binventory">6B盘存标签</string>
+
+    <string name="real_session">自定义Session参数</string>
+    <string name="select_antenna">天线选择</string>
+    <string name="antenna_1">天线1</string>
+    <string name="antenna_2">天线2</string>
+    <string name="antenna_3">天线3</string>
+    <string name="antenna_4">天线4</string>
+    <string name="real_round">每条命令的盘存次数:</string>
+
+    <string name="access_tag">存取标签</string>
+
+    <string name="list_antenna_port">"天线号"</string>
+
+    <string name="real_list_times">"识别次数"</string>
+    <string name="real_list_freq">"载波频率"</string>
+
+    <string name="buffer_list_times">"识别次数"</string>
+    <string name="buffer_round">每条命令的盘存次数:</string>
+
+    <string name="open_tag_list">标签列表(点击展开)</string>
+    <string name="close_tag_list">标签列表(点击隐藏)</string>
+
+    <string name="tags_count">"标签数目(不重复): "</string>
+    <string name="tags_count_unit">" 个"</string>
+    <string name="tags_total">"累计数据: "</string>
+    <string name="tags_total_unit">" 条"</string>
+    <string name="tags_speed">"识别速度: "</string>
+    <string name="tags_speed_unit">" 个/秒"</string>
+    <string name="tags_time">"运行时间: "</string>
+    <string name="tags_time_unit">" 毫秒"</string>
+    <string name="tags_times_unit">" 次"</string>
+
+    <string name="tag_get_buffer">读取缓存</string>
+    <string name="tag_get_clear_buffer">读取并清空缓存</string>
+    <string name="tag_clear_buffer">清空缓存</string>
+    <string name="tag_query_buffer">查询标签数</string>
+
+    <string name="fast4ant_set">"参数设置"</string>
+    <string name="fast4ant_delay">"天线间延时(mS): "</string>
+    <string name="fast4ant_repeat">"循环次数: ""</string>
+
+    <string name="fast4ant_list_times">"识别次数"</string>
+    <string name="fast4ant_list_freq">"载波频率"</string>
+
+    <string name="tag_access">"标签操作"</string>
+    <string name="tag_list_title">"标签列表: "</string>
+    <string name="tag_access_epc">"选定操作标签"</string>
+    <string name="tag_write_read">"读写标签"</string>
+    <string name="tag_lock">"锁定标签"</string>
+    <string name="tag_kill">"销毁标签"</string>
+
+    <string name="area_password">"密码区"</string>
+    <string name="area_epc">"EPC区"</string>
+    <string name="area_tid">"TID区"</string>
+    <string name="area_user">"USER区"</string>
+
+    <string name="area_access_password">"访问密码区"</string>
+    <string name="area_kill_password">"销毁密码区"</string>
+
+    <string name="lock_free">"开放"</string>
+    <string name="lock_lock">"锁定"</string>
+    <string name="lock_free_ever">"永久开放"</string>
+    <string name="lock_lock_ever">"永久锁定"</string>
+
+    <string name="password">"密码(HEX): "</string>
+    <string name="start_add">"起始地址(WORD): "</string>
+    <string name="data_length">"数据长度(WORD): "</string>
+    <string name="data_write">"写入数据(HEX): "</string>
+
+    <string name="tag_uid_list_title">"UID列表: "</string>
+    <string name="tag_access_uid">"选定操作UID"</string>
+    <string name="data_read">"读取数据(HEX): "</string>
+    <string name="data_read_len">"读取长度(HEX): "</string>
+    <string name="data_write_len">"写入长度(HEX): "</string>
+    <string name="write_round">"循环写入(次): "</string>
+    <string name="write_round_ok">"成功写入(次): "</string>
+    <string name="start_add_hex">"起始地址(HEX): "</string>
+
+    <string name="wp_ever_addr">"永久写保护(HEX地址): "</string>
+    <string name="get_wp_ever_addr">"查询永久写保护状态(HEX地址): "</string>
+    <string name="set_wp_ever">"永久写保护"</string>
+    <string name="get_wp_ever">"查询状态"</string>
+
+    <string name="locked">"已锁定"</string>
+    <string name="unlocked">"未锁定"</string>
+
+
+    <string name="setting_monitor">开启监控</string>
+
+    <string name="refresh">刷新界面</string>
+
+    <string name="select">选择</string>
+    <string name="read_tag">读标签</string>
+    <string name="write_tag">写标签</string>
+    <string name="lock_tag">锁定标签</string>
+    <string name="kill_tag">销毁标签</string>
+
+    <string name="access_list_data_len">"数据长度"</string>
+    <string name="access_list_data">"数据"</string>
+    <string name="access_list_times">"操作次数"</string>
+
+    <!--<string name="save">保存</string>-->
+    <!--<string name="unsave">不保存</string>-->
+
+    <string name="get">读取</string>
+
+    <string name="measure">测量</string>
+
+
+    <!-- M1卡 -->
+    <string name="m1_title">M1卡功能演示Demo</string>
+    <string name="m1_card_type">卡片类型：</string>
+    <string name="m1_pwd_type">密码类型：</string>
+    <string name="m1_card_name">卡号：</string>
+    <string name="m1_show_card">显示卡号</string>
+    <string name="m1_pwda">密码A：</string>
+    <string name="m1_hint_tips12">请写入12个0-9，A-F，a-f之间的字符</string>
+    <string name="m1_pwdb">密码B：</string>
+    <string name="m1_block_num">块号：</string>
+    <string name="m1_write_block">写块数据：</string>
+    <string name="m1_hint_tips32">请写入32个0-9，A-F，a-f之间的字符</string>
+    <string name="m1_new_pwd">新密码：</string>
+    <string name="m1_read_block">读块数据：</string>
+    <string name="m1_necessary_done">必要操作功能</string>
+    <string name="m1_get_card">获取卡号</string>
+    <string name="m1_send_pwd">发送密码</string>
+    <string name="m1_valid_pwd">认证密码</string>
+    <string name="m1_io">I/O操作功能</string>
+    <string name="m1_write_numblock">写入指定块数据</string>
+    <string name="m1_update_numblock">修改指定块密码</string>
+    <string name="m1_update_numsector">修改指定扇区密码</string>
+    <string name="m1_get_numblock">获取指定块数据</string>
+    <string name="m1_str_get_success">获取卡号成功</string>
+    <string name="m1_str_update_pwd_success">修改密码成功</string>
+    <string name="m1_str_update_pwd_failure">修改密码失败</string>
+    <string name="m1_str_block_not_empty">块号不能为空</string>
+    <string name="m1_str_all_not_empty">密码A、密码B或写入数据不能为空</string>
+    <string name="m1_str_all_not_validate">密码A、密码B或写入数据不合法</string>
+    <string name="m1_str_not_empty">密码A、密码B不能为空</string>
+    <string name="m1_no_card_with_data">未寻到卡,有返回数据</string>
+    <string name="m1_no_card_without_data">未寻到卡,无返回数据，超时！！</string>
+    <string name="m1_find_card_exception">可能是串口打开失败或其他异常</string>
+    <string name="m1_writing_success">写卡成功</string>
+    <string name="m1_writing_fail">写卡失败</string>
+    <string name="m1_reading_success">读卡成功</string>
+    <string name="m1_reading_fail">读卡失败</string>
+    <string name="m1_getcard_wait">正在获取卡号，请稍后...</string>
+    <string name="m1_writing_wait">正在写卡，请稍后...</string>
+    <string name="m1_reading_wait">正在读卡，请稍后...</string>
+    <string name="m1_updatepwding_wait">正在修改密码，请稍后...</string>
+
+    <!-- NfcV 15693 -->
+    <string name="nfc_15693_error">当前设备不支持NFC功能</string>
+    <string name="nfc_15693_error_not_open">NFC功能未打开，请先开启后重试！</string>
+    <string name="nfc_15693_error_no_block">写入区块不存在</string>
+    <string name="nfc_15693_error_max">写入数据长度大于空间容量,最大长度为</string>
+
+
+    <!--JRA指纹-->
+    <string name="fp_jra_capture">采集指纹图像</string>
+    <string name="fp_jra_enroll">录入指纹</string>
+    <string name="fp_jra_search">搜索指纹</string>
+    <string name="fp_jra_stop">停止</string>
+    <string name="fp_jra_clear">清空</string>
+    <string name="fp_jra_infos">查看设备信息</string>
+    <string name="fp_jra_up_image_failure">上传图像失败:</string>
+    <string name="fp_jra_write_bmp_failure">生成bmp文件失败:</string>
+    <string name="fp_jra_enter_fp_please">显示图片,请在传感器放上手指</string>
+    <string name="fp_jra_fp_raw_1_failure">指纹1生成特征失败:</string>
+    <string name="fp_jra_fp_raw_2_failure">指纹2生成特征失败:</string>
+    <string name="fp_jra_enter_fp_again">请再次放上手指</string>
+    <string name="fp_jra_fp_raw_failure_please_enter_again">生成模板失败，请重新录入</string>
+    <string name="fp_jra_fp_raw_full">JRA模组里指纹数据已经满了!JRA最大支持1000枚指纹</string>
+    <string name="fp_jra_store_raw_failure">存储特征失败,请重新录入</string>
+    <string name="fp_jra_eroll_success">录入指纹成功,=====>ID:</string>
+    <string name="fp_jra_enroll_failure">指纹录入失败，请重新录入</string>
+    <string name="fp_jra_enroll_start">录入指纹=>开始,请放上手指</string>
+    <string name="fp_jra_search_no">没有找到此指纹</string>
+    <string name="fp_jra_search_fp_success">成功搜索到此指纹,ID===></string>
+    <string name="fp_jra_search_start">搜索指纹=>开始,请放上手指</string>
+
+
+    <!--usb-->
+    <string name="fp_usb_open_success">切换USB成功</string>
+    <string name="fp_usb_open_failure">切换USB失败</string>
+    <string name="n1_cr30a_jra_n2_cr30a_sd_fg_txt">说明: 1.CR30A为本公司一款基于JRA指纹模组的采集指纹的终端设备 2.CR30A采集的指纹特征数据保存在sd卡根目录下，名为fg.txt</string>
+
+
+    <!--JRA指纹-->
+    <string name="fp_gaa_capture">采集指纹图像</string>
+    <string name="fp_gaa_enroll">录入指纹</string>
+    <string name="fp_gaa_search">搜索指纹</string>
+    <string name="fp_gaa_stop">停止</string>
+    <string name="fp_gaa_clear">清空</string>
+    <string name="fp_gaa_infos">查看设备信息</string>
+
+</resources>
