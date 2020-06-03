@@ -43,11 +43,11 @@ public class JraFragment extends BaseFragment {
 
     private static final String TAG = "JraFragment";
 
+    Unbinder unbinder;
     @BindView(R.id.bar)
     ProgressBar bar;
     @BindView(R.id.fingerImage)
     ImageView fingerImage;
-    Unbinder unbinder;
     @BindView(R.id.capture)
     Button capture;
     @BindView(R.id.enroll)

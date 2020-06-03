@@ -19,7 +19,10 @@ import com.cw.demo.BaseActivity;
 import com.cw.demo.MyApplication;
 import com.cw.demo.R;
 import com.cw.fpjrasdk.JRA_API;
+import com.cw.fpjrcsdk.JrcApiBase;
+import com.cw.fpjrcsdk.JrcApiZiDevice;
 import com.cw.serialportsdk.usbFingerManager.USBFingerManager;
+import com.fm.bio.FPM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +40,8 @@ public class JRAActivity extends BaseActivity {
     private TabLayout mTabLayout;
     private AppCompatTextView tvResult;
     private List<Fragment> fragmnts = new ArrayList<Fragment>();
-    private JraFragment mJraFragment;
+    public JrcApiBase mJrcApi;
+    private String mFingerDevice = "";
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -59,7 +63,9 @@ public class JRAActivity extends BaseActivity {
         USBFingerManager.getInstance(this).openUSB(new USBFingerManager.OnUSBFingerListener() {
             @Override
             public void onOpenUSBFingerSuccess(String s, UsbManager usbManager, UsbDevice usbDevice) {
-                if (s.equals(USBFingerManager.JRA_DEVICE)) {
+                mFingerDevice = s;
+                initFragment();
+                if (mFingerDevice.equals(USBFingerManager.JRA_DEVICE)) {
                     MyApplication.getApp().cancleProgressDialog();
 
                     Log.i(TAG, "切换USB成功");
@@ -73,6 +79,30 @@ public class JRAActivity extends BaseActivity {
                     } else if (ret == JRA_API.PS_EXCEPTION) {
                         updateMsg("open device fail");
                     }
+                } else if (mFingerDevice.equals(JrcApiBase.ZiDevice)) {
+                    MyApplication.getApp().cancleProgressDialog();
+                    mJrcApi = new JrcApiZiDevice(JRAActivity.this);
+
+                    int ret = mJrcApi.openJRC();
+                    Log.i(TAG, "ret = " + ret);
+                    updateMsg("ret = " + ret);
+
+                    if (ret == FPM.SUCCESS) {
+                        //成功
+                        updateMsg("open device success");
+                    } else if (ret == FPM.E_DEVICE) {
+                        //没有设备
+                        updateMsg("can't find this device!");
+                    } else if (ret == FPM.E_UNKOWN) {
+                        //未知错误
+                        updateMsg("unknown mistake");
+                    } else {
+                        //其他错误
+                        updateMsg("Other errors");
+                    }
+                } else {
+                    MyApplication.getApp().cancleProgressDialog();
+                    updateMsg("未知的指纹模块");
                 }
             }
 
@@ -81,8 +111,6 @@ public class JRAActivity extends BaseActivity {
                 Log.i(TAG, "切换USB失败");
                 updateMsg(getString(R.string.fp_usb_open_failure));
                 MyApplication.getApp().cancleProgressDialog();
-
-
             }
         });
     }
@@ -93,7 +121,11 @@ public class JRAActivity extends BaseActivity {
         super.onStop();
         Log.i(TAG, "------------onStop--------------");
         updateMsg("设备已关闭");
-        jraApi.closeJRA();
+        if (mFingerDevice.equals(USBFingerManager.JRA_DEVICE)) {
+            jraApi.closeJRA();
+        } else if (mFingerDevice.equals(JrcApiBase.ZiDevice)) {
+            mJrcApi.closeJRC();
+        }
         USBFingerManager.getInstance(this).closeUSB();
     }
 
@@ -103,23 +135,33 @@ public class JRAActivity extends BaseActivity {
         mViewPager = findViewById(R.id.viewPager);
         tvResult = findViewById(R.id.tv_infos);
         tvResult.setMovementMethod(ScrollingMovementMethod.getInstance());
+    }
 
-        mJraFragment = new JraFragment();
+    private void initFragment() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                JraCR30AFragment jraCR30AFragment = new JraCR30AFragment();
+                JraFragment mJraFragment = new JraFragment();
+                JrcFragment mJrcFragment = new JrcFragment();
 
+                if (mFingerDevice.equals(USBFingerManager.JRA_DEVICE)) {
+                    fragmnts.add(mJraFragment);
+                } else if (mFingerDevice.equals(JrcApiBase.ZiDevice)) {
+                    fragmnts.add(mJrcFragment);
+                } else {
+                    fragmnts.add(mJraFragment);
+                }
 
-        JraCR30AFragment jraCR30AFragment = new JraCR30AFragment();
+                fragmnts.add(jraCR30AFragment);
 
-        fragmnts.add(mJraFragment);
+                String[] titles = getResources().getStringArray(R.array.fp_jra_title);
 
-        fragmnts.add(jraCR30AFragment);
+                mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), fragmnts, titles));
+                mTabLayout.setupWithViewPager(mViewPager);
+            }
+        });
 
-
-        String[] titles = getResources().getStringArray(R.array.fp_jra_title);
-
-
-        mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), fragmnts, titles));
-
-        mTabLayout.setupWithViewPager(mViewPager);
     }
 
 
@@ -141,15 +183,20 @@ public class JRAActivity extends BaseActivity {
                     tvResult.setText(msg);
                 } else {
                     //小于100行追加
-                    tvResult.append("\n" + msg);
+                    tvResult.append( msg+"\n" );
                 }
 
-                //当前文本高度
-                int offset = lineCount * tvResult.getLineHeight();
-                if (offset > tvResult.getHeight()) {
-                    tvResult.scrollTo(0, offset - tvResult.getLineHeight());
+//                //当前文本高度
+//                int offset = lineCount * tvResult.getLineHeight();
+//                if (offset > tvResult.getHeight()) {
+//                    tvResult.scrollTo(0, offset - tvResult.getLineHeight());
+//                }
+                int scrollAmount = tvResult.getLayout().getLineTop(tvResult.getLineCount()) - tvResult.getHeight();
+                if (scrollAmount > 0) {
+                    tvResult.scrollTo(0, scrollAmount);
+                } else {
+                    tvResult.scrollTo(0, 0);
                 }
-
             }
         });
     }

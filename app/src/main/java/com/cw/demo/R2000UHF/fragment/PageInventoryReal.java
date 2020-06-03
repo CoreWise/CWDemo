@@ -250,7 +250,9 @@ public class PageInventoryReal extends Fragment {
             @Override
             public void inventoryRefresh(InventoryBuffer inventoryBuffer) {
                 mTagRealList.refreshList(inventoryBuffer);
+                InventoryBuffer.InventoryTagMap map = inventoryBuffer.newTagMap;
                 Log.i("inventoryRefresh","inventoryRefresh");
+                Log.i("inventoryRefresh","newMap = "+ map.toString());
             }
 
             @Override

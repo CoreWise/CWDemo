@@ -2,10 +2,10 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 9,
-  "VersionName": "V1.9",
+  "VersionCode": 10,
+  "VersionName": "V1.10",
   "ModifyContent": "1、身份证添加uid接口\n2、hxuhf超高频添加设置区域和信道\n3、bug修复\r\n",
-  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.9/DemoApp_V1.9_release.apk",
-  "ApkSize": 8242,
+  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.10/DemoApp_V1.10_release.apk",
+  "ApkSize": 8252,
   "ApkMd5": ""
 }

@@ -53,12 +53,12 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-//        //multiDexEnabled true
-//        ndk {
-//            // 设置支持的SO库架构
-//            abiFilters 'armeabi-v7a',"arm64-v8a","armeabi"
-//            //"armeabi", "armeabi-v7a" , "arm64-v8a", "x86", "x86_64", "mips", "mips64"
-//        }
+        //multiDexEnabled true
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters "armeabi"
+            //"armeabi", "armeabi-v7a" , "arm64-v8a", "x86", "x86_64", "mips", "mips64"
+        }
     }
     buildTypes {
         debug {
@@ -117,7 +117,8 @@ dependencies {
 
     //串口开发包
     //SerialPort SDK
-    compile(name: 'serialport_sdk_20190712', ext: 'aar')
+    compile(name: 'serialport_sdk_20200602', ext: 'aar')
+//    compile(name: 'serialport_sdk_20190712', ext: 'aar')
 
 
     //身份证开发包,需要依赖串口开发包
@@ -127,7 +128,7 @@ dependencies {
 
     //GAA大指纹开发包(新固件开发包),,需要依赖串口开发包
     //GAA FingerPrint SDK,need SerialPort SDK
-    compile(name: 'fp_gaa_sdk_20190722', ext: 'aar')
+//    compile(name: 'fp_gaa_sdk_20190722', ext: 'aar')
 
 
     //GAB大指纹开发包(新固件开发包),需要依赖串口开发包
@@ -136,8 +137,11 @@ dependencies {
 
     //JRA小指纹开发包,需要依赖串口开发包
     //JRA FingerPrint SDK,need SerialPort SDK
-    compile(name: 'fp_jra_sdk_20190920', ext: 'aar')
+    compile(name: 'fp_jra_sdk_20200602', ext: 'aar')
 
+    //JRA小指纹开发包,需要依赖串口开发包
+    //JRA FingerPrint SDK,need SerialPort SDK
+//    compile(name: 'fp_jrc_sdk_20200602', ext: 'aar')
 
     //PY超高频开发包,需要依赖串口开发包
     //HX UHF SDK,need SerialPort SDK
@@ -151,7 +155,8 @@ dependencies {
 
     //R2000超高频开发包,需要依赖串口开发包
     //R2000 UHF SDK
-    compile(name: 'r2000uhf_sdk_20190429', ext: 'aar')
+//    compile(name: 'r2000uhf_sdk_20190429', ext: 'aar')
+    compile(name: 'r2000uhf_sdk_20191226', ext: 'aar')
 
 
     //M1 RFID开发包,需要依赖串口开发包

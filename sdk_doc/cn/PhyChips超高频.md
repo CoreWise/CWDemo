@@ -180,7 +180,7 @@
   * @param pwd 标签访问密码
   * @param epcLength  标签id长度
   * @param epc 标签id
-  * @param mb  需要读、写的区域 0:EPC,1:TID,2:User
+  * @param mb  需要读、写的区域  0x00 Reserved, 0x01 EPC, 0x02 TID, 0x03 User
   * @param sa  偏移长度
   * @param dl  要读的长度
   
