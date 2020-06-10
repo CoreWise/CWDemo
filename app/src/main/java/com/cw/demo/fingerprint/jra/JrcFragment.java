@@ -1,7 +1,11 @@
 package com.cw.demo.fingerprint.jra;
 
 import android.graphics.Bitmap;
+import android.hardware.usb.UsbDevice;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +20,8 @@ import com.cw.fpjrcsdk.DBInfo;
 import com.fm.bio.FPM;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -53,7 +59,21 @@ public class JrcFragment extends BaseFragment {
     boolean globalControl = true;
     private List<Integer> fplist;//模板列标
     private List<DBInfo> fplistDB;
-    private byte[]pMbn=new byte[3000*FPM.FEATURE_LENTH];
+    private byte[] pMbn = new byte[3000 * FPM.FEATURE_LENTH];
+
+    private Handler handler = new Handler()
+    {
+        @Override
+        public void handleMessage(Message msg) {
+           switch (msg.what)
+           {
+               case 0:
+                   globalControl = false;
+                   btnStatus(true);
+                   break;
+           }
+        }
+    };
 
     @Nullable
     @Override
@@ -77,14 +97,17 @@ public class JrcFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.capture:
                 //获取指纹图像
+                globalControl = true;
+                btnStatus(false);
                 getImage();
                 break;
             case R.id.enroll:
-                parentActivity.mJrcApi.GetDBList(fplist);
                 //注册
                 //获取未使用的id
                 int idleID = getIdleID();
                 if (idleID >= 0) {
+                    globalControl = true;
+                    btnStatus(false);
                     regFingerprint(idleID);
                 } else {
                     //id已经注册满
@@ -92,12 +115,17 @@ public class JrcFragment extends BaseFragment {
                 break;
             case R.id.search:
                 //搜索
+                globalControl = true;
+                btnStatus(false);
                 searchFingerprint();
                 break;
             case R.id.stop:
+                globalControl = false;
+                btnStatus(true);
                 fingerImage.setImageBitmap(null);
                 break;
             case R.id.infos:
+                getInfos();
                 break;
             case R.id.clear:
                 //清空
@@ -105,6 +133,12 @@ public class JrcFragment extends BaseFragment {
                 fplistDB.clear();
                 parentActivity.mJrcApi.Empty();
                 parentActivity.mJrcApi.GetDBList(fplist);
+
+                if (fplist.size() > 0) {
+                    updateMsg("清空指纹库失败");
+                } else {
+                    updateMsg("清空指纹库成功");
+                }
                 break;
         }
     }
@@ -130,6 +164,10 @@ public class JrcFragment extends BaseFragment {
 
                 while (!Thread.interrupted() || (System.currentTimeMillis() - st) < 15 * 1000) {
 
+                    if (globalControl == false) {
+                        break;
+                    }
+
                     try {
                         iRet = parentActivity.mJrcApi.DetectFinger(isPressed);
                         if (iRet != FPM.SUCCESS) {
@@ -151,12 +189,15 @@ public class JrcFragment extends BaseFragment {
 
                         i++;
                         Thread.sleep(200);
-                        if (i % 2 == 0) {
+                        if (i == 0) {
                             updateMsg("Lift and Place Your Finger.");
                         }
-                        if (i % 2 == 1) {
-                            updateMsg("Lift and Place Your Finger...");
-                        }
+//                        if (i % 2 == 0) {
+//                            updateMsg("Lift and Place Your Finger.");
+//                        }
+//                        if (i % 2 == 1) {
+//                            updateMsg("Lift and Place Your Finger...");
+//                        }
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -166,9 +207,17 @@ public class JrcFragment extends BaseFragment {
                     updateMsg("Timeout");
                 }
 
+                sendMsg(0,"");
+
             }
 
         }.start();
+    }
+
+    public void stopThread()
+    {
+        globalControl = false;
+        btnStatus(true);
     }
 
     /**
@@ -198,6 +247,10 @@ public class JrcFragment extends BaseFragment {
                 parentActivity.mJrcApi.ClearFingerBuf();
 
                 while (!Thread.interrupted() || (System.currentTimeMillis() - st) < 15 * 1000) {
+
+                    if (globalControl == false) {
+                        break;
+                    }
 
                     try {
                         //检测手指
@@ -271,12 +324,15 @@ public class JrcFragment extends BaseFragment {
                         }
                         i++;
                         Thread.sleep(200);
-                        if (i % 2 == 0) {
+                        if (i == 0) {
                             updateMsg("Lift and Place Your Finger.");
                         }
-                        if (i % 2 == 1) {
-                            updateMsg("Lift and Place Your Finger...");
-                        }
+//                        if (i % 2 == 0) {
+//                            updateMsg("Lift and Place Your Finger.");
+//                        }
+//                        if (i % 2 == 1) {
+//                            updateMsg("Lift and Place Your Finger...");
+//                        }
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -285,6 +341,8 @@ public class JrcFragment extends BaseFragment {
                 if (isPressed[0] == 0 && iRet == FPM.SUCCESS) {
                     updateMsg("Timeout");
                 }
+
+                sendMsg(0,"");
 
                 parentActivity.runOnUiThread(new Runnable() {
                     public void run() {
@@ -322,6 +380,11 @@ public class JrcFragment extends BaseFragment {
                 parentActivity.mJrcApi.ClearFingerBuf();
 
                 while (!Thread.interrupted() || (System.currentTimeMillis() - st) < 15 * 1000) {
+
+                    if (globalControl == false) {
+                        break;
+                    }
+
                     try {
                         iRet = parentActivity.mJrcApi.DetectFinger(isPressed);
                         if (iRet != FPM.SUCCESS) {
@@ -362,12 +425,15 @@ public class JrcFragment extends BaseFragment {
 
                         i++;
                         Thread.sleep(200);
-                        if (i % 2 == 0) {
-                            updateMsg("Place Your Finger.");
+                        if (i == 0) {
+                            updateMsg("Lift and Place Your Finger.");
                         }
-                        if (i % 2 == 1) {
-                            updateMsg("Place Your Finger...");
-                        }
+//                        if (i % 2 == 0) {
+//                            updateMsg("Place Your Finger.");
+//                        }
+//                        if (i % 2 == 1) {
+//                            updateMsg("Place Your Finger...");
+//                        }
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -376,6 +442,9 @@ public class JrcFragment extends BaseFragment {
                 if (isPressed[0] == 0 && iRet == FPM.SUCCESS) {
                     updateMsg("Timeout");
                 }
+
+
+                sendMsg(0,"");
             }
 
         }.start();
@@ -404,6 +473,11 @@ public class JrcFragment extends BaseFragment {
                 parentActivity.mJrcApi.ClearFingerBuf();
 
                 while (!Thread.interrupted() || (System.currentTimeMillis() - st) < 15 * 1000) {
+
+                    if (globalControl == false) {
+                        break;
+                    }
+
                     try {
                         iRet = parentActivity.mJrcApi.DetectFinger(isPressed);
                         if (iRet != FPM.SUCCESS) {
@@ -441,12 +515,15 @@ public class JrcFragment extends BaseFragment {
                         }
                         i++;
                         Thread.sleep(200);
-                        if (i % 2 == 0) {
-                            updateMsg("Place Your Finger.");
+                        if (i == 0) {
+                            updateMsg("Lift and Place Your Finger.");
                         }
-                        if (i % 2 == 1) {
-                            updateMsg("Place Your Finger...");
-                        }
+//                        if (i % 2 == 0) {
+//                            updateMsg("Place Your Finger.");
+//                        }
+//                        if (i % 2 == 1) {
+//                            updateMsg("Place Your Finger...");
+//                        }
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -454,6 +531,8 @@ public class JrcFragment extends BaseFragment {
                 if (isPressed[0] == 0 && iRet == FPM.SUCCESS) {
                     updateMsg("Timeout");
                 }
+
+                sendMsg(0,"");
             }
         }.start();
     }
@@ -464,6 +543,8 @@ public class JrcFragment extends BaseFragment {
      * @return
      */
     private int getIdleID() {
+        parentActivity.mJrcApi.GetDBList(fplist);
+
         int regid = -1;
         boolean isFind = false;
         if (fplist.size() < parentActivity.mJrcApi.jrcDBSize) {
@@ -484,12 +565,64 @@ public class JrcFragment extends BaseFragment {
         return regid;
     }
 
-    public void updateMsg(String s)
-    {
-        if (isAdded())
-        {
+    public void updateMsg(String s) {
+        if (isAdded()) {
             parentActivity.updateMsg(s);
         }
+    }
+
+    /**
+     * 查看设备信息
+     */
+    private void getInfos() {
+
+        StringBuilder result = new StringBuilder();
+        List<UsbDevice> deviceList = getDeviceList();
+        if (deviceList.size() > 0) {
+            UsbDevice device = deviceList.get(0);
+            result.append("-------------------------------------------------------------------------\n");
+            result.append("device name:  ").append(device.getDeviceName()).append("\n");
+            result.append("Product Id:  ").append(device.getProductId()).append("\n");
+            result.append("Vendor Id:  ").append(device.getVendorId()).append("\n");
+            result.append("Device Id:  ").append(device.getDeviceId()).append("\n");
+            result.append("Interface Count:  ").append(device.getInterfaceCount()).append("\n");
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                result.append("Manufacturer name:  ").append(device.getManufacturerName()).append("\n");
+                result.append("Serial Number:  ").append(device.getSerialNumber()).append("\n");
+                result.append("Product Name:  ").append(device.getProductName()).append("\n");
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                result.append("Version:  ").append(device.getVersion()).append("\n");
+            }
+            result.append("-------------------------------------------------------------------------\n");
+
+            updateMsg(result.toString());
+        }
+        else
+        {
+            updateMsg("没有发现指纹");
+        }
+
+
+    }
+
+    private List<UsbDevice> getDeviceList() {
+        HashMap<String, UsbDevice> deviceList = parentActivity.mUsbManager.getDeviceList();
+        Iterator<UsbDevice> deviceIterator = deviceList.values().iterator();
+        List<UsbDevice> usbDevices = new ArrayList<>();
+        while (deviceIterator.hasNext()) {
+            UsbDevice device = deviceIterator.next();
+            usbDevices.add(device);
+        }
+        return usbDevices;
+    }
+
+    private void sendMsg(int what,String msg)
+    {
+        Message message = new Message();
+        message.what = what;
+        message.obj = msg;
+        handler.sendMessage(message);
     }
 
     /**
@@ -504,6 +637,7 @@ public class JrcFragment extends BaseFragment {
     }
 
     private void btnStatus(boolean status) {
+
         capture.setEnabled(status);
         enroll.setEnabled(status);
         search.setEnabled(status);

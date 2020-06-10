@@ -56,7 +56,7 @@ android {
         //multiDexEnabled true
         ndk {
             // 设置支持的SO库架构
-            abiFilters "armeabi"
+            abiFilters "armeabi-v7a"
             //"armeabi", "armeabi-v7a" , "arm64-v8a", "x86", "x86_64", "mips", "mips64"
         }
     }
@@ -117,7 +117,7 @@ dependencies {
 
     //串口开发包
     //SerialPort SDK
-    compile(name: 'serialport_sdk_20200602', ext: 'aar')
+    compile(name: 'serialport_sdk_20200603', ext: 'aar')
 //    compile(name: 'serialport_sdk_20190712', ext: 'aar')
 
 
@@ -137,7 +137,8 @@ dependencies {
 
     //JRA小指纹开发包,需要依赖串口开发包
     //JRA FingerPrint SDK,need SerialPort SDK
-    compile(name: 'fp_jra_sdk_20200602', ext: 'aar')
+//    compile(name: 'fp_jra_sdk_20200602', ext: 'aar')
+    compile(name: 'fp_jra_sdk_20200610', ext: 'aar')
 
     //JRA小指纹开发包,需要依赖串口开发包
     //JRA FingerPrint SDK,need SerialPort SDK
@@ -155,7 +156,6 @@ dependencies {
 
     //R2000超高频开发包,需要依赖串口开发包
     //R2000 UHF SDK
-//    compile(name: 'r2000uhf_sdk_20190429', ext: 'aar')
     compile(name: 'r2000uhf_sdk_20191226', ext: 'aar')
 
 

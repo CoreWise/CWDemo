@@ -42,6 +42,8 @@ public class JRAActivity extends BaseActivity {
     private List<Fragment> fragmnts = new ArrayList<Fragment>();
     public JrcApiBase mJrcApi;
     private String mFingerDevice = "";
+    public UsbManager mUsbManager;
+    private boolean isInit = false;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -64,7 +66,11 @@ public class JRAActivity extends BaseActivity {
             @Override
             public void onOpenUSBFingerSuccess(String s, UsbManager usbManager, UsbDevice usbDevice) {
                 mFingerDevice = s;
-                initFragment();
+                if (!isInit)
+                {
+                    initFragment();
+                }
+                mUsbManager = usbManager;
                 if (mFingerDevice.equals(USBFingerManager.JRA_DEVICE)) {
                     MyApplication.getApp().cancleProgressDialog();
 
@@ -124,6 +130,7 @@ public class JRAActivity extends BaseActivity {
         if (mFingerDevice.equals(USBFingerManager.JRA_DEVICE)) {
             jraApi.closeJRA();
         } else if (mFingerDevice.equals(JrcApiBase.ZiDevice)) {
+            mJrcFragment.stopThread();
             mJrcApi.closeJRC();
         }
         USBFingerManager.getInstance(this).closeUSB();
@@ -137,13 +144,15 @@ public class JRAActivity extends BaseActivity {
         tvResult.setMovementMethod(ScrollingMovementMethod.getInstance());
     }
 
+    private JraFragment mJraFragment;
+    private JrcFragment mJrcFragment;
     private void initFragment() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 JraCR30AFragment jraCR30AFragment = new JraCR30AFragment();
-                JraFragment mJraFragment = new JraFragment();
-                JrcFragment mJrcFragment = new JrcFragment();
+                mJraFragment = new JraFragment();
+                mJrcFragment = new JrcFragment();
 
                 if (mFingerDevice.equals(USBFingerManager.JRA_DEVICE)) {
                     fragmnts.add(mJraFragment);
@@ -159,6 +168,8 @@ public class JRAActivity extends BaseActivity {
 
                 mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), fragmnts, titles));
                 mTabLayout.setupWithViewPager(mViewPager);
+
+                isInit = true;
             }
         });
 
