@@ -128,6 +128,7 @@ public class JRAActivity extends BaseActivity {
         Log.i(TAG, "------------onStop--------------");
         updateMsg("设备已关闭");
         if (mFingerDevice.equals(USBFingerManager.JRA_DEVICE)) {
+            mJraFragment.closeThread();
             jraApi.closeJRA();
         } else if (mFingerDevice.equals(JrcApiBase.ZiDevice)) {
             mJrcFragment.stopThread();

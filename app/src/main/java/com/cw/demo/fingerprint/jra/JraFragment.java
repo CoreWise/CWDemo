@@ -488,4 +488,10 @@ public class JraFragment extends BaseFragment {
         }
     }
 
+    public void closeThread()
+    {
+        btnStatus(true);
+        globalControl = false;
+        fingerImage.setImageBitmap(null);
+    }
 }
