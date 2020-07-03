@@ -26,6 +26,7 @@
 - GAB指纹
 - JRA指纹
 - PhyChips超高频
+- RBM550超高频
 - R2000超高频
 - 北斗短报文
 - M1 RFID
@@ -50,6 +51,7 @@
 | JRA小指纹       | u3,u8                                                      | [fp_jra_sdk_*.aar](https://corewise.coding.net/p/SDK/d/SDK/git/raw/master/aar/fp_jra_sdk_20190920.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/JRA指纹.md" target="_blank">查看</a> |
 | FBB FingerPrint       | u3,u8,新370                                          |请跳转 [FBB FingerPrint Demo](https://github.com/CoreWise/FBBFingerDemo) |  |
 | PhyChips超高频      | u3,u8,CFON640,A370                                            | [phychips_uhf_sdk_*.aar](https://corewise.coding.net/p/SDK/d/SDK/git/raw/master/aar/phychips_uhf_sdk_20191114.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/PhyChips超高频.md" target="_blank">查看</a> |
+| RBM550超高频      | u5                                            | [rbm550uhf_sdk_*.aar](https://corewise.coding.net/p/SDK/d/SDK/git/raw/master/aar/rbm550uhf_sdk_20191114.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/RBM550超高频.md" target="_blank">查看</a> |
 | R2000超高频     | u8                                                         | [r2000uhf_sdk_*.aar](https://corewise.coding.net/p/SDK/d/SDK/git/raw/master/aar/r2000uhf_sdk_20190429.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/R2000超高频.md" target="_blank">查看</a> |
 | 串口SDK         | 需要串口的功能需要添加该sdk,如HX超高频,身份证,北斗,M1 RFID | [serialport_sdk_*.aar](https://corewise.coding.net/p/SDK/d/SDK/git/raw/master/aar/serialport_sdk_20190712.aar) |                                    None                          |
 | 北斗短报文SDK         | u8                                                         | [beidou_sdk_*.aar](https://corewise.coding.net/p/SDK/d/SDK/git/raw/master/aar/beidou_sdk_20190614.aar) | <a href="https://github.com/CoreWise/CWDemo/blob/master/sdk_doc/cn/北斗.md" target="_blank">查看</a> |
