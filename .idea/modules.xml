@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CWDemo.iml" filepath="$PROJECT_DIR$/CWDemo.iml" group="CWDemo" />
       <module fileurl="file://$PROJECT_DIR$/CoreWiseDemo.iml" filepath="$PROJECT_DIR$/CoreWiseDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="CWDemo/app" />
     </modules>
   </component>
 </project>

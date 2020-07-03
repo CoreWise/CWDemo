@@ -21,6 +21,7 @@ import android.widget.ToggleButton;
 
 import com.cowise.rbm550uhfsdk.RBUFHAPI;
 import com.cw.demo.R;
+import com.cw.serialportsdk.cw;
 import com.cw.serialportsdk.utils.DataUtils;
 
 import java.util.ArrayList;
@@ -48,7 +49,6 @@ public class RBUHFActivity extends AppCompatActivity {
 
     private SoundPool soundPool;
     private MediaPlayer mediaPlayer;
-    private ExecutorService pool;
 
     private boolean isStop;
     private RBTagListFragment objFragment;
@@ -87,8 +87,6 @@ public class RBUHFActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        pool = Executors.newSingleThreadExecutor();
         mediaPlayer = MediaPlayer.create(this, R.raw.ok);
         mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
             @Override
@@ -112,7 +110,6 @@ public class RBUHFActivity extends AppCompatActivity {
         if (mediaPlayer != null) {
             mediaPlayer.release();
         }
-        pool.shutdown();
 
         if (buttonInv.isChecked()) {
             buttonInv.setChecked(false);
@@ -129,7 +126,6 @@ public class RBUHFActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         mediaPlayer = null;
-        pool = null;
         super.onDestroy();
     }
 
