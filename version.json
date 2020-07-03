@@ -2,10 +2,10 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 10,
-  "VersionName": "V1.10",
-  "ModifyContent": "1、身份证添加uid接口\n2、hxuhf超高频添加设置区域和信道\n3、bug修复\r\n",
-  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.10/DemoApp_V1.10_release.apk",
+  "VersionCode": 11,
+  "VersionName": "V1.11",
+  "ModifyContent": "1、M550超高频\n2、兼容u5\n3、bug修复\r\n",
+  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.11/DemoApp_V1.11_release.apk",
   "ApkSize": 8252,
   "ApkMd5": ""
 }

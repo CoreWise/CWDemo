@@ -47,9 +47,12 @@ android {
         // versionCode 9
         // versionName "DemoApp_V1.9"
 
+        //versionCode 10
+        //versionName "DemoApp_V1.10"//m550 u5
+
         //自动升级 修改工程根目录下的version.json文件
-        versionCode 10
-        versionName "DemoApp_V1.10"
+        versionCode 11
+        versionName "DemoApp_V1.11"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
