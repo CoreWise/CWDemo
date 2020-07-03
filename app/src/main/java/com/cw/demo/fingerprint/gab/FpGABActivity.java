@@ -27,7 +27,7 @@ import android.widget.Toast;
 import com.cw.demo.MyApplication;
 import com.cw.demo.R;
 import com.cw.fpfbbsdk.FingerPrintAPI;
-import com.cw.serialportsdk.usbFingerManager.USBFingerManager;
+import com.cw.serialportsdk.USB.USBFingerManager;
 
 
 import java.io.File;

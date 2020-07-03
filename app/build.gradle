@@ -117,13 +117,12 @@ dependencies {
 
     //串口开发包
     //SerialPort SDK
-    compile(name: 'serialport_sdk_20200603', ext: 'aar')
-//    compile(name: 'serialport_sdk_20190712', ext: 'aar')
+    compile(name: 'serialport_sdk_20200703', ext: 'aar')
 
 
     //身份证开发包,需要依赖串口开发包
     //IDcard SDK,need SerialPort SDK
-    compile(name: 'idcard_sdk_20191218', ext: 'aar')
+    compile(name: 'idcard_sdk_20200703', ext: 'aar')
 
 
     //GAA大指纹开发包(新固件开发包),,需要依赖串口开发包
@@ -146,8 +145,11 @@ dependencies {
 
     //PY超高频开发包,需要依赖串口开发包
     //HX UHF SDK,need SerialPort SDK
-    compile(name: 'phychips_uhf_sdk_20191114', ext: 'aar')
+    compile(name: 'phychips_uhf_sdk_20200703', ext: 'aar')
 
+    //PY超高频开发包,需要依赖串口开发包
+    //RB M550 UHF SDK,need SerialPort SDK
+    compile(name: 'rbm550uhf_sdk_20200703', ext: 'aar')
 
     //北斗开发包,需要依赖串口开发包
     //BeiDou SDK,need SerialPort SDK
@@ -156,7 +158,8 @@ dependencies {
 
     //R2000超高频开发包,需要依赖串口开发包
     //R2000 UHF SDK
-    compile(name: 'r2000uhf_sdk_20191226', ext: 'aar')
+//    compile(name: 'r2000uhf_sdk_20191226', ext: 'aar')
+    compile(name: 'r2000uhf_sdk_20200703', ext: 'aar')
 
 
     //M1 RFID开发包,需要依赖串口开发包

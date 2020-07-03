@@ -23,6 +23,7 @@
         <item>@drawable/icon_rfid15693</item>
 
         <item>@drawable/icon_phy</item>
+        <item>@drawable/icon_phy</item>
         <item>@drawable/icon_r2000</item>
 
         <item>@drawable/icon_fingerprint</item>
@@ -49,6 +50,7 @@
 
 
         <item>UHF_PhyChips</item>
+        <item>UHF_RBM550</item>
         <item>UHF_R2000</item>
 
         <item>FP_GAA</item>

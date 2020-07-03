@@ -27,15 +27,15 @@
 
             <fragment
                 android:id="@+id/fragment_tagRead"
-                android:name="com.cw.demo.UHF.hxuhf.TagReadFragment"
+                android:name="com.cw.demo.UHF.rbm550uhf.RBTagReadFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
-            <fragment
-                android:id="@+id/fragment_tagWrite"
-                android:name="com.cw.demo.UHF.hxuhf.TagWriteFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+<!--            <fragment-->
+<!--                android:id="@+id/fragment_tagWrite"-->
+<!--                android:name="com.cw.sdkapi.bruhf.TagWriteFragment"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent" />-->
         </FrameLayout>
 
     </LinearLayout>

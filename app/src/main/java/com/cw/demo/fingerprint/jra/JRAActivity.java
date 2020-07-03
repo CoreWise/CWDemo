@@ -21,7 +21,7 @@ import com.cw.demo.R;
 import com.cw.fpjrasdk.JRA_API;
 import com.cw.fpjrcsdk.JrcApiBase;
 import com.cw.fpjrcsdk.JrcApiZiDevice;
-import com.cw.serialportsdk.usbFingerManager.USBFingerManager;
+import com.cw.serialportsdk.USB.USBFingerManager;
 import com.fm.bio.FPM;
 
 import java.util.ArrayList;

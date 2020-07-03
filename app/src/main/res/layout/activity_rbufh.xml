@@ -79,20 +79,11 @@
                 android:id="@+id/bt_singleSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/hxuhf_singlesearch"
+                android:text="测试"
                 android:textAllCaps="false"
 
                 android:textSize="15sp" />
 
-            <Button
-                android:id="@+id/bt_setting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="@string/hxuhf_setting"
-                android:textAllCaps="false"
-
-                android:textSize="15sp" />
         </RelativeLayout>
 
         <LinearLayout
@@ -119,28 +110,11 @@
                 android:textColor="#ffffff"
                 android:textSize="15dp" />
 
-            <Button
-                android:id="@+id/setting_params"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:enabled="false"
-                android:text="@string/hxuhf_setting"
-                android:textAllCaps="false"
-                android:textSize="15sp"
-
-                android:visibility="gone" />
-
         </LinearLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="3px"
-            android:layout_marginBottom="10dp"
-            android:background="#ffffff"></FrameLayout>
 
         <fragment
             android:id="@+id/fragment_taglist"
-            android:name="com.cw.demo.UHF.hxuhf.TaglistFragment"
+            android:name="com.cw.demo.UHF.rbm550uhf.RBTagListFragment"
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1" />
@@ -157,7 +131,7 @@
 
         <fragment
             android:id="@+id/tag_operation_fragment"
-            android:name="com.cw.demo.UHF.hxuhf.TagOperFragment"
+            android:name="com.cw.demo.UHF.rbm550uhf.RBTagOperFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

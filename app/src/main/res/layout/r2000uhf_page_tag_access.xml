@@ -7,7 +7,7 @@
 
 
 
-	<com.cw.demo.R2000UHF.ui.TagAccessList
+	<com.cw.demo.UHF.R2000UHF.ui.TagAccessList
 		android:id="@+id/tag_access_list"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
@@ -241,7 +241,7 @@
 					android:textSize="16.0sp"
 					android:clickable="true" />
 		        
-		        <com.cw.demo.R2000UHF.ui.HexEditTextBox
+		        <com.cw.demo.UHF.R2000UHF.ui.HexEditTextBox
 		            android:id="@+id/password_text"
 		            android:singleLine="true"
 		            android:layout_width="fill_parent"
@@ -347,7 +347,7 @@
 					android:textSize="16.0sp"
 					android:clickable="true" />
 		        
-		        <com.cw.demo.R2000UHF.ui.HexEditTextBox
+		        <com.cw.demo.UHF.R2000UHF.ui.HexEditTextBox
 		            android:id="@+id/data_write_text"
 		            android:singleLine="true"
 		            android:layout_width="fill_parent"
@@ -576,7 +576,7 @@
 					android:textSize="16.0sp"
 					android:clickable="true" />
 		        
-		        <com.cw.demo.R2000UHF.ui.HexEditTextBox
+		        <com.cw.demo.UHF.R2000UHF.ui.HexEditTextBox
 		            android:id="@+id/lock_password_text"
 		            android:singleLine="true"
 		            android:layout_width="fill_parent"
@@ -653,7 +653,7 @@
 					android:textSize="16.0sp"
 					android:clickable="true" />
 		        
-		        <com.cw.demo.R2000UHF.ui.HexEditTextBox
+		        <com.cw.demo.UHF.R2000UHF.ui.HexEditTextBox
 		            android:id="@+id/kill_password_text"
 		            android:singleLine="true"
 		            android:layout_width="fill_parent"

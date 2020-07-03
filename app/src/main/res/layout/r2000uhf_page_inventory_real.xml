@@ -340,13 +340,13 @@
     </ScrollView>
 
 
-    <com.cw.demo.R2000UHF.ui.LogList
+    <com.cw.demo.UHF.R2000UHF.ui.LogList
         android:id="@+id/log_list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
 
-    <com.cw.demo.R2000UHF.ui.TagRealList
+    <com.cw.demo.UHF.R2000UHF.ui.TagRealList
         android:id="@+id/tag_real_list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

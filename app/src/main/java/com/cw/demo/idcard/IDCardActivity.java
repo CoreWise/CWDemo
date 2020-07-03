@@ -233,7 +233,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
             }
 
             @Override
-            public void onReadFail(int confirmationCode) {
+            public void onReadFail(int confirmationCode,String errorCode) {
 
                 if (!isSequentialRead) {
                     read_button.setEnabled(true);
@@ -250,7 +250,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
                     if (!isSequentialRead) {
                         Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据", Toast.LENGTH_SHORT).show();
                     }
-                } else if (confirmationCode == ParseSFZAPI.Result.TIME_OUT) {
+                } else if (confirmationCode == ParseSFZAPI.Result.TIME_OUT) {//3
                     if (!isSequentialRead) {
                         Toast.makeText(getApplicationContext(), "未寻到卡,无返回数据，超时！！(串口无数据)", Toast.LENGTH_SHORT).show();
                     }
@@ -263,7 +263,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
                     if (!isSequentialRead) {
                         Toast.makeText(getApplicationContext(), "此二代证没有指纹数据", Toast.LENGTH_SHORT).show();
                     }
-                } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_8084) {
+                } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_8084) {//6
                     if (!isSequentialRead) {
                         Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(80)", Toast.LENGTH_SHORT).show();
                     }
@@ -273,7 +273,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
                         Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(41)", Toast.LENGTH_SHORT).show();
                     }
                     readFailFor4145++;
-                } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_other) {
+                } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_other) {//12
                     if (!isSequentialRead) {
                         Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(其他错误)", Toast.LENGTH_SHORT).show();
                     }
@@ -430,13 +430,17 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         }
 
         sfz_address.setText(people.getPeopleAddress());
-        sfz_day.setText(people.getPeopleBirthday().substring(6));
         sfz_id.setText(people.getPeopleIDCode());
-        sfz_mouth.setText(people.getPeopleBirthday().substring(4, 6));
         sfz_name.setText(people.getPeopleName());
         sfz_nation.setText(people.getPeopleNation());
         sfz_sex.setText(people.getPeopleSex());
-        sfz_year.setText(people.getPeopleBirthday().substring(0, 4));
+
+        if (people.getPeopleBirthday() != null && people.getPeopleBirthday().length() > 0)
+        {
+            sfz_year.setText(people.getPeopleBirthday().substring(0, 4));
+            sfz_mouth.setText(people.getPeopleBirthday().substring(4, 6));
+            sfz_day.setText(people.getPeopleBirthday().substring(6));
+        }
 
         if (people.getPhoto() != null) {
             Bitmap photo = BitmapFactory.decodeByteArray(people.getPhoto(), 0,
@@ -452,6 +456,8 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         } else {
             sfz_modle.setText("没有指纹信息");
         }
+
+//        sfz_modle.setText(people.toString());
 
 //        String s = asyncParseSFZ.readUID();
 //        sfz_modle.setText(s);

@@ -61,7 +61,14 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
-            android:name=".hxuhf.HXUHFActivity"
+            android:name=".UHF.hxuhf.HXUHFActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <activity
+            android:name=".UHF.rbm550uhf.RBUHFActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
@@ -80,7 +87,7 @@
 
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".R2000UHF.UHF2000Activity"
+            android:name=".UHF.R2000UHF.UHF2000Activity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
 

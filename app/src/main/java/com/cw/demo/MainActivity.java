@@ -33,14 +33,14 @@ import android.widget.TextView;
 
 
 import com.cw.demo.ISO_15693.NFCISO15693Activity;
-import com.cw.demo.R2000UHF.UHF2000Activity;
+import com.cw.demo.UHF.R2000UHF.UHF2000Activity;
+import com.cw.demo.UHF.rbm550uhf.RBUHFActivity;
 import com.cw.demo.barcode.BarCodeActivity;
 import com.cw.demo.beidou.BeiDouActivity;
-import com.cw.demo.fingerprint.gaa.FpGAAActivity;
 import com.cw.demo.fingerprint.gaa.NewFpGAAActivity;
 import com.cw.demo.fingerprint.gab.FpGABActivity;
 import com.cw.demo.fingerprint.jra.JRAActivity;
-import com.cw.demo.hxuhf.HXUHFActivity;
+import com.cw.demo.UHF.hxuhf.HXUHFActivity;
 import com.cw.demo.idcard.ComparisonActivity;
 import com.cw.demo.idcard.IDCardActivity;
 import com.cw.demo.m1.NFCM1Activity;
@@ -190,6 +190,10 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
         intent = new Intent(this, HXUHFActivity.class);
         intent.putExtra("tag", "HXUHFActivity");
+        mListIntent.add(intent);
+
+        intent = new Intent(this, RBUHFActivity.class);
+        intent.putExtra("tag", "RBUHFActivity");
         mListIntent.add(intent);
 
         intent = new Intent(this, UHF2000Activity.class);

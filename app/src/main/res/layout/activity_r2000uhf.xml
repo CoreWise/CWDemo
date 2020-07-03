@@ -17,7 +17,7 @@
         android:persistentDrawingCache="animation"></FrameLayout>
 
 
-    <com.cw.demo.R2000UHF.ui.LogList
+    <com.cw.demo.UHF.R2000UHF.ui.LogList
         android:id="@+id/log_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
