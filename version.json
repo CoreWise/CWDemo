@@ -2,10 +2,10 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 11,
-  "VersionName": "V1.11",
-  "ModifyContent": "1、M550超高频\n2、兼容u5\n3、bug修复\r\n",
-  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V1.11/DemoApp_V1.11_release.apk",
-  "ApkSize": 7404,
+  "VersionCode": 12,
+  "VersionName": "V2.0",
+  "ModifyContent": "1、u5-b和u5-c兼容\n2、bug修复\r\n",
+  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V2.0/DemoApp_V2.0_release.apk",
+  "ApkSize": 7402,
   "ApkMd5": ""
 }

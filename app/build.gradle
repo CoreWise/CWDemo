@@ -51,11 +51,11 @@ android {
         //versionName "DemoApp_V1.10"//m550 u5
 
         //versionCode 11
-        //versionName "DemoApp_V1.11"//u5-b u5-c
+        //versionName "DemoApp_V1.11"
 
         //自动升级 修改工程根目录下的version.json文件
         versionCode 12
-        versionName "DemoApp_V1.12"
+        versionName "DemoApp_V2.0"//u5-b u5-c
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
