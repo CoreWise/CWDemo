@@ -8,16 +8,19 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
+import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.Log;
 
 
 import com.cw.demo.utils.CrashHandler;
 import com.cw.demo.utils.OKHttpUpdateHttpService;
+import com.cw.serialportsdk.cw;
 import com.xuexiang.xupdate.XUpdate;
 import com.xuexiang.xupdate.entity.UpdateError;
 import com.xuexiang.xupdate.listener.OnUpdateFailureListener;
 import com.xuexiang.xupdate.utils.UpdateUtils;
+
 import android.app.Application;
 
 
@@ -28,7 +31,7 @@ import static com.xuexiang.xupdate.entity.UpdateError.ERROR.CHECK_NO_NEW_VERSION
  */
 public class MyApplication extends Application {
 
-    private static final String TAG ="CWMyApplication";
+    private static final String TAG = "CWMyApplication";
     private static final String FILE_NAME = "cw";
     private static MyApplication app;
     private String rootPath;
@@ -56,7 +59,7 @@ public class MyApplication extends Application {
                     @Override
                     public void onFailure(UpdateError error) {
                         if (error.getCode() != CHECK_NO_NEW_VERSION) {          //对不同错误进行处理
-                            Log.e(TAG,error.toString());
+                            Log.e(TAG, error.toString());
                         }
                     }
                 })
@@ -154,18 +157,16 @@ public class MyApplication extends Application {
         }
     }
 
-    public boolean isShowingProgress()
-    {
-        if (progressDialog == null)
-        {
+    public boolean isShowingProgress() {
+        if (progressDialog == null) {
             return false;
         }
         return progressDialog.isShowing();
     }
 
-    public void showProgressDialog(Context context,String message) {
+    public void showProgressDialog(Context context, String message) {
 
-        if (progressDialog==null) {
+        if (progressDialog == null) {
             progressDialog = new ProgressDialog(context);
         }
 
@@ -183,6 +184,22 @@ public class MyApplication extends Application {
             progressDialog = null;
         }
 
+    }
+
+    public void maintainScannerService() {
+        if (cw.getDeviceModel() == cw.Device_U5 || cw.getDeviceModel() == cw.Device_U5_B || cw.getDeviceModel() == cw.Device_U5_C) {
+            if (cw.isScannerServiceRunning(getApplicationContext())) {
+                Log.i("CWDevice", "cw.setGlobalSwicth(getApplicationContext(),false);");
+                cw.setGlobalSwicth(getApplicationContext(), false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i("CWDevice", "cw.setGlobalSwicth(getApplicationContext(),true);");
+                        cw.setGlobalSwicth(getApplicationContext(), true);
+                    }
+                }, 200);
+            }
+        }
     }
 
 }

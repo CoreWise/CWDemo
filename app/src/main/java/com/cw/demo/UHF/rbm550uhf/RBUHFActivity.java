@@ -20,6 +20,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.cowise.rbm550uhfsdk.RBUFHAPI;
+import com.cw.demo.MyApplication;
 import com.cw.demo.R;
 import com.cw.serialportsdk.cw;
 import com.cw.serialportsdk.utils.DataUtils;
@@ -120,6 +121,8 @@ public class RBUHFActivity extends AppCompatActivity {
         }
 
         api.closeRBUHFSerialPort(Device_U5);
+
+        MyApplication.getApp().maintainScannerService();
         super.onPause();
     }
 

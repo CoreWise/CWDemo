@@ -115,17 +115,17 @@ dependencies {
 
     //扫码开发包
     //Barcode SDK
-    compile(name: 'barcode_sdk_20190429', ext: 'aar')
+    compile(name: 'barcode_sdk_20200805', ext: 'aar')
 
 
     //串口开发包
     //SerialPort SDK
-    compile(name: 'serialport_sdk_20200703', ext: 'aar')
+    compile(name: 'serialport_sdk_20200806', ext: 'aar')
 
 
     //身份证开发包,需要依赖串口开发包
     //IDcard SDK,need SerialPort SDK
-    compile(name: 'idcard_sdk_20200703', ext: 'aar')
+    compile(name: 'idcard_sdk_20200805', ext: 'aar')
 
 
     //GAA大指纹开发包(新固件开发包),,需要依赖串口开发包

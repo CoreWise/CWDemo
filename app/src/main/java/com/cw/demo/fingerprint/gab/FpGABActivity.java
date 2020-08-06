@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -28,6 +29,7 @@ import com.cw.demo.MyApplication;
 import com.cw.demo.R;
 import com.cw.fpfbbsdk.FingerPrintAPI;
 import com.cw.serialportsdk.USB.USBFingerManager;
+import com.cw.serialportsdk.cw;
 
 
 import java.io.File;
@@ -42,7 +44,7 @@ import cn.com.aratek.util.Result;
 @SuppressLint({"SdCardPath", "HandlerLeak", "Registered"})
 public class FpGABActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = "GA_B_FingerPrintActivity";
+    private static final String TAG = FpGABActivity.class.getSimpleName();
     private static final String FP_DB_PATH = "/sdcard/fp.db";
     private static final int MSG_SHOW_ERROR = 0;
     private static final int MSG_SHOW_INFO = 1;
@@ -147,6 +149,8 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
         }
     };
 
+    private int device = cw.Device_U5_B;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -190,7 +194,7 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
     protected void onStart() {
         super.onStart();
         MyApplication.getApp().showProgressDialog(this, "Loading");
-        USBFingerManager.getInstance(this).openUSB(new USBFingerManager.OnUSBFingerListener() {
+        USBFingerManager.getInstance(this).openUSB(device,new USBFingerManager.OnUSBFingerListener() {
             @Override
             public void onOpenUSBFingerSuccess(String device, UsbManager mUsbManager, UsbDevice mDevice) {
                 MyApplication.getApp().cancleProgressDialog();
@@ -200,10 +204,16 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
             }
 
             @Override
-            public void onOpenUSBFingerFailure(String error) {
+            public void onOpenUSBFingerFailure(String errorString, int errorCode) {
                 MyApplication.getApp().cancleProgressDialog();
-                Toast.makeText(FpGABActivity.this, "" + error, Toast.LENGTH_SHORT).show();
-                MyApplication.getApp().cancleProgressDialog();
+                /*
+                 * errorCode
+                 * -1 广播为null
+                 * -2 没有设备
+                 * -3 设备型号不匹配
+                 * -4 没有权限
+                 */
+                Toast.makeText(FpGABActivity.this, "errorCode = " + errorCode + " ,errorString = " + errorString, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -212,9 +222,13 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
     protected void onStop() {
         super.onStop();
         closeDevice();
-        USBFingerManager.getInstance(this).closeUSB();
+        USBFingerManager.getInstance(this).closeUSB(device);
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 
     @Override
     public void onClick(View v) {
@@ -252,8 +266,7 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.nofinger);
         }
 
-        if (bitmap != null)
-        {
+        if (bitmap != null) {
             addBitMap(bitmap);
         }
         mHandler.sendMessage(mHandler.obtainMessage(MSG_UPDATE_IMAGE, bitmap));
@@ -267,7 +280,7 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
         }
 
 
-        fileName = fileName + "/demoApp/JRB/finger_"+System.currentTimeMillis()+".jpg";
+        fileName = fileName + "/demoApp/JRB/finger_" + System.currentTimeMillis() + ".jpg";
 
         File isexist = new File(fileName);
         if (!isexist.exists()) {
@@ -560,6 +573,9 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
             builder.setPositiveButton(R.string.general_no, null);
             //显示提示框
             builder.show();
+        } else if (keyCode == KeyEvent.KEYCODE_HOME) {
+            closeDevice();
+            USBFingerManager.getInstance(this).closeUSB(device);
         }
         return super.onKeyDown(keyCode, event);
     }

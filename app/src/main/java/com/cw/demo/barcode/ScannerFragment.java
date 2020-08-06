@@ -213,7 +213,6 @@ public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCod
 
     }
 
-
     @Override
     public void onResume() {
         super.onResume();

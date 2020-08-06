@@ -113,9 +113,17 @@ public class JRAActivity extends BaseActivity {
             }
 
             @Override
-            public void onOpenUSBFingerFailure(String s) {
+            public void onOpenUSBFingerFailure(String errorString,int errorCode) {
+                /*
+                 * errorCode
+                 * -1 广播为null
+                 * -2 没有设备
+                 * -3 设备型号不匹配
+                 * -4 没有权限
+                 */
                 Log.i(TAG, "切换USB失败");
                 updateMsg(getString(R.string.fp_usb_open_failure));
+                updateMsg("errorCode = "+errorCode+" , errorString = "+errorString);
                 MyApplication.getApp().cancleProgressDialog();
             }
         });

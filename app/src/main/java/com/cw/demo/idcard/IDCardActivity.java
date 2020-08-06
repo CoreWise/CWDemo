@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.cw.demo.MyApplication;
 import com.cw.demo.utils.BaseUtils;
 import com.cw.demo.R;
 import com.cw.idcardsdk.AsyncParseSFZ;
@@ -501,6 +502,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         Log.e(TAG, "-------onPause------");
         //SerialPortManager.getInstance().closeSerialPort();
         asyncParseSFZ.closeIDCardSerialPort(cw.getDeviceModel());
+        MyApplication.getApp().maintainScannerService();
         //关闭职位模块，省电
         //asyncParseSFZ.closeFingerDevice(IDCardActivity.this, mScanner);
         mHandler.removeCallbacksAndMessages(null);
