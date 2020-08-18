@@ -18,9 +18,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 奔溃日志处理
+ * 崩溃日志处理
  */
-
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
     public static String TAG = "CrashHandler";
@@ -71,7 +70,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
-                Log.i(TAG,e.toString());
+                Log.i(TAG, e.toString());
             }
             //退出程序
             android.os.Process.killProcess(android.os.Process.myPid());
@@ -106,7 +105,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         new Thread() {
             @Override
             public void run() {
-                String path = Environment.getExternalStorageDirectory().getPath() +  "/DemoApp.log";
+                String path = Environment.getExternalStorageDirectory().getPath() + "/DemoApp.log";
                 FileOutputStream outStream = null;
                 try {
                     outStream = new FileOutputStream(new File(path)); //模式会检查文件是否存在，存在就往文件追加内容，否则就创建新文件。
@@ -185,7 +184,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         sb.append(result);
         sb.append("--------------------end---------------------------");
 
-        Log.i(TAG,sb.toString());
+        Log.i(TAG, sb.toString());
         return sb.toString();
     }
 }

@@ -196,7 +196,9 @@
     <string name="hxuhf_txt_count">0000</string>
 
     <string name="hxuhf_txt_pwdzero">00000000</string>
-    <string name="hxuhf_hint_write_read">偏移地址是指从你要读写的区域的位置开始，这个长度是距离区域0点计数的，1个长度等于两个字节或四个十六进制数字。\n此文本只支持16位，1数据长度 = 4个16进制数字</string>
+    <string name="hxuhf_hint_write_read">The offset address is the starting position of the value read and write area.
+        Length refers to the length of the data read.
+        This text only supports 16 bits, 1 data length = two bytes = 4 hexadecimal digits.</string>
     <string name="hxuhf_power">Power:</string>
     <string name="hxuhf_write">Write</string>
     <string name="hxuhf_read">Read</string>

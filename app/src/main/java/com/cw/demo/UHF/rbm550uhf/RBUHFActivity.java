@@ -120,7 +120,7 @@ public class RBUHFActivity extends AppCompatActivity {
             buttonConnect.setChecked(false);
         }
 
-        api.closeRBUHFSerialPort(Device_U5);
+        api.closeRBUHFSerialPort(cw.getDeviceModel());
 
         MyApplication.getApp().maintainScannerService();
         super.onPause();
@@ -243,7 +243,7 @@ public class RBUHFActivity extends AppCompatActivity {
                                 getResources().getString(R.string.hxuhf_connecting_to_device), true, false);
                     }
 
-                    boolean openRBUHFSerialPort = api.openRBUHFSerialPort(Device_U5);
+                    boolean openRBUHFSerialPort = api.openRBUHFSerialPort(cw.getDeviceModel());
                     prgDlg.dismiss();
                     if (openRBUHFSerialPort) {
                         Toast.makeText(RBUHFActivity.this, getText(R.string.hxuhf_info_connect_success), Toast.LENGTH_SHORT).show();

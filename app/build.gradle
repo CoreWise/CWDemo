@@ -19,11 +19,11 @@ android {
             storePassword 'kmsCoreWise'
         }
     }
-    compileSdkVersion 26
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.cw.demo"
-        minSdkVersion 15
-        targetSdkVersion 22 //身份证功能必须降22，其他无所谓
+        minSdkVersion 21
+        targetSdkVersion 28 //身份证功能必须降22,其他无所谓 *2.1版本以后兼容28以下
 
         //V1.2已发布,特别说明：需要修改工程根目录下的version.json文件
         //versionCode 1
@@ -53,9 +53,12 @@ android {
         //versionCode 11
         //versionName "DemoApp_V1.11"
 
+        //versionCode 12
+        //versionName "DemoApp_V2.0"//u5-b u5-c
+
         //自动升级 修改工程根目录下的version.json文件
-        versionCode 12
-        versionName "DemoApp_V2.0"//u5-b u5-c
+        versionCode 13
+        versionName "DemoApp_V2.1"//身份证功能兼容28,22为分界线
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -128,7 +131,7 @@ dependencies {
 
     //身份证开发包,需要依赖串口开发包
     //IDcard SDK,need SerialPort SDK
-    compile(name: 'idcard_sdk_20200805', ext: 'aar')
+    compile(name: 'idcard_sdk_20200818', ext: 'aar')
 
 
     //GAA大指纹开发包(新固件开发包),,需要依赖串口开发包

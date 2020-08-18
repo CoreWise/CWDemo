@@ -81,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:text="test"
                 android:textAllCaps="false"
+                android:visibility="gone"
 
                 android:textSize="15sp" />
 

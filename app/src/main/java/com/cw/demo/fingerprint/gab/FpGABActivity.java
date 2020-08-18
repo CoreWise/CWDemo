@@ -149,7 +149,7 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
         }
     };
 
-    private int device = cw.Device_U5_B;
+    private int device = cw.Device_U5_C;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,7 +194,7 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
     protected void onStart() {
         super.onStart();
         MyApplication.getApp().showProgressDialog(this, "Loading");
-        USBFingerManager.getInstance(this).openUSB(device,new USBFingerManager.OnUSBFingerListener() {
+        USBFingerManager.getInstance(this).openUSB(new USBFingerManager.OnUSBFingerListener() {
             @Override
             public void onOpenUSBFingerSuccess(String device, UsbManager mUsbManager, UsbDevice mDevice) {
                 MyApplication.getApp().cancleProgressDialog();
@@ -222,7 +222,9 @@ public class FpGABActivity extends AppCompatActivity implements View.OnClickList
     protected void onStop() {
         super.onStop();
         closeDevice();
-        USBFingerManager.getInstance(this).closeUSB(device);
+        USBFingerManager.getInstance(this).closeUSB();
+
+        MyApplication.getApp().maintainScannerService();
     }
 
     @Override

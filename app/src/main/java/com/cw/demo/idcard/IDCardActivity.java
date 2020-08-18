@@ -210,12 +210,13 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         mediaPlayer = MediaPlayer.create(this, R.raw.ok);
         asyncParseSFZ = new AsyncParseSFZ(getMainLooper(), this);
 
+        asyncParseSFZ.setTargetSdkVersion(this.getApplicationInfo().targetSdkVersion);
 
         asyncParseSFZ.setOnReadSFZListener(new AsyncParseSFZ.OnReadSFZListener() {
 
             @Override
-            public void onReadSuccess(ParseSFZAPI.People people) {
-                updateInfo(people);
+            public void onReadSuccess(Object people) {
+                updateInfo((ParseSFZAPI.People) people);
                 readSuccessTime++;
                 refresh(isSequentialRead);
                 oneTime = System.currentTimeMillis() - nowTime;
