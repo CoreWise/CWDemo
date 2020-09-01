@@ -31,7 +31,7 @@ public class RBTagOperFragment extends Fragment {
     	tabHost = (TabHost)inflater.inflate(R.layout.rbuhf_tagoper_layout, container, false);
         tabHost.setup();
         tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator(getText(R.string.hxuhf_tab_read)).setContent(R.id.fragment_tagRead));
-//        tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator(getText(R.string.hxuhf_tab_write)).setContent(R.id.fragment_tagWrite));
+        tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator(getText(R.string.hxuhf_tab_write)).setContent(R.id.fragment_tagWrite));
         tabHost.setCurrentTab(0); 
         updateTab(tabHost);
         return tabHost;

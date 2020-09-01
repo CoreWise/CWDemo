@@ -83,15 +83,20 @@ public class ScannerSettingFragment extends Fragment {
         BaseUtils.disableSubControls(llSetting, false);
         btnSet.setText(R.string.barcode_setting_enable);
 
-        etPre.setText(Settings.System.getString(getActivity().getContentResolver(), "SCANNER_PREFIX"));
-        etEnd.setText(Settings.System.getString(getActivity().getContentResolver(), "SCANNER_SUFFIX"));
-        spEndchar.setSelection(Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_TERMINAL_CHAR", 0));
+//        etPre.setText(Settings.System.getString(getActivity().getContentResolver(), "SCANNER_PREFIX"));
+//        etEnd.setText(Settings.System.getString(getActivity().getContentResolver(), "SCANNER_SUFFIX"));
+//        spEndchar.setSelection(Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_TERMINAL_CHAR", 0));
+        etPre.setText(MyApplication.getApp().getSettingSystemString("SCANNER_PREFIX"));
+        etEnd.setText(MyApplication.getApp().getSettingSystemString("SCANNER_SUFFIX"));
+        spEndchar.setSelection(MyApplication.getApp().getSettingSystemInt("SCANNER_TERMINAL_CHAR", 0));
 
-        etInterval.setText(""+(Integer) MyApplication.getApp().getParam(getActivity(), "intervaltime", 800));
+        etInterval.setText("" + (Integer) MyApplication.getApp().getParam(getActivity(), "intervaltime", 800));
 
 
-        boolean soundOn = Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_SOUND_ON", 1) == 1;
-        boolean vibrationOn = Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_VIBRATION_ON", 0) == 1;
+//        boolean soundOn = Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_SOUND_ON", 1) == 1;
+//        boolean vibrationOn = Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_VIBRATION_ON", 0) == 1;
+        boolean soundOn = MyApplication.getApp().getSettingSystemInt("SCANNER_SOUND_ON", 1) == 1;
+        boolean vibrationOn = MyApplication.getApp().getSettingSystemInt("SCANNER_VIBRATION_ON", 0) == 1;
 
         if (!soundOn && !vibrationOn) {
             spEffect.setSelection(0);
@@ -103,11 +108,13 @@ public class ScannerSettingFragment extends Fragment {
             spEffect.setSelection(1);
         }
 
-        int outputMode = Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_OUTPUT_MODE", 0);
+//        int outputMode = Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_OUTPUT_MODE", 0);
+        int outputMode = MyApplication.getApp().getSettingSystemInt("SCANNER_OUTPUT_MODE", 0);
 
         spOutputmode.setSelection(outputMode);
 
-        boolean isShowToast = Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_ISSHOWTOAST", 1) == 1; //是否打印吐司，默认打印
+//        boolean isShowToast = Settings.System.getInt(getActivity().getContentResolver(), "SCANNER_ISSHOWTOAST", 1) == 1; //是否打印吐司，默认打印
+        boolean isShowToast = MyApplication.getApp().getSettingSystemInt("SCANNER_ISSHOWTOAST", 1) == 1; //是否打印吐司，默认打印
 
         tbToast.setChecked(isShowToast);
 
@@ -164,8 +171,6 @@ public class ScannerSettingFragment extends Fragment {
                     etEnd.setCursorVisible(false);
 
                     btnSet.setText(R.string.barcode_setting_enable);
-                    Settings.System.putString(getActivity().getContentResolver(), "SCANNER_PREFIX", String.valueOf(etPre.getText()));
-                    Settings.System.putString(getActivity().getContentResolver(), "SCANNER_SUFFIX", String.valueOf(etEnd.getText()));
 
                     String s = etInterval.getText().toString();
 
@@ -173,8 +178,12 @@ public class ScannerSettingFragment extends Fragment {
 
                     MyApplication.getApp().setParam(getActivity(), "intervaltime", i);
 
-
-                    Settings.System.putInt(getActivity().getContentResolver(), "scan_timeout", i);
+//                    Settings.System.putString(getActivity().getContentResolver(), "SCANNER_PREFIX", String.valueOf(etPre.getText()));
+//                    Settings.System.putString(getActivity().getContentResolver(), "SCANNER_SUFFIX", String.valueOf(etEnd.getText()));
+//                    Settings.System.putInt(getActivity().getContentResolver(), "scan_timeout", i);
+                    MyApplication.getApp().setSettingSystem("SCANNER_PREFIX", String.valueOf(etPre.getText()));
+                    MyApplication.getApp().setSettingSystem("SCANNER_SUFFIX", String.valueOf(etEnd.getText()));
+                    MyApplication.getApp().setSettingSystem("scan_timeout", i);
 
 
                 } else if (s1.equals(getString(R.string.barcode_setting_enable))) {//||s1.equals("Enable")
@@ -208,7 +217,8 @@ public class ScannerSettingFragment extends Fragment {
         spEndchar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_TERMINAL_CHAR", position);
+//                Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_TERMINAL_CHAR", position);
+                MyApplication.getApp().setSettingSystem("SCANNER_TERMINAL_CHAR", position);
             }
 
             @Override
@@ -223,20 +233,28 @@ public class ScannerSettingFragment extends Fragment {
 
                 switch (position) {
                     case 0:
-                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_SOUND_ON", 0);
-                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_VIBRATION_ON", 0);
+//                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_SOUND_ON", 0);
+//                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_VIBRATION_ON", 0);
+                        MyApplication.getApp().setSettingSystem("SCANNER_SOUND_ON", 0);
+                        MyApplication.getApp().setSettingSystem("SCANNER_VIBRATION_ON", 0);
                         break;
                     case 1:
-                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_SOUND_ON", 0);
-                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_VIBRATION_ON", 1);
+//                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_SOUND_ON", 0);
+//                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_VIBRATION_ON", 1);
+                        MyApplication.getApp().setSettingSystem("SCANNER_SOUND_ON", 0);
+                        MyApplication.getApp().setSettingSystem("SCANNER_VIBRATION_ON", 1);
                         break;
                     case 2:
-                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_SOUND_ON", 1);
-                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_VIBRATION_ON", 0);
+//                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_SOUND_ON", 1);
+//                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_VIBRATION_ON", 0);
+                        MyApplication.getApp().setSettingSystem("SCANNER_SOUND_ON", 1);
+                        MyApplication.getApp().setSettingSystem("SCANNER_VIBRATION_ON", 0);
                         break;
                     case 3:
-                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_SOUND_ON", 1);
-                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_VIBRATION_ON", 1);
+//                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_SOUND_ON", 1);
+//                        Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_VIBRATION_ON", 1);
+                        MyApplication.getApp().setSettingSystem("SCANNER_SOUND_ON", 1);
+                        MyApplication.getApp().setSettingSystem("SCANNER_VIBRATION_ON", 1);
                         break;
                 }
             }
@@ -253,7 +271,8 @@ public class ScannerSettingFragment extends Fragment {
         spOutputmode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_OUTPUT_MODE", position);
+//                Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_OUTPUT_MODE", position);
+                MyApplication.getApp().setSettingSystem("SCANNER_OUTPUT_MODE", position);
             }
 
             @Override
@@ -265,12 +284,14 @@ public class ScannerSettingFragment extends Fragment {
         tbToast.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_ISSHOWTOAST", isChecked ? 1 : 0);
+//                Settings.System.putInt(getActivity().getContentResolver(), "SCANNER_ISSHOWTOAST", isChecked ? 1 : 0);
+                MyApplication.getApp().setSettingSystem("SCANNER_ISSHOWTOAST", isChecked ? 1 : 0);
                 Intent intent = new Intent();
                 intent.setAction("SCANNER_ISSHOWTOAST");
                 getActivity().sendBroadcast(intent);
             }
         });
     }
+
 
 }

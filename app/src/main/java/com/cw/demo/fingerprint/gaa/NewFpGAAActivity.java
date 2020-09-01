@@ -1,8 +1,8 @@
 package com.cw.demo.fingerprint.gaa;
 
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
+//import android.annotation.SuppressLint;
+//import android.app.Activity;
 //import android.content.DialogInterface;
 //import android.hardware.usb.UsbDevice;
 //import android.hardware.usb.UsbManager;
@@ -27,13 +27,13 @@ import android.app.Activity;
 //import com.cw.fpgaasdk.GaaApiBHMDevice;
 //import com.cw.fpgaasdk.GaaApiBase;
 //import com.cw.fpgaasdk.GaaFingerFactory;
-//import com.cw.serialportsdk.usbFingerManager.USBFingerManager;
+//import com.cw.serialportsdk.USB.USBFingerManager;
 //import com.cw.serialportsdk.utils.DataUtils;
 //import com.fm.bio.ID_Fpr;
 //
 //
 //public class NewFpGAAActivity extends Activity implements OnClickListener {
-public class NewFpGAAActivity extends Activity  {
+public class NewFpGAAActivity{
 
 }
 //
@@ -176,7 +176,7 @@ public class NewFpGAAActivity extends Activity  {
 //            }
 //
 //            @Override
-//            public void onOpenUSBFingerFailure(String error) {
+//            public void onOpenUSBFingerFailure(String error,int errorCode) {
 //                Log.e(TAG, error);
 //                MyApplication.getApp().cancleProgressDialog();
 //                Toast.makeText(NewFpGAAActivity.this, error, Toast.LENGTH_SHORT).show();

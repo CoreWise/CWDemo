@@ -1,9 +1,9 @@
 package com.cw.demo.fingerprint.gaa;
 
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.Activity;
+//import android.Manifest;
+//import android.annotation.SuppressLint;
+//import android.app.Activity;
 //import android.content.Context;
 //import android.content.DialogInterface;
 //import android.content.pm.PackageManager;
@@ -29,7 +29,7 @@ import android.app.Activity;
 //
 //import com.cw.demo.MyApplication;
 //import com.cw.demo.R;
-//import com.cw.serialportsdk.usbFingerManager.USBFingerManager;
+//import com.cw.serialportsdk.USB.USBFingerManager;
 //import com.fm.bio.ID_Fpr;
 //
 //
@@ -37,7 +37,7 @@ import android.app.Activity;
 //import javax.crypto.spec.SecretKeySpec;
 //
 //public class FpGAAActivity extends Activity implements OnClickListener {
-public class FpGAAActivity extends Activity {
+public class FpGAAActivity{
 
 }
 //
@@ -155,7 +155,7 @@ public class FpGAAActivity extends Activity {
 //            }
 //
 //            @Override
-//            public void onOpenUSBFingerFailure(String error) {
+//            public void onOpenUSBFingerFailure(String error,int errorCode) {
 //                Log.e(TAG, error);
 //                btnsetEnabledALL(false);
 //                MyApplication.getApp().cancleProgressDialog();

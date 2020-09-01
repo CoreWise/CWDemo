@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.cowise.rbm550uhfsdk.RBUFHAPI;
+import com.cowise.rbm550uhfsdk.RBUFHConfig;
 import com.cw.demo.MyApplication;
 import com.cw.demo.R;
 import com.cw.serialportsdk.cw;
@@ -28,10 +30,7 @@ import com.cw.serialportsdk.utils.DataUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
-import static com.cw.serialportsdk.cw.Device_U5;
 
 /**
  * Created by 金宇凡 on 2020/6/23.
@@ -54,8 +53,8 @@ public class RBUHFActivity extends AppCompatActivity {
     private boolean isStop;
     private RBTagListFragment objFragment;
 
-    private TextView txtReadEpc;
-    private TextView txtReadResult;
+//    private TextView txtReadEpc;
+//    private TextView txtReadResult;
 
     private List<String> tagInfoList = new ArrayList<>();
     protected static HashMap<String, Integer> number = new HashMap<String, Integer>();
@@ -141,8 +140,8 @@ public class RBUHFActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                int temperature = api.getTemperature();
-                Log.i(TAG, "temperature = " + temperature);
+//                int temperature = api.getTemperature();
+//                Log.i(TAG, "temperature = " + temperature);
 
 //                RBUFHAPI.CmdResponse frequencyRegion = api.getFrequencyRegion();
 //                Log.i(TAG, "frequencyRegion = " + frequencyRegion.respondData);
@@ -205,28 +204,42 @@ public class RBUHFActivity extends AppCompatActivity {
         //读写
         api.setOnReadWriteRespondListener(new RBUFHAPI.onReadWriteRespondListener() {
             @Override
-            public void onRespondSuccess(String address, String cmd, String tagCount, String data, String epc, String readData) {
+            public void onReadWriteRespondSuccess(String address, String cmd, String tagCount, String data, String epc, String readData) {
                 Log.i(TAG, "Read onRespondSuccess");
-                txtReadEpc.setText(epc);
-                txtReadResult.setText(readData);
+                if ( TextUtils.equals(cmd, DataUtils.toHexString1(RBUFHConfig.cmd_write)) )
+                {
+                    if ( TextUtils.equals(readData, DataUtils.toHexString1(RBUFHConfig.command_success)) )
+                    {
+                        Toast.makeText(RBUHFActivity.this,"write success",Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(RBUHFActivity.this,"write failure errorCode = "+readData,Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else if (TextUtils.equals(cmd, DataUtils.toHexString1(RBUFHConfig.cmd_read)))
+                {
+                    Toast.makeText(RBUHFActivity.this,"read success",Toast.LENGTH_SHORT).show();
+                }
+//                txtReadEpc.setText(epc);
+//                txtReadResult.setText(readData);
             }
 
             @Override
-            public void onRespondFailure(int errorCode, String respond) {
+            public void onReadWriteRespondFailure(int errorCode, String respond) {
                 Log.i(TAG, "Read onRespondFailure");
                 DataUtils.showToast(RBUHFActivity.this, "Read onRespondFailure ,errorCode =" + errorCode + "\nrespond =" + respond);
             }
 
             @Override
-            public void onReaderFailure(String address, String cmd, String errorCode) {
+            public void onReadWriteReaderFailure(String address, String cmd, String errorCode) {
                 Log.i(TAG, "Read onReaderFailure");
                 DataUtils.showToast(RBUHFActivity.this, "Read onReaderFailure ,errorCode =" + errorCode);
             }
 
             @Override
-            public void TimeOut() {
+            public void ReadWriteTimeOut() {
                 Log.i(TAG, "Read TimeOut");
-                DataUtils.showToast(RBUHFActivity.this, "Read TimeOut");
             }
         });
 
@@ -258,7 +271,7 @@ public class RBUHFActivity extends AppCompatActivity {
                     objFragment.clearItem();
 
                     buttonInv.setClickable(false);
-                    api.closeRBUHFSerialPort(Device_U5);
+                    api.closeRBUHFSerialPort(cw.getDeviceModel());
                 }
             }
         });
@@ -302,8 +315,8 @@ public class RBUHFActivity extends AppCompatActivity {
         txtTimes = findViewById(R.id.txtTimes);
         FragmentManager fragmentManager = getFragmentManager();
         objFragment = (RBTagListFragment) fragmentManager.findFragmentById(R.id.fragment_taglist);
-        txtReadEpc = findViewById(R.id.txtReadEpc);
-        txtReadResult = findViewById(R.id.txtReadResult);
+//        txtReadEpc = findViewById(R.id.txtReadEpc);
+//        txtReadResult = findViewById(R.id.txtReadResult);
     }
 
     /**

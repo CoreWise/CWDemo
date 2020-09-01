@@ -193,6 +193,10 @@
     <!--<string name="hxuhf_write_success">写入成功！</string>-->
     <!--<string name="hxuhf_write_fail">写入失败！</string>-->
     <string name="hxuhf_length_not_right">写入数据长度不对！</string>
+    <string name="hxuhf_cycle_reading_interval">循环读时间间隔(ms)：</string>
+    <string name="hxuhf_cycle_reading">循环读</string>
+    <string name="hxuhf_cancel_selected">取消选中</string>
+    <string name="hxuhf_stop">停止</string>
 
     <string-array name="hxuhf_dbm">
         <item>8.0</item>

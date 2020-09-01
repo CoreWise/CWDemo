@@ -22,8 +22,8 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.cw.demo"
-        minSdkVersion 21
-        targetSdkVersion 28 //身份证功能必须降22,其他无所谓 *2.1版本以后兼容28以下
+        minSdkVersion 15
+        targetSdkVersion 22 //身份证功能必须降22,其他无所谓 *2.1版本以后兼容28以下,有问题与条码的system方法冲突
 
         //V1.2已发布,特别说明：需要修改工程根目录下的version.json文件
         //versionCode 1
@@ -126,7 +126,8 @@ dependencies {
 
     //串口开发包
     //SerialPort SDK
-    compile(name: 'serialport_sdk_20200806', ext: 'aar')
+//    compile(name: 'serialport_sdk_20200806', ext: 'aar')
+    compile(name: 'serialport_sdk_20200828', ext: 'aar')
 
 
     //身份证开发包,需要依赖串口开发包
@@ -148,17 +149,13 @@ dependencies {
 //    compile(name: 'fp_jra_sdk_20200602', ext: 'aar')
     compile(name: 'fp_jra_sdk_20200610', ext: 'aar')
 
-    //JRA小指纹开发包,需要依赖串口开发包
-    //JRA FingerPrint SDK,need SerialPort SDK
-//    compile(name: 'fp_jrc_sdk_20200602', ext: 'aar')
-
     //PY超高频开发包,需要依赖串口开发包
     //HX UHF SDK,need SerialPort SDK
     compile(name: 'phychips_uhf_sdk_20200703', ext: 'aar')
 
     //PY超高频开发包,需要依赖串口开发包
     //RB M550 UHF SDK,need SerialPort SDK
-    compile(name: 'rbm550uhf_sdk_20200703', ext: 'aar')
+    compile(name: 'rbm550uhf_sdk_20200901', ext: 'aar')
 
     //北斗开发包,需要依赖串口开发包
     //BeiDou SDK,need SerialPort SDK

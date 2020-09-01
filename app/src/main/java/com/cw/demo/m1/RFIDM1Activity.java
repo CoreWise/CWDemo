@@ -40,8 +40,8 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
     private static final int[] keyType = {M1CardAPI.KEY_A, M1CardAPI.KEY_B};
     private Spinner mSpinnerCardType, mSpinnerPwdType;
     private ArrayAdapter<String> mAdapterCardType, mAdapterPwdType;
-    private  int NUM = 1;
-    private  int mKeyType = M1CardAPI.KEY_A;
+    private int NUM = 1;
+    private int mKeyType = M1CardAPI.KEY_A;
     private String DefaultKeyA = "ffffffffffff";// 默认密码A
     private String DefaultKeyB = "ffffffffffff";// 默认密码B
     private Button mBtnGetCardNum, mBtnSendPwd, mBtnValidPwd, mBtnWriteData,
@@ -122,7 +122,6 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
 
 
         reader = new AsyncM1Card(getMainLooper());
-
 
 
         reader.setOnReadCardNumListener(new AsyncM1Card.OnReadCardNumListener() {
@@ -262,7 +261,6 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
                 block = Integer.parseInt(mBlockNum.getText().toString());
 
 
-
                 //S50
                 if (mSpinnerCardType.getSelectedItemPosition() == 0) {
                     if (block > 64) {
@@ -368,16 +366,14 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
     @Override
     protected void onResume() {
         super.onResume();
-                reader.openM1RFIDSerialPort(cw.getDeviceModel());
-
+        reader.openM1RFIDSerialPort(cw.getDeviceModel());
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onPause() {
         super.onPause();
-                reader.closeM1RFIDSerialPort(cw.getDeviceModel());
-
+        reader.closeM1RFIDSerialPort(cw.getDeviceModel());
     }
 
     @Override

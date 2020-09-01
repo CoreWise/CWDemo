@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ListFragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 
 import com.cw.demo.R;
+import com.cw.serialportsdk.utils.DataUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +49,22 @@ public class RBTagListFragment extends ListFragment {
     public void onListItemClick(ListView parent, View v, int position, long id) {
         // 记录当前选中的标签位置
         curSelPosition = position;
+
+        TextView txtEpc = mActivity.findViewById(R.id.txtReadEpc);
+
+        TextView txtWriteEpc = mActivity.findViewById(R.id.txtWriteEpc);
+
+        String ClickEPC = presidents.get(position);
+
+        txtEpc.setText(ClickEPC);
+
+        txtWriteEpc.setText(ClickEPC);
+
+        ((RBUHFActivity) mActivity).api.cancelAccessEpcMatch();
+
+        byte[] bytes = DataUtils.hexStringTobyte(ClickEPC);
+        Log.i("RBUHF", "bytes =" + DataUtils.toHexString(bytes));
+        ((RBUHFActivity) mActivity).api.setAccessEpcMatch(bytes);
     }
 
 

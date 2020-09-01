@@ -83,38 +83,13 @@ public class RBTagWriteFragment extends Fragment {
         short dl = Short.parseShort(unmpLength.getSelectedItem().toString());
         String writeData = editInput.getText().toString();
 
-//        int judgeNumberOrString = DataUtils.judgeNumberOrString(writeData);
-//        if (judgeNumberOrString == 0) {
-//
-//        } else if (judgeNumberOrString == 1) {
-//
-//        } else if (judgeNumberOrString == 2) {
-//
-//        } else {
-//
-//        }
-
         if (!TextUtils.isEmpty(writeData) && writeData.length() / 4 == dl) {
 
-//            byte[] arguments = ((HXUHFActivity) getActivity()).api.writeArguments(ap, epcLength, epc, mb, sa, dl, writeData);
-//            String data = writeTag(arguments);
-//            if (!TextUtils.isEmpty(writeData) && data.equals("00")) {
-//                DataUtils.showToast(getActivity(), getResources().getString(R.string.general_write_success));
-//            } else {
-//                DataUtils.showToast(getActivity(), getResources().getString(R.string.general_write_fail));
-//            }
+            byte[] arguments = ((RBUHFActivity) getActivity()).api.writeArguments(ap, mb, sa, dl,writeData);
+            ((RBUHFActivity) getActivity()).api.writeTypeC(arguments);
+
         } else {
             DataUtils.showToast(getActivity(), getResources().getString(R.string.hxuhf_length_not_right));
         }
-    }
-
-    public String writeTag(byte[] args) {
-//        UHFHXAPI.Response response = ((HXUHFActivity) getActivity()).api
-//                .writeTypeCTagData(args);
-//        if (response.result == UHFHXAPI.Response.RESPONSE_PACKET
-//                && response.data != null) {
-//            return DataUtils.toHexString(response.data);
-//        }
-        return "";
     }
 }

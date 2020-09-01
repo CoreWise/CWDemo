@@ -3,13 +3,13 @@ package com.cw.demo;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Handler;
-import android.os.HandlerThread;
+import android.provider.Settings;
 import android.util.Log;
 
 
@@ -135,6 +135,62 @@ public class MyApplication extends Application {
         return null;
     }
 
+    public void setSettingSystem(String name, int value) {
+        Settings.System.putInt(getContentResolver(), name, value);
+//        int targetSdkVersion = getApplicationInfo().targetSdkVersion;
+//        Log.i(TAG,"setSettingSystem  targetSdkVersion ="+targetSdkVersion);
+//
+//        if (targetSdkVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//                Settings.Global.putInt(getContentResolver(), name, value);
+//            }
+//        } else {
+//            Settings.System.putInt(getContentResolver(), name, value);
+//        }
+    }
+
+    public void setSettingSystem(String name, String value) {
+        int targetSdkVersion = getApplicationInfo().targetSdkVersion;
+        Log.i(TAG,"setSettingSystem  targetSdkVersion ="+targetSdkVersion);
+
+        if (targetSdkVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                Settings.Global.putString(getContentResolver(), name, value);
+            }
+        } else {
+            Settings.System.putString(getContentResolver(), name, value);
+        }
+    }
+
+    public String getSettingSystemString(String name) {
+        int targetSdkVersion = getApplicationInfo().targetSdkVersion;
+        Log.i(TAG,"getSettingSystemString  targetSdkVersion ="+targetSdkVersion);
+        String msg = "";
+
+        if (targetSdkVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                msg = Settings.Global.getString(getContentResolver(), name);
+            }
+        } else {
+            msg = Settings.System.getString(getContentResolver(), name);
+        }
+        return msg;
+    }
+
+    public int getSettingSystemInt(String name, int def) {
+        int targetSdkVersion = getApplicationInfo().targetSdkVersion;
+        Log.i(TAG,"getSettingSystemString  targetSdkVersion ="+targetSdkVersion);
+        int msg = -1;
+
+        if (targetSdkVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                msg = Settings.Global.getInt(getContentResolver(), name, def);
+            }
+        } else {
+            msg = Settings.System.getInt(getContentResolver(), name, def);
+        }
+        return msg;
+    }
 
     /**
      * 是否横屏
@@ -187,7 +243,8 @@ public class MyApplication extends Application {
     }
 
     public void maintainScannerService() {
-        if (cw.getDeviceModel() == cw.Device_U5 || cw.getDeviceModel() == cw.Device_U5_B || cw.getDeviceModel() == cw.Device_U5_C) {
+        if (cw.getDeviceModel() == cw.Device_U5 || cw.getDeviceModel() == cw.Device_U5_B || cw.getDeviceModel() == cw.Device_U5_C
+                || cw.getDeviceModel() == cw.Device_U8) {
             if (cw.isScannerServiceRunning(getApplicationContext())) {
                 Log.i("CWDevice", "cw.setGlobalSwicth(getApplicationContext(),false);");
                 cw.setGlobalSwicth(getApplicationContext(), false);
