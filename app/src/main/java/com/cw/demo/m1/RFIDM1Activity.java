@@ -135,7 +135,7 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
             }
 
             @Override
-            public void onReadCardNumFail(int confirmationCode) {
+            public void onReadCardNumFail(int confirmationCode,String errorMsg) {
                 mEdShowCard.setText("");
                 cancleProgressDialog();
                 if (confirmationCode == M1CardAPI.Result.FIND_FAIL) {

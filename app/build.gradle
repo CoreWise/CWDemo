@@ -22,6 +22,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.cw.demo"
+
         minSdkVersion 15
         targetSdkVersion 22 //身份证功能必须降22,其他无所谓 *2.1版本以后兼容28以下,有问题与条码的system方法冲突
 
@@ -56,9 +57,15 @@ android {
         //versionCode 12
         //versionName "DemoApp_V2.0"//u5-b u5-c
 
+        //versionCode 13
+        //versionName "DemoApp_V2.1"//身份证功能兼容28,22为分界线
+
+        //versionCode 14
+        //versionName "DemoApp_V2.1.2"//m550
+
         //自动升级 修改工程根目录下的version.json文件
-        versionCode 13
-        versionName "DemoApp_V2.1"//身份证功能兼容28,22为分界线
+        versionCode 15
+        versionName "DemoApp_V2.2"//m1卡cv523、u8 慧讯超高频
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -126,8 +133,7 @@ dependencies {
 
     //串口开发包
     //SerialPort SDK
-//    compile(name: 'serialport_sdk_20200806', ext: 'aar')
-    compile(name: 'serialport_sdk_20200828', ext: 'aar')
+    compile(name: 'serialport_sdk_20200904', ext: 'aar')
 
 
     //身份证开发包,需要依赖串口开发包
@@ -146,12 +152,11 @@ dependencies {
 
     //JRA小指纹开发包,需要依赖串口开发包
     //JRA FingerPrint SDK,need SerialPort SDK
-//    compile(name: 'fp_jra_sdk_20200602', ext: 'aar')
     compile(name: 'fp_jra_sdk_20200610', ext: 'aar')
 
     //PY超高频开发包,需要依赖串口开发包
     //HX UHF SDK,need SerialPort SDK
-    compile(name: 'phychips_uhf_sdk_20200703', ext: 'aar')
+    compile(name: 'phychips_uhf_sdk_20200904', ext: 'aar')
 
     //PY超高频开发包,需要依赖串口开发包
     //RB M550 UHF SDK,need SerialPort SDK
@@ -164,11 +169,10 @@ dependencies {
 
     //R2000超高频开发包,需要依赖串口开发包
     //R2000 UHF SDK
-//    compile(name: 'r2000uhf_sdk_20191226', ext: 'aar')
     compile(name: 'r2000uhf_sdk_20200703', ext: 'aar')
 
 
     //M1 RFID开发包,需要依赖串口开发包
     //M1 RFID SDK
-    compile(name: 'm1rfid_sdk_20190911', ext: 'aar')
+    compile(name: 'm1rfid_sdk_20200904', ext: 'aar')
 }

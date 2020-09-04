@@ -2,10 +2,10 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 12,
-  "VersionName": "V2.0",
-  "ModifyContent": "1、u5-b和u5-c兼容\n2、bug修复\r\n",
-  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V2.0/DemoApp_V2.0_release.apk",
-  "ApkSize": 7402,
+  "VersionCode": 15,
+  "VersionName": "V2.2",
+  "ModifyContent": "1、m1卡cv523\n2、u8 UHF\r\n",
+  "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V2.2/DemoApp_V2.2_release.apk",
+  "ApkSize": 7447,
   "ApkMd5": ""
 }
