@@ -47,10 +47,6 @@ public class JrcFragment extends BaseFragment {
     Button search;
     @BindView(R.id.stop)
     Button stop;
-    @BindView(R.id.upChar)
-    Button upChar;
-    @BindView(R.id.downChar)
-    Button downChar;
     @BindView(R.id.infos)
     Button infos;
     @BindView(R.id.clear)
@@ -226,7 +222,6 @@ public class JrcFragment extends BaseFragment {
      * @param id 保存的id
      */
     public void regFingerprint(final int id) {
-
         updateMsg("Place Your Finger");
         new Thread() {
             int iRet = 0;
@@ -291,11 +286,11 @@ public class JrcFragment extends BaseFragment {
                                 }
                                 index++;
                                 isNeedUp = true;
-
+                                bar.setProgress(33*index);
                                 if (index == 3) {
                                     //将三个特征转换成模板
                                     iRet = parentActivity.mJrcApi.FeatureEnroll(fpTzs[0], fpTzs[1], fpTzs[2], fpMb);
-
+                                    bar.setProgress(0);
                                     if (iRet != FPM.SUCCESS) {
                                         Msg = "Enroll: " + iRet;
                                         updateMsg(Msg);
@@ -644,5 +639,6 @@ public class JrcFragment extends BaseFragment {
         stop.setEnabled(!status);
         infos.setEnabled(status);
         clear.setEnabled(status);
+//        bar.setProgress(0);
     }
 }
