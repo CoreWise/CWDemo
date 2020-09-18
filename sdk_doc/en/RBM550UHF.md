@@ -52,8 +52,10 @@ The main method, to realize UHF function must be used
 | getVersion      | * get firmware version |
 | setPower      | * set output power |
 | inventory           | * inventory                                   |
-| readArguments           | * Synthetic label read instruction                                  |
+| readArguments           | * Synthetic read label command                              |
 | readTypeC           | * read TypeC                                 |
+| writeArguments           | * Synthetic write label command                                   |
+| writeTypeC           | * write TypeC                                   |
 
 ---
 
@@ -158,6 +160,27 @@ Standby method, used according to requirement
       * @return
       */
      public byte[] readArguments(String pwd, byte mb, int sa, int dl)
+
+-
+     /**
+     * write TypeC
+     * @param writeArguments data input
+     */
+    public void writeTypeC(byte[] writeArguments)
+
+-
+    /**
+     * Synthetic write label command
+     *
+     * @param pwd password
+     * @param mb  Label storage area
+     * @param sa  Data first address
+     * @param dl  Word length written
+     * @param writeData  data input
+     * @return
+     */
+    public byte[] writeArguments(String pwd, byte mb, int sa, int dl,String writeData)
+
 
 **Instructions for Monitor callback interface:**
 
@@ -271,6 +294,12 @@ Standby method, used according to requirement
 ```
 
 ### Interface invocation case
+
+RBTagListFragment   List of tags counted
+RBTagOperFragment   Read and write tag control
+RBTagReadFragment   Read label
+RBTagWriteFragment   Write label
+RBUHFActivity   Total interface
 
 Please follow the steps to implement the method.
 
