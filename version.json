@@ -2,10 +2,10 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 15,
-  "VersionName": "V2.2",
-  "ModifyContent": "1、m1卡cv523\n2、u8 UHF\r\n",
+  "VersionCode": 18,
+  "VersionName": "V2.3",
+  "ModifyContent": "1、u5 9.0版本指纹兼容\n2、身份证、条码头、超高频、指纹 stm32模块 加密模块按照需求开启\n3、serialport路径修改\r\n",
   "DownloadUrl": "https://github.com/CoreWise/CWDemo/releases/download/V2.2/DemoApp_V2.2_release.apk",
-  "ApkSize": 7447,
+  "ApkSize": 7606,
   "ApkMd5": ""
 }

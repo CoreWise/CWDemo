@@ -162,18 +162,20 @@ public class JRAActivity extends BaseActivity {
                 JraCR30AFragment jraCR30AFragment = new JraCR30AFragment();
                 mJraFragment = new JraFragment();
                 mJrcFragment = new JrcFragment();
+                String[] titles;
 
                 if (mFingerDevice.equals(USBFingerManager.JRA_DEVICE)) {
                     fragmnts.add(mJraFragment);
+                    titles= getResources().getStringArray(R.array.fp_jra_title);
                 } else if (mFingerDevice.equals(JrcApiBase.ZiDevice)) {
                     fragmnts.add(mJrcFragment);
+                    titles= getResources().getStringArray(R.array.fp_jrc_title);
                 } else {
                     fragmnts.add(mJraFragment);
+                    titles= getResources().getStringArray(R.array.fp_jra_title);
                 }
 
                 fragmnts.add(jraCR30AFragment);
-
-                String[] titles = getResources().getStringArray(R.array.fp_jra_title);
 
                 mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), fragmnts, titles));
                 mTabLayout.setupWithViewPager(mViewPager);

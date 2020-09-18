@@ -150,30 +150,32 @@ public class MyApplication extends Application {
     }
 
     public void setSettingSystem(String name, String value) {
-        int targetSdkVersion = getApplicationInfo().targetSdkVersion;
-        Log.i(TAG,"setSettingSystem  targetSdkVersion ="+targetSdkVersion);
-
-        if (targetSdkVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                Settings.Global.putString(getContentResolver(), name, value);
-            }
-        } else {
-            Settings.System.putString(getContentResolver(), name, value);
-        }
+        Settings.System.putString(getContentResolver(), name, value);
+//        int targetSdkVersion = getApplicationInfo().targetSdkVersion;
+//        Log.i(TAG,"setSettingSystem  targetSdkVersion ="+targetSdkVersion);
+//
+//        if (targetSdkVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//                Settings.Global.putString(getContentResolver(), name, value);
+//            }
+//        } else {
+//            Settings.System.putString(getContentResolver(), name, value);
+//        }
     }
 
     public String getSettingSystemString(String name) {
-        int targetSdkVersion = getApplicationInfo().targetSdkVersion;
-        Log.i(TAG,"getSettingSystemString  targetSdkVersion ="+targetSdkVersion);
-        String msg = "";
-
-        if (targetSdkVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                msg = Settings.Global.getString(getContentResolver(), name);
-            }
-        } else {
-            msg = Settings.System.getString(getContentResolver(), name);
-        }
+        String msg = Settings.System.getString(getContentResolver(), name);
+//        int targetSdkVersion = getApplicationInfo().targetSdkVersion;
+//        Log.i(TAG,"getSettingSystemString  targetSdkVersion ="+targetSdkVersion);
+//        String msg = "";
+//
+//        if (targetSdkVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//                msg = Settings.Global.getString(getContentResolver(), name);
+//            }
+//        } else {
+//            msg = Settings.System.getString(getContentResolver(), name);
+//        }
         return msg;
     }
 

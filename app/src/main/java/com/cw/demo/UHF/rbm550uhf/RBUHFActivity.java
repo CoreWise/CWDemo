@@ -107,6 +107,8 @@ public class RBUHFActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
+        stopHandler();
+
         if (mediaPlayer != null) {
             mediaPlayer.release();
         }

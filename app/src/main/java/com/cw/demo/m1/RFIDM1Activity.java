@@ -22,13 +22,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.cw.demo.MyApplication;
 import com.cw.demo.R;
 import com.cw.m1rfidsdk.AsyncM1Card;
 import com.cw.m1rfidsdk.M1CardAPI;
 import com.cw.serialportsdk.cw;
 
-import android_serialport_api.SerialPortManager;
 
 /**
  * M1卡

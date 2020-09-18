@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
@@ -15,10 +13,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.cw.serialportsdk.cw;
-
-import java.io.UnsupportedEncodingException;
-
-import android_serialport_api.SerialPortManager;
 
 public class GetVersionActivity extends Activity implements OnClickListener {
     private Button mBtApk, mBtStm;

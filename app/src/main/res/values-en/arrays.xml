@@ -4,4 +4,9 @@
         <item>JRA</item>
         <item>CR30A</item>
     </string-array>
+
+    <string-array name="fp_jrc_title">
+        <item>JRC</item>
+        <item>CR30A</item>
+    </string-array>
 </resources>
