@@ -24,7 +24,7 @@ android {
         applicationId "com.cw.demo"
 
         minSdkVersion 15
-        targetSdkVersion 22 //身份证功能必须降22,其他无所谓 *2.1版本以后兼容28以下,有问题与条码的system方法冲突
+        targetSdkVersion 28 //身份证功能必须降22,其他无所谓 *2.1版本以后兼容28以下,有问题与条码的system方法冲突
 
         //V1.2已发布,特别说明：需要修改工程根目录下的version.json文件
         //versionCode 1
@@ -72,9 +72,15 @@ android {
         //versionCode 17
         //versionName "DemoApp_V2.2.2"//身份证、条码头、超高频、指纹 stm32模块 加密模块按照需求开启
 
+        //versionCode 18
+        //versionName "DemoApp_V2.3" //serialport路径修改 ** 重要改动
+
+        //versionCode 19
+        //versionName "DemoApp_V2.3.1"//条码由 Settings.System.putString 改为 ContentProvider 修复android9.0 无法调用系统数据库
+
         //自动升级 修改工程根目录下的version.json文件
-        versionCode 18
-        versionName "DemoApp_V2.3"
+        versionCode 19
+        versionName "DemoApp_V2.3.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -137,7 +143,7 @@ dependencies {
 
     //扫码开发包
     //Barcode SDK
-    compile(name: 'barcode_sdk_20200918', ext: 'aar')
+    compile(name: 'barcode_sdk_20200922', ext: 'aar')
 
 
     //串口开发包
