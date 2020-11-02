@@ -88,7 +88,6 @@
 
     </LinearLayout>
 
-
     <TextView
         android:id="@+id/resultInfo"
         android:layout_width="match_parent"

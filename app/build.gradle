@@ -24,7 +24,7 @@ android {
         applicationId "com.cw.demo"
 
         minSdkVersion 15
-        targetSdkVersion 28 //身份证功能必须降22,其他无所谓 *2.1版本以后兼容28以下,有问题与条码的system方法冲突
+        targetSdkVersion 22 //身份证功能必须降22,其他无所谓 *2.1版本以后兼容28以下,有问题与条码的system方法冲突
 
         //V1.2已发布,特别说明：需要修改工程根目录下的version.json文件
         //versionCode 1
@@ -78,9 +78,15 @@ android {
         //versionCode 19
         //versionName "DemoApp_V2.3.1"//条码由 Settings.System.putString 改为 ContentProvider 修复android9.0 无法调用系统数据库
 
+        //versionCode 20
+        //versionName "DemoApp_V2.3.2"//1、serial包名修改为android_serialport_api_cw 内部so包修改为cw_serial_port 2、m550添加点了小灯
+
+        //versionCode 21
+        //versionName "DemoApp_V2.3.3"//1、身份证添加子线程操作代码  2、jra指纹开启修改为循环open模块,提高打开成功率 3、m550添加设置功能
+
         //自动升级 修改工程根目录下的version.json文件
-        versionCode 19
-        versionName "DemoApp_V2.3.1"
+        versionCode 22
+        versionName "DemoApp_V2.3.4"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -132,13 +138,13 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.android.support:design:28.0.0'
-    compile 'com.qianwen:okhttp-utils:3.8.0'
+    implementation 'com.qianwen:okhttp-utils:3.8.0'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.github.xuexiangjys:XUpdate:1.0.9'
-    compile 'com.lovedise:permissiongen:0.0.6'
+    implementation 'com.lovedise:permissiongen:0.0.6'
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    compile 'q.rorbin:VerticalTabLayout:1.2.5'
+    implementation 'q.rorbin:VerticalTabLayout:1.2.5'
 
 
     //扫码开发包
@@ -175,7 +181,7 @@ dependencies {
 
     //PY超高频开发包,需要依赖串口开发包
     //RB M550 UHF SDK,need SerialPort SDK
-    compile(name: 'rbm550uhf_sdk_20200918', ext: 'aar')
+    compile(name: 'rbm550uhf_sdk_20201102', ext: 'aar')
 
     //北斗开发包,需要依赖串口开发包
     //BeiDou SDK,need SerialPort SDK
@@ -184,7 +190,7 @@ dependencies {
 
     //R2000超高频开发包,需要依赖串口开发包
     //R2000 UHF SDK
-    compile(name: 'r2000uhf_sdk_20200918', ext: 'aar')
+    compile(name: 'r2000uhf_sdk_20201015', ext: 'aar')
 
 
     //M1 RFID开发包,需要依赖串口开发包

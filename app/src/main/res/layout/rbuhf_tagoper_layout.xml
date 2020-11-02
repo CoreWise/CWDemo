@@ -36,6 +36,12 @@
                 android:name="com.cw.demo.UHF.rbm550uhf.RBTagWriteFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+
+            <fragment
+                android:id="@+id/fragment_tagOpenLamp"
+                android:name="com.cw.demo.UHF.rbm550uhf.RBTagOpenLempFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
         </FrameLayout>
 
     </LinearLayout>

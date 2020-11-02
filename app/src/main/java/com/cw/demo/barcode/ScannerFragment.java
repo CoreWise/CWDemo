@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 
+import com.cw.barcodesdk.GlobalProvider;
 import com.cw.barcodesdk.SoftDecodingAPI;
 import com.cw.demo.MyApplication;
 import com.cw.demo.R;
@@ -218,7 +219,9 @@ public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCod
         super.onResume();
 
         api.openBarCodeReceiver();
-        tb.setChecked(api.isScannerServiceRunning(getActivity()));
+        int scanner_power_on = GlobalProvider.getInt(getActivity(), "SCANNER_POWER_ON", 0);
+        tb.setChecked(scanner_power_on == 1);
+//        tb.setChecked(api.isScannerServiceRunning(getActivity()));
 
         tb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -229,6 +232,7 @@ public class ScannerFragment extends Fragment implements SoftDecodingAPI.IBarCod
                 scan.setEnabled(isChecked);
                 scanning.setEnabled(isChecked);
                 end.setEnabled(isChecked);
+                MyApplication.getApp().setParam(getActivity(), "isScanning", false);
             }
         });
 

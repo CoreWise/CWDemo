@@ -76,15 +76,14 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/bt_singleSearch"
+                android:id="@+id/bt_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test"
+                android:layout_alignParentRight="true"
+                android:text="@string/hxuhf_setting"
                 android:textAllCaps="false"
-                android:visibility="gone"
 
                 android:textSize="15sp" />
-
         </RelativeLayout>
 
         <LinearLayout

@@ -105,4 +105,44 @@ public class MyunmberinputSpinner extends android.support.v7.widget.AppCompatSpi
 		tpd.show();
 		return true;
 	}
+
+	public void setNumber(final short number)
+	{
+		if (number >=0 && number <= 128)
+		{
+			sp_number = number;
+			// 为MyDateSpinner动态设置adapter，主要用于修改spinner的text值
+			MyunmberinputSpinner.this.setAdapter(new BaseAdapter() {
+
+				@Override
+				public int getCount() {
+					// TODO Auto-generated method stub
+					return 1;
+				}
+
+				@Override
+				public Object getItem(int arg0) {
+					// TODO Auto-generated method stub
+					return sp_number;
+				}
+
+				@Override
+				public long getItemId(int arg0) {
+					// TODO Auto-generated method stub
+					return 0;
+				}
+
+				@Override
+				public View getView(int arg0, View arg1,
+									ViewGroup arg2) {
+					// TODO Auto-generated method stub
+					TextView text = new TextView(
+							MyunmberinputSpinner.this.getContext());
+					text.setText(String.format("%d", number));
+					text.setTextColor(Color.WHITE);
+					return text;
+				}
+			});
+		}
+	}
 }

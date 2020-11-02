@@ -161,33 +161,6 @@
         android:orientation="vertical"
         android:paddingBottom="10dp">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/hxuhf_cycle_reading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/hxuhf_cycle_reading_interval"/>
-
-            <EditText
-                android:id="@+id/time"
-                android:layout_width="120dip"
-                android:layout_height="wrap_content"
-                android:digits="1234567890"
-                android:inputType="textCapCharacters"
-                android:layout_toRightOf="@+id/hxuhf_cycle_reading"
-                android:layout_marginLeft="10dp"
-                android:maxLength="8"
-                android:text="1"
-                android:textAllCaps="false"
-                android:textColor="#ffffff"
-                android:textSize="15sp" />
-        </RelativeLayout>
-
-
         <TextView
             android:id="@+id/txtReadResult"
             android:layout_width="match_parent"
@@ -208,26 +181,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="1">
-
-        <Button
-            android:id="@+id/buttonReadCycle"
-            android:layout_width="100dip"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/btn_bg"
-            android:text="@string/hxuhf_cycle_reading"
-            android:textAllCaps="false"
-            android:textColor="#ffffff" />
-
-        <Button
-            android:id="@+id/buttonCancelSelected"
-            android:layout_width="100dip"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:background="@drawable/btn_bg"
-            android:text="@string/hxuhf_cancel_selected"
-            android:textAllCaps="false"
-            android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/buttonRead"

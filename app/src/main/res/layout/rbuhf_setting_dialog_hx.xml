@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="400dp"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minWidth="400dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/rb_version_button"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rbuhf_button_get_version" />
+
+            <TextView
+                android:id="@+id/rb_version_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:maxLength="12"
+                android:maxLines="1"
+                android:padding="6dp"
+                android:text="@string/rbuhf_text_show_version"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/rb_reset_button"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rbuhf_button_reset" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/rb_power_text"
+                android:layout_width="100sp"
+                android:layout_height="30sp"
+                android:background="@drawable/editbox_background"
+                android:gravity="center"
+                android:hint="@string/rbuhf_set_power_hint"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30sp"
+                android:gravity="center"
+                android:paddingLeft="10.0dip"
+                android:singleLine="true"
+                android:text="@string/dBm"
+                android:textColor="#ff222222"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/rb_get_power_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:text="@string/rbuhf_button_get_power" />
+
+            <Button
+                android:id="@+id/rb_set_power_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:text="@string/rbuhf_button_set_power" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rb_customize_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="12dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/rbuhf_start_frequency"
+                    android:textColor="#ff222222"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/rb_region_start"
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/editbox_background"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/rbuhf_khz"
+                    android:textColor="#ff222222"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="12dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/rbuhf_frequency_space"
+                    android:textColor="#ff222222"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/rb_region_space"
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/editbox_background"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="12dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/rbuhf_end_frequency"
+                    android:textColor="#ff222222"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/rb_region_end"
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/editbox_background"
+                    android:editable="false"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/rbuhf_khz"
+                    android:textColor="#ff222222"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="12dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/rbuhf_frequency_quantity"
+                    android:textColor="#ff222222"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/rb_region_quantity"
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/editbox_background"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rb_system_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/freq_start"
+                    android:textColor="#ff222222"
+                    android:textSize="16sp" />
+
+                <TableLayout
+                    android:layout_width="150sp"
+                    android:layout_height="wrap_content"
+                    android:shrinkColumns="0"
+                    android:stretchColumns="0">
+
+                    <TableRow
+                        android:id="@+id/table_row_spiner_freq_start"
+                        android:layout_width="fill_parent"
+                        android:background="@drawable/table_item_press_selector"
+                        android:clickable="true"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/freq_start_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:includeFontPadding="false"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="2dp"
+                            android:textColor="#ff222222"
+                            android:textSize="16.0sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="right"
+                            android:gravity="center_vertical"
+                            android:src="@drawable/down" />
+                    </TableRow>
+                </TableLayout>
+                <!--            <EditText-->
+                <!--                android:id="@+id/rb_system_region_start"-->
+                <!--                android:layout_width="80sp"-->
+                <!--                android:layout_height="30sp"-->
+                <!--                android:layout_marginLeft="5dp"-->
+                <!--                android:background="@drawable/editbox_background"-->
+                <!--                android:gravity="center"-->
+                <!--                android:inputType="number"-->
+                <!--                android:singleLine="true"-->
+                <!--                android:textSize="16sp" />-->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/rbuhf_mhz"
+                    android:textColor="#ff222222"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/freq_end"
+                    android:textColor="#ff222222"
+                    android:textSize="16sp" />
+
+
+                <TableLayout
+                    android:layout_width="150sp"
+                    android:layout_height="wrap_content"
+                    android:shrinkColumns="0"
+                    android:stretchColumns="0">
+
+                    <TableRow
+                        android:id="@+id/table_row_spiner_freq_end"
+                        android:layout_width="fill_parent"
+                        android:background="@drawable/table_item_press_selector"
+                        android:clickable="true"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/freq_end_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:includeFontPadding="false"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="2dp"
+                            android:textColor="#ff222222"
+                            android:textSize="16.0sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="right"
+                            android:gravity="center_vertical"
+                            android:src="@drawable/down" />
+                    </TableRow>
+                </TableLayout>
+
+                <!--            <EditText-->
+                <!--                android:id="@+id/rb_system_region_end"-->
+                <!--                android:layout_width="80sp"-->
+                <!--                android:layout_height="30sp"-->
+                <!--                android:layout_marginLeft="5dp"-->
+                <!--                android:background="@drawable/editbox_background"-->
+                <!--                android:gravity="center"-->
+                <!--                android:inputType="number"-->
+                <!--                android:singleLine="true"-->
+                <!--                android:textSize="16sp" />-->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/rbuhf_mhz"
+                    android:textColor="#ff222222"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/rbuhf_rf_specifications"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <Spinner
+                    android:id="@+id/sp_region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/rb_region_select_radio_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_custom_spectrum_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/radio_button_selector"
+                    android:checked="true"
+                    android:text="@string/rbuhf_custom_spectrum" />
+
+                <RadioButton
+                    android:id="@+id/rb_system_frequency_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:button="@drawable/radio_button_selector"
+                    android:text="@string/rbuhf_system_default_frequency" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <Button
+                    android:id="@+id/get_region_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hxuhf_button_get_region" />
+
+                <Button
+                    android:id="@+id/set_region_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_toRightOf="@+id/get_region_button"
+                    android:text="@string/hxuhf_button_set_region" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/ok"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/general_ok"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

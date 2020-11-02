@@ -77,6 +77,10 @@ public class BarCodeActivity extends BaseActivity {
             case KeyEvent.KEYCODE_UNKNOWN:
                 time++;
                 break;
+            case KeyEvent.KEYCODE_BACK:
+            case KeyEvent.KEYCODE_HOME:
+                MyApplication.getApp().setParam(this, "isScanning", false);
+                break;
         }
         return super.onKeyDown(keyCode, event);
     }

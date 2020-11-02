@@ -5,6 +5,7 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
@@ -45,6 +46,31 @@ public class JRAActivity extends BaseActivity {
     public UsbManager mUsbManager;
     private boolean isInit = false;
 
+    private Handler mOpenHandler = new Handler();
+    private Runnable mOpenJRARunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (jraApi != null)
+            {
+                int ret = jraApi.openJRA();
+                if (ret == JRA_API.DEVICE_SUCCESS) {
+                    updateMsg("open device success");
+                    mOpenHandler.removeCallbacksAndMessages(null);
+                    return;
+                } else if (ret == JRA_API.PS_DEVICE_NOT_FOUND) {
+                    updateMsg("can't find this device!");
+                } else if (ret == JRA_API.PS_EXCEPTION) {
+                    updateMsg("open device fail");
+                }
+                else {
+                    updateMsg("open fail ret = "+ret);
+                }
+                mOpenHandler.postDelayed(this,1000);
+            }
+
+        }
+    };
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,7 +80,6 @@ public class JRAActivity extends BaseActivity {
 
         initView();
     }
-
 
     @Override
     protected void onStart() {
@@ -77,14 +102,19 @@ public class JRAActivity extends BaseActivity {
                     Log.i(TAG, "切换USB成功");
                     updateMsg(getString(R.string.fp_usb_open_success));
                     jraApi = new JRA_API(usbManager, usbDevice);
-                    int ret = jraApi.openJRA();
-                    if (ret == JRA_API.DEVICE_SUCCESS) {
-                        updateMsg("open device success");
-                    } else if (ret == JRA_API.PS_DEVICE_NOT_FOUND) {
-                        updateMsg("can't find this device!");
-                    } else if (ret == JRA_API.PS_EXCEPTION) {
-                        updateMsg("open device fail");
-                    }
+                    mOpenHandler.removeCallbacksAndMessages(null);
+                    mOpenHandler.postDelayed(mOpenJRARunnable,100);
+//                    int ret = jraApi.openJRA();
+//                    if (ret == JRA_API.DEVICE_SUCCESS) {
+//                        updateMsg("open device success");
+//                    } else if (ret == JRA_API.PS_DEVICE_NOT_FOUND) {
+//                        updateMsg("can't find this device!");
+//                    } else if (ret == JRA_API.PS_EXCEPTION) {
+//                        updateMsg("open device fail");
+//                    }
+//                    else {
+//                        updateMsg("open fail ret = "+ret);
+//                    }
                 } else if (mFingerDevice.equals(JrcApiBase.ZiDevice)) {
                     MyApplication.getApp().cancleProgressDialog();
                     mJrcApi = new JrcApiZiDevice(JRAActivity.this);
@@ -104,7 +134,7 @@ public class JRAActivity extends BaseActivity {
                         updateMsg("unknown mistake");
                     } else {
                         //其他错误
-                        updateMsg("Other errors");
+                        updateMsg("Other errors ret = "+ret);
                     }
                 } else {
                     MyApplication.getApp().cancleProgressDialog();
@@ -135,6 +165,7 @@ public class JRAActivity extends BaseActivity {
         super.onStop();
         Log.i(TAG, "------------onStop--------------");
         updateMsg("设备已关闭");
+        mOpenHandler.removeCallbacksAndMessages(null);
         if (mFingerDevice.equals(USBFingerManager.JRA_DEVICE)) {
             mJraFragment.closeThread();
             jraApi.closeJRA();

@@ -186,10 +186,48 @@
         <item>China2 (0x52)</item>
     </string-array>
 
+    <string name="rbuhf_text_reset">reset</string>
+    <string name="rbuhf_button_reset">reset</string>
+    <string name="rbuhf_text_show_version">show version</string>
+    <string name="rbuhf_button_get_version">get version</string>
+    <string name="rbuhf_button_set_power">set power</string>
+    <string name="rbuhf_button_get_power">get power</string>
+    <string name="rbuhf_reset_success">reset success</string>
+    <string name="rbuhf_reset_failure">reset failure: </string>
+    <string name="rbuhf_set_power_hint">18 ~ 26</string>
+    <string name="rbuhf_set_power_success">set power success</string>
+    <string name="rbuhf_set_power_failure">set power failure: </string>
+    <string name="rbuhf_set_power_outnumber">Please enter the number between 18~26</string>
+    <string name="rbuhf_get_power_success">get power success</string>
+    <string name="rbuhf_get_power_failure">get power failure: </string>
+    <string name="rbuhf_start_frequency">Freq start</string>
+    <string name="rbuhf_end_frequency">Freq end</string>
+    <string name="rbuhf_khz">KHz</string>
+    <string name="rbuhf_mhz">MHz</string>
+    <string name="rbuhf_frequency_space">Freq space</string>
+    <string name="rbuhf_frequency_quantity">Freq quantity</string>
+    <string name="rbuhf_rf_specifications">RF specifications</string>
+    <string name="rbuhf_custom_spectrum">Custom spectrum</string>
+    <string name="rbuhf_system_default_frequency">System default frequency</string>
+    <string name="rbuhf_setting_empty_error1">Freq start cannot be empty!!!</string>
+    <string name="rbuhf_setting_empty_error2">Freq space cannot be empty!!!</string>
+    <string name="rbuhf_setting_empty_error3">Freq quantity cannot be empty!!!</string>
+    <string name="rbuhf_setting_empty_error4">Freq end cannot be empty!!!</string>
+    <string name="rbuhf_setting_error1">Freq start is out of range!!!</string>
+    <string name="rbuhf_setting_error2">Freq space needs to be greater than or equal to 1 !!!</string>
+    <string name="rbuhf_setting_error3">Freq quantity needs to be greater than or equal to 1 !!!</string>
+    <string name="rbuhf_setting_error4">Freq start cannot be greater than Freq end !!!</string>
+    <string-array name="rbhxuhf_region">
+        <item>FCC (0x01)</item>
+        <item>ETSI (0x02)</item>
+        <item>CHN (0x03)</item>
+    </string-array>
+
     <string name="hxuhf_txt_accesspwd">Password:</string>
     <string name="hxuhf_txt_timeout">timeout:</string>
     <string name="hxuhf_tab_read">Tag read</string>
     <string name="hxuhf_tab_write">Tag write</string>
+    <string name="hxuhf_tab_open_lamp">Tag open lamp</string>
     <string name="hxuhf_txt_tag_tit">Selected tag:</string>
     <string name="hxuhf_txt_read_eare">Read area:</string>
     <string name="hxuhf_txt_write_eare">Write area:</string>

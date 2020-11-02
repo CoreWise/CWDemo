@@ -22,6 +22,7 @@ import com.cw.demo.UHF.R2000UHF.ui.HexEditTextBox;
 import com.cw.demo.UHF.R2000UHF.ui.SpinerPopWindow;
 import com.cw.demo.UHF.R2000UHF.ui.TagAccessList;
 import com.cw.r2000uhfsdk.IOnTagOperation;
+import com.cw.r2000uhfsdk.base.ERROR;
 import com.cw.r2000uhfsdk.helper.InventoryBuffer;
 import com.cw.r2000uhfsdk.helper.OperateTagBuffer;
 
@@ -151,6 +152,7 @@ public class PageTagAccess extends Fragment {
             @Override
             public void readTagResult(OperateTagBuffer m_curOperateTagBuffer) {
                 mTagAccessList.refreshList(m_curOperateTagBuffer);
+                activity.mLogList.writeLog(m_curOperateTagBuffer.lsTagList.get(0).toString(), ERROR.SUCCESS);
             }
 
             @Override

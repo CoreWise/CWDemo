@@ -41,7 +41,7 @@ public class RBUHFActivity extends AppCompatActivity {
 
     private ToggleButton buttonConnect;
     private ToggleButton buttonInv;
-    private Button singleSearch;
+    private Button mBtSetting;
     private TextView txtCount;
     private TextView txtTimes;
     public RBUFHAPI api;
@@ -73,6 +73,9 @@ public class RBUHFActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //亮屏
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -138,32 +141,12 @@ public class RBUHFActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        singleSearch.setOnClickListener(new View.OnClickListener() {
+        mBtSetting.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-
-//                int temperature = api.getTemperature();
-//                Log.i(TAG, "temperature = " + temperature);
-
-//                RBUFHAPI.CmdResponse frequencyRegion = api.getFrequencyRegion();
-//                Log.i(TAG, "frequencyRegion = " + frequencyRegion.respondData);
-
-//                int errorCode = api.setPower(RBUFHConfig.Max_Power);
-//                Log.i(TAG, "errorCode = " + errorCode);
-
-//                RBUFHAPI.CmdResponse power = api.getPower();
-//                Log.i(TAG, "power = " + power.respondData);
-
-//                int BaudRate = api.setBaudRate(RBUFHConfig.BaudRate_115200);
-//                Log.i(TAG, "BaudRate = " + BaudRate);
-//                Log.i(TAG, "BaudRate = " + (BaudRate == RBUFHConfig.command_success));
-
-
-//                String version = api.getVersion();
-//                Log.i(TAG,"version = "+version);
-
-//                int reset = api.reset();
-//                Log.i(TAG,"reset = "+(reset == RBUFHConfig.command_success));
+                RBMySettingDialog dialog = new RBMySettingDialog(RBUHFActivity.this);
+                dialog.show();
             }
         });
 
@@ -312,9 +295,9 @@ public class RBUHFActivity extends AppCompatActivity {
     private void initView() {
         buttonConnect = findViewById(R.id.togBtn_open);
         buttonInv = findViewById(R.id.togBtn_inv);
-        singleSearch = findViewById(R.id.bt_singleSearch);
         txtCount = findViewById(R.id.txtCount);
         txtTimes = findViewById(R.id.txtTimes);
+        mBtSetting = findViewById(R.id.bt_setting);
         FragmentManager fragmentManager = getFragmentManager();
         objFragment = (RBTagListFragment) fragmentManager.findFragmentById(R.id.fragment_taglist);
 //        txtReadEpc = findViewById(R.id.txtReadEpc);

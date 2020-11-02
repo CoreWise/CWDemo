@@ -50,15 +50,15 @@ public class RBTagListFragment extends ListFragment {
         // 记录当前选中的标签位置
         curSelPosition = position;
 
-        TextView txtEpc = mActivity.findViewById(R.id.txtReadEpc);
-
-        TextView txtWriteEpc = mActivity.findViewById(R.id.txtWriteEpc);
-
         String ClickEPC = presidents.get(position);
 
-        txtEpc.setText(ClickEPC);
+        TextView txtEpc = mActivity.findViewById(R.id.txtReadEpc);
+        TextView txtWriteEpc = mActivity.findViewById(R.id.txtWriteEpc);
+        TextView txtOpenLampEpc = mActivity.findViewById(R.id.txtOpenLampEpc);
 
+        txtEpc.setText(ClickEPC);
         txtWriteEpc.setText(ClickEPC);
+        txtOpenLampEpc.setText(ClickEPC);
 
         ((RBUHFActivity) mActivity).api.cancelAccessEpcMatch();
 

@@ -13,6 +13,7 @@ import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.os.Vibrator;
 import android.support.annotation.RequiresApi;
@@ -96,7 +97,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
     private Date StartTime, EndTime;
     private String result = "";
     @SuppressLint("HandlerLeak")
-    Handler mUpDateUIHandler = new Handler(){
+    Handler mUpDateUIHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -129,6 +130,151 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
             readTime++;
             clear();
             asyncParseSFZ.readSFZ(ParseSFZAPI.THIRD_GENERATION_CARD);
+        }
+    };
+
+    private Thread mThread = new Thread(new Runnable() {
+
+        @Override
+        public void run() {
+            // 在子线程中初始化一个Looper对象
+            Looper.prepare();
+            Log.i(TAG, "handler = " + Looper.myLooper());
+            Log.i(TAG, "Main = " + getMainLooper());
+            asyncParseSFZ = new AsyncParseSFZ(Looper.myLooper(), IDCardActivity.this);
+
+            asyncParseSFZ.setTargetSdkVersion(IDCardActivity.this.getApplicationInfo().targetSdkVersion);
+
+            asyncParseSFZ.setOnReadSFZListener(new AsyncParseSFZ.OnReadSFZListener() {
+
+                @Override
+                public void onReadSuccess(Object people) {
+                    sendMessage(0, people);
+                }
+
+                @Override
+                public void onReadFail(int confirmationCode, String errorCode) {
+                    sendMessage(1, confirmationCode);
+                }
+            });
+
+            asyncParseSFZ.setOnReadCardIDListener(new AsyncParseSFZ.OnReadCardIDListener() {
+
+                @Override
+                public void onReadSuccess(String id) {
+                    sendMessage(2, id);
+                }
+
+                @Override
+                public void onReadFail() {
+                    sendMessage(3, null);
+                }
+            });
+            // 把刚才初始化的Looper对象运行起来，循环消息队列的消息
+            Looper.loop();
+        }
+    });
+    private Handler mThreadHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 0:
+                    updateInfo((ParseSFZAPI.People) msg.obj);
+                    readSuccessTime++;
+                    refresh(isSequentialRead);
+                    oneTime = System.currentTimeMillis() - nowTime;
+                    mVibrator.vibrate(60);
+                    soundPool.play(load, 1, 1, 0, 0, 1);
+
+                    if (!isSequentialRead) {
+                        read_button.setEnabled(true);
+                        sequential_read.setEnabled(true);
+                        clear_button.setEnabled(true);
+
+                    } else {
+                        mUpDateUIHandler.sendEmptyMessage(UPDATEINFOS);
+
+                    }
+                    break;
+                case 1:
+                    int confirmationCode = (int) msg.obj;
+                    if (!isSequentialRead) {
+                        read_button.setEnabled(true);
+                        sequential_read.setEnabled(true);
+                        clear_button.setEnabled(true);
+
+                    }
+
+                    if (isBack) {
+                        return;
+                    }
+
+                    if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL) {
+                        if (!isSequentialRead) {
+                            Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据", Toast.LENGTH_SHORT).show();
+                        }
+                    } else if (confirmationCode == ParseSFZAPI.Result.TIME_OUT) {//3
+                        if (!isSequentialRead) {
+                            Toast.makeText(getApplicationContext(), "未寻到卡,无返回数据，超时！！(串口无数据)", Toast.LENGTH_SHORT).show();
+                        }
+                        readTimeout++;
+                    } else if (confirmationCode == ParseSFZAPI.Result.OTHER_EXCEPTION) {
+                        if (!isSequentialRead) {
+                            Toast.makeText(getApplicationContext(), "可能是串口打开失败或其他异常", Toast.LENGTH_SHORT).show();
+                        }
+                    } else if (confirmationCode == ParseSFZAPI.Result.NO_THREECARD) {
+                        if (!isSequentialRead) {
+                            Toast.makeText(getApplicationContext(), "此二代证没有指纹数据", Toast.LENGTH_SHORT).show();
+                        }
+                    } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_8084) {//6
+                        if (!isSequentialRead) {
+                            Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(80)", Toast.LENGTH_SHORT).show();
+                        }
+                        readFailFor8084++;
+                    } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_4145) {
+                        if (!isSequentialRead) {
+                            Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(41)", Toast.LENGTH_SHORT).show();
+                        }
+                        readFailFor4145++;
+                    } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_other) {//12
+                        if (!isSequentialRead) {
+                            Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(其他错误)", Toast.LENGTH_SHORT).show();
+                        }
+                        readFailForOther++;
+                    } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_Length) {
+                        if (!isSequentialRead) {
+                            Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(数据接收不完整)", Toast.LENGTH_SHORT).show();
+                        }
+                        readFailForOther++;
+                    }
+                    readFailTime++;
+                    clear();
+                    refresh(isSequentialRead);
+                    if (isSequentialRead) {
+                        oneTime = System.currentTimeMillis() - nowTime;
+                        mUpDateUIHandler.sendEmptyMessage(UPDATEINFOS);
+                    }
+                    break;
+                case 2:
+                    String id = (String) msg.obj;
+                    sfz_modle.setText(id);
+                    if (!isSequentialRead) {
+                        read_button.setEnabled(true);
+                        sequential_read.setEnabled(true);
+                        clear_button.setEnabled(true);
+
+                    }
+                    break;
+                case 3:
+                    Toast.makeText(getApplicationContext(), "读取卡号失败", Toast.LENGTH_SHORT).show();
+                    if (!isSequentialRead) {
+                        read_button.setEnabled(true);
+                        sequential_read.setEnabled(true);
+                        clear_button.setEnabled(true);
+                    }
+                    break;
+            }
         }
     };
 
@@ -202,123 +348,131 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         uid_button.setOnClickListener(this);
 
         df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    }
 
+    private void sendMessage(int what, Object obj) {
+        Message message = new Message();
+        message.what = what;
+        message.obj = obj;
+        mThreadHandler.sendMessage(message);
     }
 
     private void initData() {
 
         mediaPlayer = MediaPlayer.create(this, R.raw.ok);
-        asyncParseSFZ = new AsyncParseSFZ(getMainLooper(), this);
+        mThread.start();
 
-        asyncParseSFZ.setTargetSdkVersion(this.getApplicationInfo().targetSdkVersion);
-
-        asyncParseSFZ.setOnReadSFZListener(new AsyncParseSFZ.OnReadSFZListener() {
-
-            @Override
-            public void onReadSuccess(Object people) {
-                updateInfo((ParseSFZAPI.People) people);
-                readSuccessTime++;
-                refresh(isSequentialRead);
-                oneTime = System.currentTimeMillis() - nowTime;
-                mVibrator.vibrate(60);
-                soundPool.play(load, 1, 1, 0, 0, 1);
-
-                if (!isSequentialRead) {
-                    read_button.setEnabled(true);
-                    sequential_read.setEnabled(true);
-                    clear_button.setEnabled(true);
-
-                } else {
-                    mUpDateUIHandler.sendEmptyMessage(UPDATEINFOS);
-
-                }
-            }
-
-            @Override
-            public void onReadFail(int confirmationCode,String errorCode) {
-
-                if (!isSequentialRead) {
-                    read_button.setEnabled(true);
-                    sequential_read.setEnabled(true);
-                    clear_button.setEnabled(true);
-
-                }
-
-                if (isBack) {
-                    return;
-                }
-
-                if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL) {
-                    if (!isSequentialRead) {
-                        Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据", Toast.LENGTH_SHORT).show();
-                    }
-                } else if (confirmationCode == ParseSFZAPI.Result.TIME_OUT) {//3
-                    if (!isSequentialRead) {
-                        Toast.makeText(getApplicationContext(), "未寻到卡,无返回数据，超时！！(串口无数据)", Toast.LENGTH_SHORT).show();
-                    }
-                    readTimeout++;
-                } else if (confirmationCode == ParseSFZAPI.Result.OTHER_EXCEPTION) {
-                    if (!isSequentialRead) {
-                        Toast.makeText(getApplicationContext(), "可能是串口打开失败或其他异常", Toast.LENGTH_SHORT).show();
-                    }
-                } else if (confirmationCode == ParseSFZAPI.Result.NO_THREECARD) {
-                    if (!isSequentialRead) {
-                        Toast.makeText(getApplicationContext(), "此二代证没有指纹数据", Toast.LENGTH_SHORT).show();
-                    }
-                } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_8084) {//6
-                    if (!isSequentialRead) {
-                        Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(80)", Toast.LENGTH_SHORT).show();
-                    }
-                    readFailFor8084++;
-                } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_4145) {
-                    if (!isSequentialRead) {
-                        Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(41)", Toast.LENGTH_SHORT).show();
-                    }
-                    readFailFor4145++;
-                } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_other) {//12
-                    if (!isSequentialRead) {
-                        Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(其他错误)", Toast.LENGTH_SHORT).show();
-                    }
-                    readFailForOther++;
-                } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_Length) {
-                    if (!isSequentialRead) {
-                        Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(数据接收不完整)", Toast.LENGTH_SHORT).show();
-                    }
-                    readFailForOther++;
-                }
-                readFailTime++;
-                clear();
-                refresh(isSequentialRead);
-                if (isSequentialRead) {
-                    oneTime = System.currentTimeMillis() - nowTime;
-                    mUpDateUIHandler.sendEmptyMessage(UPDATEINFOS);
-                }
-            }
-        });
-
-        asyncParseSFZ.setOnReadCardIDListener(new AsyncParseSFZ.OnReadCardIDListener() {
-
-            @Override
-            public void onReadSuccess(String id) {
-                sfz_modle.setText(id);
-                if (!isSequentialRead) {
-                    read_button.setEnabled(true);
-                    sequential_read.setEnabled(true);
-                    clear_button.setEnabled(true);
-
-                }
-            }
-
-            @Override
-            public void onReadFail() {
-                Toast.makeText(getApplicationContext(), "读取卡号失败", Toast.LENGTH_SHORT).show();
-                if (!isSequentialRead) {
-                    read_button.setEnabled(true);
-                    sequential_read.setEnabled(true);
-                    clear_button.setEnabled(true);
-                }
-            }
-        });
+//        asyncParseSFZ = new AsyncParseSFZ(getMainLooper(), this);
+//
+//        asyncParseSFZ.setTargetSdkVersion(this.getApplicationInfo().targetSdkVersion);
+//
+//        asyncParseSFZ.setOnReadSFZListener(new AsyncParseSFZ.OnReadSFZListener() {
+//
+//            @Override
+//            public void onReadSuccess(Object people) {
+//                updateInfo((ParseSFZAPI.People) people);
+//                readSuccessTime++;
+//                refresh(isSequentialRead);
+//                oneTime = System.currentTimeMillis() - nowTime;
+//                mVibrator.vibrate(60);
+//                soundPool.play(load, 1, 1, 0, 0, 1);
+//
+//                if (!isSequentialRead) {
+//                    read_button.setEnabled(true);
+//                    sequential_read.setEnabled(true);
+//                    clear_button.setEnabled(true);
+//
+//                } else {
+//                    mUpDateUIHandler.sendEmptyMessage(UPDATEINFOS);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onReadFail(int confirmationCode, String errorCode) {
+//
+//                if (!isSequentialRead) {
+//                    read_button.setEnabled(true);
+//                    sequential_read.setEnabled(true);
+//                    clear_button.setEnabled(true);
+//
+//                }
+//
+//                if (isBack) {
+//                    return;
+//                }
+//
+//                if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL) {
+//                    if (!isSequentialRead) {
+//                        Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据", Toast.LENGTH_SHORT).show();
+//                    }
+//                } else if (confirmationCode == ParseSFZAPI.Result.TIME_OUT) {//3
+//                    if (!isSequentialRead) {
+//                        Toast.makeText(getApplicationContext(), "未寻到卡,无返回数据，超时！！(串口无数据)", Toast.LENGTH_SHORT).show();
+//                    }
+//                    readTimeout++;
+//                } else if (confirmationCode == ParseSFZAPI.Result.OTHER_EXCEPTION) {
+//                    if (!isSequentialRead) {
+//                        Toast.makeText(getApplicationContext(), "可能是串口打开失败或其他异常", Toast.LENGTH_SHORT).show();
+//                    }
+//                } else if (confirmationCode == ParseSFZAPI.Result.NO_THREECARD) {
+//                    if (!isSequentialRead) {
+//                        Toast.makeText(getApplicationContext(), "此二代证没有指纹数据", Toast.LENGTH_SHORT).show();
+//                    }
+//                } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_8084) {//6
+//                    if (!isSequentialRead) {
+//                        Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(80)", Toast.LENGTH_SHORT).show();
+//                    }
+//                    readFailFor8084++;
+//                } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_4145) {
+//                    if (!isSequentialRead) {
+//                        Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(41)", Toast.LENGTH_SHORT).show();
+//                    }
+//                    readFailFor4145++;
+//                } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_other) {//12
+//                    if (!isSequentialRead) {
+//                        Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(其他错误)", Toast.LENGTH_SHORT).show();
+//                    }
+//                    readFailForOther++;
+//                } else if (confirmationCode == ParseSFZAPI.Result.FIND_FAIL_Length) {
+//                    if (!isSequentialRead) {
+//                        Toast.makeText(getApplicationContext(), "未寻到卡,有返回数据(数据接收不完整)", Toast.LENGTH_SHORT).show();
+//                    }
+//                    readFailForOther++;
+//                }
+//                readFailTime++;
+//                clear();
+//                refresh(isSequentialRead);
+//                if (isSequentialRead) {
+//                    oneTime = System.currentTimeMillis() - nowTime;
+//                    mUpDateUIHandler.sendEmptyMessage(UPDATEINFOS);
+//                }
+//            }
+//        });
+//
+//        asyncParseSFZ.setOnReadCardIDListener(new AsyncParseSFZ.OnReadCardIDListener() {
+//
+//            @Override
+//            public void onReadSuccess(String id) {
+//                sfz_modle.setText(id);
+//                if (!isSequentialRead) {
+//                    read_button.setEnabled(true);
+//                    sequential_read.setEnabled(true);
+//                    clear_button.setEnabled(true);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onReadFail() {
+//                Toast.makeText(getApplicationContext(), "读取卡号失败", Toast.LENGTH_SHORT).show();
+//                if (!isSequentialRead) {
+//                    read_button.setEnabled(true);
+//                    sequential_read.setEnabled(true);
+//                    clear_button.setEnabled(true);
+//                }
+//            }
+//        });
     }
 
     @Override
@@ -418,17 +572,15 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
 
     private void updateInfo(ParseSFZAPI.People people) {
 
-        if (mediaPlayer!=null)
-        {
+        if (mediaPlayer != null) {
             mediaPlayer.release();
             mediaPlayer = null;
             mediaPlayer = MediaPlayer.create(this, R.raw.ok);
             mediaPlayer.start();
         }
 
-        if (TextUtils.equals(people.getType(),"J"))
-        {
-            Toast.makeText(this,"港澳台居住证",Toast.LENGTH_SHORT).show();
+        if (TextUtils.equals(people.getType(), "J")) {
+            Toast.makeText(this, "港澳台居住证", Toast.LENGTH_SHORT).show();
         }
 
         sfz_address.setText(people.getPeopleAddress());
@@ -437,8 +589,7 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         sfz_nation.setText(people.getPeopleNation());
         sfz_sex.setText(people.getPeopleSex());
 
-        if (people.getPeopleBirthday() != null && people.getPeopleBirthday().length() > 0)
-        {
+        if (people.getPeopleBirthday() != null && people.getPeopleBirthday().length() > 0) {
             sfz_year.setText(people.getPeopleBirthday().substring(0, 4));
             sfz_mouth.setText(people.getPeopleBirthday().substring(4, 6));
             sfz_day.setText(people.getPeopleBirthday().substring(6));
@@ -504,6 +655,8 @@ public class IDCardActivity extends AppCompatActivity implements OnClickListener
         //SerialPortManager.getInstance().closeSerialPort();
         asyncParseSFZ.closeIDCardSerialPort(cw.getDeviceModel());
         MyApplication.getApp().maintainScannerService();
+        mThread.interrupt();
+
         //关闭职位模块，省电
         //asyncParseSFZ.closeFingerDevice(IDCardActivity.this, mScanner);
         mHandler.removeCallbacksAndMessages(null);
