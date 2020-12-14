@@ -36,16 +36,18 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
     private static final String[] cardtype = {"S50", "S70"};
     private static final String[] pwdtype = {"KEYA", "KEYB"};
     private static final int[] keyType = {M1CardAPI.KEY_A, M1CardAPI.KEY_B};
+    private static final int[] modelType = {M1CardAPI.S50, M1CardAPI.S70};
     private Spinner mSpinnerCardType, mSpinnerPwdType;
     private ArrayAdapter<String> mAdapterCardType, mAdapterPwdType;
-    private int NUM = 1;
-    private int mKeyType = M1CardAPI.KEY_A;
+    private static int MODEL = 1;//型号选择
+    private static int mKeyType = M1CardAPI.KEY_A;//密码选择
+//    private static int NUM = 1;//次数
     private String DefaultKeyA = "ffffffffffff";// 默认密码A
     private String DefaultKeyB = "ffffffffffff";// 默认密码B
     private Button mBtnGetCardNum, mBtnSendPwd, mBtnValidPwd, mBtnWriteData,
             mBtnReadData, mBtnUpdate;
     private EditText mEdShowCard, mEdPwdA, mEdPwdB, mBlockNum, mEdWriteData,
-            mReadData, mEdWritePwd;
+            mReadData, mEdWritePwdA, mEdWritePwdB;
     private TextView mTips;
     private AsyncM1Card reader;
     private ProgressDialog progressDialog;
@@ -62,8 +64,6 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
         initData();
 
         builder = new AlertDialog.Builder(this);
-
-
     }
 
     private void initView() {
@@ -73,6 +73,17 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
         mAdapterCardType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);// 设置下拉列表的风格
         mSpinnerCardType.setSelection(0);
         mSpinnerCardType.setAdapter(mAdapterCardType);
+        mSpinnerCardType.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int position, long arg3) {
+                MODEL = modelType[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
 
 
         mSpinnerPwdType = findViewById(R.id.spinner_pwd_type);
@@ -97,7 +108,8 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
         mBlockNum = findViewById(R.id.ed_block_num);
         mEdWriteData = findViewById(R.id.ed_write_block);
         mReadData = findViewById(R.id.ed_read_block);
-        mEdWritePwd = findViewById(R.id.ed_write_pwd);
+        mEdWritePwdA = findViewById(R.id.ed_write_pwd_a);
+        mEdWritePwdB = findViewById(R.id.ed_write_pwd_b);
 
         mBtnGetCardNum = findViewById(R.id.btn_getCardNum);
         mBtnSendPwd = findViewById(R.id.btn_sendCardPwd);
@@ -133,7 +145,7 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
             }
 
             @Override
-            public void onReadCardNumFail(int confirmationCode,String errorMsg) {
+            public void onReadCardNumFail(int confirmationCode, String errorMsg) {
                 mEdShowCard.setText("");
                 cancleProgressDialog();
                 if (confirmationCode == M1CardAPI.Result.FIND_FAIL) {
@@ -240,7 +252,7 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
                 if (RegexUtils.isCheckPwd(keyA) && RegexUtils.isCheckPwd(keyB)
                         && RegexUtils.isCheckWriteData(data)) {
                     showProgressDialog(R.string.m1_writing_wait);
-                    reader.write(block, mKeyType, NUM, keyA, keyB, data);
+                    reader.write(block, mKeyType, MODEL, keyA, keyB, data);
                 } else {
 
                     Toast.makeText(this, R.string.m1_str_all_not_validate, Toast.LENGTH_SHORT).show();
@@ -284,7 +296,7 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
                     return;
                 }
                 showProgressDialog(R.string.m1_reading_wait);
-                reader.read(block, mKeyType, NUM, keyA, keyB);
+                reader.read(block, mKeyType, MODEL, keyA, keyB);
                 break;
             case R.id.btn_update:
 
@@ -298,13 +310,15 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
                     Toast.makeText(this, R.string.m1_str_block_not_empty, Toast.LENGTH_SHORT).show();
                     return;
                 }
+                // TODO: 2020/12/2 块号合法性检测
 
                 final int block2 = Integer.parseInt(mBlockNum.getText().toString());
                 final String keyA2 = mEdPwdA.getText().toString();
                 final String keyB2 = mEdPwdB.getText().toString();
-                final String data2 = mEdWritePwd.getText().toString();
+                final String dataA2 = mEdWritePwdA.getText().toString();
+                final String dataB2 = mEdWritePwdB.getText().toString();
 
-                if (TextUtils.isEmpty(keyA2) || TextUtils.isEmpty(keyB2) || TextUtils.isEmpty(data2)) {
+                if (TextUtils.isEmpty(keyA2) || TextUtils.isEmpty(keyB2) || TextUtils.isEmpty(dataA2) || TextUtils.isEmpty(dataB2)) {
                     Toast.makeText(this, R.string.m1_str_all_not_empty, Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -325,12 +339,12 @@ public class RFIDM1Activity extends AppCompatActivity implements OnClickListener
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         showProgressDialog(R.string.m1_updatepwding_wait);
-                        reader.updatePwd(block2, mKeyType, NUM, keyA2, keyB2, data2);
+                        reader.updatePwd(block2, mKeyType, MODEL, keyA2, keyB2, dataA2, dataB2);
                     }
                 });
 
 
-                if (RegexUtils.isCheckPwd(keyA2) && RegexUtils.isCheckPwd(keyB2) && RegexUtils.isCheckPwd(data2)) {
+                if (RegexUtils.isCheckPwd(keyA2) && RegexUtils.isCheckPwd(keyB2) && RegexUtils.isCheckPwd(dataA2) && RegexUtils.isCheckPwd(dataB2)) {
                     //showProgressDialog(R.string.updatepwding_wait);
                     //reader.updatePwd(block, mKeyType, NUM, keyA, keyB, data);
                     builder.show();

@@ -203,9 +203,12 @@
     <string name="rbuhf_start_frequency">Freq start</string>
     <string name="rbuhf_end_frequency">Freq end</string>
     <string name="rbuhf_khz">KHz</string>
+    <string name="rbuhf_10khz">10KHz</string>
     <string name="rbuhf_mhz">MHz</string>
     <string name="rbuhf_frequency_space">Freq space</string>
     <string name="rbuhf_frequency_quantity">Freq quantity</string>
+    <string name="rbuhf_frequency_space_hint">1 ~ 255</string>
+    <string name="rbuhf_frequency_quantity_hint">1 ~ 63</string>
     <string name="rbuhf_rf_specifications">RF specifications</string>
     <string name="rbuhf_custom_spectrum">Custom spectrum</string>
     <string name="rbuhf_system_default_frequency">System default frequency</string>
@@ -214,8 +217,8 @@
     <string name="rbuhf_setting_empty_error3">Freq quantity cannot be empty!!!</string>
     <string name="rbuhf_setting_empty_error4">Freq end cannot be empty!!!</string>
     <string name="rbuhf_setting_error1">Freq start is out of range!!!</string>
-    <string name="rbuhf_setting_error2">Freq space needs to be greater than or equal to 1 !!!</string>
-    <string name="rbuhf_setting_error3">Freq quantity needs to be greater than or equal to 1 !!!</string>
+    <string name="rbuhf_setting_error2">Freq space interval range 1 ~ 255 !!!</string>
+    <string name="rbuhf_setting_error3">Freq quantity interval range 1 ~ 63 !!!</string>
     <string name="rbuhf_setting_error4">Freq start cannot be greater than Freq end !!!</string>
     <string-array name="rbhxuhf_region">
         <item>FCC (0x01)</item>
@@ -907,7 +910,8 @@
         
     <string name="m1_hint_tips32">Please write 32 characters between 0-9, A-F, a-f</string>
         
-    <string name="m1_new_pwd">New password:</string>
+    <string name="m1_new_pwd_a">New password A:</string>
+    <string name="m1_new_pwd_b">New password B:</string>
         
     <string name="m1_read_block">Read block data:</string>
         

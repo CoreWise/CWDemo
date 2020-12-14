@@ -118,7 +118,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 .updateUrl(mUpdateUrl)
                 .apkCacheDir("/sdcard/DemoApp/")
                 .update();
-
     }
 
     private void initView() {

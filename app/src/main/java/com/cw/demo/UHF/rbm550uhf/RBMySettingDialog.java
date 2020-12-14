@@ -46,6 +46,10 @@ public class RBMySettingDialog extends Dialog implements View.OnClickListener {
     private EditText mCustomizeEndEdit;//频率结束点
     private EditText mCustomizeSpaceEdit;//频点间隔
     private EditText mCustomizeQuantityEdit;//频点数量
+//    private Spinner mSpinnerSpace;//频点间隔
+//    private Spinner mSpinnerQuantity;//频点数量
+//    private String[] mSpaceRegion;
+//    private String[] mQuantityRegion;
 
     private LinearLayout mSystemView;//系统默认频点布局
     //    private EditText mSystemStartEdit;//频率起始点
@@ -100,6 +104,9 @@ public class RBMySettingDialog extends Dialog implements View.OnClickListener {
         mCustomizeEndEdit = findViewById(R.id.rb_region_end);
         mCustomizeSpaceEdit = findViewById(R.id.rb_region_space);
         mCustomizeQuantityEdit = findViewById(R.id.rb_region_quantity);
+//        mSpinnerSpace = findViewById(R.id.sp_region_space);
+//        mSpinnerQuantity = findViewById(R.id.sp_region_quantity);
+
         mSystemView = findViewById(R.id.rb_system_view);
 //        mSystemStartEdit = findViewById(R.id.rb_system_region_start);
 //        mSystemEndEdit = findViewById(R.id.rb_system_region_end);
@@ -113,10 +120,27 @@ public class RBMySettingDialog extends Dialog implements View.OnClickListener {
 
     private void initData() {
         mSystemRegion = context.getResources().getStringArray(R.array.rbhxuhf_region);
-        ArrayAdapter<String> regionAdapter = new ArrayAdapter<String>(context,
-                R.layout.hxuhf_simple_list_item, mSystemRegion);
+        ArrayAdapter<String> regionAdapter = new ArrayAdapter<String>(context, R.layout.hxuhf_simple_list_item, mSystemRegion);
         regionAdapter.setDropDownViewResource(R.layout.hxuhf_simple_list_item);
         mSystemSpRegion.setAdapter(regionAdapter);
+
+//        mSpaceRegion = new String[255];
+//        for (int i = 0; i < mSpaceRegion.length; i++) {
+//            mSpaceRegion[i] = i + 1 + "";
+//        }
+//        ArrayAdapter<String> spaceAdapter = new ArrayAdapter<String>(context, R.layout.hxuhf_simple_list_item, mSpaceRegion);
+//        spaceAdapter.setDropDownViewResource(R.layout.hxuhf_simple_list_item);
+//        mSpinnerSpace.setAdapter(spaceAdapter);
+//        mSpinnerSpace.setSelection(0);
+//
+//        mQuantityRegion = new String[63];
+//        for (int i = 0; i < mQuantityRegion.length; i++) {
+//            mQuantityRegion[i] = i + 1 + "";
+//        }
+//        ArrayAdapter<String> quantityAdapter = new ArrayAdapter<String>(context, R.layout.hxuhf_simple_list_item, mQuantityRegion);
+//        quantityAdapter.setDropDownViewResource(R.layout.hxuhf_simple_list_item);
+//        mSpinnerQuantity.setAdapter(quantityAdapter);
+//        mSpinnerQuantity.setSelection(0);
 
         mSpinerPopWindow1 = new RBSpinerPopWindow(getContext());
         mSpinerPopWindow2 = new RBSpinerPopWindow(getContext());
@@ -261,8 +285,8 @@ public class RBMySettingDialog extends Dialog implements View.OnClickListener {
                 mSystemView.setVisibility(View.GONE);
                 mCustomizeStartEdit.setText("");
                 mCustomizeEndEdit.setText("");
-                mCustomizeSpaceEdit.setText("1");
-                mCustomizeQuantityEdit.setText("1");
+//                mCustomizeSpaceEdit.setText("1");
+//                mCustomizeQuantityEdit.setText("1");
                 break;
             case R.id.rb_system_frequency_radio_button:
                 Log.i(TAG, "显示系统频点");
@@ -322,8 +346,16 @@ public class RBMySettingDialog extends Dialog implements View.OnClickListener {
                 break;
             case R.id.rb_set_power_button:
                 //设置功率
-                int setPower = Integer.parseInt(mOutPowerText.getText().toString());
+                String outPowerString = mOutPowerText.getText().toString();
                 String setPowerMsg;
+
+                if (TextUtils.isEmpty(outPowerString)) {
+                    setPowerMsg = context.getResources().getString(R.string.rbuhf_set_power_outnumber);
+                    DataUtils.showToast(context, setPowerMsg);
+                    return;
+                }
+
+                int setPower = Integer.parseInt(outPowerString);
                 if (setPower < 18 || setPower > 26) {
                     setPowerMsg = context.getResources().getString(R.string.rbuhf_set_power_outnumber);
                     DataUtils.showToast(context, setPowerMsg);
@@ -374,7 +406,8 @@ public class RBMySettingDialog extends Dialog implements View.OnClickListener {
                     mFreqEndText.setText(mFreqEndList.get(mPos2));
                 }
 
-            } else if (TextUtils.equals(getRegion.responseLength, DataUtils.toHexString1((byte) 0x09))) {
+            } else if (TextUtils.equals(getRegion.responseLength, DataUtils.toHexString1((byte) 0x09)) &&
+                    TextUtils.equals(getRegion.responseCmd, DataUtils.toHexString1(RBUFHConfig.cmd_get_frequency_region))) {
                 //自定义频点
                 mRegionRadioGroup.check(R.id.rb_custom_spectrum_radio_button);
                 msg = context.getString(R.string.hxuhf_get_region_success);
@@ -395,6 +428,8 @@ public class RBMySettingDialog extends Dialog implements View.OnClickListener {
 
                 Log.i(TAG, "自定义频点 region = " + region + " ,freqSpace = " + freqSpace + " ,freqQuantity = " + freqQuantity + " ,startFreq = " + startFreq + " ,endFreq = " + endFreq);
 
+//                mSpinnerSpace.setSelection(freqSpace - 1);
+//                mSpinnerQuantity.setSelection(freqQuantity - 1);
                 mCustomizeSpaceEdit.setText(freqSpace + "");
                 mCustomizeQuantityEdit.setText(freqQuantity + "");
                 mCustomizeStartEdit.setText(startFreq + "");
@@ -415,6 +450,8 @@ public class RBMySettingDialog extends Dialog implements View.OnClickListener {
             //自定义频谱
             //获取起始频率、频点间隔、频点数量 数值
             String CustomizeStart = mCustomizeStartEdit.getText().toString();
+//            int CustomizeSpace = mSpinnerSpace.getSelectedItemPosition() + 1;
+//            int CustomizeQuantity = mSpinnerQuantity.getSelectedItemPosition() + 1;
             String CustomizeSpace = mCustomizeSpaceEdit.getText().toString();
             String CustomizeQuantity = mCustomizeQuantityEdit.getText().toString();
 
@@ -438,11 +475,11 @@ public class RBMySettingDialog extends Dialog implements View.OnClickListener {
             short quantityEdit = Short.parseShort(CustomizeQuantity);
 
             //判断有效值
-            if (spaceEdit < 1) {
+            if (spaceEdit < 1 || spaceEdit > 255) {
                 DataUtils.showToast(context, context.getString(R.string.rbuhf_setting_error2));
                 return;
             }
-            if (quantityEdit < 1) {
+            if (quantityEdit < 1 || quantityEdit > 63) {
                 DataUtils.showToast(context, context.getString(R.string.rbuhf_setting_error3));
                 return;
             }

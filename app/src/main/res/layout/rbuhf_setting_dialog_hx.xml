@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="400dp"
+    android:layout_width="420dp"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -101,7 +101,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="30sp"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginLeft="2dp"
                     android:gravity="center"
                     android:singleLine="true"
                     android:text="@string/rbuhf_start_frequency"
@@ -122,42 +122,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="30sp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="2dp"
                     android:gravity="center"
                     android:singleLine="true"
                     android:text="@string/rbuhf_khz"
                     android:textColor="#ff222222"
                     android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="30sp"
-                    android:layout_marginLeft="12dp"
-                    android:gravity="center"
-                    android:singleLine="true"
-                    android:text="@string/rbuhf_frequency_space"
-                    android:textColor="#ff222222"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/rb_region_space"
-                    android:layout_width="100sp"
-                    android:layout_height="30sp"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/editbox_background"
-                    android:gravity="center"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:gravity="center"
-                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -184,10 +155,59 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="30sp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="2dp"
                     android:gravity="center"
                     android:singleLine="true"
                     android:text="@string/rbuhf_khz"
+                    android:textColor="#ff222222"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="6dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/rbuhf_frequency_space"
+                    android:textColor="#ff222222"
+                    android:textSize="16sp" />
+
+<!--                <Spinner-->
+<!--                    android:id="@+id/sp_region_space"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginLeft="10dp" />-->
+
+                <EditText
+                    android:id="@+id/rb_region_space"
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/editbox_background"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:hint="@string/rbuhf_frequency_space_hint"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="2dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/rbuhf_10khz"
                     android:textColor="#ff222222"
                     android:textSize="16sp" />
 
@@ -201,6 +221,13 @@
                     android:textColor="#ff222222"
                     android:textSize="16sp" />
 
+<!--                <Spinner-->
+<!--                    android:id="@+id/sp_region_quantity"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginLeft="10dp" />-->
+
                 <EditText
                     android:id="@+id/rb_region_quantity"
                     android:layout_width="100sp"
@@ -209,7 +236,9 @@
                     android:background="@drawable/editbox_background"
                     android:gravity="center"
                     android:inputType="number"
+                    android:hint="@string/rbuhf_frequency_quantity_hint"
                     android:singleLine="true"
+                    android:layout_marginRight="20dp"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -403,6 +432,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:gravity="center"
+            android:visibility="gone"
             android:orientation="horizontal">
 
             <RadioGroup

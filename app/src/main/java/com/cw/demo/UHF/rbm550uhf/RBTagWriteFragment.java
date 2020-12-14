@@ -83,7 +83,8 @@ public class RBTagWriteFragment extends Fragment {
         short dl = Short.parseShort(unmpLength.getSelectedItem().toString());
         String writeData = editInput.getText().toString();
 
-        if (!TextUtils.isEmpty(writeData) && writeData.length() / 4 == dl) {
+        if (!TextUtils.isEmpty(writeData) && writeData.length() / 4 == dl && writeData.length() % 4 == 0
+                && Integer.parseInt(unmpLength.getSelectedItem().toString()) != 0) {
 
             byte[] arguments = ((RBUHFActivity) getActivity()).api.writeArguments(ap, mb, sa, dl,writeData);
             ((RBUHFActivity) getActivity()).api.writeTypeC(arguments);
